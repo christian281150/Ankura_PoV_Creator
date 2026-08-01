@@ -1,4 +1,4 @@
-# AGENTS.md — Company Profile Builder
+﻿# AGENTS.md â€” Company Profile Builder
 
 Implementation brief for coding agents (Codex, Claude Code, Cursor).
 Read this before touching the repo. Full design rationale lives in
@@ -42,17 +42,17 @@ profile_builder/
   entity/          resolution: register lookup, group tree, confirmation
   acquire/         filings (existing tool), register, web, jobs, news
   normalise/       sheet classifier, HGB mapping, units, basis, flags
-  validate/        rules V1–V9, anomaly detection, footnote generation
+  validate/        rules V1â€“V9, anomaly detection, footnote generation
   blocks/          content block catalogue + scoring
-  gui/             screens 1–7
-  render/          python-pptx → Ankura master
+  gui/             screens 1â€“7
+  render/          python-pptx â†’ Ankura master
   mappings/        hgb_taxonomy.csv, label_synonyms.csv, account_ranges.csv, ...
   tests/
-    fixtures/      Seidensticker FY2015–FY2025 workbook + expected JSON
+    fixtures/      Seidensticker FY2015â€“FY2025 workbook + expected JSON
 ```
 
 Python 3.11+. Stdlib + `openpyxl`, `pdfplumber`, `python-pptx`, `pydantic`,
-`httpx`, `beautifulsoup4`. No pandas in the normalise layer — column semantics
+`httpx`, `beautifulsoup4`. No pandas in the normalise layer â€” column semantics
 matter more than dataframe ergonomics here.
 
 ---
@@ -60,19 +60,19 @@ matter more than dataframe ergonomics here.
 ## Ground-truth test case
 
 **Textilkontor Walter Seidensticker GmbH & Co. KG**, HRA 8217, AG Bielefeld.
-FYE 30 April. §267 gross. 11 fiscal years of Konzernabschluss (FY2015–FY2025).
+FYE 30 April. Â§267 gross. 11 fiscal years of Konzernabschluss (FY2015â€“FY2025).
 
 Two facts about this fixture that every agent must know:
 
 1. The website Impressum names **TK Store-Management GmbH**. That is a
    subsidiary, not the group. Any pipeline that accepts it is broken.
-2. The published deck charts a series labelled "Revenue in €m" that is actually
-   **Gesamtleistung** (Umsatzerlöse + Bestandsveränderung + sonstige betriebliche
-   Erträge). Rule V1 exists to catch exactly this.
+2. The published deck charts a series labelled "Revenue in â‚¬m" that is actually
+   **Gesamtleistung** (UmsatzerlÃ¶se + BestandsverÃ¤nderung + sonstige betriebliche
+   ErtrÃ¤ge). Rule V1 exists to catch exactly this.
 
 ### Golden reconciliation (all values EUR m, from `p0_normalise.py`)
 
-| FY | Umsatzerlöse | Bestandsver. | Sonst. Erträge | Gesamtleistung |
+| FY | UmsatzerlÃ¶se | Bestandsver. | Sonst. ErtrÃ¤ge | Gesamtleistung |
 |---|---|---|---|---|
 | 2017 | 198.8 | (0.1) | 4.4 | 203.0 |
 | 2018 | 184.4 | 0.1 | 7.2 | 191.7 |
@@ -89,25 +89,25 @@ Any regression that changes these numbers is a failure.
 
 Derived assertions for tests:
 
-- `revenue_growth_FY25 == +8.4%` (on Umsatzerlöse) — **not** +14.1%
-- `revenue_change_FY24 == −18.6%` (on Umsatzerlöse) — **not** −24%
-- `FY24 bestandsveraenderung == −8_833_400.55` exactly
+- `revenue_growth_FY25 == +8.4%` (on UmsatzerlÃ¶se) â€” **not** +14.1%
+- `revenue_change_FY24 == âˆ’18.6%` (on UmsatzerlÃ¶se) â€” **not** âˆ’24%
+- `FY24 bestandsveraenderung == âˆ’8_833_400.55` exactly
 
 ---
 
 ## Task list
 
-### P0 — Extraction fixes  ✅ reference implementation in `p0_normalise.py`
+### P0 â€” Extraction fixes  âœ… reference implementation in `p0_normalise.py`
 
 | ID | Task | Acceptance |
 |---|---|---|
-| P0.1 | Wire the mapper into export | `Mapping Audit` map rate ≥ 90%; currently 0% |
-| P0.2 | Year-block column coalescing | Umsatzerlöse non-null for all 12 years in the multi-year GuV |
-| P0.3 | German number parsing | `'+ 1.914.645,32'` → `1914645.32`; `'+142.366,40'` → `142366.40` |
-| P0.4 | Unit normalisation | FY2015–16 TEuro sheets scaled ×1000; no 1000× cliff in any series |
+| P0.1 | Wire the mapper into export | `Mapping Audit` map rate â‰¥ 90%; currently 0% |
+| P0.2 | Year-block column coalescing | UmsatzerlÃ¶se non-null for all 12 years in the multi-year GuV |
+| P0.3 | German number parsing | `'+ 1.914.645,32'` â†’ `1914645.32`; `'+142.366,40'` â†’ `142366.40` |
+| P0.4 | Unit normalisation | FY2015â€“16 TEuro sheets scaled Ã—1000; no 1000Ã— cliff in any series |
 | P0.5 | Merge on `std_id` not raw label | No duplicate `6. Abschreibungen` rows; no `- davon` rows in output |
-| P0.6 | Longest-match mapper | `4. Materialaufwand` → parent, **never** `PL_GKV-5a` |
-| P0.7 | Add missing taxonomy rows | `Veränderung des Bestands…`, `Konzernbilanzverlust`, `Nicht durch Vermögenseinlagen gedeckter Verlustanteil` all resolve |
+| P0.6 | Longest-match mapper | `4. Materialaufwand` â†’ parent, **never** `PL_GKV-5a` |
+| P0.7 | Add missing taxonomy rows | `VerÃ¤nderung des Bestandsâ€¦`, `Konzernbilanzverlust`, `Nicht durch VermÃ¶genseinlagen gedeckter Verlustanteil` all resolve |
 
 Notes for the agent:
 
@@ -120,32 +120,32 @@ Notes for the agent:
 - The bundled `hgb_map.py` does exact-normalised lookup only and returns `none`
   on any miss. Use `hgb_lookup_reference.py` as the base and add longest-match.
 
-### P1 — Sheet classifier
+### P1 â€” Sheet classifier
 
 The extractor already captures Konzernanhang, Anlagenspiegel,
-Eigenkapitalspiegel, Konsolidierungskreis, Fristigkeiten, §285 Nr. 4 revenue
+Eigenkapitalspiegel, Konsolidierungskreis, Fristigkeiten, Â§285 Nr. 4 revenue
 splits, and Lagebericht sections. They land in sheets named `FY2021_ (5)` and
-`FY2023_T€ 0 verrechnet. Der ver`.
+`FY2023_Tâ‚¬ 0 verrechnet. Der ver`.
 
-Classify each sheet into: `bilanz` · `guv` · `kapitalflussrechnung` ·
-`anhang_umsatzsplit` · `anhang_konsolidierungskreis` · `anlagenspiegel` ·
-`eigenkapitalspiegel` · `fristigkeiten` · `lagebericht_vermoegenslage` ·
-`lagebericht_finanzlage` · `unknown`.
+Classify each sheet into: `bilanz` Â· `guv` Â· `kapitalflussrechnung` Â·
+`anhang_umsatzsplit` Â· `anhang_konsolidierungskreis` Â· `anlagenspiegel` Â·
+`eigenkapitalspiegel` Â· `fristigkeiten` Â· `lagebericht_vermoegenslage` Â·
+`lagebericht_finanzlage` Â· `unknown`.
 
 Classify on **content signature** (header tokens, column shape, row labels), not
 on sheet name. Sheet names are truncated PDF headings and unreliable.
 
-**Acceptance:** ≥ 85% of the 150 sheets in the fixture classified; `unknown`
+**Acceptance:** â‰¥ 85% of the 150 sheets in the fixture classified; `unknown`
 rate reported, never silently dropped.
 
-### P2 — JSON output + provenance
+### P2 â€” JSON output + provenance
 
 Every value carries:
 
 ```json
 {
   "std_id": "PL_GKV-1",
-  "raw_label": "1. Umsatzerlöse",
+  "raw_label": "1. UmsatzerlÃ¶se",
   "match_type": "exact",
   "fy": 2025,
   "value": 111815106.14,
@@ -157,9 +157,9 @@ Every value carries:
 }
 ```
 
-`page` is null until PDF page tracking is added upstream — model it now.
+`page` is null until PDF page tracking is added upstream â€” model it now.
 
-### P3 — Entity resolution service
+### P3 â€” Entity resolution service
 
 Standalone, unattended, no CAPTCHA. Register-first.
 
@@ -169,35 +169,35 @@ Standalone, unattended, no CAPTCHA. Register-first.
   registered as HRB when the operating parent is a KG under HRA)
 - Track historical names and predecessor parents
 - Persist: Gesellschafterliste changes, officer changes, scope changes,
-  filing lateness vs. §325 deadline
+  filing lateness vs. Â§325 deadline
 
 **Acceptance:** given `seidensticker.com`, returns HRA 8217 as target and
 TK Store-Management GmbH as subsidiary, with a warning that the Impressum entity
 is not the group.
 
-### P4 — Validation rules
+### P4 â€” Validation rules
 
 | Rule | Check | On failure |
 |---|---|---|
 | V1 | Series labelled "Revenue" has `presentation_basis == umsatzerloese` | block |
 | V2 | Single unit within a series | block |
 | V3 | Consolidation perimeter change between adjacent years | require note |
-| V4 | GKV↔UKV switch mid-series | require note |
+| V4 | GKVâ†”UKV switch mid-series | require note |
 | V5 | Line moves > 15% YoY | require note |
 | V6 | Cost ratio breaks trend > 5pp | require note |
 | V7 | Unmapped label used in a charted series | block |
 | V8 | Aktiva == Passiva | block |
-| V9 | `Nicht durch Vermögenseinlagen gedeckter Verlustanteil` present | flag, never suppress |
+| V9 | `Nicht durch VermÃ¶genseinlagen gedeckter Verlustanteil` present | flag, never suppress |
 
-Notes written against V3–V6 become slide footnotes automatically.
+Notes written against V3â€“V6 become slide footnotes automatically.
 
-**Acceptance on fixture:** V5 fires on FY24 revenue (−18.6%) and FY20 (−22.0%);
+**Acceptance on fixture:** V5 fires on FY24 revenue (âˆ’18.6%) and FY20 (âˆ’22.0%);
 V6 fires on the FY24 material-cost ratio; V1 fires if any series is charted as
 "Revenue" on a Gesamtleistung basis.
 
-### P5–P7 — Web/jobs scraper, coverage probe, content blocks
+### P5â€“P7 â€” Web/jobs scraper, coverage probe, content blocks
 
-See spec §4, §7, §8. Block schema:
+See spec Â§4, Â§7, Â§8. Block schema:
 
 ```json
 {
@@ -208,16 +208,16 @@ See spec §4, §7, §8. Block schema:
   "confidence": "high",
   "presentation_basis": "umsatzerloese",
   "blocking_flags": [],
-  "footnotes_auto": ["FY24 depressed by €8.8m inventory drawdown"],
+  "footnotes_auto": ["FY24 depressed by â‚¬8.8m inventory drawdown"],
   "provenance": [ ... ]
 }
 ```
 
-Ordering in the GUI dropdown is `coverage × confidence`, descending.
+Ordering in the GUI dropdown is `coverage Ã— confidence`, descending.
 
-### P8 — GUI
+### P8 â€” GUI
 
-Wireframe: `gui-slot-assignment-wireframe.svg`. Screens 1–7 per spec §9.1.
+Wireframe: `gui-slot-assignment-wireframe.svg`. Screens 1â€“7 per spec Â§9.1.
 
 Non-negotiable behaviours:
 
@@ -228,7 +228,7 @@ Non-negotiable behaviours:
 - `Export .pptx` disabled while any blocking flag is unresolved
 - `Lock layout` persists slot assignment across data refreshes
 
-### P9 — Render
+### P9 â€” Render
 
 `python-pptx` into the Ankura master. Footnotes assembled from `footnotes_auto`
 plus human notes. Every rendered figure writes `std_id` + doc + page into slide
@@ -238,18 +238,18 @@ notes so the deck is auditable after delivery. Emit a companion `.json`.
 
 ## Coverage limits to encode, not work around
 
-§267 HGB size class determines what exists at all:
+Â§267 HGB size class determines what exists at all:
 
 | Class | Available | Consequence |
 |---|---|---|
 | Klein | Balance sheet only | No financials box from filings. Say so. |
-| Mittelgroß | Abridged GuV from Rohergebnis (§276) | **Revenue frequently invisible.** Say so. |
-| Gross | Full GuV, Lagebericht, §285 Nr. 4 split | Full profile |
+| MittelgroÃŸ | Abridged GuV from Rohergebnis (Â§276) | **Revenue frequently invisible.** Say so. |
+| Gross | Full GuV, Lagebericht, Â§285 Nr. 4 split | Full profile |
 
-The mittelgroß case is the core PE hunting ground and the most common. The
+The mittelgroÃŸ case is the core PE hunting ground and the most common. The
 correct output when revenue is not disclosed is:
 
-> *Revenue not separately disclosed (§276 HGB abridgement — Rohergebnis only)*
+> *Revenue not separately disclosed (Â§276 HGB abridgement â€” Rohergebnis only)*
 
 Not an estimate. Not a proxy. Not a blank chart.
 
@@ -258,9 +258,9 @@ Not an estimate. Not a proxy. Not a blank chart.
 ## Conventions
 
 - All amounts stored in **EUR**, never TEUR. Presentation scaling happens in render only.
-- Fiscal year keyed by **end year** (`2025` = 1 May 2024 – 30 Apr 2025). Non-calendar FYE must be carried in entity metadata and shown on every slide.
+- Fiscal year keyed by **end year** (`2025` = 1 May 2024 â€“ 30 Apr 2025). Non-calendar FYE must be carried in entity metadata and shown on every slide.
 - German labels preserved verbatim in `raw_label`. Never translate before mapping.
-- Normalisation for matching: lowercase, umlaut expansion (ä→ae, ß→ss), strip non-alphanumeric. Must match build-side normalisation exactly.
+- Normalisation for matching: lowercase, umlaut expansion (Ã¤â†’ae, ÃŸâ†’ss), strip non-alphanumeric. Must match build-side normalisation exactly.
 - Type hints everywhere. `pydantic` models for anything crossing a layer boundary.
 - No network calls in `normalise/` or `validate/`.
 
@@ -268,8 +268,8 @@ Not an estimate. Not a proxy. Not a blank chart.
 
 - Do not add a fuzzy-match threshold to raise the map rate. Add taxonomy rows instead.
 - Do not use `ws.max_row` from openpyxl in read-only mode.
-- Do not assume `"Summe Passiva"` terminates the Bilanz — it breaks on abweichende Gliederung and IFRS-converged presentation.
-- Do not scrape every page of a company site. Target the page classes in spec §4.1c.
+- Do not assume `"Summe Passiva"` terminates the Bilanz â€” it breaks on abweichende Gliederung and IFRS-converged presentation.
+- Do not scrape every page of a company site. Target the page classes in spec Â§4.1c.
 - Do not treat an Impressum as a corporate-structure source.
 - Do not compare margins across business models (vertically integrated manufacturer vs. asset-light DTC) without a `business_model` tag and a flag.
 
@@ -282,9 +282,7 @@ Not an estimate. Not a proxy. Not a blank chart.
         export. exportBlocked must also require: all four slots assigned, and
         at least one assigned block carrying a financial series.
 - D0.3  Action bar overlaps the last slot card at narrow viewports.
-"@ -Encoding UTF8
 
-Add-Content "$Repo\AGENTS.md" @"
 
 ## Mapping discipline - inherited from the extractor's CLAUDE.md
 
@@ -297,4 +295,17 @@ A lower map rate with an honest queue beats 93% with silent misclassifications.
 
 The taxonomy is generated from HGB_GKV_UKV_Standardisation_Map.xlsx. Do not
 hand-edit lib/hgb_map.py embedded data. Aliases go in aliases/client_aliases.csv.
-"@ -Encoding UTF8
+
+
+
+## Environment
+
+Agent sandboxes have NO network access. Do not attempt pip install or npm install.
+Dependencies are pre-installed by the human before the session starts.
+Use .venv\Scripts\python.exe directly; do not activate the venv.
+If a dependency is missing, stop and report it - do not work around it.
+## Unmapped queue location
+
+Lane A writes its queue to py/normalise/reviews/unmapped_queue.csv.
+The file at py/acquire/bundesanzeiger/reviews/ is inside the submodule and is
+the extractor's own queue - read it as a format reference, never write to it.
