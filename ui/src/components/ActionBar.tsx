@@ -2,10 +2,10 @@ import { cn } from '@/lib/format';
 import { useProfile } from '@/state/profileStore';
 
 export function ActionBar() {
-  const { dispatch, exportBlocked, openFlags, layoutLocked } = useProfile();
+  const { dispatch, exportBlocked, openFlags, layoutLocked, allSlotsAssigned, hasFinancialSeries } = useProfile();
 
   return (
-    <div className="sticky bottom-0 flex items-center gap-2 border-t border-rule bg-paper-raised px-8 py-3">
+    <div className="sticky bottom-0 z-10 flex flex-wrap items-center gap-2 border-t border-rule bg-paper-raised px-4 py-3 sm:px-8">
       <button
         type="button"
         onClick={() => dispatch({ type: 'resetCanonical' })}
@@ -32,19 +32,23 @@ export function ActionBar() {
         Export JSON
       </button>
 
-      <div className="flex-1" />
+      <div className="hidden flex-1 sm:block" />
 
       {exportBlocked && (
-        <p className="font-mono text-micro uppercase tracking-[0.1em] text-rust">
+        <p className="basis-full font-mono text-micro uppercase tracking-[0.1em] text-rust sm:basis-auto">
           {openFlags.length > 0
             ? `${openFlags.length} flag${openFlags.length === 1 ? '' : 's'} unresolved`
-            : 'presentation basis fails V1'}
+            : !allSlotsAssigned
+              ? 'all four slots must be assigned'
+              : !hasFinancialSeries
+                ? 'assign at least one financial series'
+                : 'presentation basis fails V1'}
         </p>
       )}
       <button
         type="button"
         disabled={exportBlocked}
-        title={exportBlocked ? 'Resolve all flags before exporting' : undefined}
+        title={exportBlocked ? 'Resolve export requirements before exporting' : undefined}
         className={cn(
           'px-4 py-1.5 text-sm font-medium text-white',
           exportBlocked ? 'cursor-not-allowed bg-ink-4' : 'bg-pine hover:bg-pine-600',

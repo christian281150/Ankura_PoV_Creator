@@ -1,6 +1,6 @@
-import { useId, useState } from 'react';
+import { useId, useState, type KeyboardEvent } from 'react';
 import type { ContentBlock, SlotId } from '@/types/profile';
-import { SLOT_LABEL } from '@/types/profile';
+import { SLOT_LABEL, SLOT_ORDER } from '@/types/profile';
 import { cn } from '@/lib/format';
 import { eligibleFor, isSelectable, rank } from '@/lib/scoring';
 import { useProfile } from '@/state/profileStore';
@@ -13,13 +13,19 @@ function BlockOption({
   selected,
   onSelect,
   name,
+  unavailableReason,
+  tabIndex,
+  onKeyDown,
 }: {
   block: ContentBlock;
   selected: boolean;
   onSelect: () => void;
   name: string;
+  unavailableReason: string | null;
+  tabIndex: number;
+  onKeyDown: (event: KeyboardEvent<HTMLInputElement>) => void;
 }) {
-  const selectable = isSelectable(block);
+  const selectable = !unavailableReason && isSelectable(block);
   const blockingFlag = block.flags.find((f) => f.severity === 'blocking');
 
   return (
@@ -37,9 +43,12 @@ function BlockOption({
       <input
         type="radio"
         name={name}
+        value={block.id}
         checked={selected}
         disabled={!selectable}
         onChange={onSelect}
+        onKeyDown={onKeyDown}
+        tabIndex={tabIndex}
         className="mt-1 h-3 w-3 shrink-0 accent-pine-600 disabled:opacity-30"
       />
       <span className="min-w-0 flex-1">
@@ -55,17 +64,17 @@ function BlockOption({
           {block.id} · {block.source}
         </span>
 
-        {block.unavailableReason && (
-          <span className="mt-1 block text-xs text-amber">⊘ {block.unavailableReason}</span>
+        {unavailableReason && (
+          <span className="mt-1 block text-xs text-amber">⊘ {unavailableReason}</span>
         )}
-        {!block.unavailableReason && blockingFlag && (
+        {!unavailableReason && blockingFlag && (
           <span className="mt-1 block text-xs text-rust">
             ⚠ {blockingFlag.rule} blocks selection — {blockingFlag.message}
           </span>
         )}
       </span>
 
-      {!block.unavailableReason && (
+      {!unavailableReason && (
         <span className="shrink-0 pt-0.5 text-right font-mono text-micro text-ink-3">
           {rank(block).toFixed(2).replace(/^0/, '')}
         </span>
@@ -83,6 +92,12 @@ export function SlotCard({ slot }: { slot: SlotId }) {
   const options = eligibleFor(fixture.blocks, slot);
   const current = fixture.blocks.find((b) => b.id === assignment[slot]);
   const canonical = isCanonical(slot);
+  const selectableOptions = options.filter((block) => {
+    const assignedSlot = SLOT_ORDER.find(
+      (otherSlot) => otherSlot !== slot && assignment[otherSlot] === block.id,
+    );
+    return !assignedSlot && isSelectable(block);
+  });
 
   const openCount =
     current?.flags.filter((f) => f.severity !== 'advisory' && !notes[`${current.id}:${f.rule}`])
@@ -113,6 +128,7 @@ export function SlotCard({ slot }: { slot: SlotId }) {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
+          data-slot-trigger={slot}
           aria-expanded={open}
           disabled={layoutLocked}
           className="flex w-full items-center justify-between border border-rule bg-paper px-2.5 py-2 text-left disabled:opacity-60"
@@ -132,18 +148,43 @@ export function SlotCard({ slot }: { slot: SlotId }) {
 
         {open && (
           <div role="radiogroup" aria-label={`Blocks for ${SLOT_LABEL[slot]}`} className="mt-2 space-y-1.5">
-            {options.map((b) => (
-              <BlockOption
-                key={b.id}
-                block={b}
-                name={groupName}
+            {options.map((b) => {
+              const assignedSlot = SLOT_ORDER.find(
+                (otherSlot) => otherSlot !== slot && assignment[otherSlot] === b.id,
+              );
+              const unavailableReason = assignedSlot
+                ? `already in ${SLOT_LABEL[assignedSlot]}`
+                : b.unavailableReason;
+
+              return (
+                <BlockOption
+                  key={b.id}
+                  block={b}
+                  name={groupName}
                 selected={b.id === assignment[slot]}
+                unavailableReason={unavailableReason}
+                tabIndex={b.id === assignment[slot] ? 0 : -1}
                 onSelect={() => {
                   dispatch({ type: 'assign', slot, blockId: b.id });
                   setOpen(false);
                 }}
-              />
-            ))}
+                onKeyDown={(event) => {
+                  if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+                  event.preventDefault();
+                  const index = selectableOptions.findIndex((option) => option.id === b.id);
+                  if (index === -1) return;
+                  const direction = event.key === 'ArrowUp' || event.key === 'ArrowLeft' ? -1 : 1;
+                  const next = selectableOptions[(index + direction + selectableOptions.length) % selectableOptions.length];
+                  dispatch({ type: 'assign', slot, blockId: next.id });
+                  requestAnimationFrame(() => {
+                    document.querySelector<HTMLInputElement>(
+                      `input[name="${groupName}"][value="${next.id}"]`,
+                    )?.focus();
+                  });
+                }}
+                />
+              );
+            })}
           </div>
         )}
 
