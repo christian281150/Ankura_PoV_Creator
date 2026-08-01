@@ -22,3 +22,5 @@ py/acquire/bundesanzeiger/data/
 # editor / os
 .DS_Store
 Thumbs.db
+
+.pytest_cache/

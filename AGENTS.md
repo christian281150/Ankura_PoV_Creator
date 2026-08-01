@@ -312,3 +312,20 @@ Lane A writes its queue to py/normalise/reviews/unmapped_queue.csv.
 The file at py/acquire/bundesanzeiger/reviews/ is inside the submodule and is
 the extractor's own queue - read it as a format reference, never write to it.
 The mapper is exact-match only. Never auto-pick an ambiguous match: exact match, else queue to py/normalise/reviews/unmapped_queue.csv. Raise the map rate by adding taxonomy rows or client aliases, never by widening the matcher.
+
+## Backlog - mapper correctness (lane A follow-up)
+
+1. Subtotal filter. PL_GKV-17 and others carry is_subtotal=True. The extractor's
+   rule 2 says filter row_type == "line" when mapping actuals. The mapper does
+   not, so subtotals currently enter the mapped set alongside their components.
+2. Collision detection. Two labels in one statement mapping to the same std_id
+   are resolved by first-wins in merge_on_std_id, silently discarding data.
+   Flag and queue both instead.
+3. Alias justification. "Exact published-label variant" is not a reason. Each
+   alias needs a note stating why the mapping is accounting-correct.
+4. CSV loaders must use encoding="utf-8-sig". PowerShell's Set-Content -Encoding
+   UTF8 writes a BOM; utf-8 parsing then corrupts the first column header.
+5. Taxonomy gaps to propose upstream: minority interest (auf nicht beherrschende
+   Anteile entfallender Gewinn/Verlust), participation losses (the taxonomy has
+   Ertraege only), and a decision on whether Gewinnruecklagen appropriation flows
+   belong in the model at all.
