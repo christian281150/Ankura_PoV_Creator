@@ -24,3 +24,5 @@ py/acquire/bundesanzeiger/data/
 Thumbs.db
 
 .pytest_cache/
+
+.pytest_cache/
