@@ -14,7 +14,7 @@ SlotId = Literal["top_left", "top_right", "bottom_left", "bottom_right"]
 SLOT_ORDER: list[SlotId] = ["top_left", "top_right", "bottom_left", "bottom_right"]
 
 SizeClass = Literal["klein", "mittelgross", "gross"]
-PresentationBasis = Literal["umsatzerloese", "gesamtleistung", "betriebsleistung", "n/a"]
+PresentationBasis = Literal["umsatzerloese", "nettoumsatzerloese", "gesamtleistung", "rohergebnis", "betriebsleistung", "n/a"]
 Confidence = Literal["high", "medium", "low"]
 RuleId = Literal["V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9"]
 Severity = Literal["blocking", "note_required", "advisory"]
@@ -99,3 +99,4 @@ class Profile(BaseModel):
     blocks: list[ContentBlock]
     canonical_layout: dict[str, str]
     coverage: list[CoverageDimension]
+

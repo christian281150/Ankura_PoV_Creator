@@ -1,6 +1,6 @@
-/**
+﻿/**
  * Domain types for the company profile builder.
- * Mirrors the JSON emitted by the Python normalise layer (AGENTS.md §P2).
+ * Mirrors the JSON emitted by the Python normalise layer (AGENTS.md Â§P2).
  */
 
 export type SlotId = 'top_left' | 'top_right' | 'bottom_left' | 'bottom_right';
@@ -14,18 +14,20 @@ export const SLOT_LABEL: Record<SlotId, string> = {
   bottom_right: 'Bottom-right',
 };
 
-/** §267 HGB size class — determines what disclosure exists at all. */
+/** Â§267 HGB size class â€” determines what disclosure exists at all. */
 export type SizeClass = 'klein' | 'mittelgross' | 'gross';
 
 /**
  * The basis a monetary series is stated on. Exists because a series labelled
  * "Revenue" that is actually Gesamtleistung is the failure mode rule V1 catches.
  */
-export type PresentationBasis = 'umsatzerloese' | 'gesamtleistung' | 'betriebsleistung' | 'n/a';
+export type PresentationBasis = 'umsatzerloese' | 'nettoumsatzerloese' | 'gesamtleistung' | 'rohergebnis' | 'betriebsleistung' | 'n/a';
 
 export const BASIS_LABEL: Record<PresentationBasis, string> = {
   umsatzerloese: 'Umsatzerlöse',
+  nettoumsatzerloese: 'Nettoumsatzerlöse',
   gesamtleistung: 'Gesamtleistung',
+  rohergebnis: 'Rohergebnis',
   betriebsleistung: 'Betriebsleistung',
   'n/a': 'not applicable',
 };
@@ -77,7 +79,7 @@ export interface ContentBlock {
   title: string;
   kind: BlockKind;
   eligibleSlots: SlotId[];
-  /** 0–1. How complete the underlying data is. */
+  /** 0â€“1. How complete the underlying data is. */
   coverage: number;
   confidence: Confidence;
   source: string;
@@ -101,3 +103,5 @@ export interface ProfileFixture {
   canonicalLayout: Record<SlotId, string>;
   coverage: CoverageDimension[];
 }
+
+

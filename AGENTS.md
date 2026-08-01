@@ -298,3 +298,15 @@ A lower map rate with an honest queue beats 93% with silent misclassifications.
 The taxonomy is generated from HGB_GKV_UKV_Standardisation_Map.xlsx. Do not
 hand-edit lib/hgb_map.py embedded data. Aliases go in aliases/client_aliases.csv.
 "@ -Encoding UTF8
+
+
+$Repo = "E:\Github\Ankura_PoV_Creator"
+Add-Content "$Repo\AGENTS.md" @"
+
+## Environment
+
+Agent sandboxes have NO network access. Do not attempt pip install or npm install.
+Dependencies are pre-installed by the human before the session starts.
+Use .venv\Scripts\python.exe directly; do not activate the venv.
+If a dependency is missing, stop and report it - do not work around it.
+"@ -Encoding UTF8
