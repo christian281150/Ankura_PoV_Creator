@@ -1,103 +1,101 @@
-/**
- * Domain types for the company profile builder.
- * Mirrors the JSON emitted by the Python normalise layer (AGENTS.md §P2).
- */
+﻿"""
+Pydantic mirror of contract/profile.ts. Field names are snake_case.
+Both sides of the pipeline validate against this. Keep in sync by hand until
+the CI regeneration check exists.
+"""
+from __future__ import annotations
 
-export type SlotId = 'top_left' | 'top_right' | 'bottom_left' | 'bottom_right';
+from enum import Enum
+from typing import Literal
 
-export const SLOT_ORDER: SlotId[] = ['top_left', 'top_right', 'bottom_left', 'bottom_right'];
+from pydantic import BaseModel, Field
 
-export const SLOT_LABEL: Record<SlotId, string> = {
-  top_left: 'Top-left',
-  top_right: 'Top-right',
-  bottom_left: 'Bottom-left',
-  bottom_right: 'Bottom-right',
-};
+SlotId = Literal["top_left", "top_right", "bottom_left", "bottom_right"]
+SLOT_ORDER: list[SlotId] = ["top_left", "top_right", "bottom_left", "bottom_right"]
 
-/** §267 HGB size class — determines what disclosure exists at all. */
-export type SizeClass = 'klein' | 'mittelgross' | 'gross';
+SizeClass = Literal["klein", "mittelgross", "gross"]
+PresentationBasis = Literal["umsatzerloese", "gesamtleistung", "betriebsleistung", "n/a"]
+Confidence = Literal["high", "medium", "low"]
+RuleId = Literal["V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9"]
+Severity = Literal["blocking", "note_required", "advisory"]
 
-/**
- * The basis a monetary series is stated on. Exists because a series labelled
- * "Revenue" that is actually Gesamtleistung is the failure mode rule V1 catches.
- */
-export type PresentationBasis = 'umsatzerloese' | 'gesamtleistung' | 'betriebsleistung' | 'n/a';
+BlockKind = Literal[
+    "bullets",
+    "chart.column_line",
+    "chart.stacked_column",
+    "table",
+    "map",
+    "image_grid",
+    "timeline",
+]
 
-export const BASIS_LABEL: Record<PresentationBasis, string> = {
-  umsatzerloese: 'Umsatzerlöse',
-  gesamtleistung: 'Gesamtleistung',
-  betriebsleistung: 'Betriebsleistung',
-  'n/a': 'not applicable',
-};
 
-export type Confidence = 'high' | 'medium' | 'low';
+class Register(BaseModel):
+    court: str
+    type: Literal["HRA", "HRB"]
+    number: str
 
-export interface Provenance {
-  doc: string;
-  sheet: string;
-  row: number;
-  page: number | null;
-  stdId: string | null;
-}
 
-export interface Entity {
-  legalName: string;
-  register: { court: string; type: 'HRA' | 'HRB'; number: string };
-  legalForm: string;
-  fiscalYearEnd: string;
-  sizeClass: SizeClass;
-  filesKonzernabschluss: boolean;
-  yearsAvailable: number[];
-  confirmedBy: string | null;
-  /** Entities that look like the group but are not. Surfaced, never dropped. */
-  impostors: { name: string; reason: string }[];
-}
+class Provenance(BaseModel):
+    doc: str
+    sheet: str
+    row: int
+    page: int | None = None
+    std_id: str | None = None
 
-export type RuleId = 'V1' | 'V2' | 'V3' | 'V4' | 'V5' | 'V6' | 'V7' | 'V8' | 'V9';
 
-export interface Flag {
-  rule: RuleId;
-  severity: 'blocking' | 'note_required' | 'advisory';
-  message: string;
-  /** Analyst-written note. Becomes a slide footnote when present. */
-  note: string | null;
-}
+class Impostor(BaseModel):
+    name: str
+    reason: str
 
-export type BlockKind =
-  | 'bullets'
-  | 'chart.column_line'
-  | 'chart.stacked_column'
-  | 'table'
-  | 'map'
-  | 'image_grid'
-  | 'timeline';
 
-export interface ContentBlock {
-  id: string;
-  title: string;
-  kind: BlockKind;
-  eligibleSlots: SlotId[];
-  /** 0–1. How complete the underlying data is. */
-  coverage: number;
-  confidence: Confidence;
-  source: string;
-  presentationBasis: PresentationBasis;
-  /** Non-null => block cannot be selected. Rendered with the reason. */
-  unavailableReason: string | null;
-  flags: Flag[];
-  footnotesAuto: string[];
-  provenance: Provenance[];
-  series?: { fy: number; value: number }[];
-}
+class Entity(BaseModel):
+    legal_name: str
+    register: Register
+    legal_form: str
+    fiscal_year_end: str
+    size_class: SizeClass
+    files_konzernabschluss: bool
+    years_available: list[int]
+    confirmed_by: str | None = None
+    impostors: list[Impostor] = Field(default_factory=list)
 
-export interface CoverageDimension {
-  label: string;
-  score: number;
-}
 
-export interface ProfileFixture {
-  entity: Entity;
-  blocks: ContentBlock[];
-  canonicalLayout: Record<SlotId, string>;
-  coverage: CoverageDimension[];
-}
+class Flag(BaseModel):
+    rule: RuleId
+    severity: Severity
+    message: str
+    note: str | None = None
+
+
+class SeriesPoint(BaseModel):
+    fy: int
+    value: float
+
+
+class ContentBlock(BaseModel):
+    id: str
+    title: str
+    kind: BlockKind
+    eligible_slots: list[SlotId]
+    coverage: float = Field(ge=0, le=1)
+    confidence: Confidence
+    source: str
+    presentation_basis: PresentationBasis
+    unavailable_reason: str | None = None
+    flags: list[Flag] = Field(default_factory=list)
+    footnotes_auto: list[str] = Field(default_factory=list)
+    provenance: list[Provenance] = Field(default_factory=list)
+    series: list[SeriesPoint] | None = None
+
+
+class CoverageDimension(BaseModel):
+    label: str
+    score: float = Field(ge=0, le=1)
+
+
+class Profile(BaseModel):
+    entity: Entity
+    blocks: list[ContentBlock]
+    canonical_layout: dict[str, str]
+    coverage: list[CoverageDimension]

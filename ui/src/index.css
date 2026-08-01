@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root { color-scheme: light; }
+  html { -webkit-font-smoothing: antialiased; }
+  body {
+    @apply bg-paper text-ink font-sans text-sm;
+    font-variant-numeric: tabular-nums;
+  }
+  /* Every interactive element gets a visible focus ring. WCAG 2.4.7. */
+  :where(button, [role='button'], a, input, select, [tabindex]):focus-visible {
+    @apply outline-none ring-2 ring-pine-600 ring-offset-1 ring-offset-paper;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+}
+
+@layer components {
+  /* Signature: the provenance gutter. A 3px strip on the left of every data
+     card that carries the source's confidence. Hovering a figure reveals the
+     filing, sheet and row it came from. Auditability is the product, so it is
+     rendered as a permanent structural element, not a tooltip afterthought. */
+  .gutter-high   { box-shadow: inset 3px 0 0 0 theme('colors.pine.600'); }
+  .gutter-medium { box-shadow: inset 3px 0 0 0 theme('colors.amber.600'); }
+  .gutter-low    { box-shadow: inset 3px 0 0 0 theme('colors.rust.600'); }
+  .gutter-none   { box-shadow: inset 3px 0 0 0 theme('colors.ink.4'); }
+
+  .label-caps { @apply font-mono text-micro uppercase tracking-[0.12em] text-ink-3; }
+  .hair { @apply border-rule-hair; }
+}

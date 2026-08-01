@@ -1,0 +1,2943 @@
+{
+  "entity": {
+    "legal_name": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+    "register": {
+      "court": "Bielefeld",
+      "type": "HRA",
+      "number": "8217"
+    },
+    "fiscal_year_end": "30-04"
+  },
+  "coverage": {
+    "sheets_parsed": [
+      "FY2025_KONZERN-GEWINN- UND VERL",
+      "FY2024_KONZERN-GEWINN- UND VERL",
+      "FY2015_Konzern-Gewinn- und Verl",
+      "FY2023_Konzern- Gewinn- und Ver",
+      "FY2021_Konzern-Gewinn- und Verl",
+      "FY2022_Konzern-Gewinn- und Verl",
+      "FY2020_Konzern-Gewinn- und Verl",
+      "FY2018_Konzern-Gewinn- und Verl",
+      "FY2017_Konzern-Gewinn- und Verl",
+      "FY2019_Gewinn- und Verlustrechn",
+      "FY2016_Konzern-Gewinn- und Verl"
+    ],
+    "rows_extracted": 202,
+    "rows_mapped": 187,
+    "map_rate": 0.926
+  },
+  "reconciliation": [
+    {
+      "fy": 2014,
+      "umsatzerloese": 186745000.0,
+      "bestandsveraenderung": null,
+      "sonstige_betriebliche_ertraege": 6563000.0,
+      "gesamtleistung": 193308000.0
+    },
+    {
+      "fy": 2015,
+      "umsatzerloese": 198901000.0,
+      "bestandsveraenderung": null,
+      "sonstige_betriebliche_ertraege": 5842000.0,
+      "gesamtleistung": 204743000.0
+    },
+    {
+      "fy": 2016,
+      "umsatzerloese": 196299678.88,
+      "bestandsveraenderung": 23891.04,
+      "sonstige_betriebliche_ertraege": 7084842.27,
+      "gesamtleistung": 203408412.19
+    },
+    {
+      "fy": 2017,
+      "umsatzerloese": 198751512.86,
+      "bestandsveraenderung": -91931.92,
+      "sonstige_betriebliche_ertraege": 4354050.48,
+      "gesamtleistung": 203013631.42000002
+    },
+    {
+      "fy": 2018,
+      "umsatzerloese": 184392844.37,
+      "bestandsveraenderung": 142366.4,
+      "sonstige_betriebliche_ertraege": 7201982.5,
+      "gesamtleistung": 191737193.27
+    },
+    {
+      "fy": 2019,
+      "umsatzerloese": 178665168.31,
+      "bestandsveraenderung": -1510992.16,
+      "sonstige_betriebliche_ertraege": 1743600.47,
+      "gesamtleistung": 178897776.62
+    },
+    {
+      "fy": 2020,
+      "umsatzerloese": 139410553.43,
+      "bestandsveraenderung": 300424.12,
+      "sonstige_betriebliche_ertraege": 6586087.65,
+      "gesamtleistung": 146297065.20000002
+    },
+    {
+      "fy": 2021,
+      "umsatzerloese": 100393437.35,
+      "bestandsveraenderung": -3983611.39,
+      "sonstige_betriebliche_ertraege": 9784777.44,
+      "gesamtleistung": 106194603.39999999
+    },
+    {
+      "fy": 2022,
+      "umsatzerloese": 103106744.7,
+      "bestandsveraenderung": 5075780.27,
+      "sonstige_betriebliche_ertraege": 9164611.4,
+      "gesamtleistung": 117347136.37
+    },
+    {
+      "fy": 2023,
+      "umsatzerloese": 126812470.7,
+      "bestandsveraenderung": 4019168.66,
+      "sonstige_betriebliche_ertraege": 3127775.57,
+      "gesamtleistung": 133959414.93
+    },
+    {
+      "fy": 2024,
+      "umsatzerloese": 103152036.57,
+      "bestandsveraenderung": -8833400.55,
+      "sonstige_betriebliche_ertraege": 7760014.88,
+      "gesamtleistung": 102078650.89999999
+    },
+    {
+      "fy": 2025,
+      "umsatzerloese": 111815106.14,
+      "bestandsveraenderung": 2732346.13,
+      "sonstige_betriebliche_ertraege": 1914645.32,
+      "gesamtleistung": 116462097.59
+    }
+  ],
+  "rows": [
+    {
+      "raw_label": "1. Umsatzerlöse",
+      "std_id": "PL_GKV-1",
+      "match_type": "longest_match",
+      "values": {
+        "2025": 111815106.14,
+        "2024": 103152036.57
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2025_KONZERN-GEWINN- UND VERL",
+        "row": 8
+      }
+    },
+    {
+      "raw_label": "2. Veränderung des Bestands an unfertigen und fertigen Erzeugnissen",
+      "std_id": "PL_GKV-2",
+      "match_type": "extra_substr",
+      "values": {
+        "2025": 2732346.13,
+        "2024": -8833400.55
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2025_KONZERN-GEWINN- UND VERL",
+        "row": 9
+      }
+    },
+    {
+      "raw_label": "3. Sonstige betriebliche Erträge",
+      "std_id": "PL_GKV-4",
+      "match_type": "longest_match",
+      "values": {
+        "2025": 1914645.32,
+        "2024": 7760014.88
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2025_KONZERN-GEWINN- UND VERL",
+        "row": 11
+      }
+    },
+    {
+      "raw_label": "a) Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren",
+      "std_id": "PL_GKV-5a",
+      "match_type": "longest_match",
+      "values": {
+        "2025": -50713096.3,
+        "2024": -34344811.22
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2025_KONZERN-GEWINN- UND VERL",
+        "row": 13
+      }
+    },
+    {
+      "raw_label": "b) Aufwendungen für bezogene Leistungen",
+      "std_id": "PL_GKV-5b",
+      "match_type": "longest_match",
+      "values": {
+        "2025": -3033367.79,
+        "2024": -2548362.53
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2025_KONZERN-GEWINN- UND VERL",
+        "row": 14
+      }
+    },
+    {
+      "raw_label": "a) Löhne und Gehälter",
+      "std_id": "PL_GKV-6a",
+      "match_type": "longest_match",
+      "values": {
+        "2025": -25139754.38,
+        "2024": -23566732.33
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2025_KONZERN-GEWINN- UND VERL",
+        "row": 17
+      }
+    },
+    {
+      "raw_label": "b) Soziale Abgaben und Aufwendungen für Altersversorgung und für Unterstützung",
+      "std_id": "PL_GKV-6b",
+      "match_type": "longest_match",
+      "values": {
+        "2025": -4011749.11,
+        "2024": -4223726.09
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2025_KONZERN-GEWINN- UND VERL",
+        "row": 18
+      }
+    },
+    {
+      "raw_label": "auf immaterielle Vermögensgegenstände des Anlagevermögens und Sachanlagen",
+      "std_id": "BS-A.A.I",
+      "match_type": "longest_match",
+      "values": {
+        "2025": -1102920.25,
+        "2024": -1217094.39
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2025_KONZERN-GEWINN- UND VERL",
+        "row": 22
+      }
+    },
+    {
+      "raw_label": "7. Sonstige betriebliche Aufwendungen",
+      "std_id": "PL_GKV-8",
+      "match_type": "longest_match",
+      "values": {
+        "2025": -33064506.75,
+        "2024": -37171682.41
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2025_KONZERN-GEWINN- UND VERL",
+        "row": 23
+      }
+    },
+    {
+      "raw_label": "8. Gewinne aus Beteiligungen an assoziierten Unternehmen",
+      "std_id": "BS-A.A.III.3",
+      "match_type": "longest_match",
+      "values": {
+        "2025": 422867.36,
+        "2024": 21429.01
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2025_KONZERN-GEWINN- UND VERL",
+        "row": 26
+      }
+    },
+    {
+      "raw_label": "9. Sonstige Zinsen und ähnliche Erträge",
+      "std_id": "PL_GKV-11",
+      "match_type": "longest_match",
+      "values": {
+        "2025": 69102.7,
+        "2024": 30471.04
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2025_KONZERN-GEWINN- UND VERL",
+        "row": 27
+      }
+    },
+    {
+      "raw_label": "10. Zinsen und ähnliche Aufwendungen",
+      "std_id": "PL_GKV-13",
+      "match_type": "longest_match",
+      "values": {
+        "2025": -2271393.69,
+        "2024": -3209550.23
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2025_KONZERN-GEWINN- UND VERL",
+        "row": 28
+      }
+    },
+    {
+      "raw_label": "11. Steuern vom Einkommen und vom Ertrag",
+      "std_id": "PL_GKV-14",
+      "match_type": "longest_match",
+      "values": {
+        "2025": -721276.5,
+        "2024": -788080.4
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2025_KONZERN-GEWINN- UND VERL",
+        "row": 30
+      }
+    },
+    {
+      "raw_label": "12. Ergebnis nach Steuern / Konzernjahresfehlbetrag",
+      "std_id": "PL_GKV-15",
+      "match_type": "longest_match",
+      "values": {
+        "2025": -3103997.12,
+        "2024": -4939488.65
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2025_KONZERN-GEWINN- UND VERL",
+        "row": 31
+      }
+    },
+    {
+      "raw_label": "13. Verlustvortrag",
+      "std_id": "BS-P.A.IV",
+      "match_type": "longest_match",
+      "values": {
+        "2025": -54181477.9,
+        "2024": -49241989.25
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2025_KONZERN-GEWINN- UND VERL",
+        "row": 32
+      }
+    },
+    {
+      "raw_label": "14. Konzernbilanzverlust",
+      "std_id": "PL_GKV-BILANZVERLUST",
+      "match_type": "extra_substr",
+      "values": {
+        "2025": -57285475.02,
+        "2024": -54181477.9
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2025_KONZERN-GEWINN- UND VERL",
+        "row": 33
+      }
+    },
+    {
+      "raw_label": "1. Umsatzerlöse",
+      "std_id": "PL_GKV-1",
+      "match_type": "longest_match",
+      "values": {
+        "2024": 103152036.57,
+        "2023": 126812470.7
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2024_KONZERN-GEWINN- UND VERL",
+        "row": 8
+      }
+    },
+    {
+      "raw_label": "2. Veränderung des Bestands an unfertigen und fertigen Erzeugnissen",
+      "std_id": "PL_GKV-2",
+      "match_type": "extra_substr",
+      "values": {
+        "2024": -8833400.55,
+        "2023": 4019168.66
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2024_KONZERN-GEWINN- UND VERL",
+        "row": 9
+      }
+    },
+    {
+      "raw_label": "3. Sonstige betriebliche Erträge",
+      "std_id": "PL_GKV-4",
+      "match_type": "longest_match",
+      "values": {
+        "2024": 7760014.88,
+        "2023": 3127775.57
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2024_KONZERN-GEWINN- UND VERL",
+        "row": 11
+      }
+    },
+    {
+      "raw_label": "a) Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren",
+      "std_id": "PL_GKV-5a",
+      "match_type": "longest_match",
+      "values": {
+        "2024": -34344811.22,
+        "2023": -60325299.8
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2024_KONZERN-GEWINN- UND VERL",
+        "row": 13
+      }
+    },
+    {
+      "raw_label": "b) Aufwendungen für bezogene Leistungen",
+      "std_id": "PL_GKV-5b",
+      "match_type": "longest_match",
+      "values": {
+        "2024": -2548362.53,
+        "2023": -6515429.97
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2024_KONZERN-GEWINN- UND VERL",
+        "row": 14
+      }
+    },
+    {
+      "raw_label": "a) Löhne und Gehälter",
+      "std_id": "PL_GKV-6a",
+      "match_type": "longest_match",
+      "values": {
+        "2024": -23566732.33,
+        "2023": -25978461.49
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2024_KONZERN-GEWINN- UND VERL",
+        "row": 17
+      }
+    },
+    {
+      "raw_label": "b) Soziale Abgaben und Aufwendungen für Altersversorgung und für Unterstützung",
+      "std_id": "PL_GKV-6b",
+      "match_type": "longest_match",
+      "values": {
+        "2024": -4223726.09,
+        "2023": -5611785.52
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2024_KONZERN-GEWINN- UND VERL",
+        "row": 18
+      }
+    },
+    {
+      "raw_label": "6. Abschreibungen auf immaterielle Vermögensgegenstände des Anlagevermögens und Sachanlagen",
+      "std_id": "BS-A.A.I",
+      "match_type": "longest_match",
+      "values": {
+        "2024": -1217094.39,
+        "2023": -1536565.43
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2024_KONZERN-GEWINN- UND VERL",
+        "row": 21
+      }
+    },
+    {
+      "raw_label": "7. Sonstige betriebliche Aufwendungen",
+      "std_id": "PL_GKV-8",
+      "match_type": "longest_match",
+      "values": {
+        "2024": -37171682.41,
+        "2023": -36921543.22
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2024_KONZERN-GEWINN- UND VERL",
+        "row": 22
+      }
+    },
+    {
+      "raw_label": "8. Gewinne aus Beteiligungen an assoziierten Unternehmen",
+      "std_id": "BS-A.A.III.3",
+      "match_type": "longest_match",
+      "values": {
+        "2024": 21429.01,
+        "2023": 224066.32
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2024_KONZERN-GEWINN- UND VERL",
+        "row": 25
+      }
+    },
+    {
+      "raw_label": "9. Sonstige Zinsen und ähnliche Erträge",
+      "std_id": "PL_GKV-11",
+      "match_type": "longest_match",
+      "values": {
+        "2024": 30471.04,
+        "2023": 25305.86
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2024_KONZERN-GEWINN- UND VERL",
+        "row": 26
+      }
+    },
+    {
+      "raw_label": "10. Zinsen und ähnliche Aufwendungen",
+      "std_id": "PL_GKV-13",
+      "match_type": "longest_match",
+      "values": {
+        "2024": -3209550.23,
+        "2023": -2872290.57
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2024_KONZERN-GEWINN- UND VERL",
+        "row": 27
+      }
+    },
+    {
+      "raw_label": "11. Steuern vom Einkommen und vom Ertrag",
+      "std_id": "PL_GKV-14",
+      "match_type": "longest_match",
+      "values": {
+        "2024": -788080.4,
+        "2023": -1095538.98
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2024_KONZERN-GEWINN- UND VERL",
+        "row": 29
+      }
+    },
+    {
+      "raw_label": "12. Ergebnis nach Steuern / Konzernjahresfehlbetrag",
+      "std_id": "PL_GKV-15",
+      "match_type": "longest_match",
+      "values": {
+        "2024": -4939488.65,
+        "2023": -6648127.87
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2024_KONZERN-GEWINN- UND VERL",
+        "row": 30
+      }
+    },
+    {
+      "raw_label": "13. Verlustvortrag",
+      "std_id": "BS-P.A.IV",
+      "match_type": "longest_match",
+      "values": {
+        "2024": -49241989.25,
+        "2023": -42593861.38
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2024_KONZERN-GEWINN- UND VERL",
+        "row": 31
+      }
+    },
+    {
+      "raw_label": "14. Konzernbilanzverlust",
+      "std_id": "PL_GKV-BILANZVERLUST",
+      "match_type": "extra_substr",
+      "values": {
+        "2024": -54181477.9,
+        "2023": -49241989.25
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2024_KONZERN-GEWINN- UND VERL",
+        "row": 32
+      }
+    },
+    {
+      "raw_label": "1. Gesamtleistung (GKV)",
+      "std_id": "PL_GKV-GESAMTLEISTUNG",
+      "match_type": "extra_substr",
+      "values": {
+        "2015": 198727000.0,
+        "2014": 186716000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2015_Konzern-Gewinn- und Verl",
+        "row": 7
+      }
+    },
+    {
+      "raw_label": "a) Umsatzerlöse (GKV)",
+      "std_id": "PL_GKV-1",
+      "match_type": "longest_match",
+      "values": {
+        "2015": 198901000.0,
+        "2014": 186745000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2015_Konzern-Gewinn- und Verl",
+        "row": 8
+      }
+    },
+    {
+      "raw_label": "b) Erhöhung oder Verminderung des Bestandes an fertigen und unfertigen Erzeugnissen (GKV)",
+      "std_id": null,
+      "match_type": "none",
+      "values": {
+        "2015": -174000.0,
+        "2014": -29000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2015_Konzern-Gewinn- und Verl",
+        "row": 9
+      }
+    },
+    {
+      "raw_label": "2. sonstige betriebliche Erträge (GKV)",
+      "std_id": "PL_GKV-4",
+      "match_type": "longest_match",
+      "values": {
+        "2015": 5842000.0,
+        "2014": 6563000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2015_Konzern-Gewinn- und Verl",
+        "row": 10
+      }
+    },
+    {
+      "raw_label": "3. Materialaufwand (GKV)",
+      "std_id": "PL_GKV-5a",
+      "match_type": "longest_match",
+      "values": {
+        "2015": 89113000.0,
+        "2014": 83664000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2015_Konzern-Gewinn- und Verl",
+        "row": 11
+      }
+    },
+    {
+      "raw_label": "a) Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren",
+      "std_id": "PL_GKV-5a",
+      "match_type": "longest_match",
+      "values": {
+        "2015": 86174000.0,
+        "2014": 80721000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2015_Konzern-Gewinn- und Verl",
+        "row": 12
+      }
+    },
+    {
+      "raw_label": "b) Aufwendungen für bezogene Leistungen",
+      "std_id": "PL_GKV-5b",
+      "match_type": "longest_match",
+      "values": {
+        "2015": 2939000.0,
+        "2014": 2943000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2015_Konzern-Gewinn- und Verl",
+        "row": 13
+      }
+    },
+    {
+      "raw_label": "4. Personalaufwand (GKV)",
+      "std_id": "PL_GKV-6a",
+      "match_type": "longest_match",
+      "values": {
+        "2015": 42274000.0,
+        "2014": 41448000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2015_Konzern-Gewinn- und Verl",
+        "row": 14
+      }
+    },
+    {
+      "raw_label": "a) Löhne und Gehälter",
+      "std_id": "PL_GKV-6a",
+      "match_type": "longest_match",
+      "values": {
+        "2015": 35978000.0,
+        "2014": 34842000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2015_Konzern-Gewinn- und Verl",
+        "row": 15
+      }
+    },
+    {
+      "raw_label": "b) soziale Abgaben und Aufwendungen für Altersversorgung und für Unterstützung",
+      "std_id": "PL_GKV-6b",
+      "match_type": "longest_match",
+      "values": {
+        "2015": 6296000.0,
+        "2014": 6606000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2015_Konzern-Gewinn- und Verl",
+        "row": 16
+      }
+    },
+    {
+      "raw_label": "soziale Abgaben",
+      "std_id": "PL_GKV-6b",
+      "match_type": "exact",
+      "values": {
+        "2015": 5286000.0,
+        "2014": 5483000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2015_Konzern-Gewinn- und Verl",
+        "row": 17
+      }
+    },
+    {
+      "raw_label": "Aufwendungen für Altersversorgung",
+      "std_id": "PL_GKV-6b",
+      "match_type": "longest_match",
+      "values": {
+        "2015": 1010000.0,
+        "2014": 1123000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2015_Konzern-Gewinn- und Verl",
+        "row": 18
+      }
+    },
+    {
+      "raw_label": "5. Abschreibungen (GKV)",
+      "std_id": "PL_GKV-7a",
+      "match_type": "longest_match",
+      "values": {
+        "2015": 3754000.0,
+        "2014": 3626000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2015_Konzern-Gewinn- und Verl",
+        "row": 19
+      }
+    },
+    {
+      "raw_label": "6. sonstige betriebliche Aufwendungen (GKV)",
+      "std_id": "PL_GKV-8",
+      "match_type": "longest_match",
+      "values": {
+        "2015": 63825000.0,
+        "2014": 62898000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2015_Konzern-Gewinn- und Verl",
+        "row": 20
+      }
+    },
+    {
+      "raw_label": "7. Finanz- und Beteiligungsergebnis",
+      "std_id": null,
+      "match_type": "none",
+      "values": {
+        "2015": -3251000.0,
+        "2014": -3485000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2015_Konzern-Gewinn- und Verl",
+        "row": 21
+      }
+    },
+    {
+      "raw_label": "a) sonstige Zinsen und ähnliche Erträge",
+      "std_id": "PL_GKV-11",
+      "match_type": "longest_match",
+      "values": {
+        "2015": 550000.0,
+        "2014": 802000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2015_Konzern-Gewinn- und Verl",
+        "row": 22
+      }
+    },
+    {
+      "raw_label": "b) Zinsen und ähnliche Aufwendungen",
+      "std_id": "PL_GKV-13",
+      "match_type": "longest_match",
+      "values": {
+        "2015": 3807000.0,
+        "2014": 4278000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2015_Konzern-Gewinn- und Verl",
+        "row": 23
+      }
+    },
+    {
+      "raw_label": "8. Ergebnis der gewöhnlichen Geschäftstätigkeit",
+      "std_id": null,
+      "match_type": "none",
+      "values": {
+        "2015": 2352000.0,
+        "2014": -1842000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2015_Konzern-Gewinn- und Verl",
+        "row": 24
+      }
+    },
+    {
+      "raw_label": "9. außerordentliches Ergebnis",
+      "std_id": null,
+      "match_type": "none",
+      "values": {
+        "2015": -3407000.0,
+        "2014": -211000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2015_Konzern-Gewinn- und Verl",
+        "row": 25
+      }
+    },
+    {
+      "raw_label": "10. Steuern vom Einkommen und vom Ertrag",
+      "std_id": "PL_GKV-14",
+      "match_type": "longest_match",
+      "values": {
+        "2015": 2359000.0,
+        "2014": 1878000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2015_Konzern-Gewinn- und Verl",
+        "row": 26
+      }
+    },
+    {
+      "raw_label": "Konzern-Jahresfehlbetrag",
+      "std_id": "BS-P.A.V",
+      "match_type": "longest_match",
+      "values": {
+        "2015": 3414000.0,
+        "2014": 3931000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2015_Konzern-Gewinn- und Verl",
+        "row": 27
+      }
+    },
+    {
+      "raw_label": "1. Umsatzerlöse",
+      "std_id": "PL_GKV-1",
+      "match_type": "longest_match",
+      "values": {
+        "2023": 126812470.7,
+        "2022": 103106744.7
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2023_Konzern- Gewinn- und Ver",
+        "row": 8
+      }
+    },
+    {
+      "raw_label": "2. Veränderung des Bestands an unfertigen und fertigen Erzeugnissen",
+      "std_id": "PL_GKV-2",
+      "match_type": "extra_substr",
+      "values": {
+        "2023": 4019168.66,
+        "2022": 5075780.27
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2023_Konzern- Gewinn- und Ver",
+        "row": 9
+      }
+    },
+    {
+      "raw_label": "3. Sonstige betriebliche Erträge",
+      "std_id": "PL_GKV-4",
+      "match_type": "longest_match",
+      "values": {
+        "2023": 3127775.57,
+        "2022": 9164611.4
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2023_Konzern- Gewinn- und Ver",
+        "row": 11
+      }
+    },
+    {
+      "raw_label": "a) Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren",
+      "std_id": "PL_GKV-5a",
+      "match_type": "longest_match",
+      "values": {
+        "2023": -60325299.8,
+        "2022": -49810551.26
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2023_Konzern- Gewinn- und Ver",
+        "row": 13
+      }
+    },
+    {
+      "raw_label": "b) Aufwendungen für bezogene Leistungen",
+      "std_id": "PL_GKV-5b",
+      "match_type": "longest_match",
+      "values": {
+        "2023": -6515429.97,
+        "2022": -5773817.53
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2023_Konzern- Gewinn- und Ver",
+        "row": 14
+      }
+    },
+    {
+      "raw_label": "a) Löhne und Gehälter",
+      "std_id": "PL_GKV-6a",
+      "match_type": "longest_match",
+      "values": {
+        "2023": -25978461.49,
+        "2022": -23670127.43
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2023_Konzern- Gewinn- und Ver",
+        "row": 17
+      }
+    },
+    {
+      "raw_label": "b) Soziale Abgaben und Aufwendungen für Altersversorgung und für Unterstützung",
+      "std_id": "PL_GKV-6b",
+      "match_type": "longest_match",
+      "values": {
+        "2023": -5611785.52,
+        "2022": -4545241.39
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2023_Konzern- Gewinn- und Ver",
+        "row": 18
+      }
+    },
+    {
+      "raw_label": "auf immaterielle Vermögensgegenstände des Anlagevermögens und Sachanlagen",
+      "std_id": "BS-A.A.I",
+      "match_type": "longest_match",
+      "values": {
+        "2023": -1536565.43,
+        "2022": -1831130.41
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2023_Konzern- Gewinn- und Ver",
+        "row": 22
+      }
+    },
+    {
+      "raw_label": "7. Sonstige betriebliche Aufwendungen",
+      "std_id": "PL_GKV-8",
+      "match_type": "longest_match",
+      "values": {
+        "2023": -36921543.22,
+        "2022": -31594901.82
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2023_Konzern- Gewinn- und Ver",
+        "row": 23
+      }
+    },
+    {
+      "raw_label": "8. Gewinne aus Beteiligungen an assoziierten Unternehmen",
+      "std_id": "BS-A.A.III.3",
+      "match_type": "longest_match",
+      "values": {
+        "2023": 224066.32,
+        "2022": 197635.97
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2023_Konzern- Gewinn- und Ver",
+        "row": 25
+      }
+    },
+    {
+      "raw_label": "9. Sonstige Zinsen und ähnliche Erträge",
+      "std_id": "PL_GKV-11",
+      "match_type": "longest_match",
+      "values": {
+        "2023": 25305.86,
+        "2022": 55853.14
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2023_Konzern- Gewinn- und Ver",
+        "row": 26
+      }
+    },
+    {
+      "raw_label": "10. Zinsen und ähnliche Aufwendungen",
+      "std_id": "PL_GKV-13",
+      "match_type": "longest_match",
+      "values": {
+        "2023": -2872290.57,
+        "2022": -2309724.93
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2023_Konzern- Gewinn- und Ver",
+        "row": 27
+      }
+    },
+    {
+      "raw_label": "11. Steuern vom Einkommen und vom Ertrag",
+      "std_id": "PL_GKV-14",
+      "match_type": "longest_match",
+      "values": {
+        "2023": -1095538.98,
+        "2022": -1013616.75
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2023_Konzern- Gewinn- und Ver",
+        "row": 29
+      }
+    },
+    {
+      "raw_label": "12. Ergebnis nach Steuern/ Konzernjahresfehlbetrag",
+      "std_id": "PL_GKV-15",
+      "match_type": "longest_match",
+      "values": {
+        "2023": -6648127.87,
+        "2022": -2948486.04
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2023_Konzern- Gewinn- und Ver",
+        "row": 31
+      }
+    },
+    {
+      "raw_label": "13. Verlustvortrag",
+      "std_id": "BS-P.A.IV",
+      "match_type": "longest_match",
+      "values": {
+        "2023": -42593861.38,
+        "2022": -39645375.34
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2023_Konzern- Gewinn- und Ver",
+        "row": 32
+      }
+    },
+    {
+      "raw_label": "14. Konzernbilanzverlust",
+      "std_id": "PL_GKV-BILANZVERLUST",
+      "match_type": "extra_substr",
+      "values": {
+        "2023": -49241989.25,
+        "2022": -42593861.38
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2023_Konzern- Gewinn- und Ver",
+        "row": 33
+      }
+    },
+    {
+      "raw_label": "1. Umsatzerlöse",
+      "std_id": "PL_GKV-1",
+      "match_type": "longest_match",
+      "values": {
+        "2021": 100393437.35,
+        "2020": 139410553.43
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2021_Konzern-Gewinn- und Verl",
+        "row": 8
+      }
+    },
+    {
+      "raw_label": "2. Veränderung des Bestands an unfertigen und fertigen Erzeugnissen",
+      "std_id": "PL_GKV-2",
+      "match_type": "extra_substr",
+      "values": {
+        "2021": -3983611.39,
+        "2020": 300424.12
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2021_Konzern-Gewinn- und Verl",
+        "row": 9
+      }
+    },
+    {
+      "raw_label": "3. Sonstige betriebliche Erträge",
+      "std_id": "PL_GKV-4",
+      "match_type": "longest_match",
+      "values": {
+        "2021": 9784777.44,
+        "2020": 6586087.65
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2021_Konzern-Gewinn- und Verl",
+        "row": 11
+      }
+    },
+    {
+      "raw_label": "a) Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren",
+      "std_id": "PL_GKV-5a",
+      "match_type": "longest_match",
+      "values": {
+        "2021": -48454945.3,
+        "2020": -64983018.3
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2021_Konzern-Gewinn- und Verl",
+        "row": 13
+      }
+    },
+    {
+      "raw_label": "b) Aufwendungen für bezogene Leistungen",
+      "std_id": "PL_GKV-5b",
+      "match_type": "longest_match",
+      "values": {
+        "2021": -97156.2,
+        "2020": -715041.45
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2021_Konzern-Gewinn- und Verl",
+        "row": 14
+      }
+    },
+    {
+      "raw_label": "a) Löhne und Gehälter",
+      "std_id": "PL_GKV-6a",
+      "match_type": "longest_match",
+      "values": {
+        "2021": -22871751.74,
+        "2020": -35611357.95
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2021_Konzern-Gewinn- und Verl",
+        "row": 17
+      }
+    },
+    {
+      "raw_label": "b) Soziale Abgaben und Aufwendungen für Altersversorgung und für Unterstützung",
+      "std_id": "PL_GKV-6b",
+      "match_type": "longest_match",
+      "values": {
+        "2021": -4638501.29,
+        "2020": -5302128.14
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2021_Konzern-Gewinn- und Verl",
+        "row": 18
+      }
+    },
+    {
+      "raw_label": "a) auf immaterielle Vermögensgegenstände des Anlagevermögens und Sachanlagen",
+      "std_id": "BS-A.A.I",
+      "match_type": "longest_match",
+      "values": {
+        "2021": -2105728.01,
+        "2020": -3063608.48
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2021_Konzern-Gewinn- und Verl",
+        "row": 22
+      }
+    },
+    {
+      "raw_label": "b) auf Vermögensgegenstände des Umlaufvermögens, soweit diese die im Konzern üblichen Abschreibungen überschreiten",
+      "std_id": "BS-A.B",
+      "match_type": "longest_match",
+      "values": {
+        "2021": -2780501.0,
+        "2020": 0.0
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2021_Konzern-Gewinn- und Verl",
+        "row": 23
+      }
+    },
+    {
+      "raw_label": "7. Sonstige betriebliche Aufwendungen",
+      "std_id": "PL_GKV-8",
+      "match_type": "longest_match",
+      "values": {
+        "2021": -28512633.91,
+        "2020": -43944908.92
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2021_Konzern-Gewinn- und Verl",
+        "row": 25
+      }
+    },
+    {
+      "raw_label": "8. Gewinne aus Beteiligungen an assoziierten Unternehmen",
+      "std_id": "BS-A.A.III.3",
+      "match_type": "longest_match",
+      "values": {
+        "2021": 17662.92,
+        "2020": 45721.75
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2021_Konzern-Gewinn- und Verl",
+        "row": 28
+      }
+    },
+    {
+      "raw_label": "9. Sonstige Zinsen und ähnliche Erträge",
+      "std_id": "PL_GKV-11",
+      "match_type": "longest_match",
+      "values": {
+        "2021": 132482.92,
+        "2020": 244898.63
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2021_Konzern-Gewinn- und Verl",
+        "row": 30
+      }
+    },
+    {
+      "raw_label": "10. Zinsen und ähnliche Aufwendungen",
+      "std_id": "PL_GKV-13",
+      "match_type": "longest_match",
+      "values": {
+        "2021": -2419851.25,
+        "2020": -2806423.27
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2021_Konzern-Gewinn- und Verl",
+        "row": 31
+      }
+    },
+    {
+      "raw_label": "11. Steuern vom Einkommen und vom Ertrag",
+      "std_id": "PL_GKV-14",
+      "match_type": "longest_match",
+      "values": {
+        "2021": -880394.44,
+        "2020": -1445265.76
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2021_Konzern-Gewinn- und Verl",
+        "row": 33
+      }
+    },
+    {
+      "raw_label": "12. Ergebnis nach Steuern/ Konzernjahresfehlbetrag",
+      "std_id": "PL_GKV-15",
+      "match_type": "longest_match",
+      "values": {
+        "2021": -6416713.9,
+        "2020": -11284066.69
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2021_Konzern-Gewinn- und Verl",
+        "row": 34
+      }
+    },
+    {
+      "raw_label": "13. Verlustvortrag",
+      "std_id": "BS-P.A.IV",
+      "match_type": "longest_match",
+      "values": {
+        "2021": -33216761.06,
+        "2020": -21953063.17
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2021_Konzern-Gewinn- und Verl",
+        "row": 35
+      }
+    },
+    {
+      "raw_label": "14. auf nicht beherrschende Anteile entfallender Gewinn/Verlust",
+      "std_id": null,
+      "match_type": "none",
+      "values": {
+        "2021": -11900.38,
+        "2020": 20368.8
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2021_Konzern-Gewinn- und Verl",
+        "row": 36
+      }
+    },
+    {
+      "raw_label": "15. Konzernbilanzverlust",
+      "std_id": "PL_GKV-BILANZVERLUST",
+      "match_type": "extra_substr",
+      "values": {
+        "2021": -39645375.34,
+        "2020": -33216761.06
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2021_Konzern-Gewinn- und Verl",
+        "row": 37
+      }
+    },
+    {
+      "raw_label": "1. Umsatzerlöse",
+      "std_id": "PL_GKV-1",
+      "match_type": "longest_match",
+      "values": {
+        "2022": 103106744.7,
+        "2021": 100393437.35
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2022_Konzern-Gewinn- und Verl",
+        "row": 8
+      }
+    },
+    {
+      "raw_label": "2. Veränderung des Bestands an unfertigen und fertigen Erzeugnissen",
+      "std_id": "PL_GKV-2",
+      "match_type": "extra_substr",
+      "values": {
+        "2022": 5075780.27,
+        "2021": -3983611.39
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2022_Konzern-Gewinn- und Verl",
+        "row": 9
+      }
+    },
+    {
+      "raw_label": "3. Sonstige betriebliche Erträge",
+      "std_id": "PL_GKV-4",
+      "match_type": "longest_match",
+      "values": {
+        "2022": 9164611.4,
+        "2021": 9784777.44
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2022_Konzern-Gewinn- und Verl",
+        "row": 11
+      }
+    },
+    {
+      "raw_label": "a) Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren",
+      "std_id": "PL_GKV-5a",
+      "match_type": "longest_match",
+      "values": {
+        "2022": -55487953.12,
+        "2021": -48454945.3
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2022_Konzern-Gewinn- und Verl",
+        "row": 13
+      }
+    },
+    {
+      "raw_label": "b) Aufwendungen für bezogene Leistungen",
+      "std_id": "PL_GKV-5b",
+      "match_type": "longest_match",
+      "values": {
+        "2022": -96415.67,
+        "2021": -97156.2
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2022_Konzern-Gewinn- und Verl",
+        "row": 14
+      }
+    },
+    {
+      "raw_label": "a) Löhne und Gehälter",
+      "std_id": "PL_GKV-6a",
+      "match_type": "longest_match",
+      "values": {
+        "2022": -23670127.43,
+        "2021": -22871751.74
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2022_Konzern-Gewinn- und Verl",
+        "row": 17
+      }
+    },
+    {
+      "raw_label": "b) Soziale Abgaben und Aufwendungen für Altersversorgung und für Unterstützung",
+      "std_id": "PL_GKV-6b",
+      "match_type": "longest_match",
+      "values": {
+        "2022": -4545241.39,
+        "2021": -4638501.29
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2022_Konzern-Gewinn- und Verl",
+        "row": 18
+      }
+    },
+    {
+      "raw_label": "a) auf immaterielle Vermögensgegenstände des Anlagevermögens und Sachanlagen",
+      "std_id": "BS-A.A.I",
+      "match_type": "longest_match",
+      "values": {
+        "2022": -1831130.41,
+        "2021": -2105728.01
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2022_Konzern-Gewinn- und Verl",
+        "row": 22
+      }
+    },
+    {
+      "raw_label": "b) auf Vermögensgegenstände des Umlaufvermögens, soweit diese die im Konzern üblichen Abschreibungen überschreiten",
+      "std_id": "BS-A.B",
+      "match_type": "longest_match",
+      "values": {
+        "2022": 0.0,
+        "2021": -2780501.0
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2022_Konzern-Gewinn- und Verl",
+        "row": 23
+      }
+    },
+    {
+      "raw_label": "7. Sonstige betriebliche Aufwendungen",
+      "std_id": "PL_GKV-8",
+      "match_type": "longest_match",
+      "values": {
+        "2022": -31594901.82,
+        "2021": -28512633.91
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2022_Konzern-Gewinn- und Verl",
+        "row": 25
+      }
+    },
+    {
+      "raw_label": "8. Gewinne aus Beteiligungen an assoziierten Unternehmen",
+      "std_id": "BS-A.A.III.3",
+      "match_type": "longest_match",
+      "values": {
+        "2022": 197635.97,
+        "2021": 17662.92
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2022_Konzern-Gewinn- und Verl",
+        "row": 27
+      }
+    },
+    {
+      "raw_label": "9. Sonstige Zinsen und ähnliche Erträge",
+      "std_id": "PL_GKV-11",
+      "match_type": "longest_match",
+      "values": {
+        "2022": 55853.14,
+        "2021": 132482.92
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2022_Konzern-Gewinn- und Verl",
+        "row": 29
+      }
+    },
+    {
+      "raw_label": "10. Zinsen und ähnliche Aufwendungen",
+      "std_id": "PL_GKV-13",
+      "match_type": "longest_match",
+      "values": {
+        "2022": -2309724.93,
+        "2021": -2419851.25
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2022_Konzern-Gewinn- und Verl",
+        "row": 30
+      }
+    },
+    {
+      "raw_label": "11. Steuern vom Einkommen und vom Ertrag",
+      "std_id": "PL_GKV-14",
+      "match_type": "longest_match",
+      "values": {
+        "2022": -1013616.75,
+        "2021": -880394.44
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2022_Konzern-Gewinn- und Verl",
+        "row": 32
+      }
+    },
+    {
+      "raw_label": "12. Ergebnis nach Steuern/ Konzernjahresfehlbetrag",
+      "std_id": "PL_GKV-15",
+      "match_type": "longest_match",
+      "values": {
+        "2022": -2948486.04,
+        "2021": -6416713.9
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2022_Konzern-Gewinn- und Verl",
+        "row": 33
+      }
+    },
+    {
+      "raw_label": "13. Verlustvortrag",
+      "std_id": "BS-P.A.IV",
+      "match_type": "longest_match",
+      "values": {
+        "2022": -39645375.34,
+        "2021": -33216761.06
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2022_Konzern-Gewinn- und Verl",
+        "row": 34
+      }
+    },
+    {
+      "raw_label": "14. auf nicht beherrschende Anteile entfallender Gewinn/Verlust",
+      "std_id": null,
+      "match_type": "none",
+      "values": {
+        "2022": 0.0,
+        "2021": -11900.38
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2022_Konzern-Gewinn- und Verl",
+        "row": 35
+      }
+    },
+    {
+      "raw_label": "15. Konzernbilanzverlust",
+      "std_id": "PL_GKV-BILANZVERLUST",
+      "match_type": "extra_substr",
+      "values": {
+        "2022": -42593861.38,
+        "2021": -39645375.34
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2022_Konzern-Gewinn- und Verl",
+        "row": 36
+      }
+    },
+    {
+      "raw_label": "1. Umsatzerlöse",
+      "std_id": "PL_GKV-1",
+      "match_type": "longest_match",
+      "values": {
+        "2020": 139410553.43,
+        "2019": 178665168.31
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2020_Konzern-Gewinn- und Verl",
+        "row": 8
+      }
+    },
+    {
+      "raw_label": "2. Veränderung des Bestands an unfertigen und fertigen Erzeugnissen",
+      "std_id": "PL_GKV-2",
+      "match_type": "extra_substr",
+      "values": {
+        "2020": 300424.12,
+        "2019": -1510992.16
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2020_Konzern-Gewinn- und Verl",
+        "row": 9
+      }
+    },
+    {
+      "raw_label": "3. Sonstige betriebliche Erträge",
+      "std_id": "PL_GKV-4",
+      "match_type": "longest_match",
+      "values": {
+        "2020": 6586087.65,
+        "2019": 1743600.47
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2020_Konzern-Gewinn- und Verl",
+        "row": 11
+      }
+    },
+    {
+      "raw_label": "a) Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren",
+      "std_id": "PL_GKV-5a",
+      "match_type": "longest_match",
+      "values": {
+        "2020": -64983018.3,
+        "2019": -67834024.89
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2020_Konzern-Gewinn- und Verl",
+        "row": 13
+      }
+    },
+    {
+      "raw_label": "b) Aufwendungen für bezogene Leistungen",
+      "std_id": "PL_GKV-5b",
+      "match_type": "longest_match",
+      "values": {
+        "2020": -715041.45,
+        "2019": -2376670.54
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2020_Konzern-Gewinn- und Verl",
+        "row": 14
+      }
+    },
+    {
+      "raw_label": "a) Löhne und Gehälter",
+      "std_id": "PL_GKV-6a",
+      "match_type": "longest_match",
+      "values": {
+        "2020": -35611357.95,
+        "2019": -39818708.85
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2020_Konzern-Gewinn- und Verl",
+        "row": 17
+      }
+    },
+    {
+      "raw_label": "b) Soziale Abgaben und Aufwendungen für Altersversorgung und für Unterstützung",
+      "std_id": "PL_GKV-6b",
+      "match_type": "longest_match",
+      "values": {
+        "2020": -5302128.14,
+        "2019": -7295424.19
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2020_Konzern-Gewinn- und Verl",
+        "row": 18
+      }
+    },
+    {
+      "raw_label": "6. Abschreibungen auf immaterielle Vermögensgegenstände des Anlagevermögens und Sachanlagen",
+      "std_id": "BS-A.A.I",
+      "match_type": "longest_match",
+      "values": {
+        "2020": -3063608.48,
+        "2019": -2732024.46
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2020_Konzern-Gewinn- und Verl",
+        "row": 21
+      }
+    },
+    {
+      "raw_label": "7. Sonstige betriebliche Aufwendungen",
+      "std_id": "PL_GKV-8",
+      "match_type": "longest_match",
+      "values": {
+        "2020": -43944908.92,
+        "2019": -62483734.99
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2020_Konzern-Gewinn- und Verl",
+        "row": 22
+      }
+    },
+    {
+      "raw_label": "8. Gewinne aus Beteiligungen an assoziierten Unternehmen",
+      "std_id": "BS-A.A.III.3",
+      "match_type": "longest_match",
+      "values": {
+        "2020": 45721.75,
+        "2019": 0.0
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2020_Konzern-Gewinn- und Verl",
+        "row": 25
+      }
+    },
+    {
+      "raw_label": "9. Sonstige Zinsen und ähnliche Erträge",
+      "std_id": "PL_GKV-11",
+      "match_type": "longest_match",
+      "values": {
+        "2020": 244898.63,
+        "2019": 296207.85
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2020_Konzern-Gewinn- und Verl",
+        "row": 26
+      }
+    },
+    {
+      "raw_label": "10. Zinsen und ähnliche Aufwendungen",
+      "std_id": "PL_GKV-13",
+      "match_type": "longest_match",
+      "values": {
+        "2020": -2806423.27,
+        "2019": -2225115.7
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2020_Konzern-Gewinn- und Verl",
+        "row": 27
+      }
+    },
+    {
+      "raw_label": "11. Steuern vom Einkommen und vom Ertrag",
+      "std_id": "PL_GKV-14",
+      "match_type": "longest_match",
+      "values": {
+        "2020": -1445265.76,
+        "2019": -1229584.03
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2020_Konzern-Gewinn- und Verl",
+        "row": 29
+      }
+    },
+    {
+      "raw_label": "12. Ergebnis nach Steuern / Konzernjahresfehlbetrag",
+      "std_id": "PL_GKV-15",
+      "match_type": "longest_match",
+      "values": {
+        "2020": -11284066.69,
+        "2019": -6801303.18
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2020_Konzern-Gewinn- und Verl",
+        "row": 31
+      }
+    },
+    {
+      "raw_label": "13. Verlustvortrag",
+      "std_id": "BS-P.A.IV",
+      "match_type": "longest_match",
+      "values": {
+        "2020": -21953063.17,
+        "2019": -15165258.94
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2020_Konzern-Gewinn- und Verl",
+        "row": 32
+      }
+    },
+    {
+      "raw_label": "14. auf nicht beherrschende Anteile entfallender Verlust",
+      "std_id": null,
+      "match_type": "none",
+      "values": {
+        "2020": 20368.8,
+        "2019": 13498.95
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2020_Konzern-Gewinn- und Verl",
+        "row": 33
+      }
+    },
+    {
+      "raw_label": "15. Konzernbilanzverlust",
+      "std_id": "PL_GKV-BILANZVERLUST",
+      "match_type": "extra_substr",
+      "values": {
+        "2020": -33216761.06,
+        "2019": -21953063.17
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2020_Konzern-Gewinn- und Verl",
+        "row": 34
+      }
+    },
+    {
+      "raw_label": "1. Umsatzerlöse",
+      "std_id": "PL_GKV-1",
+      "match_type": "longest_match",
+      "values": {
+        "2018": 184392844.37,
+        "2017": 198751512.86
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2018_Konzern-Gewinn- und Verl",
+        "row": 8
+      }
+    },
+    {
+      "raw_label": "2. Veränderung des Bestands an unfertigen und fertigen Erzeugnissen",
+      "std_id": "PL_GKV-2",
+      "match_type": "extra_substr",
+      "values": {
+        "2018": 142366.4,
+        "2017": -91931.92
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2018_Konzern-Gewinn- und Verl",
+        "row": 9
+      }
+    },
+    {
+      "raw_label": "3. Sonstige betriebliche Erträge",
+      "std_id": "PL_GKV-4",
+      "match_type": "longest_match",
+      "values": {
+        "2018": 7201982.5,
+        "2017": 4354050.48
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2018_Konzern-Gewinn- und Verl",
+        "row": 11
+      }
+    },
+    {
+      "raw_label": "a) Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren",
+      "std_id": "PL_GKV-5a",
+      "match_type": "longest_match",
+      "values": {
+        "2018": -76106902.79,
+        "2017": -82883736.52
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2018_Konzern-Gewinn- und Verl",
+        "row": 13
+      }
+    },
+    {
+      "raw_label": "b) Aufwendungen für bezogene Leistungen",
+      "std_id": "PL_GKV-5b",
+      "match_type": "longest_match",
+      "values": {
+        "2018": -2559820.94,
+        "2017": -3158842.27
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2018_Konzern-Gewinn- und Verl",
+        "row": 14
+      }
+    },
+    {
+      "raw_label": "a) Löhne und Gehälter",
+      "std_id": "PL_GKV-6a",
+      "match_type": "longest_match",
+      "values": {
+        "2018": -33921489.88,
+        "2017": -35512721.26
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2018_Konzern-Gewinn- und Verl",
+        "row": 17
+      }
+    },
+    {
+      "raw_label": "b) Soziale Abgaben und Aufwendungen für Altersversorgung und für Unterstützung",
+      "std_id": "PL_GKV-6b",
+      "match_type": "longest_match",
+      "values": {
+        "2018": -5712288.65,
+        "2017": -5529271.77
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2018_Konzern-Gewinn- und Verl",
+        "row": 18
+      }
+    },
+    {
+      "raw_label": "6. Abschreibungen auf immaterielle Vermögensgegenstände des Anlagevermögens und Sachanlagen",
+      "std_id": "BS-A.A.I",
+      "match_type": "longest_match",
+      "values": {
+        "2018": -2481540.42,
+        "2017": -2806021.94
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2018_Konzern-Gewinn- und Verl",
+        "row": 22
+      }
+    },
+    {
+      "raw_label": "7. Sonstige betriebliche Aufwendungen",
+      "std_id": "PL_GKV-8",
+      "match_type": "longest_match",
+      "values": {
+        "2018": -63016835.96,
+        "2017": -62014771.31
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2018_Konzern-Gewinn- und Verl",
+        "row": 23
+      }
+    },
+    {
+      "raw_label": "8. Sonstige Zinsen und ähnliche Erträge",
+      "std_id": "PL_GKV-11",
+      "match_type": "longest_match",
+      "values": {
+        "2018": 505277.86,
+        "2017": 572112.44
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2018_Konzern-Gewinn- und Verl",
+        "row": 26
+      }
+    },
+    {
+      "raw_label": "9. Zinsen und ähnliche Aufwendungen",
+      "std_id": "PL_GKV-13",
+      "match_type": "longest_match",
+      "values": {
+        "2018": -3204944.15,
+        "2017": -3592758.83
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2018_Konzern-Gewinn- und Verl",
+        "row": 27
+      }
+    },
+    {
+      "raw_label": "10. Steuern vom Einkommen und vom Ertrag",
+      "std_id": "PL_GKV-14",
+      "match_type": "longest_match",
+      "values": {
+        "2018": -2803466.13,
+        "2017": -3761719.64
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2018_Konzern-Gewinn- und Verl",
+        "row": 29
+      }
+    },
+    {
+      "raw_label": "11. Ergebnis nach Steuern/Konzernjahresüberschuss",
+      "std_id": "PL_GKV-17",
+      "match_type": "longest_match",
+      "values": {
+        "2018": 2435182.21,
+        "2017": 4325900.32
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2018_Konzern-Gewinn- und Verl",
+        "row": 30
+      }
+    },
+    {
+      "raw_label": "12. Entnahme aus den Gewinnrücklagen",
+      "std_id": "BS-P.A.III",
+      "match_type": "longest_match",
+      "values": {
+        "2018": 1466817.52,
+        "2017": 41056.11
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2018_Konzern-Gewinn- und Verl",
+        "row": 31
+      }
+    },
+    {
+      "raw_label": "13. Zuführung zu den Gewinnrücklagen",
+      "std_id": "BS-P.A.III",
+      "match_type": "longest_match",
+      "values": {
+        "2017": -236.85
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2018_Konzern-Gewinn- und Verl",
+        "row": 32
+      }
+    },
+    {
+      "raw_label": "14. Verlustvortrag",
+      "std_id": "BS-P.A.IV",
+      "match_type": "longest_match",
+      "values": {
+        "2018": -19068730.89,
+        "2017": -23436991.98
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2018_Konzern-Gewinn- und Verl",
+        "row": 33
+      }
+    },
+    {
+      "raw_label": "15. auf nicht beherrschende Anteile entfallender Verlust",
+      "std_id": null,
+      "match_type": "none",
+      "values": {
+        "2018": 1472.22,
+        "2017": 1541.51
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2018_Konzern-Gewinn- und Verl",
+        "row": 34
+      }
+    },
+    {
+      "raw_label": "16. Konzernbilanzverlust",
+      "std_id": "PL_GKV-BILANZVERLUST",
+      "match_type": "extra_substr",
+      "values": {
+        "2018": -15165258.94,
+        "2017": -19068730.89
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2018_Konzern-Gewinn- und Verl",
+        "row": 35
+      }
+    },
+    {
+      "raw_label": "1. Umsatzerlöse",
+      "std_id": "PL_GKV-1",
+      "match_type": "longest_match",
+      "values": {
+        "2017": 198751512.86,
+        "2016": 196299678.88
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2017_Konzern-Gewinn- und Verl",
+        "row": 8
+      }
+    },
+    {
+      "raw_label": "2. Veränderung des Bestands an unfertigen und fertigen Erzeugnissen",
+      "std_id": "PL_GKV-2",
+      "match_type": "extra_substr",
+      "values": {
+        "2017": -91931.92,
+        "2016": 23891.04
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2017_Konzern-Gewinn- und Verl",
+        "row": 9
+      }
+    },
+    {
+      "raw_label": "3. Sonstige betriebliche Erträge",
+      "std_id": "PL_GKV-4",
+      "match_type": "longest_match",
+      "values": {
+        "2017": 4354050.48,
+        "2016": 7084842.27
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2017_Konzern-Gewinn- und Verl",
+        "row": 11
+      }
+    },
+    {
+      "raw_label": "a) Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren",
+      "std_id": "PL_GKV-5a",
+      "match_type": "longest_match",
+      "values": {
+        "2017": -82883736.52,
+        "2016": -84733796.49
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2017_Konzern-Gewinn- und Verl",
+        "row": 13
+      }
+    },
+    {
+      "raw_label": "b) Aufwendungen für bezogene Leistungen",
+      "std_id": "PL_GKV-5b",
+      "match_type": "longest_match",
+      "values": {
+        "2017": -3158842.27,
+        "2016": -3549238.76
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2017_Konzern-Gewinn- und Verl",
+        "row": 14
+      }
+    },
+    {
+      "raw_label": "a) Löhne und Gehälter",
+      "std_id": "PL_GKV-6a",
+      "match_type": "longest_match",
+      "values": {
+        "2017": -35512721.26,
+        "2016": -36013257.81
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2017_Konzern-Gewinn- und Verl",
+        "row": 17
+      }
+    },
+    {
+      "raw_label": "b) Soziale Abgaben und Aufwendungen für Altersversorgung und für Unterstützung",
+      "std_id": "PL_GKV-6b",
+      "match_type": "longest_match",
+      "values": {
+        "2017": -5529271.77,
+        "2016": -4664833.84
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2017_Konzern-Gewinn- und Verl",
+        "row": 18
+      }
+    },
+    {
+      "raw_label": "6. Abschreibungen auf immaterielle Vermögensgegenstände des Anlagevermögens und Sachanlagen",
+      "std_id": "BS-A.A.I",
+      "match_type": "longest_match",
+      "values": {
+        "2017": -2806021.94,
+        "2016": -3248179.5
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2017_Konzern-Gewinn- und Verl",
+        "row": 21
+      }
+    },
+    {
+      "raw_label": "7. Sonstige betriebliche Aufwendungen",
+      "std_id": "PL_GKV-8",
+      "match_type": "longest_match",
+      "values": {
+        "2017": -62014771.31,
+        "2016": -62345351.56
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2017_Konzern-Gewinn- und Verl",
+        "row": 22
+      }
+    },
+    {
+      "raw_label": "8. Verluste aus Beteiligungen an assoziierten Unternehmen",
+      "std_id": "BS-A.A.III.3",
+      "match_type": "longest_match",
+      "values": {
+        "2017": 0.0,
+        "2016": -7197.34
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2017_Konzern-Gewinn- und Verl",
+        "row": 25
+      }
+    },
+    {
+      "raw_label": "9. Sonstige Zinsen und ähnliche Erträge",
+      "std_id": "PL_GKV-11",
+      "match_type": "longest_match",
+      "values": {
+        "2017": 572112.44,
+        "2016": 560474.24
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2017_Konzern-Gewinn- und Verl",
+        "row": 26
+      }
+    },
+    {
+      "raw_label": "10. Zinsen und ähnliche Aufwendungen",
+      "std_id": "PL_GKV-13",
+      "match_type": "longest_match",
+      "values": {
+        "2017": -3592758.83,
+        "2016": -3706187.54
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2017_Konzern-Gewinn- und Verl",
+        "row": 27
+      }
+    },
+    {
+      "raw_label": "11. Steuern vom Einkommen und vom Ertrag",
+      "std_id": "PL_GKV-14",
+      "match_type": "longest_match",
+      "values": {
+        "2017": -3761719.64,
+        "2016": -1489349.5
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2017_Konzern-Gewinn- und Verl",
+        "row": 29
+      }
+    },
+    {
+      "raw_label": "12. Ergebnis nach Steuern / Konzernjahresüberschuss",
+      "std_id": "PL_GKV-17",
+      "match_type": "longest_match",
+      "values": {
+        "2017": 4325900.32,
+        "2016": 4211494.09
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2017_Konzern-Gewinn- und Verl",
+        "row": 31
+      }
+    },
+    {
+      "raw_label": "13. Entnahme aus den Gewinnrücklagen",
+      "std_id": "BS-P.A.III",
+      "match_type": "longest_match",
+      "values": {
+        "2017": 41056.11,
+        "2016": 41056.11
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2017_Konzern-Gewinn- und Verl",
+        "row": 32
+      }
+    },
+    {
+      "raw_label": "14. Zuführung zu den Gewinnrücklagen",
+      "std_id": "BS-P.A.III",
+      "match_type": "longest_match",
+      "values": {
+        "2017": -236.85,
+        "2016": -13986.22
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2017_Konzern-Gewinn- und Verl",
+        "row": 33
+      }
+    },
+    {
+      "raw_label": "15. Verlustvortrag",
+      "std_id": "BS-P.A.IV",
+      "match_type": "longest_match",
+      "values": {
+        "2017": -23436991.98,
+        "2016": -27676356.66
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2017_Konzern-Gewinn- und Verl",
+        "row": 34
+      }
+    },
+    {
+      "raw_label": "16. auf nicht beherrschende Anteile entfallender Verlust",
+      "std_id": null,
+      "match_type": "none",
+      "values": {
+        "2017": 1541.51,
+        "2016": 800.7
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2017_Konzern-Gewinn- und Verl",
+        "row": 35
+      }
+    },
+    {
+      "raw_label": "17. Konzernbilanzverlust",
+      "std_id": "PL_GKV-BILANZVERLUST",
+      "match_type": "extra_substr",
+      "values": {
+        "2017": -19068730.89,
+        "2016": -23436991.98
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2017_Konzern-Gewinn- und Verl",
+        "row": 36
+      }
+    },
+    {
+      "raw_label": "1. Umsatzerlöse",
+      "std_id": "PL_GKV-1",
+      "match_type": "longest_match",
+      "values": {
+        "2019": 178665168.31,
+        "2018": 184392844.37
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2019_Gewinn- und Verlustrechn",
+        "row": 8
+      }
+    },
+    {
+      "raw_label": "2. Veränderung des Bestands an unfertigen und fertigen Erzeugnissen",
+      "std_id": "PL_GKV-2",
+      "match_type": "extra_substr",
+      "values": {
+        "2019": -1510992.16,
+        "2018": 142366.4
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2019_Gewinn- und Verlustrechn",
+        "row": 9
+      }
+    },
+    {
+      "raw_label": "3. Sonstige betriebliche Erträge",
+      "std_id": "PL_GKV-4",
+      "match_type": "longest_match",
+      "values": {
+        "2019": 1743600.47,
+        "2018": 7201982.5
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2019_Gewinn- und Verlustrechn",
+        "row": 11
+      }
+    },
+    {
+      "raw_label": "a) Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren",
+      "std_id": "PL_GKV-5a",
+      "match_type": "longest_match",
+      "values": {
+        "2019": -67834024.89,
+        "2018": -76106902.79
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2019_Gewinn- und Verlustrechn",
+        "row": 13
+      }
+    },
+    {
+      "raw_label": "b) Aufwendungen für bezogene Leistungen",
+      "std_id": "PL_GKV-5b",
+      "match_type": "longest_match",
+      "values": {
+        "2019": -2376670.54,
+        "2018": -2559820.94
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2019_Gewinn- und Verlustrechn",
+        "row": 14
+      }
+    },
+    {
+      "raw_label": "a) Löhne und Gehälter",
+      "std_id": "PL_GKV-6a",
+      "match_type": "longest_match",
+      "values": {
+        "2019": -39818708.85,
+        "2018": -33921489.88
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2019_Gewinn- und Verlustrechn",
+        "row": 17
+      }
+    },
+    {
+      "raw_label": "b) Soziale Abgaben und Aufwendungen für Altersversorgung und für Unterstützung",
+      "std_id": "PL_GKV-6b",
+      "match_type": "longest_match",
+      "values": {
+        "2019": -7295424.19,
+        "2018": -5712288.65
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2019_Gewinn- und Verlustrechn",
+        "row": 18
+      }
+    },
+    {
+      "raw_label": "6. Abschreibungen auf immaterielle Vermögensgegenstände des Anlagevermögens und Sachanlagen",
+      "std_id": "BS-A.A.I",
+      "match_type": "longest_match",
+      "values": {
+        "2019": -2732024.46,
+        "2018": -2481540.42
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2019_Gewinn- und Verlustrechn",
+        "row": 21
+      }
+    },
+    {
+      "raw_label": "7. Sonstige betriebliche Aufwendungen",
+      "std_id": "PL_GKV-8",
+      "match_type": "longest_match",
+      "values": {
+        "2019": -62483734.99,
+        "2018": -63016835.96
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2019_Gewinn- und Verlustrechn",
+        "row": 22
+      }
+    },
+    {
+      "raw_label": "8. Sonstige Zinsen und ähnliche Erträge",
+      "std_id": "PL_GKV-11",
+      "match_type": "longest_match",
+      "values": {
+        "2019": 296207.85,
+        "2018": 505277.86
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2019_Gewinn- und Verlustrechn",
+        "row": 25
+      }
+    },
+    {
+      "raw_label": "9. Zinsen und ähnliche Aufwendungen",
+      "std_id": "PL_GKV-13",
+      "match_type": "longest_match",
+      "values": {
+        "2019": -2225115.7,
+        "2018": -3204944.15
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2019_Gewinn- und Verlustrechn",
+        "row": 26
+      }
+    },
+    {
+      "raw_label": "10. Steuern vom Einkommen und vom Ertrag",
+      "std_id": "PL_GKV-14",
+      "match_type": "longest_match",
+      "values": {
+        "2019": -1229584.03,
+        "2018": -2803466.13
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2019_Gewinn- und Verlustrechn",
+        "row": 28
+      }
+    },
+    {
+      "raw_label": "11. Ergebnis nach Steuern / Konzernjahresfehlbetrag / -überschuss",
+      "std_id": "PL_GKV-15",
+      "match_type": "longest_match",
+      "values": {
+        "2019": -6801303.18,
+        "2018": 2435182.21
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2019_Gewinn- und Verlustrechn",
+        "row": 29
+      }
+    },
+    {
+      "raw_label": "12. Entnahme aus den Gewinnrücklagen",
+      "std_id": "BS-P.A.III",
+      "match_type": "longest_match",
+      "values": {
+        "2019": 0.0,
+        "2018": 1466817.52
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2019_Gewinn- und Verlustrechn",
+        "row": 30
+      }
+    },
+    {
+      "raw_label": "13. Verlustvortrag",
+      "std_id": "BS-P.A.IV",
+      "match_type": "longest_match",
+      "values": {
+        "2019": -15165258.94,
+        "2018": -19068730.89
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2019_Gewinn- und Verlustrechn",
+        "row": 31
+      }
+    },
+    {
+      "raw_label": "14. auf nicht beherrschende Anteile entfallender Verlust",
+      "std_id": null,
+      "match_type": "none",
+      "values": {
+        "2019": 13498.95,
+        "2018": 1472.22
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2019_Gewinn- und Verlustrechn",
+        "row": 32
+      }
+    },
+    {
+      "raw_label": "15. Konzernbilanzverlust",
+      "std_id": "PL_GKV-BILANZVERLUST",
+      "match_type": "extra_substr",
+      "values": {
+        "2019": -21953063.17,
+        "2018": -15165258.94
+      },
+      "unit_multiplier": 1.0,
+      "provenance": {
+        "sheet": "FY2019_Gewinn- und Verlustrechn",
+        "row": 33
+      }
+    },
+    {
+      "raw_label": "1. Betriebsergebnis",
+      "std_id": "PL_GKV-15",
+      "match_type": "longest_match",
+      "values": {
+        "2016": 9070000.0,
+        "2015": 5603000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 7
+      }
+    },
+    {
+      "raw_label": "a) Rohergebnis",
+      "std_id": "PL_UKV-3",
+      "match_type": "longest_match",
+      "values": {
+        "2016": 115125000.0,
+        "2015": 115456000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 8
+      }
+    },
+    {
+      "raw_label": "Gesamtleistung",
+      "std_id": "PL_GKV-GESAMTLEISTUNG",
+      "match_type": "extra_exact",
+      "values": {
+        "2016": 196323000.0,
+        "2015": 198727000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 9
+      }
+    },
+    {
+      "raw_label": "Umsatzerlöse",
+      "std_id": "PL_GKV-1",
+      "match_type": "exact",
+      "values": {
+        "2016": 196300000.0,
+        "2015": 198901000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 10
+      }
+    },
+    {
+      "raw_label": "Erhöhung oder Verminderung des Bestandes an fertigen und unfertigen Erzeugnissen",
+      "std_id": null,
+      "match_type": "none",
+      "values": {
+        "2016": 23000.0,
+        "2015": -174000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 11
+      }
+    },
+    {
+      "raw_label": "sonstige betriebliche Erträge",
+      "std_id": "PL_GKV-4",
+      "match_type": "exact",
+      "values": {
+        "2016": 7085000.0,
+        "2015": 5842000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 12
+      }
+    },
+    {
+      "raw_label": "Materialaufwand",
+      "std_id": "PL_GKV-5a",
+      "match_type": "exact",
+      "values": {
+        "2016": 88283000.0,
+        "2015": 89113000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 13
+      }
+    },
+    {
+      "raw_label": "Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren",
+      "std_id": "PL_GKV-5a",
+      "match_type": "longest_match",
+      "values": {
+        "2016": 84734000.0,
+        "2015": 86174000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 14
+      }
+    },
+    {
+      "raw_label": "Aufwendungen für bezogene Leistungen",
+      "std_id": "PL_GKV-5b",
+      "match_type": "exact",
+      "values": {
+        "2016": 3549000.0,
+        "2015": 2939000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 15
+      }
+    },
+    {
+      "raw_label": "b) Personalaufwand",
+      "std_id": "PL_GKV-6a",
+      "match_type": "longest_match",
+      "values": {
+        "2016": 40678000.0,
+        "2015": 42274000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 16
+      }
+    },
+    {
+      "raw_label": "Löhne und Gehälter",
+      "std_id": "PL_GKV-6a",
+      "match_type": "exact",
+      "values": {
+        "2016": 36013000.0,
+        "2015": 35978000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 17
+      }
+    },
+    {
+      "raw_label": "soziale Abgaben und Aufwendungen für Altersversorgung und für Unterstützung",
+      "std_id": "PL_GKV-6b",
+      "match_type": "longest_match",
+      "values": {
+        "2016": 4665000.0,
+        "2015": 6296000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 18
+      }
+    },
+    {
+      "raw_label": "soziale Abgaben",
+      "std_id": "PL_GKV-6b",
+      "match_type": "exact",
+      "values": {
+        "2016": 4836000.0,
+        "2015": 5286000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 19
+      }
+    },
+    {
+      "raw_label": "Aufwendungen für Altersversorgung",
+      "std_id": "PL_GKV-6b",
+      "match_type": "longest_match",
+      "values": {
+        "2016": -171000.0,
+        "2015": 1010000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 20
+      }
+    },
+    {
+      "raw_label": "c) Abschreibungen",
+      "std_id": "PL_GKV-7a",
+      "match_type": "longest_match",
+      "values": {
+        "2016": 3248000.0,
+        "2015": 3754000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 21
+      }
+    },
+    {
+      "raw_label": "Abschreibungen auf immaterielle Vermögensgegenstände des Anlagevermögens und Sachanlagen",
+      "std_id": "BS-A.A.I",
+      "match_type": "longest_match",
+      "values": {
+        "2016": 3248000.0,
+        "2015": 3754000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 22
+      }
+    },
+    {
+      "raw_label": "d) sonstige betriebliche Aufwendungen",
+      "std_id": "PL_GKV-8",
+      "match_type": "longest_match",
+      "values": {
+        "2016": 62129000.0,
+        "2015": 63825000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 23
+      }
+    },
+    {
+      "raw_label": "2. Finanz- und Beteiligungsergebnis",
+      "std_id": null,
+      "match_type": "none",
+      "values": {
+        "2016": -3153000.0,
+        "2015": -3251000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 24
+      }
+    },
+    {
+      "raw_label": "a) Ergebnis aus Beteiligungen an assoziierten Unternehmen",
+      "std_id": "BS-A.A.III.3",
+      "match_type": "longest_match",
+      "values": {
+        "2015": 6000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 25
+      }
+    },
+    {
+      "raw_label": "b) sonstige Zinsen und ähnliche Erträge",
+      "std_id": "PL_GKV-11",
+      "match_type": "longest_match",
+      "values": {
+        "2016": 560000.0,
+        "2015": 550000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 26
+      }
+    },
+    {
+      "raw_label": "c) Zinsen und ähnliche Aufwendungen",
+      "std_id": "PL_GKV-13",
+      "match_type": "longest_match",
+      "values": {
+        "2016": 3706000.0,
+        "2015": 3807000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 27
+      }
+    },
+    {
+      "raw_label": "3. Ergebnis der gewöhnlichen Geschäftstätigkeit",
+      "std_id": null,
+      "match_type": "none",
+      "values": {
+        "2016": 5917000.0,
+        "2015": 2352000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 28
+      }
+    },
+    {
+      "raw_label": "4. außerordentliche Aufwendungen",
+      "std_id": null,
+      "match_type": "none",
+      "values": {
+        "2016": 217000.0,
+        "2015": 3407000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 29
+      }
+    },
+    {
+      "raw_label": "5. außerordentliches Ergebnis",
+      "std_id": null,
+      "match_type": "none",
+      "values": {
+        "2016": -217000.0,
+        "2015": -3407000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 30
+      }
+    },
+    {
+      "raw_label": "6. Steuern vom Einkommen und vom Ertrag",
+      "std_id": "PL_GKV-14",
+      "match_type": "longest_match",
+      "values": {
+        "2016": 1489000.0,
+        "2015": 2359000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 31
+      }
+    },
+    {
+      "raw_label": "Konzern-Jahresüberschuss",
+      "std_id": "PL_GKV-17",
+      "match_type": "exact",
+      "values": {
+        "2016": 4211000.0,
+        "2015": -3414000.0
+      },
+      "unit_multiplier": 1000.0,
+      "provenance": {
+        "sheet": "FY2016_Konzern-Gewinn- und Verl",
+        "row": 32
+      }
+    }
+  ]
+}

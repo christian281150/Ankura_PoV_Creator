@@ -1,0 +1,24 @@
+﻿# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# node
+node_modules/
+.npm-cache/
+dist/
+*.tsbuildinfo
+
+# client data - never commit filings
+*.xlsx
+*.xls
+*.pdf
+data/raw/
+py/acquire/bundesanzeiger/data/
+!tests/fixtures/*.xlsx
+
+# editor / os
+.DS_Store
+Thumbs.db

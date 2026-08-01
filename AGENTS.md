@@ -272,3 +272,29 @@ Not an estimate. Not a proxy. Not a blank chart.
 - Do not scrape every page of a company site. Target the page classes in spec §4.1c.
 - Do not treat an Impressum as a corporate-structure source.
 - Do not compare margins across business models (vertically integrated manufacturer vs. asset-light DTC) without a `business_model` tag and a flag.
+
+
+### Lane D - known bugs, fix before F1
+
+- D0.1  The same block can be assigned to two slots simultaneously. A block
+        assigned elsewhere must render disabled with reason "already in <slot>".
+- D0.2  Deselecting a block silently clears its open flags, which can unblock
+        export. exportBlocked must also require: all four slots assigned, and
+        at least one assigned block carrying a financial series.
+- D0.3  Action bar overlaps the last slot card at narrow viewports.
+"@ -Encoding UTF8
+
+Add-Content "$Repo\AGENTS.md" @"
+
+## Mapping discipline - inherited from the extractor's CLAUDE.md
+
+p0_normalise.py currently uses a longest-substring fallback. That VIOLATES the
+extractor's rule 1: never auto-pick an ambiguous match. Lane A must replace it
+with the documented behaviour - exact match, else queue to
+reviews/unmapped_queue.csv - and raise the map rate by ADDING TAXONOMY ROWS,
+never by widening the matcher. Report map rate and queue length separately.
+A lower map rate with an honest queue beats 93% with silent misclassifications.
+
+The taxonomy is generated from HGB_GKV_UKV_Standardisation_Map.xlsx. Do not
+hand-edit lib/hgb_map.py embedded data. Aliases go in aliases/client_aliases.csv.
+"@ -Encoding UTF8
