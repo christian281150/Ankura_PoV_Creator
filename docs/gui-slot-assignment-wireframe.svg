@@ -1,0 +1,229 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 980" width="1440" height="980" font-family="Inter, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <style><![CDATA[
+      .ink   { fill: #14201E; }
+      .mute  { fill: #6E7C78; }
+      .teal  { fill: #0E3B37; }
+      .mteal { fill: #2E7D6F; }
+      .gold  { fill: #B08D1F; }
+      .warn  { fill: #B3452F; }
+      .mono  { font-family: 'IBM Plex Mono', 'SF Mono', Menlo, monospace; }
+      .h1    { font-size: 21px; font-weight: 600; letter-spacing: .2px; }
+      .h2    { font-size: 12px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; }
+      .lbl   { font-size: 12.5px; font-weight: 600; }
+      .body  { font-size: 12px; }
+      .sm    { font-size: 10.5px; }
+      .xs    { font-size: 9.5px; letter-spacing: .5px; }
+      .rule  { stroke: #D3D8D6; stroke-width: 1; }
+      .hair  { stroke: #E4E8E6; stroke-width: 1; }
+      .box   { fill: #FFFFFF; stroke: #C6CFCC; stroke-width: 1.25; }
+      .panel { fill: #F6F5F1; stroke: #DDE2E0; stroke-width: 1; }
+      .sel   { fill: #EAF3F0; stroke: #2E7D6F; stroke-width: 1.5; }
+      .dash  { stroke: #B08D1F; stroke-width: 1.25; stroke-dasharray: 4 3; fill: none; }
+      .cal   { stroke: #B3452F; stroke-width: 1; fill: none; }
+    ]]></style>
+  </defs>
+
+  <rect width="1440" height="980" fill="#FBFAF7"/>
+
+  <!-- ── header ─────────────────────────────────────────────── -->
+  <text x="48" y="52" class="ink h1">Slot assignment — screen 5</text>
+  <text x="48" y="74" class="mute mono sm">Company Profile Builder · four-box "At a glance" · wireframe v1</text>
+  <line x1="48" y1="92" x2="1392" y2="92" class="rule"/>
+
+  <!-- entity strip -->
+  <rect x="48" y="110" width="1344" height="46" class="panel"/>
+  <text x="64" y="132" class="teal lbl">Textilkontor Walter Seidensticker GmbH &amp; Co. KG</text>
+  <text x="64" y="148" class="mute mono xs">HRA 8217 · AG Bielefeld · GmbH &amp; Co. KG · FYE 30-04 · §267 gross · Konzernabschluss FY2015–FY2025</text>
+  <rect x="1128" y="122" width="112" height="22" rx="2" fill="#EAF3F0" stroke="#2E7D6F"/>
+  <text x="1184" y="137" class="mteal mono xs" text-anchor="middle">ENTITY CONFIRMED</text>
+  <text x="1256" y="137" class="mute mono xs">change ▸</text>
+
+  <!-- ── left: slot grid ────────────────────────────────────── -->
+  <text x="48" y="192" class="teal h2">Slot grid</text>
+  <text x="48" y="210" class="mute mono xs">Each box is a fixed slot. Only blocks whose eligible_slots include this slot are listed.</text>
+
+  <!-- TL -->
+  <rect x="48" y="226" width="418" height="222" class="box"/>
+  <rect x="48" y="226" width="418" height="26" fill="#0E3B37"/>
+  <text x="62" y="244" fill="#FFF" class="h2">Top-left</text>
+  <text x="452" y="244" fill="#9FBDB6" class="mono xs" text-anchor="end">canonical</text>
+
+  <rect x="62" y="266" width="390" height="30" class="sel" rx="2"/>
+  <circle cx="78" cy="281" r="4.5" class="mteal"/>
+  <text x="94" y="278" class="ink lbl">Business overview</text>
+  <text x="94" y="291" class="mute mono xs">bo.business_overview · Lagebericht + site · cov 0.92</text>
+
+  <rect x="62" y="302" width="390" height="30" fill="#FFF" stroke="#E4E8E6" rx="2"/>
+  <circle cx="78" cy="317" r="4.5" fill="none" stroke="#9AA5A2"/>
+  <text x="94" y="314" class="ink body">Identity &amp; ownership</text>
+  <text x="94" y="327" class="mute mono xs">bo.identity_ownership · register · cov 0.98</text>
+
+  <rect x="62" y="338" width="390" height="30" fill="#FFF" stroke="#E4E8E6" rx="2"/>
+  <circle cx="78" cy="353" r="4.5" fill="none" stroke="#9AA5A2"/>
+  <text x="94" y="350" class="ink body">Event timeline</text>
+  <text x="94" y="363" class="mute mono xs">time.event_timeline · press + Lagebericht · cov 0.74</text>
+
+  <line x1="62" y1="384" x2="452" y2="384" class="hair"/>
+  <text x="62" y="404" class="mute mono xs">FOOTNOTES GENERATED</text>
+  <text x="62" y="422" class="mute sm">1. Third-generation family ownership per Gesellschafterliste, Jul-2025</text>
+  <text x="62" y="437" class="mute sm">2. Employee count is a company-website claim, not a filed figure</text>
+
+  <!-- TR -->
+  <rect x="486" y="226" width="418" height="222" class="box"/>
+  <rect x="486" y="226" width="418" height="26" fill="#0E3B37"/>
+  <text x="500" y="244" fill="#FFF" class="h2">Top-right</text>
+  <text x="890" y="244" fill="#9FBDB6" class="mono xs" text-anchor="end">canonical</text>
+
+  <rect x="500" y="266" width="390" height="30" class="sel" rx="2"/>
+  <circle cx="516" cy="281" r="4.5" class="mteal"/>
+  <text x="532" y="278" class="ink lbl">Revenue &amp; EBITDA series</text>
+  <text x="532" y="291" class="mute mono xs">fin.revenue_ebitda_series · basis: umsatzerloese · 12y</text>
+
+  <rect x="500" y="302" width="390" height="30" fill="#FFF" stroke="#E4E8E6" rx="2"/>
+  <circle cx="516" cy="317" r="4.5" fill="none" stroke="#9AA5A2"/>
+  <text x="532" y="314" class="ink body">Cost structure</text>
+  <text x="532" y="327" class="mute mono xs">fin.cost_structure · GuV · cov 0.91</text>
+
+  <rect x="500" y="338" width="390" height="30" fill="#FFF" stroke="#E4E8E6" rx="2"/>
+  <circle cx="516" cy="353" r="4.5" fill="none" stroke="#9AA5A2"/>
+  <text x="532" y="350" class="ink body">Balance summary</text>
+  <text x="532" y="363" class="mute mono xs">fin.balance_summary · Bilanz · cov 0.88</text>
+
+  <rect x="500" y="382" width="390" height="52" fill="#FBF2EF" stroke="#B3452F" rx="2"/>
+  <text x="514" y="400" class="warn mono xs">⚠  2 NOTES REQUIRED — BLOCKS EXPORT</text>
+  <text x="514" y="415" class="ink sm">V5  FY24 Umsatzerlöse −18.6% YoY</text>
+  <text x="514" y="428" class="ink sm">V6  FY24 material-cost ratio breaks trend −6.3pp</text>
+  <text x="876" y="400" class="mteal mono xs" text-anchor="end">resolve ▸</text>
+
+  <!-- BL -->
+  <rect x="48" y="464" width="418" height="200" class="box"/>
+  <rect x="48" y="464" width="418" height="26" fill="#0E3B37"/>
+  <text x="62" y="482" fill="#FFF" class="h2">Bottom-left</text>
+  <text x="452" y="482" fill="#9FBDB6" class="mono xs" text-anchor="end">canonical</text>
+
+  <rect x="62" y="504" width="390" height="30" class="sel" rx="2"/>
+  <circle cx="78" cy="519" r="4.5" class="mteal"/>
+  <text x="94" y="516" class="ink lbl">Product grid</text>
+  <text x="94" y="529" class="mute mono xs">prod.product_grid · site · 38 images · 9 confirmed</text>
+
+  <rect x="62" y="540" width="390" height="30" fill="#FFF" stroke="#E4E8E6" rx="2"/>
+  <circle cx="78" cy="555" r="4.5" fill="none" stroke="#9AA5A2"/>
+  <text x="94" y="552" class="ink body">Leadership</text>
+  <text x="94" y="565" class="mute mono xs">mgmt.leadership · register + site · cov 0.95</text>
+
+  <rect x="62" y="576" width="390" height="30" fill="#F2F2F0" stroke="#E4E8E6" rx="2"/>
+  <text x="78" y="595" class="mute mono sm">⊘</text>
+  <text x="94" y="588" class="mute body">Segment table</text>
+  <text x="94" y="601" class="mute mono xs">not disclosed — Anhang carries no segment split</text>
+
+  <text x="62" y="632" class="mute mono xs">IMAGE LICENSING</text>
+  <text x="62" y="648" class="mute sm">Internal POV only. External circulation requires clearance.</text>
+
+  <!-- BR -->
+  <rect x="486" y="464" width="418" height="200" class="box"/>
+  <rect x="486" y="464" width="418" height="26" fill="#B08D1F"/>
+  <text x="500" y="482" fill="#FFF" class="h2">Bottom-right</text>
+  <text x="890" y="482" fill="#FFF3D0" class="mono xs" text-anchor="end">non-standard</text>
+
+  <rect x="500" y="504" width="390" height="30" class="sel" rx="2"/>
+  <circle cx="516" cy="519" r="4.5" class="mteal"/>
+  <text x="532" y="516" class="ink lbl">Footprint map</text>
+  <text x="532" y="529" class="mute mono xs">geo.footprint_map · Anhang + site · cov 0.81</text>
+
+  <rect x="500" y="540" width="390" height="30" fill="#FFF" stroke="#E4E8E6" rx="2"/>
+  <circle cx="516" cy="555" r="4.5" fill="none" stroke="#9AA5A2"/>
+  <text x="532" y="552" class="ink body">Revenue split by geography</text>
+  <text x="532" y="565" class="mute mono xs">geo.revenue_split · §285 Nr. 4 · cov 0.62 · 7 of 12y</text>
+
+  <rect x="500" y="584" width="390" height="46" fill="#FFFAEC" stroke="#B08D1F" rx="2"/>
+  <text x="514" y="602" class="gold mono xs">⚠  NON-STANDARD LAYOUT</text>
+  <text x="514" y="619" class="ink sm">Canonical for §267 gross is geo.revenue_split. Recorded in metadata.</text>
+
+  <!-- ── right rail ─────────────────────────────────────────── -->
+  <line x1="936" y1="180" x2="936" y2="700" class="hair"/>
+
+  <text x="968" y="192" class="teal h2">Live preview</text>
+  <rect x="968" y="208" width="424" height="238" fill="#FFF" stroke="#C6CFCC"/>
+  <line x1="968" y1="248" x2="1392" y2="248" class="hair"/>
+  <text x="984" y="228" class="teal" font-size="13" font-weight="600">At a glance: 107-year-old shirt &amp; blouse</text>
+  <text x="984" y="242" class="teal" font-size="13" font-weight="600">specialist, revenue +8.4% to €111.8m in FY25</text>
+  <line x1="1180" y1="248" x2="1180" y2="446" class="hair"/>
+  <line x1="968" y1="352" x2="1392" y2="352" class="hair"/>
+  <text x="984" y="266" class="mute mono xs">BUSINESS OVERVIEW</text>
+  <text x="1196" y="266" class="mute mono xs">FINANCIALS</text>
+  <text x="984" y="370" class="mute mono xs">PRODUCTS</text>
+  <text x="1196" y="370" class="mute mono xs">FOOTPRINT</text>
+  <g class="mute" font-size="9">
+    <rect x="984" y="276" width="176" height="4" fill="#E4E8E6"/>
+    <rect x="984" y="288" width="160" height="4" fill="#E4E8E6"/>
+    <rect x="984" y="300" width="172" height="4" fill="#E4E8E6"/>
+    <rect x="984" y="312" width="120" height="4" fill="#E4E8E6"/>
+  </g>
+  <!-- mini chart -->
+  <g>
+    <rect x="1200" y="316" width="14" height="22" class="mteal"/>
+    <rect x="1220" y="308" width="14" height="30" class="mteal"/>
+    <rect x="1240" y="304" width="14" height="34" class="mteal"/>
+    <rect x="1260" y="318" width="14" height="20" class="mteal"/>
+    <rect x="1280" y="322" width="14" height="16" class="mteal"/>
+    <rect x="1300" y="312" width="14" height="26" class="mteal"/>
+    <rect x="1320" y="326" width="14" height="12" class="mteal"/>
+    <rect x="1340" y="318" width="14" height="20" class="mteal"/>
+    <line x1="1200" y1="338" x2="1360" y2="338" class="hair"/>
+  </g>
+  <text x="984" y="438" class="mute" font-size="8">Note(s): 1. FY24 depressed by €8.8m inventory drawdown. 2. Revenue = Umsatzerlöse (§275 Nr. 1); excl. Bestandsveränderung.</text>
+
+  <!-- basis guard -->
+  <rect x="968" y="462" width="424" height="86" fill="#EAF3F0" stroke="#2E7D6F"/>
+  <text x="984" y="482" class="teal h2">Presentation basis</text>
+  <text x="984" y="502" class="ink body">Revenue series basis:  <tspan class="mono" font-weight="700">umsatzerloese</tspan></text>
+  <text x="984" y="520" class="mute sm">Switching to <tspan class="mono">gesamtleistung</tspan> relabels the axis to "Gesamtleistung".</text>
+  <text x="984" y="536" class="mute sm">A series labelled "Revenue" on any other basis fails V1 and blocks export.</text>
+
+  <!-- coverage -->
+  <text x="968" y="580" class="teal h2">Coverage</text>
+  <g class="mono xs">
+    <text x="968" y="602" class="mute">Financials</text>
+    <text x="968" y="620" class="mute">Business model</text>
+    <text x="968" y="638" class="mute">Geography split</text>
+    <text x="968" y="656" class="mute">Products</text>
+    <text x="968" y="674" class="mute">Management</text>
+  </g>
+  <g>
+    <rect x="1120" y="594" width="200" height="7" fill="#E4E8E6"/><rect x="1120" y="594" width="186" height="7" class="mteal"/>
+    <rect x="1120" y="612" width="200" height="7" fill="#E4E8E6"/><rect x="1120" y="612" width="176" height="7" class="mteal"/>
+    <rect x="1120" y="630" width="200" height="7" fill="#E4E8E6"/><rect x="1120" y="630" width="124" height="7" class="gold"/>
+    <rect x="1120" y="648" width="200" height="7" fill="#E4E8E6"/><rect x="1120" y="648" width="180" height="7" class="mteal"/>
+    <rect x="1120" y="666" width="200" height="7" fill="#E4E8E6"/><rect x="1120" y="666" width="190" height="7" class="mteal"/>
+  </g>
+  <g class="mono xs" fill="#6E7C78">
+    <text x="1336" y="602">.93</text><text x="1336" y="620">.88</text>
+    <text x="1336" y="638">.62</text><text x="1336" y="656">.90</text><text x="1336" y="674">.95</text>
+  </g>
+
+  <!-- ── action bar ─────────────────────────────────────────── -->
+  <line x1="48" y1="700" x2="1392" y2="700" class="rule"/>
+  <rect x="48" y="718" width="132" height="34" fill="#FFF" stroke="#C6CFCC" rx="2"/>
+  <text x="114" y="740" class="ink body" text-anchor="middle">Reset to canonical</text>
+  <rect x="192" y="718" width="110" height="34" fill="#FFF" stroke="#C6CFCC" rx="2"/>
+  <text x="247" y="740" class="ink body" text-anchor="middle">Lock layout</text>
+  <rect x="314" y="718" width="110" height="34" fill="#FFF" stroke="#C6CFCC" rx="2"/>
+  <text x="369" y="740" class="ink body" text-anchor="middle">Export JSON</text>
+  <rect x="1240" y="718" width="152" height="34" fill="#C9CFCD" rx="2"/>
+  <text x="1316" y="740" fill="#FFF" class="body" text-anchor="middle">Export .pptx</text>
+  <text x="1224" y="740" class="warn mono xs" text-anchor="end">2 blocking flags unresolved</text>
+
+  <!-- ── annotation key ─────────────────────────────────────── -->
+  <line x1="48" y1="784" x2="1392" y2="784" class="hair"/>
+  <text x="48" y="812" class="teal h2">Behaviour notes</text>
+
+  <g class="mono xs" fill="#6E7C78">
+    <text x="48" y="838" class="gold">A</text><text x="70" y="838" fill="#14201E">Entity confirmation is permanently human-gated. Screen 5 is unreachable without it — an entity error is undetectable downstream.</text>
+    <text x="48" y="858" class="gold">B</text><text x="70" y="858" fill="#14201E">Unavailable blocks render greyed with a reason. Absence is information; never hide it and never silently substitute another block.</text>
+    <text x="48" y="878" class="gold">C</text><text x="70" y="878" fill="#14201E">Dropdown order = coverage × confidence. Blocks with unresolved blocking flags are listed but not selectable.</text>
+    <text x="48" y="898" class="gold">D</text><text x="70" y="898" fill="#14201E">Deviation from the canonical layout for the entity's §267 size class is permitted, badged gold, and written to profile metadata.</text>
+    <text x="48" y="918" class="gold">E</text><text x="70" y="918" fill="#14201E">Notes written against V3–V6 flags become slide footnotes automatically. The footnote set updates live in the preview.</text>
+    <text x="48" y="938" class="gold">F</text><text x="70" y="938" fill="#14201E">Lock layout freezes slot assignment so a re-run against fresher filings preserves the analyst's choices.</text>
+  </g>
+</svg>

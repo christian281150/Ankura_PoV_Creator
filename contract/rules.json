@@ -1,0 +1,11 @@
+{
+  "V1": { "severity": "blocking",      "check": "series labelled Revenue has presentation_basis == umsatzerloese" },
+  "V2": { "severity": "blocking",      "check": "single unit within a series" },
+  "V3": { "severity": "note_required", "check": "consolidation perimeter change between adjacent years" },
+  "V4": { "severity": "note_required", "check": "GKV/UKV switch mid-series" },
+  "V5": { "severity": "note_required", "check": "line moves more than 15 percent YoY" },
+  "V6": { "severity": "note_required", "check": "cost ratio breaks trend more than 5pp" },
+  "V7": { "severity": "blocking",      "check": "unmapped label used in a charted series" },
+  "V8": { "severity": "blocking",      "check": "Aktiva equals Passiva" },
+  "V9": { "severity": "advisory",      "check": "negative equity position present" }
+}

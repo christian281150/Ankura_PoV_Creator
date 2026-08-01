@@ -1,0 +1,35 @@
+normalized_label,detected_format,confidence,rationale
+herstellungskostendererzielungderumsatzerloese,UKV,definitive,Exact §275 Abs. 3 Nr. 2 wording. Cannot appear in GKV.
+herstellungskostenderumsatzerloese,UKV,definitive,Standard abbreviation of §275 Abs. 3 Nr. 2.
+umsatzkosten,UKV,definitive,§275 Abs. 3 Nr. 2 — name of the COGS line in UKV.
+bruttoergebnisvomumsatz,UKV,definitive,§275 Abs. 3 Nr. 3 — UKV subtotal. Does not exist in GKV.
+bruttoergebnis,UKV,high,UKV subtotal. (Caveat: §276 HGB allows small companies to combine Pos. 1-5 GKV into 'Rohergebnis' — different concept.)
+vertriebskosten,UKV,definitive,§275 Abs. 3 Nr. 4. Function-of-expense category that only exists in UKV.
+allgemeineverwaltungskosten,UKV,definitive,§275 Abs. 3 Nr. 5.
+verwaltungskosten,UKV,high,Common UKV abbreviation.
+forschungsundentwicklungskosten,UKV,medium,Often shown as separate line in UKV statements (subset of Verwaltungskosten in §275 strict reading). Not a GKV position.
+costofgoodssold,UKV,definitive,English UKV translation.
+costofsales,UKV,definitive,English UKV translation.
+grossprofit,UKV,definitive,English UKV translation.
+sellingexpenses,UKV,definitive,English UKV.
+generalandadministrativeexpenses,UKV,definitive,English UKV.
+materialaufwand,GKV,definitive,§275 Abs. 2 Nr. 5. Nature-of-expense category that only appears as a line in GKV.
+aufwendungenfuerrohhilfsundbetriebsstoffe,GKV,definitive,Exact §275 Abs. 2 Nr. 5a wording.
+aufwendungenfuerbezogeneleistungen,GKV,definitive,§275 Abs. 2 Nr. 5b.
+personalaufwand,GKV,definitive,§275 Abs. 2 Nr. 6. Aggregate label is GKV-only (UKV splits this across functional lines).
+loehneundgehaelter,GKV,high,If shown as standalone GuV line — GKV. (Caveat: appears as cost-center detail in some UKV statements; treat with care.)
+sozialeabgabenundaufwendungenfueraltersversorgung,GKV,definitive,§275 Abs. 2 Nr. 6b.
+bestandsveraenderungen,GKV,definitive,§275 Abs. 2 Nr. 2 — GKV-only. UKV absorbs inventory movement into COGS.
+bestandsveraenderungfertigeunfertigeerzeugnisse,GKV,definitive,§275 Abs. 2 Nr. 2.
+veraenderungdesbestandes,GKV,definitive,§275 Abs. 2 Nr. 2.
+andereaktivierteeigenleistungen,GKV,definitive,§275 Abs. 2 Nr. 3 — GKV-only.
+aktivierteeigenleistungen,GKV,high,Common abbreviation of §275 Abs. 2 Nr. 3.
+costofmaterials,GKV,definitive,English GKV translation.
+changeininventories,GKV,definitive,English GKV translation.
+wagesandsalaries,GKV,high,Standalone line typically signals GKV. (See Löhne caveat.)
+umsatzerloese,BOTH,neutral,Same in both formats.
+sonstigebetrieblicheertraege,BOTH,neutral,Same in both formats.
+sonstigebetrieblicheaufwendungen,BOTH,neutral,Same in both formats.
+abschreibungenauffinanzanlagen,BOTH,neutral,Same in both formats.
+zinsenundaehnlicheaufwendungen,BOTH,neutral,Same in both formats.
+jahresueberschuss,BOTH,neutral,Bottom line — identical.

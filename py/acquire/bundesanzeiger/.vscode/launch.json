@@ -1,0 +1,66 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run GUI (ur_gui.py)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/ur_gui.py",
+            "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Unit Tests (dev_test.py)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/dev_test.py",
+            "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Dev Test: PDF extraction",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/dev_test.py",
+            "args": ["pdf", "${input:pdfPath}"],
+            "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Dev Test: Excel export",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/dev_test.py",
+            "args": ["excel", "${input:pdfPath}"],
+            "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Dev Test: Browser search",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/dev_test.py",
+            "args": ["search", "${input:companyName}"],
+            "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "pdfPath",
+            "type": "promptString",
+            "description": "Path to the PDF file"
+        },
+        {
+            "id": "companyName",
+            "type": "promptString",
+            "description": "Company name to search for",
+            "default": "CTEC I GmbH"
+        }
+    ]
+}

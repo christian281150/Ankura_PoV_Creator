@@ -1,0 +1,200 @@
+skr_variant,account_low,account_high,hgb_code_default,hgb_code_ukv,sign_dependent,hint
+SKR03,1,9,BS-A.A.I,,False,"Ingangsetzungsaufwendungen (historisch, BilMoG)"
+SKR03,10,99,BS-A.A.I,,False,Immaterielle Vermögensgegenstände
+SKR03,100,199,BS-A.A.II.1,PL_UKV-2,False,Grundstücke und Bauten
+SKR03,200,299,BS-A.A.II.2,PL_UKV-2,False,Technische Anlagen und Maschinen
+SKR03,300,499,BS-A.A.II.3,PL_UKV-5,False,"BGA, Fuhrpark, andere Anlagen"
+SKR03,500,519,BS-A.A.III.3,,False,Beteiligungen
+SKR03,520,539,BS-A.A.III.5,,False,Wertpapiere des AV
+SKR03,540,599,BS-A.A.III.6,,False,Ausleihungen / Rückdeckungsansprüche
+SKR03,580,589,BS-A.A.III.1,,False,Anteile an verbundenen Unternehmen
+SKR03,600,699,BS-P.C.2,,False,Verbindlichkeiten ggü. Kreditinstituten
+SKR03,700,799,BS-A.A.II.4,,False,Geleistete Anzahlungen / Anlagen im Bau
+SKR03,800,899,BS-P.A.I,,False,Eigenkapital (Gezeichnetes Kapital)
+SKR03,900,949,BS-P.A.II,,False,Kapitalrücklage / Gewinnrücklagen
+SKR03,950,954,BS-P.B.1,,False,Pensionsrückstellungen
+SKR03,955,969,BS-P.B.2,,False,Steuerrückstellungen
+SKR03,970,979,BS-P.B.3,,False,Sonstige Rückstellungen
+SKR03,980,989,BS-A.C,,False,Aktive Rechnungsabgrenzung
+SKR03,990,999,BS-P.D,,False,Passive Rechnungsabgrenzung / WB
+SKR03,1000,1099,BS-A.B.IV,,False,Kasse
+SKR03,1100,1199,BS-A.B.IV,,True,Postbank / Bank (kann auch passiv sein bei Überziehung)
+SKR03,1200,1299,BS-A.B.IV,,True,Bank (kann auch passiv sein bei Überziehung)
+SKR03,1300,1339,BS-A.B.IV,,False,"Schecks, Geldtransit"
+SKR03,1340,1399,BS-A.B.III,,False,Wertpapiere des UV
+SKR03,1400,1499,BS-A.B.II.1,,False,Forderungen aus L+L
+SKR03,1500,1599,BS-A.B.II.4,,False,Sonstige Vermögensgegenstände
+SKR03,1600,1699,BS-P.C.4,,False,Verbindlichkeiten aus L+L
+SKR03,1700,1799,BS-P.C.8,,False,"Sonstige Verbindlichkeiten (inkl. USt, LSt)"
+SKR03,1800,1899,BS-A.B.II.4,,False,Privatkonten / Verrechnungskonten
+SKR03,1900,1999,BS-A.C,,False,Aktive Rechnungsabgrenzung / Latente Steuern
+SKR03,2000,2099,PL_GKV-13,PL_UKV-12,False,Zinsen und ähnliche Aufwendungen
+SKR03,2100,2199,PL_GKV-13,PL_UKV-12,False,"Zinsaufwendungen (FK, sonstige)"
+SKR03,2200,2299,PL_GKV-16,PL_UKV-15,False,"Sonstige Steuern (z.B. Grundsteuer, KFZ-Steuer)"
+SKR03,2300,2399,PL_GKV-14,PL_UKV-13,False,Steuern vom Einkommen und Ertrag
+SKR03,2400,2499,PL_GKV-8,PL_UKV-7,False,Forderungsverluste / Abschr. Forderungen
+SKR03,2500,2599,PL_GKV-12,PL_UKV-11,False,Abschreibungen auf Finanzanlagen / WP UV
+SKR03,2600,2649,PL_GKV-11,PL_UKV-10,False,Sonstige Zinsen und ähnliche Erträge
+SKR03,2650,2699,PL_GKV-9,PL_UKV-8,False,Erträge aus Beteiligungen
+SKR03,2700,2749,PL_GKV-4,PL_UKV-6,False,Sonstige betriebliche Erträge
+SKR03,2750,2799,PL_GKV-4,PL_UKV-6,False,Erträge aus Auflösung Rückstellungen / WB
+SKR03,2800,2899,PL_GKV-8,PL_UKV-7,False,Sonstige betriebliche Aufwendungen (außerordentlich)
+SKR03,2900,2999,PL_GKV-8,PL_UKV-7,False,Periodenfremde Aufwendungen
+SKR03,3000,3499,PL_GKV-5a,PL_UKV-2,False,Wareneingang / Materialaufwand
+SKR03,3500,3699,PL_GKV-5b,PL_UKV-2,False,Aufwendungen für bezogene Leistungen
+SKR03,3700,3899,PL_GKV-5a,PL_UKV-2,False,Nebenkosten Material / Skonti Material
+SKR03,3900,3999,BS-A.B.I.1,,False,"Bestand Roh-, Hilfs-, Betriebsstoffe (Bilanz)"
+SKR03,4000,4099,PL_GKV-6a,PL_UKV-5,False,Löhne
+SKR03,4100,4119,PL_GKV-6a,PL_UKV-5,False,Gehälter
+SKR03,4120,4199,PL_GKV-6b,PL_UKV-5,False,Soziale Abgaben & Altersvorsorge
+SKR03,4200,4299,PL_GKV-8,PL_UKV-5,False,"Raumkosten (Miete, Heizung)"
+SKR03,4300,4399,PL_GKV-16,PL_UKV-15,False,Steuern (Grundsteuer etc.)
+SKR03,4400,4499,PL_GKV-8,PL_UKV-4,False,"Versicherungen, Beiträge"
+SKR03,4500,4599,PL_GKV-8,PL_UKV-4,False,Fahrzeugkosten
+SKR03,4600,4699,PL_GKV-8,PL_UKV-4,False,Werbe- und Reisekosten
+SKR03,4700,4799,PL_GKV-8,PL_UKV-2,False,Kosten der Warenabgabe / Frachten Ausgang
+SKR03,4800,4829,PL_GKV-7a,PL_UKV-2,False,Abschreibungen auf Sachanlagen
+SKR03,4830,4839,PL_GKV-7a,PL_UKV-2,False,AfA immaterielle VG
+SKR03,4840,4849,PL_GKV-7b,PL_UKV-7,False,Außerplanmäßige Abschreibungen UV
+SKR03,4850,4899,PL_GKV-7a,PL_UKV-5,False,Abschreibungen GWG / Sammelposten
+SKR03,4900,4999,PL_GKV-8,PL_UKV-5,False,Sonstige betriebliche Aufwendungen
+SKR03,7000,7099,BS-A.B.I.2,,False,Bestand unfertige Erzeugnisse
+SKR03,7100,7199,BS-A.B.I.3,,False,Bestand fertige Erzeugnisse / Waren
+SKR03,8000,8499,PL_GKV-1,PL_UKV-1,False,Umsatzerlöse
+SKR03,8500,8599,PL_GKV-2,,False,Bestandsveränderungen (nur GKV!)
+SKR03,8600,8699,PL_GKV-3,,False,Andere aktivierte Eigenleistungen (nur GKV!)
+SKR03,8700,8799,PL_GKV-4,PL_UKV-6,False,Sonstige betriebliche Erträge / Erlösschmälerungen
+SKR03,8800,8899,PL_GKV-1,PL_UKV-1,False,Umsatzerlöse innergemeinschaftlich / Export
+SKR03,8900,8999,PL_GKV-4,PL_UKV-6,False,Sonstige Erträge / Erträge aus Anlagenabgang
+SKR03,9000,9999,STAT,,False,Vortragskonten / statistische Konten (nicht im JA)
+SKR04,1,99,BS-P.A.I,,False,Ausstehende Einlagen / Ingangsetzungsaufwendungen (Korrektur Eigenkapital)
+SKR04,100,299,BS-A.A.I,,False,Immaterielle Vermögensgegenstände
+SKR04,200,299,BS-A.A.I.3,,False,Geschäfts- oder Firmenwert
+SKR04,300,399,BS-A.A.II.1,,False,Grundstücke und Bauten
+SKR04,400,499,BS-A.A.II.2,,False,Technische Anlagen und Maschinen
+SKR04,500,699,BS-A.A.II.3,,False,"BGA, andere Anlagen, Fuhrpark"
+SKR04,700,799,BS-A.A.II.4,,False,Geleistete Anzahlungen / Anlagen im Bau
+SKR04,800,869,BS-A.A.III,,False,Finanzanlagen
+SKR04,800,819,BS-A.A.III.1,,False,Anteile an verbundenen Unternehmen
+SKR04,820,829,BS-A.A.III.2,,False,Ausleihungen an verbundene Unternehmen
+SKR04,830,849,BS-A.A.III.3,,False,Beteiligungen
+SKR04,850,859,BS-A.A.III.4,,False,Ausleihungen an Beteiligungen
+SKR04,860,869,BS-A.A.III.5,,False,Wertpapiere des AV
+SKR04,870,899,BS-A.A.III.6,,False,Sonstige Ausleihungen
+SKR04,900,999,BS-A.A,,False,Wertberichtigungen Anlagevermögen / Ausstehende Einlagen
+SKR04,1000,1099,BS-A.B.I.1,,False,"Roh-, Hilfs- und Betriebsstoffe"
+SKR04,1050,1089,BS-A.B.I.2,,False,Unfertige Erzeugnisse
+SKR04,1090,1139,BS-A.B.I.3,,False,Fertige Erzeugnisse und Waren
+SKR04,1140,1199,BS-A.B.I.4,,False,Geleistete Anzahlungen auf Vorräte
+SKR04,1200,1299,BS-A.B.II.1,,False,Forderungen aus L+L
+SKR04,1300,1399,BS-A.B.II.2,,False,Forderungen gegen verbundene Unternehmen
+SKR04,1400,1499,BS-A.B.II.4,,False,Sonstige Vermögensgegenstände
+SKR04,1500,1599,BS-A.B.III,,False,Wertpapiere des UV / Schecks
+SKR04,1600,1699,BS-A.B.IV,,False,Kasse
+SKR04,1700,1899,BS-A.B.IV,,True,"Bank, Postbank (kann auch passiv sein)"
+SKR04,1900,1949,BS-A.C,,False,Aktive Rechnungsabgrenzung
+SKR04,1950,1950,BS-A.D,,False,Aktive latente Steuern
+SKR04,2000,2099,BS-P.A.I,,False,Gezeichnetes Kapital / Festkapital
+SKR04,2100,2199,BS-P.A.II,,False,Kapitalrücklage
+SKR04,2200,2899,BS-P.A.III,,False,Gewinnrücklagen
+SKR04,2900,2989,BS-P.SOPO,,False,Sonderposten mit Rücklageanteil (steuerlich)
+SKR04,2990,2999,BS-P.SOPO,,False,Sonderposten Zuschüsse / Zulagen
+SKR04,3000,3099,BS-P.B.1,,False,Pensionsrückstellungen
+SKR04,3100,3149,BS-P.B.2,,False,Steuerrückstellungen
+SKR04,3150,3299,BS-P.B.3,,False,Sonstige Rückstellungen
+SKR04,3300,3399,BS-P.C.1,,False,Anleihen
+SKR04,3400,3499,BS-P.C.2,,False,Verbindlichkeiten ggü. Kreditinstituten
+SKR04,3500,3599,BS-P.C.3,,False,Erhaltene Anzahlungen
+SKR04,3600,3699,BS-P.C.4,,False,Verbindlichkeiten aus L+L
+SKR04,3700,3749,BS-P.C.5,,False,Verbindlichkeiten aus Wechseln
+SKR04,3750,3799,BS-P.C.6,,False,Verbindlichkeiten ggü. verbundenen Unternehmen
+SKR04,3800,3899,BS-P.C.8,,False,"Sonstige Verbindlichkeiten (USt, LSt, etc.)"
+SKR04,3900,3949,BS-P.D,,False,Passive Rechnungsabgrenzung
+SKR04,3950,3999,BS-P.E,,False,Passive latente Steuern / Abgrenzung
+SKR04,4000,4499,PL_GKV-1,PL_UKV-1,False,Umsatzerlöse
+SKR04,4500,4699,PL_GKV-1,PL_UKV-1,False,"Umsatzerlöse (steuerfrei, Export, igL)"
+SKR04,4700,4799,PL_GKV-1,PL_UKV-1,False,"Erlösschmälerungen (Skonti, Rabatte)"
+SKR04,4800,4839,PL_GKV-2,,False,Bestandsveränderungen fertige/unfertige Erzeugnisse (nur GKV)
+SKR04,4840,4859,PL_GKV-3,,False,Andere aktivierte Eigenleistungen (nur GKV)
+SKR04,4860,4899,PL_GKV-4,PL_UKV-6,False,"Erlöse aus Vermietung, Anlagenverkauf, sonstige Erträge"
+SKR04,4900,4999,PL_GKV-4,PL_UKV-6,False,Sonstige betriebliche Erträge
+SKR04,5000,5899,PL_GKV-5a,PL_UKV-2,False,"Aufwendungen für Roh-, Hilfs-, Betriebsstoffe und bezogene Waren"
+SKR04,5900,5999,PL_GKV-5b,PL_UKV-2,False,Aufwendungen für bezogene Leistungen
+SKR04,6000,6099,PL_GKV-6a,PL_UKV-5,False,Löhne und Gehälter
+SKR04,6100,6199,PL_GKV-6b,PL_UKV-5,False,Soziale Abgaben und Altersversorgung
+SKR04,6200,6299,PL_GKV-7a,PL_UKV-2,False,Abschreibungen auf immaterielle VG / Sachanlagen
+SKR04,6300,6399,PL_GKV-7b,PL_UKV-7,False,Abschreibungen auf UV / Forderungen (außerplanmäßig)
+SKR04,6400,6499,PL_GKV-8,PL_UKV-5,False,Raumkosten
+SKR04,6500,6599,PL_GKV-8,PL_UKV-4,False,"Versicherungen, Beiträge"
+SKR04,6600,6699,PL_GKV-8,PL_UKV-4,False,Werbe- und Reisekosten
+SKR04,6700,6799,PL_GKV-8,PL_UKV-4,False,Kosten Warenabgabe (Frachten Ausgang)
+SKR04,6800,6899,PL_GKV-8,PL_UKV-5,False,"Verwaltungskosten (Büro, Telefon, IT)"
+SKR04,6900,6999,PL_GKV-8,PL_UKV-7,False,Sonstige betriebliche Aufwendungen
+SKR04,7000,7099,PL_GKV-9,PL_UKV-8,False,Erträge aus Beteiligungen
+SKR04,7100,7199,PL_GKV-10,PL_UKV-9,False,Erträge aus anderen Wertpapieren und Ausleihungen FA
+SKR04,7200,7299,PL_GKV-11,PL_UKV-10,False,Sonstige Zinsen und ähnliche Erträge
+SKR04,7300,7399,PL_GKV-12,PL_UKV-11,False,Abschreibungen auf Finanzanlagen / WP UV
+SKR04,7400,7499,PL_GKV-4,PL_UKV-6,False,Außerordentliche Erträge (post-BilMoG: sonstige betriebliche Erträge)
+SKR04,7500,7599,PL_GKV-13,PL_UKV-12,False,Zinsen und ähnliche Aufwendungen
+SKR04,7600,7689,PL_GKV-14,PL_UKV-13,False,Steuern vom Einkommen und Ertrag
+SKR04,7690,7699,PL_GKV-16,PL_UKV-15,False,Sonstige Steuern
+SKR04,7700,7799,PL_GKV-17,PL_UKV-16,False,Jahresüberschuss / Jahresfehlbetrag (Verrechnung)
+SKR04,9000,9999,STAT,,False,Vortragskonten / statistische Konten
+IKR,500,899,BS-A.A.II,,False,Sachanlagen
+IKR,890,899,BS-A.A.I,,False,GWG / Sammelposten (Anlagevermögen)
+IKR,900,999,BS-A.A.II.4,,False,Geleistete Anzahlungen Sachanlagen
+IKR,1300,1399,BS-A.A.III.3,,False,Beteiligungen
+IKR,1500,1599,BS-A.A.III.5,,False,Wertpapiere des AV
+IKR,1600,1699,BS-A.A.III.6,,False,Sonstige Finanzanlagen
+IKR,2000,2099,BS-A.B.I.1,,False,"Roh-, Hilfs- und Betriebsstoffe"
+IKR,2100,2199,BS-A.B.I.2,,False,Unfertige Erzeugnisse
+IKR,2200,2279,BS-A.B.I.3,,False,Fertige Erzeugnisse
+IKR,2280,2299,BS-A.B.I.3,,False,Waren (Handelswaren)
+IKR,2300,2399,BS-A.B.I.4,,False,Geleistete Anzahlungen auf Vorräte
+IKR,2400,2499,BS-A.B.II.1,,False,Forderungen aus L+L
+IKR,2500,2599,BS-A.B.II.4,,False,Innergemeinschaftlicher Erwerb / sonstige
+IKR,2600,2699,BS-A.B.II.4,,False,Vorsteuer
+IKR,2700,2799,BS-A.B.III,,False,Wertpapiere des UV
+IKR,2800,2879,BS-A.B.IV,,True,Bank / Schecks
+IKR,2880,2899,BS-A.B.IV,,False,Kasse
+IKR,2900,2999,BS-A.C,,False,Aktive Rechnungsabgrenzung
+IKR,3000,3099,BS-P.A.I,,False,Eigenkapital
+IKR,3100,3699,BS-P.A,,False,Eigenkapitalbewegungen / Privatkonto
+IKR,3670,3699,BS-A.B.II.1,,False,EWB / PWB Forderungen (Korrektivposten)
+IKR,3700,3799,BS-P.B.1,,False,Pensionsrückstellungen
+IKR,3800,3899,BS-P.B.2,,False,Steuerrückstellungen
+IKR,3900,3999,BS-P.B.3,,False,Sonstige Rückstellungen
+IKR,4100,4199,BS-P.C.1,,False,Anleihen
+IKR,4200,4299,BS-P.C.2,,False,Darlehen / Verb. ggü. Kreditinstituten
+IKR,4300,4399,BS-P.C.3,,False,Erhaltene Anzahlungen
+IKR,4400,4499,BS-P.C.4,,False,Verbindlichkeiten aus L+L
+IKR,4500,4599,BS-P.C.5,,False,Schuldwechsel
+IKR,4800,4899,BS-P.C.8,,False,Umsatzsteuer / sonstige Verbindlichkeiten
+IKR,4900,4999,BS-P.D,,False,Passive Rechnungsabgrenzung
+IKR,5000,5199,PL_GKV-1,PL_UKV-1,False,"Umsatzerlöse (eigene Erzeugnisse, Waren)"
+IKR,5200,5299,PL_GKV-2,,False,Bestandsveränderungen
+IKR,5300,5399,PL_GKV-3,,False,Andere aktivierte Eigenleistungen
+IKR,5400,5499,PL_GKV-4,PL_UKV-6,False,"Mieterträge, Entnahmen, sonstige Erträge"
+IKR,5500,5599,PL_GKV-9,PL_UKV-8,False,Erträge aus Beteiligungen / Finanzanlagen
+IKR,5600,5699,PL_GKV-11,PL_UKV-10,False,Zinserträge
+IKR,5700,5799,PL_GKV-11,PL_UKV-10,False,Erträge aus Wertpapieren UV
+IKR,5800,5899,PL_GKV-4,PL_UKV-6,False,Außerordentliche Erträge
+IKR,6000,6099,PL_GKV-5a,PL_UKV-2,False,Aufwendungen für Rohstoffe / Bezugskosten
+IKR,6080,6099,PL_GKV-5a,PL_UKV-2,False,Aufwendungen für Waren
+IKR,6140,6199,PL_GKV-5b,PL_UKV-2,False,"Frachten, Fremdlager, Fremdinstandhaltung"
+IKR,6200,6399,PL_GKV-6a,PL_UKV-5,False,Löhne und Gehälter
+IKR,6400,6499,PL_GKV-6b,PL_UKV-5,False,Soziale Abgaben (Arbeitgeberanteil)
+IKR,6500,6599,PL_GKV-7a,PL_UKV-2,False,Abschreibungen auf Sachanlagen / GWG
+IKR,6550,6599,PL_GKV-7a,PL_UKV-2,False,Außerplanmäßige Abschreibungen Sachanlagen
+IKR,6700,6899,PL_GKV-8,PL_UKV-5,False,"Mieten, Büromaterial, Versicherungen"
+IKR,6950,6989,PL_GKV-7b,PL_UKV-7,False,"Abschreibungen Forderungen, Verluste Anlagenabgang"
+IKR,6990,6999,PL_GKV-8,PL_UKV-7,False,Periodenfremde Aufwendungen
+IKR,7020,7099,PL_GKV-16,PL_UKV-15,False,Grundsteuer / sonstige Steuern
+IKR,7030,7099,PL_GKV-16,PL_UKV-15,False,KFZ-Steuer
+IKR,7400,7499,PL_GKV-12,PL_UKV-11,False,Abschreibungen Finanzanlagen / WP UV
+IKR,7450,7499,PL_GKV-12,PL_UKV-11,False,Verluste aus Abgang WP / Finanzanlagen
+IKR,7510,7599,PL_GKV-13,PL_UKV-12,False,Zinsaufwendungen
+IKR,7600,7699,PL_GKV-8,PL_UKV-7,False,Außerordentliche Aufwendungen
+IKR,7700,7710,PL_GKV-14,PL_UKV-13,False,Gewerbesteuer / Körperschaftsteuer
+IKR,7800,7899,PL_GKV-8,PL_UKV-7,False,Diverse Aufwendungen
+IKR,8000,8999,STAT,,False,"Eröffnungs-, Schlussbilanzkonto, GuV-Konto (Abschluss)"
