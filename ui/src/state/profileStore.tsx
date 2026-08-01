@@ -11,6 +11,8 @@ import { SLOT_ORDER } from '@/types/profile';
 interface State {
   fixture: ProfileFixture;
   assignment: Record<SlotId, string | null>;
+  /** Blocks whose non-advisory flags must be resolved before export. */
+  flaggedBlockIds: string[];
   /** Written notes, keyed `${blockId}:${rule}`. Presence resolves a flag. */
   notes: Record<string, string>;
   revenueBasis: PresentationBasis;
@@ -30,7 +32,18 @@ function reducer(state: State, action: Action): State {
   }
   switch (action.type) {
     case 'assign':
-      return { ...state, assignment: { ...state.assignment, [action.slot]: action.blockId } };
+      if (Object.entries(state.assignment).some(([slot, id]) => slot !== action.slot && id === action.blockId)) {
+        return state;
+      }
+      return {
+        ...state,
+        assignment: { ...state.assignment, [action.slot]: action.blockId },
+        flaggedBlockIds: state.fixture.blocks.some(
+          (block) => block.id === action.blockId && block.flags.some((flag) => flag.severity !== 'advisory'),
+        ) && !state.flaggedBlockIds.includes(action.blockId)
+          ? [...state.flaggedBlockIds, action.blockId]
+          : state.flaggedBlockIds,
+      };
     case 'note': {
       const key = `${action.blockId}:${action.rule}`;
       const notes = { ...state.notes };
@@ -53,6 +66,8 @@ interface Store extends State {
   /** Flags still lacking a note, across the four assigned blocks only. */
   openFlags: { block: ContentBlock; rule: RuleId; severity: string; message: string }[];
   isCanonical: (slot: SlotId) => boolean;
+  allSlotsAssigned: boolean;
+  hasFinancialSeries: boolean;
   exportBlocked: boolean;
   footnotes: string[];
 }
@@ -63,6 +78,10 @@ export function ProfileProvider({ fixture, children }: { fixture: ProfileFixture
   const [state, dispatch] = useReducer(reducer, {
     fixture,
     assignment: { ...fixture.canonicalLayout },
+    flaggedBlockIds: fixture.blocks
+      .filter((block) => Object.values(fixture.canonicalLayout).includes(block.id))
+      .filter((block) => block.flags.some((flag) => flag.severity !== 'advisory'))
+      .map((block) => block.id),
     notes: {},
     revenueBasis: 'umsatzerloese',
     layoutLocked: false,
@@ -76,7 +95,11 @@ export function ProfileProvider({ fixture, children }: { fixture: ProfileFixture
       (b): b is ContentBlock => Boolean(b),
     );
 
-    const openFlags = assigned.flatMap((block) =>
+    const flagBlocks = state.flaggedBlockIds
+      .map((id) => blockById(id))
+      .filter((block): block is ContentBlock => Boolean(block));
+
+    const openFlags = flagBlocks.flatMap((block) =>
       block.flags
         .filter((f) => f.severity !== 'advisory' && !state.notes[`${block.id}:${f.rule}`])
         .map((f) => ({ block, rule: f.rule, severity: f.severity, message: f.message })),
@@ -84,6 +107,8 @@ export function ProfileProvider({ fixture, children }: { fixture: ProfileFixture
 
     // V1: a series labelled "Revenue" must be stated on Umsatzerlöse.
     const basisViolation = state.revenueBasis !== 'umsatzerloese';
+    const allSlotsAssigned = SLOT_ORDER.every((slot) => state.assignment[slot] !== null);
+    const hasFinancialSeries = assigned.some((block) => Boolean(block.series?.length));
 
     const footnotes = [
       ...assigned.flatMap((b) => b.footnotesAuto),
@@ -96,7 +121,9 @@ export function ProfileProvider({ fixture, children }: { fixture: ProfileFixture
       blockById,
       openFlags,
       isCanonical: (slot: SlotId) => state.assignment[slot] === state.fixture.canonicalLayout[slot],
-      exportBlocked: openFlags.length > 0 || basisViolation,
+      allSlotsAssigned,
+      hasFinancialSeries,
+      exportBlocked: openFlags.length > 0 || basisViolation || !allSlotsAssigned || !hasFinancialSeries,
       footnotes,
     };
   }, [state]);
