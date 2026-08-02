@@ -58,6 +58,7 @@ class Entity(BaseModel):
     legal_form: str
     fiscal_year_end: str
     size_class: SizeClass
+    model_config = {"protected_namespaces": ()}
     files_konzernabschluss: bool
     years_available: list[int]
     confirmed_by: str | None = None
