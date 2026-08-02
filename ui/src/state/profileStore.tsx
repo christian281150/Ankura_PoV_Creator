@@ -15,12 +15,15 @@ interface State {
   flaggedBlockIds: string[];
   /** Written notes, keyed `${blockId}:${rule}`. Presence resolves a flag. */
   notes: Record<string, string>;
+  /** In-progress flag notes, shown in the preview but not yet resolving a flag. */
+  draftNotes: Record<string, string>;
   revenueBasis: PresentationBasis;
   layoutLocked: boolean;
 }
 
 type Action =
   | { type: 'assign'; slot: SlotId; blockId: string }
+  | { type: 'draftNote'; blockId: string; rule: RuleId; note: string }
   | { type: 'note'; blockId: string; rule: RuleId; note: string }
   | { type: 'setBasis'; basis: PresentationBasis }
   | { type: 'resetCanonical' }
@@ -47,9 +50,18 @@ function reducer(state: State, action: Action): State {
     case 'note': {
       const key = `${action.blockId}:${action.rule}`;
       const notes = { ...state.notes };
+      const draftNotes = { ...state.draftNotes };
       if (action.note.trim()) notes[key] = action.note.trim();
       else delete notes[key];
-      return { ...state, notes };
+      delete draftNotes[key];
+      return { ...state, notes, draftNotes };
+    }
+    case 'draftNote': {
+      const key = `${action.blockId}:${action.rule}`;
+      const draftNotes = { ...state.draftNotes };
+      if (action.note) draftNotes[key] = action.note;
+      else delete draftNotes[key];
+      return { ...state, draftNotes };
     }
     case 'setBasis':
       return { ...state, revenueBasis: action.basis };
@@ -83,6 +95,7 @@ export function ProfileProvider({ fixture, children }: { fixture: ProfileFixture
       .filter((block) => block.flags.some((flag) => flag.severity !== 'advisory'))
       .map((block) => block.id),
     notes: {},
+    draftNotes: {},
     revenueBasis: 'umsatzerloese',
     layoutLocked: false,
   });
@@ -113,6 +126,7 @@ export function ProfileProvider({ fixture, children }: { fixture: ProfileFixture
     const footnotes = [
       ...assigned.flatMap((b) => b.footnotesAuto),
       ...Object.entries(state.notes).map(([, note]) => note),
+      ...Object.entries(state.draftNotes).map(([, note]) => note),
     ];
 
     return {

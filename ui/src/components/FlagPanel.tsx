@@ -11,7 +11,7 @@ const SEVERITY_COPY: Record<string, string> = {
  * footnote is a by-product of resolving a flag, not a separate authoring step.
  */
 export function FlagPanel() {
-  const { openFlags, notes, dispatch } = useProfile();
+  const { openFlags, notes, draftNotes, dispatch } = useProfile();
 
   if (openFlags.length === 0) {
     return (
@@ -48,10 +48,11 @@ export function FlagPanel() {
                 <span className="sr-only">Note explaining {rule} on {block.title}</span>
                 <input
                   type="text"
-                  value={notes[key] ?? ''}
+                  value={draftNotes[key] ?? notes[key] ?? ''}
                   onChange={(e) =>
-                    dispatch({ type: 'note', blockId: block.id, rule, note: e.target.value })
+                    dispatch({ type: 'draftNote', blockId: block.id, rule, note: e.target.value })
                   }
+                  onBlur={(e) => dispatch({ type: 'note', blockId: block.id, rule, note: e.target.value })}
                   placeholder="Explain the movement — this becomes footnote text"
                   className="w-full border border-rule bg-paper-raised px-2 py-1.5 text-sm text-ink placeholder:text-ink-4"
                 />
