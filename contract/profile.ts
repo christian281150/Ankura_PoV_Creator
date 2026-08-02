@@ -91,13 +91,15 @@ export interface ContentBlock {
   id: string;
   title: string;
   kind: BlockKind;
-  earningsBasis?: EarningsBasis;
   eligibleSlots: SlotId[];
-  /** 0â€“1. How complete the underlying data is. */
+  /** 0–1. How complete the underlying data is. */
   coverage: number;
   confidence: Confidence;
   source: string;
   presentationBasis: PresentationBasis;
+  earningsBasis?: EarningsBasis;
+  framework?: Framework;
+  pnlMethod?: PnlMethod;
   /** Non-null => block cannot be selected. Rendered with the reason. */
   unavailableReason: string | null;
   flags: Flag[];
@@ -119,3 +121,8 @@ export interface ProfileFixture {
 }
 
 
+/** Accounting framework the figure was reported under. */
+export type Framework = 'hgb' | 'ifrs';
+
+/** P&L method. Gesamtkostenverfahren vs Umsatzkostenverfahren. */
+export type PnlMethod = 'gkv' | 'ukv';

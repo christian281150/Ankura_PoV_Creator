@@ -19,6 +19,8 @@ Confidence = Literal["high", "medium", "low"]
 RuleId = Literal["V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10","V11"]
 Severity = Literal["blocking", "note_required", "advisory"]
 EarningsBasis = Literal["reported", "adjusted"]
+Framework = Literal["hgb", "ifrs"]
+PnlMethod = Literal["gkv", "ukv"]
 
 BlockKind = Literal[
     "bullets",
@@ -83,6 +85,8 @@ class ContentBlock(BaseModel):
     coverage: float = Field(ge=0, le=1)
     confidence: Confidence
     source: str
+    framework: Framework | None = None
+    pnl_method: PnlMethod | None = None
     presentation_basis: PresentationBasis
     unavailable_reason: str | None = None
     flags: list[Flag] = Field(default_factory=list)
