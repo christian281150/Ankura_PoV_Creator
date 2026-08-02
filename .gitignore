@@ -30,3 +30,7 @@ Thumbs.db
 out.json
 
 !tests/fixtures/*.pdf
+
+!render/templates/*.pptx
+
+!render/templates/*.pptx
