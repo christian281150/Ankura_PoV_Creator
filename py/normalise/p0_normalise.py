@@ -97,6 +97,13 @@ class Mapper:
         if code:
             return code, "exact"
         return None, "none"
+    
+    def is_subtotal(self, code: str | None) -> bool:
+        """Extractor rule 2: subtotals must not enter the mapped actuals."""
+        if not code:
+            return False
+        record = self._source.taxonomy.get(code)
+        return bool(record and record.get("is_subtotal"))
 
 
 def detect_unit(rows: list[list[Any]]) -> float:
@@ -148,10 +155,12 @@ def extract_statement(ws: Any, mapper: Mapper) -> list[dict[str, Any]]:
         if not values:
             continue
         std_id, match_type = mapper.lookup(label)
+        is_sub = mapper.is_subtotal(std_id)
         records.append({
             "raw_label": label,
             "std_id": std_id,
             "match_type": match_type,
+            "row_type": "subtotal" if is_sub else "line",
             "values": values,
             "unit": "EUR",
             "presentation_basis": "umsatzerloese" if std_id == "PL_GKV-1" else None,
@@ -194,7 +203,7 @@ def write_unmapped_queue(records: Iterable[dict[str, Any]], path: Path) -> int:
 
 def build_series(records: Iterable[dict[str, Any]], std_id: str) -> dict[int, float]:
     for record in records:
-        if record["std_id"] == std_id:
+        if record["std_id"] == std_id and record.get("row_type") != "subtotal":
             return dict(record["values"])
     return {}
 
