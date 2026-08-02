@@ -332,3 +332,16 @@ The mapper is exact-match only. Never auto-pick an ambiguous match: exact match,
    either the parser missed a row or the filing uses a different presentation
    basis than assumed. This is the only validation that checks against the
    filing's own arithmetic rather than against our assumptions. Implement in P4.
+
+## Extractor is the binding constraint
+
+Two findings, same root cause: the extractor emits tables only, and loses page
+numbers.
+
+- The Lagebericht narrative (§3.1 Ertragslage, §3.2 Vermögenslage, Nachtragsbericht,
+  Chancen- und Risikobericht) is absent from the workbook. py/normalise/lagebericht.py
+  is complete and correct but has nothing to parse.
+- provenance.page is null throughout, because the export lost the page mapping.
+
+Everything downstream is well-built and starved of input. Effort belongs in
+py/acquire/bundesanzeiger, not in py/normalise.
