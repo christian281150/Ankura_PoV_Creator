@@ -236,3 +236,9 @@ abgegrenzte Zinsen,abgegrenztezinsen,unsupported_framework,,,Kapitalmanagement,6
 Bruttoschulden,bruttoschulden,unsupported_framework,,,Kapitalmanagement,68,5
 Nettoschulden,nettoschulden,unsupported_framework,,,Kapitalmanagement,68,7
 nicht in Anspruch genommene revolvierende Kreditlinie,nichtinanspruchgenommenerevolvierendekreditlinie,unsupported_framework,,,Kapitalmanagement,68,8
+"a) Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren",aufwendungenfuerrohhilfsundbetriebsstoffeundfuerbezogenewaren,none,,,KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,3,8
+b) Soziale Abgaben und Aufwendungen für Altersversorgung und für Unterstützung,sozialeabgabenundaufwendungenfueraltersversorgungundfuerunterstuetzung,none,,,KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,3,13
+6. Abschreibungen auf immaterielle Vermögensgegenstände des Anlagevermögens und Sachanlagen,abschreibungenaufimmateriellevermoegensgegenstaendedesanlagevermoegensundsachanlagen,none,,,KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,3,16
+8. Gewinne aus Beteiligungen an assoziierten Unternehmen,gewinneausbeteiligungenanassoziiertenunternehmen,none,,,KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,3,20
+12. Ergebnis nach Steuern / Konzernjahresfehlbetrag,ergebnisnachsteuernkonzernjahresfehlbetrag,none,,,KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,3,25
+Konzernjahresfehlbetrag,konzernjahresfehlbetrag,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,3
