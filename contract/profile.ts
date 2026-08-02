@@ -77,14 +77,11 @@ export type SeriesProvenance = FilingSeriesProvenance | UserSuppliedSeriesProven
 
 /** Explicit ISO 4217 codes currently accepted by the canonical contract. */
 export type CurrencyCode = 'EUR' | 'GBP' | 'USD';
+export type AmountUnit = 'EUR' | 'TEUR';
 
 export interface LineItemObservation {
   /** Base-ten decimal serialised as a string to preserve fail-closed equality. */
   value: string;
-  unit: CurrencyCode;
-  presentationBasis: PresentationBasis;
-  framework: Framework;
-  pnlMethod: PnlMethod;
   provenance: SeriesProvenance;
   restated: boolean;
 }
@@ -111,6 +108,13 @@ export interface LineItemConflictResolution {
  */
 export interface LineItemPoint {
   fy: number;
+  unit: AmountUnit;
+  currency: CurrencyCode;
+  framework: Framework;
+  pnlMethod: PnlMethod;
+  presentationBasis: PresentationBasis;
+  scopeFlag: string | null;
+  methodFlag: string | null;
   observations: LineItemObservation[];
   resolution: LineItemConflictResolution | null;
 }

@@ -1,4 +1,4 @@
-"""Deterministic implementation of the validation contract V1--V11.
+"""Deterministic implementation of the validation contract V1--V12.
 
 The normalisation layer deliberately does not infer chart assignment, statement
 scope, or subtotal composition.  This module therefore consumes those fields
@@ -17,11 +17,12 @@ RULE_SEVERITY: dict[str, str] = {
     "V1": "blocking", "V2": "blocking", "V3": "note_required",
     "V4": "note_required", "V5": "note_required", "V6": "note_required",
     "V7": "blocking", "V8": "blocking", "V9": "advisory",
-    "V10": "note_required", "V11": "blocking",
+    "V10": "note_required", "V11": "blocking", "V12": "blocking",
 }
 
 V5_ABSOLUTE_MATERIALITY_EUR = 1_000_000.0
-V11_ONE_OFF_MATERIALITY_EUR = 1_000_000.0
+V11_ONE_OFF_MATERIALITY_REVENUE_PCT = 0.01
+V11_ONE_OFF_MATERIALITY_EUR_FLOOR = 1_000_000.0
 
 # Each entry is (component std_id, sign).  A definition is only evaluated when
 # every component is disclosed for the fiscal year in question.
@@ -187,12 +188,21 @@ def _provenance_key(value: Any) -> tuple[str, str, int] | None:
     return (doc, sheet, row)
 
 
-def _material_one_offs(lagebericht: Any | None, segments: Any | None, threshold_eur: float) -> list[dict[str, Any]]:
+def _material_one_offs(
+    lagebericht: Any | None,
+    segments: Any | None,
+    revenue_by_fy: Mapping[int, float] | None,
+    revenue_pct: float,
+    eur_floor: float,
+) -> list[dict[str, Any]]:
     return [
         one_off for one_off in _one_offs(lagebericht, segments)
         if one_off.get("unit") == "EUR"
         and one_off.get("value") is not None
-        and abs(float(one_off["value"])) >= threshold_eur
+        and abs(float(one_off["value"])) >= max(
+            eur_floor,
+            abs(float((revenue_by_fy or {}).get(int(one_off["fiscal_year"]), 0))) * revenue_pct,
+        )
         and _provenance_key(one_off.get("provenance")) is not None
     ]
 
@@ -230,11 +240,16 @@ def validate_v11(
     axis_labels: Mapping[str, str] | None = None,
     lagebericht: Any | None = None,
     segments: Any | None = None,
-    one_off_materiality_eur: float = V11_ONE_OFF_MATERIALITY_EUR,
+    revenue_by_fy: Mapping[int, float] | None = None,
+    one_off_materiality_revenue_pct: float = V11_ONE_OFF_MATERIALITY_REVENUE_PCT,
+    one_off_materiality_eur_floor: float = V11_ONE_OFF_MATERIALITY_EUR_FLOOR,
 ) -> list[Flag]:
     """Enforce auditable EBITDA basis and disclosure of material stated one-offs."""
     flags: list[Flag] = []
-    material_one_offs = _material_one_offs(lagebericht, segments, one_off_materiality_eur)
+    material_one_offs = _material_one_offs(
+        lagebericht, segments, revenue_by_fy,
+        one_off_materiality_revenue_pct, one_off_materiality_eur_floor,
+    )
     for series in _assigned_series(charted_series, slot_assignments, axis_labels):
         name = _series_name(series)
         if not (_is_ebitda_label(series.get("axis_label")) or _is_ebitda_label(name)):
@@ -268,6 +283,63 @@ def validate_v11(
     return flags
 
 
+def _v12_fiscal_years(series: Mapping[str, Any], rows: Iterable[Mapping[str, Any]]) -> set[int]:
+    years = _series_fiscal_years(series)
+    if years is not None:
+        return years
+    return {year for row in rows for year in _years(row.get("values", {}))}
+
+
+def _v12_document(row: Mapping[str, Any], year: int) -> str:
+    provenance = row.get("provenance_by_fy")
+    if isinstance(provenance, Mapping):
+        source = provenance.get(year) or provenance.get(str(year))
+    else:
+        source = row.get("provenance")
+    if source is not None:
+        document = _model_dump(source).get("doc")
+        if isinstance(document, str) and document:
+            return document
+    return f"FY{year} filing"
+
+
+def validate_v12(
+    normalised: Mapping[str, Any],
+    charted_series: Iterable[Any] | None,
+    slot_assignments: Mapping[str, Any] | Iterable[Any] | None,
+    *,
+    axis_labels: Mapping[str, str] | None = None,
+) -> list[Flag]:
+    """Fail closed when an EBITDA series lacks a PL_GKV-7 child.
+
+    Canonical output cannot tell a missing child apart from an unmapped child.
+    Therefore a missing ``PL_GKV-7a`` or ``PL_GKV-7b`` is blocking until the
+    analyst records the required confirmation note on the EBITDA series.
+    """
+    rows = [_model_dump(row) for row in normalised.get("rows", ())]
+    by_id = {str(row.get("std_id")): row for row in rows if row.get("std_id")}
+    flags: list[Flag] = []
+    for series in _assigned_series(charted_series, slot_assignments, axis_labels):
+        name = _series_name(series)
+        if not (_is_ebitda_label(series.get("axis_label")) or _is_ebitda_label(name)):
+            continue
+        footnotes = {str(note) for note in (*series.get("footnotes_auto", ()), *series.get("footnotes", ())) }
+        for year in sorted(_v12_fiscal_years(series, rows)):
+            filing_document = next(
+                (_v12_document(row, year) for row in rows if year in _years(row.get("values", {}))),
+                f"FY{year} filing",
+            )
+            for child in ("PL_GKV-7a", "PL_GKV-7b"):
+                row = by_id.get(child)
+                if row is not None and year in _years(row.get("values", {})):
+                    continue
+                document = _v12_document(row, year) if row is not None else filing_document
+                required_note = f"Confirm {child} is absent from {document}, or map it."
+                if required_note not in footnotes:
+                    flags.append(_flag("V12", f"{name} in {series['slot']} cannot confirm {child} for FY{year}; EBITDA must not sum only disclosed PL_GKV-7 children.", required_note))
+    return flags
+
+
 def validate_normalised(
     normalised: Mapping[str, Any],
     segments: Any | None = None,
@@ -276,7 +348,8 @@ def validate_normalised(
     slot_assignments: Mapping[str, Any] | Iterable[Any] | None = None,
     axis_labels: Mapping[str, str] | None = None,
     v5_absolute_materiality_eur: float = V5_ABSOLUTE_MATERIALITY_EUR,
-    one_off_materiality_eur: float = V11_ONE_OFF_MATERIALITY_EUR,
+    one_off_materiality_revenue_pct: float = V11_ONE_OFF_MATERIALITY_REVENUE_PCT,
+    one_off_materiality_eur_floor: float = V11_ONE_OFF_MATERIALITY_EUR_FLOOR,
     lagebericht: Any | None = None,
 ) -> ValidationResult:
     """Validate P0 and segment evidence, returning every applicable Flag.
@@ -290,11 +363,19 @@ def validate_normalised(
     flags: list[Flag] = []
     assigned = _assigned_series(charted_series, slot_assignments, axis_labels)
 
+    revenue_by_fy: dict[int, float] = {}
+    for row in rows:
+        if row.get("std_id") in {"PL_GKV-1", "PL_UKV-1"}:
+            revenue_by_fy.update(_years(row.get("values", {})))
+
     flags.extend(validate_v11(
         charted_series, slot_assignments, axis_labels=axis_labels,
         lagebericht=lagebericht, segments=segments,
-        one_off_materiality_eur=one_off_materiality_eur,
+        revenue_by_fy=revenue_by_fy,
+        one_off_materiality_revenue_pct=one_off_materiality_revenue_pct,
+        one_off_materiality_eur_floor=one_off_materiality_eur_floor,
     ))
+    flags.extend(validate_v12(normalised, charted_series, slot_assignments, axis_labels=axis_labels))
 
     # V1, V2 and V7: only an assigned slide series has a presentation label.
     for series in assigned:
@@ -402,7 +483,8 @@ def validate(
     slot_assignments: Mapping[str, Any] | Iterable[Any] | None = None,
     axis_labels: Mapping[str, str] | None = None,
     v5_absolute_materiality_eur: float = V5_ABSOLUTE_MATERIALITY_EUR,
-    one_off_materiality_eur: float = V11_ONE_OFF_MATERIALITY_EUR,
+    one_off_materiality_revenue_pct: float = V11_ONE_OFF_MATERIALITY_REVENUE_PCT,
+    one_off_materiality_eur_floor: float = V11_ONE_OFF_MATERIALITY_EUR_FLOOR,
     lagebericht: Any | None = None,
 ) -> list[Flag]:
     """Convenience API returning the contract Flag objects directly."""
@@ -410,14 +492,15 @@ def validate(
         normalised, segments, charted_series=charted_series,
         slot_assignments=slot_assignments, axis_labels=axis_labels,
     v5_absolute_materiality_eur=v5_absolute_materiality_eur,
-        one_off_materiality_eur=one_off_materiality_eur, lagebericht=lagebericht,
+        one_off_materiality_revenue_pct=one_off_materiality_revenue_pct,
+        one_off_materiality_eur_floor=one_off_materiality_eur_floor, lagebericht=lagebericht,
     ).flags
 
 
 # The registry is intentionally tested against contract/rules.json.  Existing
 # rules share the normalised-record handler; V11 also exposes its narrow
-# handler so render preflight can apply the same server-side rule.
+# handlers so render preflight can apply the same server-side rule.
 RULE_HANDLERS: dict[str, Callable[..., Any]] = {
     "V1": validate_normalised, "V2": validate_normalised, "V7": validate_normalised,
-    "V8": validate_normalised, "V11": validate_v11,
+    "V8": validate_normalised, "V11": validate_v11, "V12": validate_v12,
 }
