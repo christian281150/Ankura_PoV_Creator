@@ -17,6 +17,8 @@ dist/
 *.pdf
 data/raw/
 py/acquire/bundesanzeiger/data/
+py/acquire/bundesanzeiger/reviews/unmapped_queue.csv
+py/normalise/reviews/unmapped_queue.csv
 !tests/fixtures/*.xlsx
 
 # editor / os
