@@ -3,13 +3,15 @@ import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 import App from '@/App';
 
-function renderApp() {
-  return render(<App />);
+async function renderApp() {
+  const result = render(<App />);
+  await screen.findByRole('button', { name: 'Export .pptx' });
+  return result;
 }
 
 describe('slot assignment safeguards', () => {
-  it('blocks export while assigned blocks have unresolved note-required or blocking flags', () => {
-    renderApp();
+  it('blocks export while assigned blocks have unresolved note-required or blocking flags', async () => {
+    await renderApp();
 
     expect(screen.getByRole('button', { name: 'Export .pptx' })).toBeDisabled();
     expect(screen.getByText('3 flags unresolved')).toBeInTheDocument();
@@ -19,7 +21,7 @@ describe('slot assignment safeguards', () => {
 
   it('renders unavailable blocks with their reason and prevents selection', async () => {
     const user = userEvent.setup();
-    renderApp();
+    await renderApp();
 
     await user.click(screen.getByRole('button', { name: /Product grid/ }));
 
@@ -30,7 +32,7 @@ describe('slot assignment safeguards', () => {
 
   it('disables a block already assigned in another slot and names that slot', async () => {
     const user = userEvent.setup();
-    renderApp();
+    await renderApp();
 
     await user.click(screen.getByRole('button', { name: /Revenue split by geography/ }));
 
@@ -41,7 +43,7 @@ describe('slot assignment safeguards', () => {
 
   it('fails V1 when the revenue basis changes to Gesamtleistung', async () => {
     const user = userEvent.setup();
-    renderApp();
+    await renderApp();
 
     await user.click(screen.getByRole('radio', { name: 'Gesamtleistung' }));
 
@@ -53,7 +55,7 @@ describe('slot assignment safeguards', () => {
 
   it('adds a written flag note to the preview footnotes', async () => {
     const user = userEvent.setup();
-    renderApp();
+    await renderApp();
 
     const note = 'FY2024 inventory drawdown explained in management commentary.';
     await user.type(

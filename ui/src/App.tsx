@@ -1,6 +1,7 @@
-import { SLOT_ORDER } from '@/types/profile';
-import { seidensticker } from '@/data/seidensticker';
+import { Component, Suspense, type ReactNode } from 'react';
+import { loadProfile } from '@/lib/api';
 import { ProfileProvider } from '@/state/profileStore';
+import { SLOT_ORDER, type ProfileFixture } from '@/types/profile';
 import { EntityBar } from '@/components/EntityBar';
 import { SlotCard } from '@/components/SlotCard';
 import { FlagPanel } from '@/components/FlagPanel';
@@ -16,9 +17,70 @@ const SLOT_NEIGHBOUR: Record<string, Partial<Record<'ArrowUp' | 'ArrowDown' | 'A
   bottom_right: { ArrowUp: 'top_right', ArrowLeft: 'bottom_left' },
 };
 
-export default function App() {
+const DEFAULT_ENTITY_ID = 'hra-8217';
+
+type ProfileResource =
+  | { status: 'pending'; promise: Promise<void> }
+  | { status: 'success'; fixture: ProfileFixture }
+  | { status: 'error'; error: Error };
+
+const profileResources = new Map<string, ProfileResource>();
+
+function readProfile(entityId: string): ProfileFixture {
+  const existing = profileResources.get(entityId);
+  if (existing?.status === 'success') return existing.fixture;
+  if (existing?.status === 'error') throw existing.error;
+  if (existing?.status === 'pending') throw existing.promise;
+
+  const resource: ProfileResource = {
+    status: 'pending',
+    promise: loadProfile(entityId).then(
+      (fixture) => {
+        profileResources.set(entityId, { status: 'success', fixture });
+      },
+      (error: unknown) => {
+        profileResources.set(entityId, {
+          status: 'error',
+          error: error instanceof Error ? error : new Error(String(error)),
+        });
+      },
+    ),
+  };
+  profileResources.set(entityId, resource);
+  throw resource.promise;
+}
+
+function ProfileLoading() {
+  return <main className="grid min-h-screen place-items-center font-mono text-sm text-ink-3">Loading profile…</main>;
+}
+
+class ProfileErrorBoundary extends Component<{ children: ReactNode }, { error: Error | null }> {
+  state: { error: Error | null } = { error: null };
+
+  static getDerivedStateFromError(error: Error) {
+    return { error };
+  }
+
+  render() {
+    if (this.state.error) {
+      return (
+        <main className="grid min-h-screen place-items-center p-6">
+          <div className="max-w-lg border border-rust bg-paper p-5 font-mono text-sm text-rust">
+            <h1 className="font-sans text-lg font-semibold">Profile unavailable</h1>
+            <p className="mt-2">{this.state.error.message}</p>
+          </div>
+        </main>
+      );
+    }
+    return this.props.children;
+  }
+}
+
+function ProfileScreen({ entityId }: { entityId: string }) {
+  const fixture = readProfile(entityId);
+
   return (
-    <ProfileProvider fixture={seidensticker}>
+    <ProfileProvider fixture={fixture}>
       <a href="#slots" className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:bg-pine focus:px-3 focus:py-2 focus:text-white">
         Skip to slot assignment
       </a>
@@ -67,5 +129,15 @@ export default function App() {
         <ActionBar />
       </div>
     </ProfileProvider>
+  );
+}
+
+export default function App({ entityId = DEFAULT_ENTITY_ID }: { entityId?: string }) {
+  return (
+    <ProfileErrorBoundary>
+      <Suspense fallback={<ProfileLoading />}>
+        <ProfileScreen entityId={entityId} />
+      </Suspense>
+    </ProfileErrorBoundary>
   );
 }
