@@ -360,3 +360,24 @@ restatements where the same fiscal year differs between filings.
 That last point matters most: when FY2024 appears as a comparative in the FY2025
 filing and as the current year in the FY2024 filing, a difference is a restatement
 and must be flagged, never silently resolved by taking one.
+
+
+## Path B — user-supplied financials (40% of engagements)
+
+Non-German targets have no Bundesanzeiger filing. The analyst supplies financials
+as xlsx or PDF, plus a website for narrative and images.
+
+Architecture: canonical JSON is the product boundary. Path A (German filing ->
+extractor) and Path B (user file -> mapping screen) both emit it; everything
+downstream consumes it and must never assume which path produced it.
+
+Path B requires an explicit mapping screen. The user maps their columns to std_ids
+once per company, and MUST declare framework, pnl_method, unit, fiscal-year
+convention, and presentation_basis per series. No defaults, no inference. If a
+declaration is missing, no canonical JSON is emitted.
+
+earnings_basis = adjusted is only available if the user supplies the reconciliation
+adjustments, same rule as Path A.
+
+Open question: are non-German engagements one-off or recurring? Recurring requires
+saved mappings per company and a refresh path — a materially larger build.
