@@ -32,5 +32,4 @@ out.json
 
 !render/templates/*.pptx
 
-
 !tests/fixtures/**/*.pdf
