@@ -1,8 +1,19 @@
-﻿# AGENTS.md â€” Company Profile Builder
+﻿# AGENTS.md  Company Profile Builder
 
 Implementation brief for coding agents (Codex, Claude Code, Cursor).
 Read this before touching the repo. Full design rationale lives in
 `company-profile-builder-spec.md`; this file is the operational contract.
+---
+
+## Active operational plan
+
+``docs/final-push-lanes.md`` — lane ownership, Wave 0 blockers, per-lane acceptance
+witnesses and agent prompts for the current push. Read it before starting any lane.
+
+Note: that document records four defects in this file and in
+``docs/company-profile-builder-spec.md``. Until AGENTS.md ss.P0 is rewritten, ss.P0.6 is
+WRONG: it instructs mapping ``4. Materialaufwand`` to a parent that does not exist in
+``hgb_taxonomy.csv`` and must not. ``_UNSAFE_AGGREGATE_KEYS`` leaves it unmapped by design.
 
 ---
 
