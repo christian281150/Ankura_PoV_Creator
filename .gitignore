@@ -37,3 +37,6 @@ out.json
 !tests/fixtures/**/*.pdf
 
 .pytest-tmp/
+
+out.json
+out_*.json
