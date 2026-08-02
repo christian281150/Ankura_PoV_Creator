@@ -1,0 +1,20 @@
+{
+  "records": [
+    {
+      "register": {"court": "Bielefeld", "register_type": "HRB", "number": "1"},
+      "legal_name": "Example GmbH Bielefeld",
+      "legal_form": "GmbH"
+    },
+    {
+      "register": {"court": "Paderborn", "register_type": "HRB", "number": "2"},
+      "legal_name": "Example GmbH Paderborn",
+      "legal_form": "GmbH"
+    }
+  ],
+  "lookups": {
+    "example gmbh": [
+      {"court": "Bielefeld", "register_type": "HRB", "number": "1"},
+      {"court": "Paderborn", "register_type": "HRB", "number": "2"}
+    ]
+  }
+}

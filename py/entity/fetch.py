@@ -20,7 +20,7 @@ class EntityFetch(Protocol):
         """Return the concrete registry record, or None if unavailable."""
 
     def children_of(self, register: RegisterId) -> Iterable[EntityRecord]:
-        """Return known direct subsidiaries for a resolved parent."""
+        """Return records whose raw shareholder list names this register."""
 
 
 class FixtureEntityFetch:
@@ -37,7 +37,11 @@ class FixtureEntityFetch:
         return self._records.get(register)
 
     def children_of(self, register: RegisterId) -> Iterable[EntityRecord]:
-        return [record for record in self._records.values() if record.parent_register == register]
+        return [
+            record
+            for record in self._records.values()
+            if any(entry.shareholder_register == register for entry in record.shareholder_entries)
+        ]
 
     @staticmethod
     def _normalise(query: str) -> str:

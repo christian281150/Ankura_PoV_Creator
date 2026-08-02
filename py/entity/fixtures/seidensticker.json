@@ -7,26 +7,53 @@
       "seat": "Bielefeld",
       "files_konzernabschluss": true,
       "aliases": ["Seidensticker Gruppe"],
-      "historical_names": ["Textilkontor N.N. GmbH & Co. KG"]
+      "historical_names": ["Textilkontor N.N. GmbH & Co. KG"],
+      "shareholder_entries": [
+        {
+          "shareholder_name": "Walter Seidensticker",
+          "kind": "natural_person",
+          "ownership_percent": 100.0,
+          "source_doc": "Gesellschafterliste Textilkontor Walter Seidensticker GmbH & Co. KG (fixture)",
+          "page": 1
+        }
+      ]
     },
     {
-      "register": {"court": "Bielefeld", "register_type": "HRB", "number": "39876"},
+      "register": {"court": "Bielefeld", "register_type": "HRB", "number": "39109"},
       "legal_name": "TK Store-Management GmbH",
       "legal_form": "GmbH",
       "seat": "Bielefeld",
-      "parent_register": {"court": "Bielefeld", "register_type": "HRA", "number": "8217"}
+      "shareholder_entries": [
+        {
+          "shareholder_name": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+          "kind": "company",
+          "shareholder_register": {"court": "Bielefeld", "register_type": "HRA", "number": "8217"},
+          "ownership_percent": 100.0,
+          "source_doc": "Gesellschafterliste TK Store-Management GmbH (fixture)",
+          "page": 1
+        }
+      ]
     },
     {
       "register": {"court": "Bielefeld", "register_type": "HRB", "number": "10234"},
       "legal_name": "Seidensticker GmbH",
       "legal_form": "GmbH",
       "seat": "Bielefeld",
-      "parent_register": {"court": "Bielefeld", "register_type": "HRA", "number": "8217"}
+      "shareholder_entries": [
+        {
+          "shareholder_name": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+          "kind": "company",
+          "shareholder_register": {"court": "Bielefeld", "register_type": "HRA", "number": "8217"},
+          "ownership_percent": 100.0,
+          "source_doc": "Gesellschafterliste Seidensticker GmbH (fixture)",
+          "page": 1
+        }
+      ]
     }
   ],
   "lookups": {
-    "seidensticker.com": [{"court": "Bielefeld", "register_type": "HRB", "number": "39876"}],
-    "https://seidensticker.com": [{"court": "Bielefeld", "register_type": "HRB", "number": "39876"}],
+    "seidensticker.com": [{"court": "Bielefeld", "register_type": "HRB", "number": "39109"}],
+    "https://seidensticker.com": [{"court": "Bielefeld", "register_type": "HRB", "number": "39109"}],
     "textilkontor walter seidensticker gmbh & co. kg": [{"court": "Bielefeld", "register_type": "HRA", "number": "8217"}]
   }
 }
