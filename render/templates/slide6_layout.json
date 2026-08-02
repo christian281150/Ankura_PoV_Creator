@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "source": {
+    "template": "ankura_master_reference.pptx",
+    "slide_number": 6,
+    "layout_name": "1_Blank with Title"
+  },
+  "canvas": {
+    "width_in": 13.333333,
+    "height_in": 7.5
+  },
+  "header": {
+    "title": { "x": 0.299729, "y": 0.331813, "width": 12.711864, "height": 0.347355 },
+    "chapter": { "x": 0.299729, "y": 0.039215, "width": 12.711864, "height": 0.178558 }
+  },
+  "quadrants": {
+    "top_left": {
+      "rect": { "x": 0.367122, "y": 1.268041, "width": 6.143295, "height": 2.821873 },
+      "header": { "x": 0.422678, "y": 1.268041, "width": 5.969072, "height": 0.335156 },
+      "content": { "x": 0.367122, "y": 1.632818, "width": 6.143295, "height": 2.457096 }
+    },
+    "top_right": {
+      "rect": { "x": 6.86632, "y": 1.268041, "width": 6.102431, "height": 2.637848 },
+      "header": { "x": 6.908933, "y": 1.268041, "width": 5.969072, "height": 0.335156 },
+      "content": { "x": 6.86632, "y": 1.861111, "width": 6.055556, "height": 1.737848 }
+    },
+    "bottom_left": {
+      "rect": { "x": 0.457042, "y": 4.118556, "width": 5.969072, "height": 2.555452 },
+      "header": { "x": 0.457042, "y": 4.118556, "width": 5.969072, "height": 0.335156 },
+      "content": { "x": 0.82874, "y": 4.482096, "width": 5.597375, "height": 2.191912 }
+    },
+    "bottom_right": {
+      "rect": { "x": 6.86632, "y": 4.118556, "width": 6.102431, "height": 2.596668 },
+      "header": { "x": 6.902059, "y": 4.118556, "width": 5.969072, "height": 0.335156 },
+      "content": { "x": 6.86632, "y": 4.474039, "width": 6.102431, "height": 2.105903 }
+    }
+  },
+  "products_picture_frames": {
+    "shirts": { "x": 0.82874, "y": 4.697807, "width": 1.087598, "height": 0.973425 },
+    "blouses": { "x": 0.82874, "y": 5.700218, "width": 1.087598, "height": 0.973425 },
+    "nightwear": { "x": 2.037729, "y": 4.697807, "width": 0.882328, "height": 0.973425 },
+    "socks": { "x": 2.941383, "y": 4.697807, "width": 0.882328, "height": 0.973425 },
+    "t_shirt": { "x": 3.845135, "y": 4.697807, "width": 0.882328, "height": 0.973425 },
+    "shorts": { "x": 3.845135, "y": 5.700218, "width": 0.882328, "height": 0.973425 },
+    "private_label": { "x": 4.836806, "y": 4.697807, "width": 1.589286, "height": 1.975836 }
+  },
+  "font_ramp": {
+    "title": { "family": "Lora", "size_pt": 24, "weight": "regular", "color": "#3E8778" },
+    "chapter": { "family": "Lora", "size_pt": 10, "weight": "regular", "color": "#919191" },
+    "quadrant_header": { "family": "Aptos", "size_pt": 12, "weight": "bold", "color": "#FFFFFF" },
+    "body": { "family": "Aptos", "size_pt": 10, "weight": "regular", "color": "#444444" },
+    "chart_label": { "family": "Aptos", "size_pt": 10, "weight": "regular", "color": "#222222" },
+    "product_label": { "family": "Aptos", "size_pt": 9, "weight": "bold", "color": "#FFFFFF" },
+    "footnote": { "family": "Aptos", "size_pt": 8, "weight": "regular", "color": "#222222" }
+  },
+  "palette": {
+    "dark_1": "#222222",
+    "light_1": "#FFFFFF",
+    "dark_2": "#444444",
+    "light_2": "#FFFFFF",
+    "accent_1": "#3E8778",
+    "accent_2": "#344B46",
+    "accent_3": "#97B0AA",
+    "accent_4": "#587DA8",
+    "accent_5": "#224D74",
+    "accent_6": "#E3B822"
+  },
+  "header_rule": {
+    "rect": { "x": 0.288196, "y": 0.255786, "width": 12.726763, "height": 0.44213 },
+    "edge": "top",
+    "color": "#737373",
+    "width_pt": 0.5
+  },
+  "logo_lockup": {
+    "rect": { "x": 11.6478, "y": 7.008959, "width": 1.003071, "height": 0.209083 },
+    "separator_x": 12.774077
+  },
+  "footnote_band": {
+    "rect": { "x": 0.300001, "y": 7.066739, "width": 11.038235, "height": 0.336273 },
+    "leading": { "mode": "automatic" }
+  }
+}
