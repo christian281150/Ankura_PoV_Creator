@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Product image asset manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "assets"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "cache_path", "width", "height", "format", "perceptual_hash", "provenance", "duplicate_source_paths"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^asset_[0-9a-f]{16}$"},
+          "cache_path": {"type": "string"}, "width": {"type": "integer", "minimum": 1}, "height": {"type": "integer", "minimum": 1},
+          "format": {"const": "PNG"}, "perceptual_hash": {"type": "string", "pattern": "^[0-9a-f]{16}$"},
+          "duplicate_source_paths": {"type": "array", "items": {"type": "string"}},
+          "provenance": {
+            "type": "object", "additionalProperties": false,
+            "required": ["source_path", "source_url", "retrieval_date", "content_hash_sha256"],
+            "properties": {"source_path": {"type": "string"}, "source_url": {"type": ["string", "null"]}, "retrieval_date": {"type": "string", "format": "date"}, "content_hash_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}
+          }
+        }
+      }
+    }
+  }
+}
