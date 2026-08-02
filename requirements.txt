@@ -19,14 +19,7 @@ pillow>=11.0.0           # image normalise, perceptual hash, pdfplumber
 
 # Dev
 pytest>=8.3
-<<<<<<< Updated upstream
 ruff>=0.7
-=======
-ruff>=0.7
-
 # Note: the GUI uses Microsoft Edge via Playwright, pre-installed on Windows
 # 10/11. If unavailable: playwright install chromium
 # Build-only: pyinstaller>=6.0.0, then build.bat
->>>>>>> Stashed changes
-
-rich>=13.0            # extractor CLI console
