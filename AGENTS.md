@@ -345,3 +345,18 @@ numbers.
 
 Everything downstream is well-built and starved of input. Effort belongs in
 py/acquire/bundesanzeiger, not in py/normalise.
+
+## Multi-year assembly is missing
+
+The eleven-year series in the Seidensticker model workbook was stitched from
+eleven separate PDFs. The canonical chain handles one PDF at a time, and every
+downstream consumer assumes a multi-year series exists.
+
+PDF -> extract_tables_from_pdf -> consolidate -> canonical JSON is single-filing.
+There is no step that merges N canonical exports into one entity series, resolves
+overlapping comparatives (each filing states current and prior year), or flags
+restatements where the same fiscal year differs between filings.
+
+That last point matters most: when FY2024 appears as a comparative in the FY2025
+filing and as the current year in the FY2024 filing, a difference is a restatement
+and must be flagged, never silently resolved by taking one.
