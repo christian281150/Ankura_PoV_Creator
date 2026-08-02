@@ -56,6 +56,17 @@ def test_v11_accepts_reported_fy24_ebitda_with_required_one_off_footnote() -> No
     assert not [flag for flag in result.flags if flag.rule == "V11"]
 
 
+def test_v11_relative_materiality_does_not_treat_eur_2m_as_material_on_eur_500m_revenue() -> None:
+    one_off = FY24_ONE_OFF.model_copy(update={"value": 2_000_000})
+    result = validate_normalised(
+        {"rows": [{"std_id": "PL_GKV-1", "values": {2024: 500_000_000}}]},
+        charted_series=[_reported_ebitda()], slot_assignments={"top_right": "fin.ebitda"},
+        lagebericht=LageberichtExtraction(one_offs=[one_off]),
+    )
+
+    assert not [flag for flag in result.flags if flag.rule == "V11"]
+
+
 def test_renderer_fails_closed_when_reported_fy24_ebitda_omits_required_footnote() -> None:
     profile = {
         "blocks": [

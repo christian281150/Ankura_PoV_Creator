@@ -18,7 +18,7 @@ SLOT_ORDER: list[SlotId] = ["top_left", "top_right", "bottom_left", "bottom_righ
 SizeClass = Literal["klein", "mittelgross", "gross"]
 PresentationBasis = Literal["umsatzerloese","bruttoumsatzerloese", "nettoumsatzerloese", "gesamtleistung", "rohergebnis", "betriebsleistung", "n/a"]
 Confidence = Literal["high", "medium", "low"]
-RuleId = Literal["V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10","V11"]
+RuleId = Literal["V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12"]
 Severity = Literal["blocking", "note_required", "advisory"]
 EarningsBasis = Literal["reported", "adjusted"]
 Framework = Literal["hgb", "ifrs"]
@@ -97,6 +97,7 @@ class FiscalYearEnd(BaseModel):
 # Explicit ISO 4217 codes currently supported by the canonical contract.
 # Add a code deliberately when a new user-workbook currency is accepted.
 CurrencyCode = Literal["EUR", "GBP", "USD"]
+AmountUnit = Literal["EUR", "TEUR"]
 
 
 class FilingSeriesProvenance(BaseModel):
@@ -122,15 +123,12 @@ SeriesProvenance = Annotated[
 class LineItemObservation(BaseModel):
     """One complete, source-specific observation for a standardised line item.
 
-    ``unit`` uses the explicit supported ISO 4217 ``CurrencyCode`` set (EUR,
-    GBP, USD), rather than assuming all user-workbook amounts are EUR.
+    Per-year accounting metadata belongs to ``LineItemPoint`` rather than an
+    observation so a Path B series can declare a change without treating it as
+    a source conflict.
     """
 
     value: Decimal
-    unit: CurrencyCode
-    presentation_basis: PresentationBasis
-    framework: Framework
-    pnl_method: PnlMethod
     provenance: SeriesProvenance
     restated: bool
 
@@ -158,6 +156,13 @@ class LineItemPoint(BaseModel):
     """
 
     fy: int
+    unit: AmountUnit
+    currency: CurrencyCode
+    framework: Framework
+    pnl_method: PnlMethod
+    presentation_basis: PresentationBasis
+    scope_flag: str | None
+    method_flag: str | None
     observations: list[LineItemObservation] = Field(min_length=1)
     resolution: LineItemConflictResolution | None
 
@@ -250,4 +255,3 @@ class Profile(BaseModel):
     blocks: list[ContentBlock]
     canonical_layout: dict[str, str]
     coverage: list[CoverageDimension]
-

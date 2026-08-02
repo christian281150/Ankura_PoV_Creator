@@ -13,8 +13,13 @@
     "severity": "blocking",
     "implemented": true,
     "enforced_in": ["py", "ui"],
-    "materiality_threshold_eur": 1000000,
-    "materiality_threshold_rationale": "EUR 1m matches V5 absolute materiality, avoiding mandatory EBITDA disclosures for immaterial stated one-offs.",
+    "materiality_threshold_revenue_pct": 0.01,
+    "materiality_threshold_eur_floor": 1000000,
+    "materiality_threshold_rationale": "A stated one-off is material when it exceeds the higher of 1% of the applicable revenue basis and the EUR 1m absolute floor, so the requirement scales with issuer size without treating sub-EUR-1m items as material.",
     "check": "a series labelled EBITDA states its earnings_basis; adjusted requires every adjustment traced to a stated Lagebericht amount; reported requires a footnote for each material stated Lagebericht one-off"
+  },
+  "V12": {
+    "severity": "blocking",
+    "check": "EBITDA sums the PL_GKV-7 family; every child is mapped or explicitly asserted absent"
   }
 }
