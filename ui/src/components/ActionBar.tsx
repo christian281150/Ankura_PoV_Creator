@@ -2,7 +2,7 @@ import { cn } from '@/lib/format';
 import { useProfile } from '@/state/profileStore';
 
 export function ActionBar() {
-  const { dispatch, exportBlocked, openFlags, layoutLocked, allSlotsAssigned, hasFinancialSeries } = useProfile();
+  const { dispatch, exportBlocked, openFlags, layoutLocked, allSlotsAssigned, hasFinancialSeries, earningsBasis, adjustedEarningsAvailable } = useProfile();
 
   return (
     <div className="sticky bottom-0 z-10 flex flex-wrap items-center gap-2 border-t border-rule bg-paper-raised px-4 py-3 sm:px-8">
@@ -42,7 +42,9 @@ export function ActionBar() {
               ? 'all four slots must be assigned'
               : !hasFinancialSeries
                 ? 'assign at least one financial series'
-                : 'presentation basis fails V1'}
+                : earningsBasis === 'adjusted' && !adjustedEarningsAvailable
+                  ? 'earnings basis fails V11'
+                  : 'presentation basis fails V1'}
         </p>
       )}
       <button

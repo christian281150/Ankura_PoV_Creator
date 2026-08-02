@@ -1,4 +1,4 @@
-import { BASIS_LABEL } from '@/types/profile';
+import { BASIS_LABEL, EARNINGS_BASIS_LABEL } from '@/types/profile';
 import { SLOT_ORDER } from '@/types/profile';
 import { eurM, fyLabel, pct } from '@/lib/format';
 import { useProfile } from '@/state/profileStore';
@@ -23,7 +23,7 @@ function Sparks({ series }: { series: { fy: number; value: number }[] }) {
 
 /** Live preview of the four-box slide. Headline recomputes from the chosen basis. */
 export function PreviewPane() {
-  const { assignment, blockById, revenueBasis, footnotes } = useProfile();
+  const { assignment, blockById, revenueBasis, earningsBasis, earningsBlock, footnotes } = useProfile();
 
   const fin = blockById(assignment.top_right);
   const series = fin?.series;
@@ -40,7 +40,7 @@ export function PreviewPane() {
             <>
               At a glance: 107-year-old shirt &amp; blouse specialist,{' '}
               {revenueBasis === 'umsatzerloese' ? 'revenue' : BASIS_LABEL[revenueBasis]}{' '}
-              {pct(growth)} to €{eurM(last.value)}m in {fyLabel(last.fy)}
+              {pct(growth)} to €{eurM(last.value)}m in {fyLabel(last.fy)}; {EARNINGS_BASIS_LABEL[earningsBasis]}
             </>
           ) : (
             'At a glance: no financial series assigned'
@@ -55,7 +55,12 @@ export function PreviewPane() {
             <div key={slot} className="min-h-[104px] p-3">
               <p className="label-caps mb-2">{b?.title ?? '—'}</p>
               {b?.series ? (
-                <Sparks series={b.series} />
+                <>
+                  <p className="mb-1 font-mono text-micro text-ink-3">
+                    Axis: {b.id === earningsBlock?.id ? EARNINGS_BASIS_LABEL[earningsBasis] : b.title} in €m
+                  </p>
+                  <Sparks series={b.series} />
+                </>
               ) : (
                 <div className="space-y-1.5" aria-hidden>
                   <div className="h-1 w-11/12 bg-rule-hair" />

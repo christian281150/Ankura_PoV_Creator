@@ -2,6 +2,10 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 import App from '@/App';
+import { seidensticker } from '@/data/seidensticker';
+import { ActionBar } from '@/components/ActionBar';
+import { BasisGuard } from '@/components/BasisGuard';
+import { ProfileProvider } from '@/state/profileStore';
 
 async function renderApp() {
   const result = render(<App />);
@@ -51,6 +55,38 @@ describe('slot assignment safeguards', () => {
     expect(screen.getByText(/Axis relabelled; export blocked/i)).toBeInTheDocument();
     expect(screen.getByText('V1 fails.')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Export .pptx' })).toBeDisabled();
+  });
+
+  it('does not allow adjusted EBITDA without management-stated adjustments', async () => {
+    const user = userEvent.setup();
+    await renderApp();
+
+    const adjusted = screen.getByRole('radio', { name: 'EBITDA (adj.)' });
+    expect(adjusted).toBeDisabled();
+    expect(screen.getByText('⊘ no management-stated adjustments available')).toBeInTheDocument();
+    await user.click(adjusted);
+    expect(screen.getByRole('radio', { name: 'EBITDA (reported)' })).toBeChecked();
+  });
+
+  it('blocks export under V11 if invalid adjusted data reaches the UI', () => {
+    const invalidAdjustedFixture = {
+      ...seidensticker,
+      blocks: seidensticker.blocks.map((block) => ({
+        ...block,
+        flags: [],
+        ...(block.id === 'fin.revenue_ebitda_series' ? { earningsBasis: 'adjusted' as const } : {}),
+      })),
+    };
+
+    render(
+      <ProfileProvider fixture={invalidAdjustedFixture}>
+        <BasisGuard />
+        <ActionBar />
+      </ProfileProvider>,
+    );
+
+    expect(screen.getByRole('button', { name: 'Export .pptx' })).toBeDisabled();
+    expect(screen.getByText('earnings basis fails V11')).toBeInTheDocument();
   });
 
   it('adds a written flag note to the preview footnotes', async () => {

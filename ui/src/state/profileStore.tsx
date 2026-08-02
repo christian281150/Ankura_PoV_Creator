@@ -1,6 +1,7 @@
 import { createContext, useContext, useMemo, useReducer, type ReactNode } from 'react';
-import type { ContentBlock, PresentationBasis, ProfileFixture, RuleId, SlotId } from '@/types/profile';
+import type { ContentBlock, EarningsBasis, PresentationBasis, ProfileFixture, RuleId, SlotId } from '@/types/profile';
 import { SLOT_ORDER } from '@/types/profile';
+import { adjustmentReconciliation, validatedAdjustments } from '@/lib/earnings';
 
 /**
  * Single reducer for the whole slot-assignment screen. Deliberately no external
@@ -18,6 +19,7 @@ interface State {
   /** In-progress flag notes, shown in the preview but not yet resolving a flag. */
   draftNotes: Record<string, string>;
   revenueBasis: PresentationBasis;
+  earningsBasis: EarningsBasis;
   layoutLocked: boolean;
 }
 
@@ -26,6 +28,7 @@ type Action =
   | { type: 'draftNote'; blockId: string; rule: RuleId; note: string }
   | { type: 'note'; blockId: string; rule: RuleId; note: string }
   | { type: 'setBasis'; basis: PresentationBasis }
+  | { type: 'setEarningsBasis'; basis: EarningsBasis }
   | { type: 'resetCanonical' }
   | { type: 'toggleLock' };
 
@@ -65,6 +68,9 @@ function reducer(state: State, action: Action): State {
     }
     case 'setBasis':
       return { ...state, revenueBasis: action.basis };
+    case 'setEarningsBasis':
+      if (action.basis === 'adjusted' && !validatedAdjustments(earningsBlock(state))) return state;
+      return { ...state, earningsBasis: action.basis };
     case 'resetCanonical':
       return { ...state, assignment: { ...state.fixture.canonicalLayout } };
     case 'toggleLock':
@@ -80,11 +86,20 @@ interface Store extends State {
   isCanonical: (slot: SlotId) => boolean;
   allSlotsAssigned: boolean;
   hasFinancialSeries: boolean;
+  earningsBlock: ContentBlock | undefined;
+  adjustedEarningsAvailable: boolean;
   exportBlocked: boolean;
   footnotes: string[];
 }
 
 const Ctx = createContext<Store | null>(null);
+
+function earningsBlock(state: Pick<State, 'fixture' | 'assignment'>): ContentBlock | undefined {
+  const assigned = SLOT_ORDER
+    .map((slot) => state.fixture.blocks.find((block) => block.id === state.assignment[slot]))
+    .filter((block): block is ContentBlock => Boolean(block));
+  return assigned.find((block) => block.earningsBasis !== undefined) ?? assigned.find((block) => Boolean(block.series?.length));
+}
 
 export function ProfileProvider({ fixture, children }: { fixture: ProfileFixture; children: ReactNode }) {
   const [state, dispatch] = useReducer(reducer, {
@@ -97,6 +112,7 @@ export function ProfileProvider({ fixture, children }: { fixture: ProfileFixture
     notes: {},
     draftNotes: {},
     revenueBasis: 'umsatzerloese',
+    earningsBasis: earningsBlock({ fixture, assignment: fixture.canonicalLayout })?.earningsBasis ?? 'reported',
     layoutLocked: false,
   });
 
@@ -120,6 +136,9 @@ export function ProfileProvider({ fixture, children }: { fixture: ProfileFixture
 
     // V1: a series labelled "Revenue" must be stated on Umsatzerlöse.
     const basisViolation = state.revenueBasis !== 'umsatzerloese';
+    const activeEarningsBlock = earningsBlock(state);
+    const adjustments = validatedAdjustments(activeEarningsBlock);
+    const earningsBasisViolation = state.earningsBasis === 'adjusted' && !adjustments;
     const allSlotsAssigned = SLOT_ORDER.every((slot) => state.assignment[slot] !== null);
     const hasFinancialSeries = assigned.some((block) => Boolean(block.series?.length));
 
@@ -127,6 +146,7 @@ export function ProfileProvider({ fixture, children }: { fixture: ProfileFixture
       ...assigned.flatMap((b) => b.footnotesAuto),
       ...Object.entries(state.notes).map(([, note]) => note),
       ...Object.entries(state.draftNotes).map(([, note]) => note),
+      ...(state.earningsBasis === 'adjusted' && adjustments ? [adjustmentReconciliation(adjustments)] : []),
     ];
 
     return {
@@ -137,7 +157,9 @@ export function ProfileProvider({ fixture, children }: { fixture: ProfileFixture
       isCanonical: (slot: SlotId) => state.assignment[slot] === state.fixture.canonicalLayout[slot],
       allSlotsAssigned,
       hasFinancialSeries,
-      exportBlocked: openFlags.length > 0 || basisViolation || !allSlotsAssigned || !hasFinancialSeries,
+      earningsBlock: activeEarningsBlock,
+      adjustedEarningsAvailable: Boolean(adjustments),
+      exportBlocked: openFlags.length > 0 || basisViolation || earningsBasisViolation || !allSlotsAssigned || !hasFinancialSeries,
       footnotes,
     };
   }, [state]);
