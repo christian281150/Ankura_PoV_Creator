@@ -108,54 +108,21 @@ def _map_actual(label: str, aliases: dict[str, str], framework: str,
     return record, lookup.get("match_type", "none"), []
 
 
-def _queue_unmapped(entries: list[dict[str, Any]]) -> None:
-    """Append distinct unresolved labels to the extractor-owned review queue."""
-    if not entries:
-        return
-    _QUEUE_PATH.parent.mkdir(parents=True, exist_ok=True)
+def _queue_unmapped(entries: list[dict[str, Any]], path: Optional[str | Path] = None) -> None:
+    """Rewrite one run's distinct unresolved labels to the review queue."""
+    queue_path = Path(path) if path is not None else _QUEUE_PATH
+    queue_path.parent.mkdir(parents=True, exist_ok=True)
     fields = ("raw_label", "normalized_key", "match_type", "candidates",
               "doc_label", "heading", "page_start", "row")
-    existing: set[str] = set()
-    prior_rows: list[dict[str, str]] = []
-    prior_fields: list[str] = []
-    prior_row_count = 0
-    if _QUEUE_PATH.exists():
-        with _QUEUE_PATH.open(newline="", encoding="utf-8-sig") as handle:
-            reader = csv.DictReader(handle)
-            prior_fields = reader.fieldnames or []
-            unique_prior: OrderedDict[str, dict[str, str]] = OrderedDict()
-            for row in reader:
-                prior_row_count += 1
-                key = row.get("normalized_key", "") or row.get("raw_label", "")
-                unique_prior.setdefault(key, row)
-            prior_rows = list(unique_prior.values())
-            existing = set(unique_prior)
-    write_header = not _QUEUE_PATH.exists() or _QUEUE_PATH.stat().st_size == 0
-    if prior_rows and (prior_fields != list(fields) or len(prior_rows) < prior_row_count):
-        # Preserve the legacy review history while upgrading it before adding
-        # richer audit fields. ``sheet`` was the historical sheet/heading key.
-        with _QUEUE_PATH.open("w", newline="", encoding="utf-8") as handle:
-            writer = csv.DictWriter(handle, fieldnames=fields)
-            writer.writeheader()
-            for row in prior_rows:
-                writer.writerow({"raw_label": row.get("raw_label", row.get("client_label", "")),
-                                 "normalized_key": row.get("normalized_key", ""),
-                                 "match_type": row.get("match_type", "none"),
-                                 "candidates": row.get("candidates", row.get("candidate_ids", "")),
-                                 "doc_label": row.get("doc_label", row.get("pack", "")),
-                                 "heading": row.get("heading", row.get("sheet", "")),
-                                 "page_start": row.get("page_start", ""),
-                                 "row": row.get("row", "")})
-        write_header = False
-    with _QUEUE_PATH.open("a", newline="", encoding="utf-8") as handle:
+    seen: set[str] = set()
+    with queue_path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
-        if write_header:
-            writer.writeheader()
+        writer.writeheader()
         for entry in entries:
             key = entry.get("normalized_key", "") or entry["raw_label"]
-            if key not in existing:
+            if key not in seen:
                 writer.writerow({name: entry.get(name, "") for name in fields})
-                existing.add(key)
+                seen.add(key)
 
 
 def _unit_multiplier(table: dict) -> float:
@@ -271,7 +238,8 @@ def _column_actuals(table: dict, aliases: dict[str, str], queued: list[dict[str,
 
 
 def build_multi_year_tables(tables: list, row_merges: "Optional[dict]" = None,
-                            aliases_path: Optional[str | Path] = None) -> list:
+                            aliases_path: Optional[str | Path] = None,
+                            queue_path: Optional[str | Path] = None) -> list:
     """Build line-only, EUR-normalised canonical exports keyed by ``std_id``.
 
     ``row_merges`` is retained for API compatibility but deliberately ignored:
@@ -357,5 +325,5 @@ def build_multi_year_tables(tables: list, row_merges: "Optional[dict]" = None,
                        "framework": framework, "pnl_method": pnl_method,
                        "framework_evidence": group[0].get("framework_evidence"),
                        "pnl_method_evidence": group[0].get("pnl_method_evidence")})
-    _queue_unmapped(queued)
+    _queue_unmapped(queued, queue_path)
     return result
