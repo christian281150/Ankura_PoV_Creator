@@ -26,3 +26,5 @@ Thumbs.db
 .pytest_cache/
 
 .pytest_cache/
+
+out.json
