@@ -1,0 +1,216 @@
+normalized_key,original_label,hgb_code
+geleisteteanzahlungen,Geleistete Anzahlungen,BS-A.B.I.4
+forderungengegengesellschafter,Forderungen gegen Gesellschafter,BS-A.B.II.2a
+forderungengegenunternehmenmitdeneneinbeteiligungsverhaeltnisbesteht,Forderungen gegen Unternehmen mit denen ein Beteiligungsverhältnis besteht,BS-A.B.II.3
+kassenbestandguthabenbeikreditinstitutenundschecks,"Kassenbestand, Guthaben bei Kreditinstituten und Schecks",BS-A.B.IV
+crechnungsabgrenzungsposten,C. Rechnungsabgrenzungsposten,BS-A.C
+anlagevermoegen,Anlagevermögen,BS-A.A
+immateriellevermoegensgegenstaende,Immaterielle Vermögensgegenstände,BS-A.A.I
+immaterielleanlagewerte,Immaterielle Anlagewerte,BS-A.A.I
+intangiblevermoegenswerte,Intangible Vermögenswerte,BS-A.A.I
+selbstgeschaffenegewerblicheschutzrechte,Selbst geschaffene gewerbliche Schutzrechte,BS-A.A.I.1
+konzessionenlizenzenundaehnlicherechte,"Konzessionen, Lizenzen und ähnliche Rechte",BS-A.A.I.2
+software,Software,BS-A.A.I.2
+geschaeftsoderfirmenwert,Geschäfts- oder Firmenwert,BS-A.A.I.3
+goodwill,Goodwill,BS-A.A.I.3
+geleisteteanzahlungenimmaterielle,Geleistete Anzahlungen immaterielle,BS-A.A.I.4
+sachanlagen,Sachanlagen,BS-A.A.II
+propertyplantandequipment,"Property, Plant and Equipment",BS-A.A.II
+grundstueckeundbauten,Grundstücke und Bauten,BS-A.A.II.1
+grundstueckegrundstuecksgleicherechteundbauten,"Grundstücke, grundstücksgleiche Rechte und Bauten",BS-A.A.II.1
+technischeanlagenundmaschinen,Technische Anlagen und Maschinen,BS-A.A.II.2
+andereanlagenbetriebsundgeschaeftsausstattung,"Andere Anlagen, Betriebs- und Geschäftsausstattung",BS-A.A.II.3
+betriebsundgeschaeftsausstattung,Betriebs- und Geschäftsausstattung,BS-A.A.II.3
+bga,BGA,BS-A.A.II.3
+fuhrpark,Fuhrpark,BS-A.A.II.3
+geleisteteanzahlungenundanlagenimbau,Geleistete Anzahlungen und Anlagen im Bau,BS-A.A.II.4
+anlagenimbau,Anlagen im Bau,BS-A.A.II.4
+finanzanlagen,Finanzanlagen,BS-A.A.III
+anteileanverbundenenunternehmen,Anteile an verbundenen Unternehmen,BS-A.A.III.1
+ausleihungenanverbundeneunternehmen,Ausleihungen an verbundene Unternehmen,BS-A.A.III.2
+beteiligungen,Beteiligungen,BS-A.A.III.3
+ausleihungenanunternehmenmitbeteiligungsverhaeltnis,Ausleihungen an Unternehmen mit Beteiligungsverhältnis,BS-A.A.III.4
+wertpapieredesanlagevermoegens,Wertpapiere des Anlagevermögens,BS-A.A.III.5
+sonstigeausleihungen,Sonstige Ausleihungen,BS-A.A.III.6
+umlaufvermoegen,Umlaufvermögen,BS-A.B
+vorraete,Vorräte,BS-A.B.I
+rohhilfsundbetriebsstoffe,"Roh-, Hilfs- und Betriebsstoffe",BS-A.B.I.1
+rhb,RHB,BS-A.B.I.1
+unfertigeerzeugnisse,Unfertige Erzeugnisse,BS-A.B.I.2
+unfertigeerzeugnisseunfertigeleistungen,"Unfertige Erzeugnisse, unfertige Leistungen",BS-A.B.I.2
+fertigeerzeugnisseundwaren,Fertige Erzeugnisse und Waren,BS-A.B.I.3
+fertigeerzeugnisse,Fertige Erzeugnisse,BS-A.B.I.3
+waren,Waren,BS-A.B.I.3
+handelswaren,Handelswaren,BS-A.B.I.3
+geleisteteanzahlungenvorraete,Geleistete Anzahlungen Vorräte,BS-A.B.I.4
+forderungenundsonstigevermoegensgegenstaende,Forderungen und sonstige Vermögensgegenstände,BS-A.B.II
+forderungenauslieferungenundleistungen,Forderungen aus Lieferungen und Leistungen,BS-A.B.II.1
+forderungenausll,Forderungen aus L+L,BS-A.B.II.1
+tradereceivables,Trade receivables,BS-A.B.II.1
+forderungengegenverbundeneunternehmen,Forderungen gegen verbundene Unternehmen,BS-A.B.II.2
+forderungengegenunternehmenmitbeteiligungsverhaeltnis,Forderungen gegen Unternehmen mit Beteiligungsverhältnis,BS-A.B.II.3
+sonstigevermoegensgegenstaende,Sonstige Vermögensgegenstände,BS-A.B.II.4
+wertpapieredesumlaufvermoegens,Wertpapiere des Umlaufvermögens,BS-A.B.III
+kassenbestandbundesbankguthabenguthabenbeikreditinstitutenundschecks,"Kassenbestand, Bundesbankguthaben, Guthaben bei Kreditinstituten und Schecks",BS-A.B.IV
+kasse,Kasse,BS-A.B.IV
+bank,Bank,BS-A.B.IV
+bankguthaben,Bankguthaben,BS-A.B.IV
+liquidemittel,Liquide Mittel,BS-A.B.IV
+zahlungsmittel,Zahlungsmittel,BS-A.B.IV
+cash,Cash,BS-A.B.IV
+cashandcashequivalents,Cash and cash equivalents,BS-A.B.IV
+rechnungsabgrenzungspostenaktiv,Rechnungsabgrenzungsposten (aktiv),BS-A.C
+aktiverechnungsabgrenzung,Aktive Rechnungsabgrenzung,BS-A.C
+arap,ARAP,BS-A.C
+aktivelatentesteuern,Aktive latente Steuern,BS-A.D
+deferredtaxassets,Deferred tax assets,BS-A.D
+eigenkapital,Eigenkapital,BS-P.A
+equity,Equity,BS-P.A
+gezeichneteskapital,Gezeichnetes Kapital,BS-P.A.I
+stammkapital,Stammkapital,BS-P.A.I
+grundkapital,Grundkapital,BS-P.A.I
+subscribedcapital,Subscribed capital,BS-P.A.I
+kapitalruecklage,Kapitalrücklage,BS-P.A.II
+capitalreserve,Capital reserve,BS-P.A.II
+gewinnruecklagen,Gewinnrücklagen,BS-P.A.III
+retainedearnings,Retained earnings,BS-P.A.III
+gewinnvortrag,Gewinnvortrag,BS-P.A.IV
+verlustvortrag,Verlustvortrag,BS-P.A.IV
+gewinnvortragverlustvortrag,Gewinnvortrag / Verlustvortrag,BS-P.A.IV
+jahresueberschuss,Jahresüberschuss,BS-P.A.V
+jahresfehlbetrag,Jahresfehlbetrag,BS-P.A.V
+netincome,Net income,BS-P.A.V
+rueckstellungen,Rückstellungen,BS-P.B
+provisions,Provisions,BS-P.B
+pensionsrueckstellungen,Pensionsrückstellungen,BS-P.B.1
+rueckstellungenfuerpensionen,Rückstellungen für Pensionen,BS-P.B.1
+rueckstellungenfuerpensionenundaehnlicheverpflichtungen,Rückstellungen für Pensionen und ähnliche Verpflichtungen,BS-P.B.1
+pensionprovisions,Pension provisions,BS-P.B.1
+steuerrueckstellungen,Steuerrückstellungen,BS-P.B.2
+taxprovisions,Tax provisions,BS-P.B.2
+sonstigerueckstellungen,Sonstige Rückstellungen,BS-P.B.3
+verbindlichkeiten,Verbindlichkeiten,BS-P.C
+liabilities,Liabilities,BS-P.C
+anleihen,Anleihen,BS-P.C.1
+bonds,Bonds,BS-P.C.1
+verbindlichkeitengegenueberkreditinstituten,Verbindlichkeiten gegenüber Kreditinstituten,BS-P.C.2
+verbindlichkeitengguekreditinstituten,Verbindlichkeiten ggü. Kreditinstituten,BS-P.C.2
+bankverbindlichkeiten,Bankverbindlichkeiten,BS-P.C.2
+erhalteneanzahlungenaufbestellungen,Erhaltene Anzahlungen auf Bestellungen,BS-P.C.3
+erhalteneanzahlungen,Erhaltene Anzahlungen,BS-P.C.3
+verbindlichkeitenauslieferungenundleistungen,Verbindlichkeiten aus Lieferungen und Leistungen,BS-P.C.4
+verbindlichkeitenausll,Verbindlichkeiten aus L+L,BS-P.C.4
+tradepayables,Trade payables,BS-P.C.4
+verbindlichkeitenauswechseln,Verbindlichkeiten aus Wechseln,BS-P.C.5
+verbindlichkeitengegenueberverbundenenunternehmen,Verbindlichkeiten gegenüber verbundenen Unternehmen,BS-P.C.6
+verbindlichkeitengegenueberunternehmenmitbeteiligungsverhaeltnis,Verbindlichkeiten gegenüber Unternehmen mit Beteiligungsverhältnis,BS-P.C.7
+sonstigeverbindlichkeiten,Sonstige Verbindlichkeiten,BS-P.C.8
+rechnungsabgrenzungspostenpassiv,Rechnungsabgrenzungsposten (passiv),BS-P.D
+passiverechnungsabgrenzung,Passive Rechnungsabgrenzung,BS-P.D
+prap,PRAP,BS-P.D
+passivelatentesteuern,Passive latente Steuern,BS-P.E
+deferredtaxliabilities,Deferred tax liabilities,BS-P.E
+sonderpostenmitruecklageanteil,Sonderposten mit Rücklageanteil,BS-P.SOPO
+umsatzerloese,Umsatzerlöse,PL_GKV-1
+nettoumsatz,Nettoumsatz,PL_GKV-1
+umsatz,Umsatz,PL_GKV-1
+erloese,Erlöse,PL_GKV-1
+revenue,Revenue,PL_GKV-1
+sales,Sales,PL_GKV-1
+netsales,Net sales,PL_GKV-1
+bestandsveraenderungen,Bestandsveränderungen,PL_GKV-2
+bestandsveraenderungfertigeunfertigeerzeugnisse,Bestandsveränderung fertige unfertige Erzeugnisse,PL_GKV-2
+veraenderungdesbestandes,Veränderung des Bestandes,PL_GKV-2
+andereaktivierteeigenleistungen,Andere aktivierte Eigenleistungen,PL_GKV-3
+aktivierteeigenleistungen,Aktivierte Eigenleistungen,PL_GKV-3
+sonstigebetrieblicheertraege,Sonstige betriebliche Erträge,PL_GKV-4
+otheroperatingincome,Other operating income,PL_GKV-4
+materialaufwand,Materialaufwand,PL_GKV-5a
+aufwendungenfuerrohhilfsundbetriebsstoffe,"Aufwendungen für Roh-, Hilfs- und Betriebsstoffe",PL_GKV-5a
+costofmaterials,Cost of materials,PL_GKV-5a
+aufwendungenfuerbezogeneleistungen,Aufwendungen für bezogene Leistungen,PL_GKV-5b
+bezogeneleistungen,Bezogene Leistungen,PL_GKV-5b
+personalaufwand,Personalaufwand,PL_GKV-6a
+loehneundgehaelter,Löhne und Gehälter,PL_GKV-6a
+wagesandsalaries,Wages and salaries,PL_GKV-6a
+sozialeabgaben,Soziale Abgaben,PL_GKV-6b
+sozialeabgabenundaufwendungenfueraltersversorgung,Soziale Abgaben und Aufwendungen für Altersversorgung,PL_GKV-6b
+abschreibungen,Abschreibungen,PL_GKV-7a
+abschreibungenaufimmateriellevermoegensgegenstaendeundsachanlagen,Abschreibungen auf immaterielle Vermögensgegenstände und Sachanlagen,PL_GKV-7a
+depreciationandamortisation,Depreciation and amortisation,PL_GKV-7a
+abschreibungenaufvermoegensgegenstaendedesumlaufvermoegens,Abschreibungen auf Vermögensgegenstände des Umlaufvermögens,PL_GKV-7b
+sonstigebetrieblicheaufwendungen,Sonstige betriebliche Aufwendungen,PL_GKV-8
+otheroperatingexpenses,Other operating expenses,PL_GKV-8
+umsatzkosten,Umsatzkosten,PL_UKV-2
+herstellungskostenderzurerzielungderumsatzerloeseerbrachtenleistungen,Herstellungskosten der zur Erzielung der Umsatzerlöse erbrachten Leistungen,PL_UKV-2
+herstellungskostenderumsatzerloese,Herstellungskosten der Umsatzerlöse,PL_UKV-2
+costofsales,Cost of sales,PL_UKV-2
+costofgoodssold,Cost of goods sold,PL_UKV-2
+cogs,COGS,PL_UKV-2
+bruttoergebnisvomumsatz,Bruttoergebnis vom Umsatz,PL_UKV-3
+bruttoergebnis,Bruttoergebnis,PL_UKV-3
+grossprofit,Gross profit,PL_UKV-3
+rohergebnis,Rohergebnis,PL_UKV-3
+vertriebskosten,Vertriebskosten,PL_UKV-4
+sellingexpenses,Selling expenses,PL_UKV-4
+forschungsundentwicklungskosten,Forschungs- und Entwicklungskosten,PL_UKV-5
+fekosten,F&E-Kosten,PL_UKV-5
+rdexpenses,R&D expenses,PL_UKV-5
+allgemeineverwaltungskosten,Allgemeine Verwaltungskosten,PL_UKV-5
+verwaltungskosten,Verwaltungskosten,PL_UKV-5
+generalandadministrativeexpenses,General and administrative expenses,PL_UKV-5
+ertraegeausbeteiligungen,Erträge aus Beteiligungen,PL_GKV-9
+ertraegeausanderenwertpapierenundausleihungendesfinanzanlagevermoegens,Erträge aus anderen Wertpapieren und Ausleihungen des Finanzanlagevermögens,PL_GKV-10
+sonstigezinsenundaehnlicheertraege,Sonstige Zinsen und ähnliche Erträge,PL_GKV-11
+zinsertraege,Zinserträge,PL_GKV-11
+zinsertraegeundsonstigefinanzertraege,Zinserträge und sonstige Finanzerträge,PL_GKV-11
+interestincome,Interest income,PL_GKV-11
+abschreibungenauffinanzanlagen,Abschreibungen auf Finanzanlagen,PL_GKV-12
+zinsenundaehnlicheaufwendungen,Zinsen und ähnliche Aufwendungen,PL_GKV-13
+zinsaufwendungen,Zinsaufwendungen,PL_GKV-13
+zinsaufwendungenundsonstigefinanzaufwendungen,Zinsaufwendungen und sonstige Finanzaufwendungen,PL_GKV-13
+interestexpense,Interest expense,PL_GKV-13
+finanzergebnis,Finanzergebnis,PL_GKV-13
+betriebsergebnis,Betriebsergebnis,PL_GKV-15
+operatingresult,Operating result,PL_GKV-15
+ebit,EBIT,PL_GKV-15
+ergebnisvorertragsteuern,Ergebnis vor Ertragsteuern,PL_GKV-15
+ergebnisvorsteuern,Ergebnis vor Steuern,PL_GKV-15
+ebt,EBT,PL_GKV-15
+earningsbeforetaxes,Earnings before taxes,PL_GKV-15
+steuernvomeinkommenundvomertrag,Steuern vom Einkommen und vom Ertrag,PL_GKV-14
+steuernvomeinkommenundertrag,Steuern vom Einkommen und Ertrag,PL_GKV-14
+ertragsteuern,Ertragsteuern,PL_GKV-14
+aufwendungenausertragsteuern,Aufwendungen aus Ertragsteuern,PL_GKV-14
+incometaxes,Income taxes,PL_GKV-14
+ergebnisnachsteuern,Ergebnis nach Steuern,PL_GKV-15
+resultaftertaxes,Result after taxes,PL_GKV-15
+sonstigesteuern,Sonstige Steuern,PL_GKV-16
+othertaxes,Other taxes,PL_GKV-16
+jahresueberschussjahresfehlbetrag,Jahresüberschuss / Jahresfehlbetrag,PL_GKV-17
+jahresergebnis,Jahresergebnis,PL_GKV-17
+netincomefortheyear,Net income for the year,PL_GKV-17
+konzernjahresueberschuss,Konzernjahresüberschuss,PL_GKV-17
+gesamtergebnis,Gesamtergebnis,PL_GKV-17
+gesamtverlust,Gesamtverlust,PL_GKV-17
+totalcomprehensiveincome,Total comprehensive income,PL_GKV-17
+sonstigeertraegeundaufwendungennetto,"Sonstige Erträge und Aufwendungen, netto",PL_GKV-4
+sonstigeertraegeundaufwendungen,Sonstige Erträge und Aufwendungen,PL_GKV-4
+otherincomeandexpensesnet,"Other income and expenses, net",PL_GKV-4
+uebrigesergebnis,Übriges Ergebnis,PL_GKV-4
+zinsertraegeundsonstigefinanzertraege,Zinserträge und sonstige Finanzerträge,PL_GKV-11
+zinsaufwendungenundsonstigefinanzaufwendungen,Zinsaufwendungen und sonstige Finanzaufwendungen,PL_GKV-13
+ergebnisvorertragsteuern,Ergebnis vor Ertragsteuern,PL_GKV-15
+aufwendungenausertragsteuern,Aufwendungen aus Ertragsteuern,PL_GKV-14
+ertraegeausertragsteuern,Erträge aus Ertragsteuern,PL_GKV-14
+rueckstellungenfuerpensionen,Rückstellungen für Pensionen,BS-P.B.1
+ergebnisausderneubewertungderpensionsrueckstellungen,Ergebnis aus der Neubewertung der Pensionsrückstellungen,PL_GKV-17
+latentesteuern,Latente Steuern,PL_GKV-14
+unterschiedsbetragausderwaehrungsumrechnung,Unterschiedsbetrag aus der Währungsumrechnung,PL_GKV-17
+ergebnisauscashflowhedges,Ergebnis aus Cashflow-Hedges,PL_GKV-17
+gewinnauscashflowhedges,Gewinn aus Cashflow-Hedges,PL_GKV-17
+gesellschafterdesmutterunternehmens,Gesellschafter des Mutterunternehmens,BS-P.A.V
+nichtbeherrschendegesellschafter,Nicht beherrschende Gesellschafter,BS-P.A.V
+minderheitsanteile,Minderheitsanteile,BS-P.A.V
+minorityinterest,Minority interest,BS-P.A.V
+noncontrollinginterests,Non-controlling interests,BS-P.A.V

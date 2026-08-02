@@ -1,3 +1,0 @@
-[submodule "py/acquire/bundesanzeiger"]
-	path = py/acquire/bundesanzeiger
-	url = https://github.com/christian281150/Bundesanzeiger_Financial_Extracts

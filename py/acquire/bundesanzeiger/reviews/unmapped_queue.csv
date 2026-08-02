@@ -1,0 +1,238 @@
+raw_label,normalized_key,match_type,candidates,doc_label,heading,page_start,row
+3. Materialaufwand (GKV),,materialaufwand,unsafe_aggregate_heading,,,,
+3. Materialaufwand (GKV),materialaufwand,unsafe_aggregate_heading,,,FY2015_Konzern-Gewinn- und Verl,,11
+4. Personalaufwand (GKV),personalaufwand,unsafe_aggregate_heading,,,FY2015_Konzern-Gewinn- und Verl,,14
+b) soziale Abgaben und Aufwendungen für Altersversorgung und für Unterstützung,PL_GKV-6b,std_id_collision,PL_GKV-6b,,FY2015_Konzern-Gewinn- und Verl,,16
+Aufwendungen für Altersversorgung,aufwendungenfueraltersversorgung,none,,,FY2015_Konzern-Gewinn- und Verl,,18
+5. Abschreibungen (GKV),abschreibungen,unsafe_aggregate_heading,,,FY2015_Konzern-Gewinn- und Verl,,19
+7. Finanz- und Beteiligungsergebnis,finanzundbeteiligungsergebnis,none,,,FY2015_Konzern-Gewinn- und Verl,,21
+8. Ergebnis der gewöhnlichen Geschäftstätigkeit,ergebnisdergewoehnlichengeschaeftstaetigkeit,none,,,FY2015_Konzern-Gewinn- und Verl,,24
+9. außerordentliches Ergebnis,ausserordentlichesergebnis,none,,,FY2015_Konzern-Gewinn- und Verl,,25
+14. auf nicht beherrschende Anteile entfallender Gewinn/Verlust,aufnichtbeherrschendeanteileentfallendergewinnverlust,none,,,FY2021_Konzern-Gewinn- und Verl,,36
+14. auf nicht beherrschende Anteile entfallender Verlust,aufnichtbeherrschendeanteileentfallenderverlust,none,,,FY2020_Konzern-Gewinn- und Verl,,33
+12. Entnahme aus den Gewinnrücklagen,entnahmeausdengewinnruecklagen,none,,,FY2018_Konzern-Gewinn- und Verl,,31
+13. Zuführung zu den Gewinnrücklagen,zufuehrungzudengewinnruecklagen,none,,,FY2018_Konzern-Gewinn- und Verl,,32
+8. Verluste aus Beteiligungen an assoziierten Unternehmen,verlusteausbeteiligungenanassoziiertenunternehmen,none,,,FY2017_Konzern-Gewinn- und Verl,,25
+a) Ergebnis aus Beteiligungen an assoziierten Unternehmen,ergebnisausbeteiligungenanassoziiertenunternehmen,none,,,FY2016_Konzern-Gewinn- und Verl,,25
+4. außerordentliche Aufwendungen,ausserordentlicheaufwendungen,none,,,FY2016_Konzern-Gewinn- und Verl,,29
+A. Anlagevermögen,anlagevermoegen,non_line,BS-A.A,,,1,3
+Entgeltlich erworbene gewerbliche Schutzrechte und ähnliche Rechte und Werte,entgeltlicherworbenegewerblicheschutzrechteundaehnlicherechteundwerte,none,,,,1,5
+1. Grundstücke und Bauten einschließlich der Bauten auf fremden Grundstücken,grundstueckeundbauteneinschliesslichderbautenauffremdengrundstuecken,none,,,,1,7
+2. Beteiligungen an assoziierten Unternehmen,beteiligungenanassoziiertenunternehmen,none,,,,1,14
+B. Umlaufvermögen,umlaufvermoegen,non_line,BS-A.B,,,1,18
+3. Geleistete Anzahlungen,geleisteteanzahlungen,none,,,,1,22
+2. Forderungen gegen Gesellschafter,forderungengegengesellschafter,none,,,,1,26
+"3. Forderungen gegen Unternehmen, mit denen ein Beteiligungsverhältnis besteht",forderungengegenunternehmenmitdeneneinbeteiligungsverhaeltnisbesteht,none,,,,1,28
+"III. Kassenbestand, Guthaben bei Kreditinstituten und Schecks",kassenbestandguthabenbeikreditinstitutenundschecks,none,,,,1,31
+C. Rechnungsabgrenzungsposten,rechnungsabgrenzungsposten,none,,,,1,33
+D. Aktive latente Steuern,aktivelatentesteuern,non_line,BS-A.D,,,1,34
+E. Nicht durch Vermögenseinlagen gedeckte Verlustanteile der Kommanditisten,nichtdurchvermoegenseinlagengedeckteverlustanteilederkommanditisten,none,,,,1,35
+A. Eigenkapital,eigenkapital,non_line,BS-P.A,,30.04.2024 30.04.2023,2,3
+I. Kapitalanteile,kapitalanteile,none,,,30.04.2024 30.04.2023,2,4
+II. Rücklagen,ruecklagen,none,,,30.04.2024 30.04.2023,2,5
+1. Andere Gewinnrücklagen,anderegewinnruecklagen,none,,,30.04.2024 30.04.2023,2,6
+2. Unterschiedsbetrag aus der Kapitalkonsolidierung,unterschiedsbetragausderkapitalkonsolidierung,none,,,30.04.2024 30.04.2023,2,7
+III. Eigenkapitaldifferenz aus Währungsumrechnung,eigenkapitaldifferenzauswaehrungsumrechnung,none,,,30.04.2024 30.04.2023,2,9
+VI. Genussrechtskapital,genussrechtskapital,none,,,30.04.2024 30.04.2023,2,12
+B. Ausgleichsposten für aktivierte eigene Anteile,ausgleichspostenfueraktivierteeigeneanteile,none,,,30.04.2024 30.04.2023,2,14
+C. Rückstellungen,rueckstellungen,non_line,BS-P.B,,30.04.2024 30.04.2023,2,15
+D. Verbindlichkeiten,verbindlichkeiten,non_line,BS-P.C,,30.04.2024 30.04.2023,2,20
+5. Verbindlichkeiten gegenüber Gesellschaftern,verbindlichkeitengegenuebergesellschaftern,none,,,30.04.2024 30.04.2023,2,26
+"- davon aus Steuern: € 1.299.651,56 (Vorjahr: € 1.227.581,82)",davonaussteuern129965156vorjahr122758182,none,,,30.04.2024 30.04.2023,2,28
+"- davon im Rahmen der sozialen Sicherheit: € 109.092,78 (Vorjahr: € 15.507,03)",davonimrahmendersozialensicherheit10909278vorjahr1550703,none,,,30.04.2024 30.04.2023,2,29
+"Lang- und mittelfristig gebundenes Vermö-
+gen",langundmittelfristiggebundenesvermoegen,none,,,3.2. Vermögenslage,21,3
+Kurzfristig gebundenes Vermögen,kurzfristiggebundenesvermoegen,none,,,3.2. Vermögenslage,21,4
+"Nicht durch Vermögenseinlagen gedeckte
+Verlustanteile",nichtdurchvermoegenseinlagengedeckteverlustanteile,none,,,3.2. Vermögenslage,21,5
+Summe Aktiva,summeaktiva,none,,,3.2. Vermögenslage,21,6
+"Lang- und mittelfristig zur Verfügung stehen-
+des Kapital",langundmittelfristigzurverfuegungstehendeskapital,none,,,3.2. Vermögenslage,21,7
+Eigenkapital (zzgl. Ausgleichsposten),eigenkapitalzzglausgleichsposten,none,,,3.2. Vermögenslage,21,8
+Fremdkapital,fremdkapital,none,,,3.2. Vermögenslage,21,9
+Kurzfristig zur Verfügung stehendes Kapital,kurzfristigzurverfuegungstehendeskapital,none,,,3.2. Vermögenslage,21,11
+Summe Passiva,summepassiva,none,,,3.2. Vermögenslage,21,12
+"- davon für Altersversorgung: € 257.054,39 (Vorjahr: € 1.411.423,05)",davonfueraltersversorgung25705439vorjahr141142305,none,,,KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,3,14
+A. Segmente,segmente,none,,,Die Umsatzerlöse setzen sich im Geschäftsjahr 2023/2024 im Vorjahresvergleich wie folgt zusammen:,10,4
+1. Hemden,hemden,none,,,Die Umsatzerlöse setzen sich im Geschäftsjahr 2023/2024 im Vorjahresvergleich wie folgt zusammen:,10,5
+2. Blusen,blusen,none,,,Die Umsatzerlöse setzen sich im Geschäftsjahr 2023/2024 im Vorjahresvergleich wie folgt zusammen:,10,6
+3. Lizenzerlöse,lizenzerloese,none,,,Die Umsatzerlöse setzen sich im Geschäftsjahr 2023/2024 im Vorjahresvergleich wie folgt zusammen:,10,7
+4. Sonstige Umsatzerlöse Bekleidung,sonstigeumsatzerloesebekleidung,none,,,Die Umsatzerlöse setzen sich im Geschäftsjahr 2023/2024 im Vorjahresvergleich wie folgt zusammen:,10,8
+5. Übrige sonstige Umsatzerlöse,uebrigesonstigeumsatzerloese,none,,,Die Umsatzerlöse setzen sich im Geschäftsjahr 2023/2024 im Vorjahresvergleich wie folgt zusammen:,10,9
+6. Bruttoumsatzerlöse,bruttoumsatzerloese,none,,,Die Umsatzerlöse setzen sich im Geschäftsjahr 2023/2024 im Vorjahresvergleich wie folgt zusammen:,10,10
+7. Erlösschmälerungen,erloesschmaelerungen,none,,,Die Umsatzerlöse setzen sich im Geschäftsjahr 2023/2024 im Vorjahresvergleich wie folgt zusammen:,10,11
+8. Nettoumsatzerlöse,nettoumsatzerloese,none,,,Die Umsatzerlöse setzen sich im Geschäftsjahr 2023/2024 im Vorjahresvergleich wie folgt zusammen:,10,12
+B. Absatzmärkte,absatzmaerkte,none,,,Gesamt Gesamt Veränderung,10,4
+1. Umsatzerlöse Inland,umsatzerloeseinland,none,,,Gesamt Gesamt Veränderung,10,5
+2. Umsatzerlöse Europa,umsatzerloeseeuropa,none,,,Gesamt Gesamt Veränderung,10,6
+3. Umsatzerlöse übriges Ausland,umsatzerloeseuebrigesausland,none,,,Gesamt Gesamt Veränderung,10,7
+Abschreibungen auf Anlagevermögen,abschreibungenaufanlagevermoegen,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,4
+Abnahme (-) / Zunahme (+) Rückstellungen (vor Aufzinsung und Steuern),abnahmezunahmerueckstellungenvoraufzinsungundsteuern,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,5
+"Abnahme (+) / Zunahme (-) der Vorräte, der Forderungen aus Lieferungen und Leistungen
+sowie anderer Aktiva (ohne Forderungen aus Steuern), die nicht der Investitions- oder Finan-
+zierungstätigkeit zuzuordnen sind",abnahmezunahmedervorraetederforderungenauslieferungenundleistungensowieandereraktivaohneforderungenaussteuerndienichtderinvestitionsoderfinanzierungstaetigkeitzuzuordnensind,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,6
+"Zunahme (+) / Abnahme (-) der Verbindlichkeiten aus Lieferungen und Leistungen sowie an-
+derer Passiva, die nicht der Investitions- oder Finanzierungstätigkeit zuzuordnen sind",zunahmeabnahmederverbindlichkeitenauslieferungenundleistungensowieandererpassivadienichtderinvestitionsoderfinanzierungstaetigkeitzuzuordnensind,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,7
+"Verlust (+) / Gewinn (-) aus Anlagenabgängen (i. Vj. inkl. Abgang aus dem Konsolidierungs-
+kreis)",verlustgewinnausanlagenabgaengenivjinklabgangausdemkonsolidierungskreis,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,8
+Gewinn (-) / Verlust (+) aus Beteiligungen an assoz. Unternehmen,gewinnverlustausbeteiligungenanassozunternehmen,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,9
+Zinsaufwendungen (+) / Zinserträge (-),zinsaufwendungenzinsertraege,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,11
+Ertragsteueraufwand,ertragsteueraufwand,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,12
+Ertragsteuerzahlungen,ertragsteuerzahlungen,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,13
+Cashflow aus laufender Geschäftstätigkeit,cashflowauslaufendergeschaeftstaetigkeit,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,14
+"Einzahlungen aus Abgängen von Gegenständen des immateriellen Anlagevermögens / Sach-
+anlagevermögens",einzahlungenausabgaengenvongegenstaendendesimmateriellenanlagevermoegenssachanlagevermoegens,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,15
+Auszahlungen für Investitionen in das immaterielle Anlagevermögen / Sachanlagevermögen,auszahlungenfuerinvestitionenindasimmaterielleanlagevermoegensachanlagevermoegen,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,16
+Einzahlungen aus Abgängen Finanzanlagevermögen,einzahlungenausabgaengenfinanzanlagevermoegen,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,17
+Auszahlungen für Investitionen in das Finanzanlagevermögen,auszahlungenfuerinvestitionenindasfinanzanlagevermoegen,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,18
+Einzahlungen aus dem Abgang aus dem Konsolidierungskreis in Vorjahren,einzahlungenausdemabgangausdemkonsolidierungskreisinvorjahren,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,19
+Erhaltene Gewinnausschüttungen von assoziierten Unternehmen,erhaltenegewinnausschuettungenvonassoziiertenunternehmen,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,20
+Erhaltene Zinsen,erhaltenezinsen,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,21
+Cashflow aus der Investitionstätigkeit,cashflowausderinvestitionstaetigkeit,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,22
+Einzahlungen (+) / Auszahlungen (-) von / an Gesellschafter(n),einzahlungenauszahlungenvonangesellschaftern,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,23
+Auszahlungen (-) / Einzahlungen (+) aus Finanzkrediten,auszahlungeneinzahlungenausfinanzkrediten,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,24
+Gezahlte Zinsen,gezahltezinsen,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,25
+Cashflow aus der Finanzierungstätigkeit,cashflowausderfinanzierungstaetigkeit,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,26
+Zahlungswirksame Veränderungen des Finanzmittelfonds,zahlungswirksameveraenderungendesfinanzmittelfonds,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,27
+Wechselkursbedingte Änderung des Finanzmittelfonds,wechselkursbedingteaenderungdesfinanzmittelfonds,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,28
+Finanzmittelfonds am Anfang der Periode,finanzmittelfondsamanfangderperiode,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,29
+Finanzmittelfonds am Ende der Periode,finanzmittelfondsamendederperiode,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,30
+davon:,davon,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,31
+"Kassenbestand, Guthaben bei Kreditinstituten",kassenbestandguthabenbeikreditinstituten,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,32
+in die Finanzdisposition einbezogene kurzfristige Finanzkredite,indiefinanzdispositioneinbezogenekurzfristigefinanzkredite,none,,,KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024,16,33
+"Nicht zahlungswirksame Aufwendungen (+) / Erträge (-), Zunahme (+) bzw. Abnahme (-) der Rückstellungen, sonstige nicht der laufenden Geschäftstätigkeit zuzu-
+ordnende Aufwendungen (+) und Erträge (-)",nichtzahlungswirksameaufwendungenertraegezunahmebzwabnahmederrueckstellungensonstigenichtderlaufendengeschaeftstaetigkeitzuzuordnendeaufwendungenundertraege,none,,,3.3. Finanzlage,22,4
+Zunahme (-) / Abnahme (+) Nettoumlaufvermögen,zunahmeabnahmenettoumlaufvermoegen,none,,,3.3. Finanzlage,22,5
+Mittelzufluss / -abfluss aus der laufenden Geschäftstätigkeit,mittelzuflussabflussausderlaufendengeschaeftstaetigkeit,none,,,3.3. Finanzlage,22,7
+Mittelabfluss / -zufluss aus der Investitionstätigkeit,mittelabflusszuflussausderinvestitionstaetigkeit,none,,,3.3. Finanzlage,22,8
+Mittelabfluss aus der Finanzierungstätigkeit,mittelabflussausderfinanzierungstaetigkeit,none,,,3.3. Finanzlage,22,9
+Zahlungswirksame Veränderung des Finanzmittelbestandes,zahlungswirksameveraenderungdesfinanzmittelbestandes,none,,,3.3. Finanzlage,22,10
+Finanzmittelbestand am Anfang der Periode,finanzmittelbestandamanfangderperiode,none,,,3.3. Finanzlage,22,11
++/- Währungsdifferenzen Finanzmittelbestand,waehrungsdifferenzenfinanzmittelbestand,none,,,3.3. Finanzlage,22,12
+Finanzmittelbestand am Ende der Periode,finanzmittelbestandamendederperiode,none,,,3.3. Finanzlage,22,13
+Flüssige Mittel,fluessigemittel,none,,,3.3. Finanzlage,22,15
+Kurzfristige Finanzkredite (Kontokorrentverbindlichkeiten),kurzfristigefinanzkreditekontokorrentverbindlichkeiten,none,,,3.3. Finanzlage,22,16
+Geschäfts- oder Firmenwert,geschaeftsoderfirmenwert,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,2
+Sonstige immaterielle Vermögenswerte,sonstigeimmateriellevermoegenswerte,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,3
+Sachanlagen,sachanlagen,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,4
+Sonstige finanzielle Vermögenswerte,sonstigefinanziellevermoegenswerte,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,5
+Finanzforderungen gegen verbundene Unternehmen,finanzforderungengegenverbundeneunternehmen,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,6
+Sonstige Vermögenswerte,sonstigevermoegenswerte,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,7
+Latente Steuern,latentesteuern,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,8
+Langfristige Vermögenswerte,langfristigevermoegenswerte,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,9
+Vorräte,vorraete,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,10
+Forderungen aus Lieferungen und Leistungen,forderungenauslieferungenundleistungen,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,11
+Ertragsteuerforderung,ertragsteuerforderung,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,12
+Sonstige Forderungen und Vermögenswerte,sonstigeforderungenundvermoegenswerte,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,14
+Zahlungsmittel und Zahlungsmitteläquivalente,zahlungsmittelundzahlungsmittelaequivalente,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,15
+Kurzfristige Vermögenswerte,kurzfristigevermoegenswerte,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,16
+Passiva,passiva,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,18
+Gezeichnetes Kapital,gezeichneteskapital,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,20
+Kapitalrücklage,kapitalruecklage,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,21
+Verlustvortrag und Periodenergebnis,verlustvortragundperiodenergebnis,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,22
+Kumuliertes sonstiges Ergebnis,kumuliertessonstigesergebnis,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,23
+Den Gesellschaftern des Mutterunternehmens zurechenbarer Anteil am Eigenkapital,dengesellschafterndesmutterunternehmenszurechenbareranteilameigenkapital,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,24
+Nicht beherrschende Gesellschafter,nichtbeherrschendegesellschafter,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,25
+Rückstellungen für Pensionsverpflichtungen,rueckstellungenfuerpensionsverpflichtungen,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,27
+Sonstige Rückstellungen,sonstigerueckstellungen,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,28
+Finanzverbindlichkeiten gegenüber Dritten,finanzverbindlichkeitengegenueberdritten,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,29
+Sonstige Verbindlichkeiten,sonstigeverbindlichkeiten,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,30
+Langfristige Schulden,langfristigeschulden,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,32
+Rückstellungen für Steuern,rueckstellungenfuersteuern,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,34
+Verbindlichkeiten aus Lieferungen und Leistungen,verbindlichkeitenauslieferungenundleistungen,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,36
+Kurzfristige Schulden,kurzfristigeschulden,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,38
+Summe Schulden,summeschulden,unsupported_framework,,,Konzernbilanz zum 31. Dezember 2025,11,39
+Umsatzerlöse,umsatzerloese,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,2
+Umsatzkosten,umsatzkosten,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,3
+Bruttoergebnis vom Umsatz,bruttoergebnisvomumsatz,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,4
+Vertriebskosten,vertriebskosten,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,5
+Forschungs- und Entwicklungskosten,forschungsundentwicklungskosten,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,6
+Allgemeine Verwaltungskosten,allgemeineverwaltungskosten,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,7
+"Sonstige Erträge und Aufwendungen (-), netto",sonstigeertraegeundaufwendungennetto,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,8
+Betriebsergebnis,betriebsergebnis,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,9
+Zinserträge und sonstige Finanzerträge,zinsertraegeundsonstigefinanzertraege,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,10
+Zinsaufwendungen und sonstige Finanzaufwendungen,zinsaufwendungenundsonstigefinanzaufwendungen,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,11
+Finanzergebnis,finanzergebnis,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,12
+Ergebnis vor Ertragsteuern,ergebnisvorertragsteuern,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,13
+Erträge / Aufwendungen (-) aus Ertragsteuern,ertraegeaufwendungenausertragsteuern,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,14
+Jahresfehlbetrag (-) / Jahresüberschuss,jahresfehlbetragjahresueberschuss,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,15
+Vom Jahresüberschuss entfallen auf:,vomjahresueberschussentfallenauf,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,16
+Gesellschafter des Mutterunternehmens,gesellschafterdesmutterunternehmens,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,17
+"Sonstiges Ergebnis, das zukünftig nicht in die Gewinn- und Verlustrechnung umgegliedert wird",sonstigesergebnisdaszukuenftignichtindiegewinnundverlustrechnungumgegliedertwird,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,19
+Ergebnis aus der Neubewertung der Pensionsrückstellungen,ergebnisausderneubewertungderpensionsrueckstellungen,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,20
+"Sonstiges Ergebnis, das unter bestimmten",sonstigesergebnisdasunterbestimmten,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,22
+Bedingungen zukünftig in die Gewinn- und Verlustrechnung umgegliedert wird,bedingungenzukuenftigindiegewinnundverlustrechnungumgegliedertwird,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,23
+Ergebnis aus Cashflow-Hedges,ergebnisauscashflowhedges,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,24
+Unterschiedsbetrag aus der Währungsumrechnung,unterschiedsbetragausderwaehrungsumrechnung,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,26
+Sonstiges Ergebnis nach Ertragsteuern,sonstigesergebnisnachertragsteuern,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,27
+Gesamtergebnis,gesamtergebnis,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,28
+Vom Gesamtergebnis entfallen auf:,vomgesamtergebnisentfallenauf,unsupported_framework,,,Konzern-Gesamtergebnisrechnung vom 1. Januar bis 31. Dezember 2025,13,29
+Abschreibungen/Wertminderungen,abschreibungenwertminderungen,unsupported_framework,,,2025 2024,5,3
+EBITDA,ebitda,unsupported_framework,,,2025 2024,5,4
+Sondereffekte,sondereffekte,unsupported_framework,,,2025 2024,5,5
+Bereinigtes EBITDA,bereinigtesebitda,unsupported_framework,,,2025 2024,5,6
+Regionen,regionen,unsupported_framework,,,3 Erläuterungen zur Konzern-Gesamtergebnisrechnung,31,2
+Europa (ohne Deutschland),europaohnedeutschland,unsupported_framework,,,3 Erläuterungen zur Konzern-Gesamtergebnisrechnung,31,3
+Deutschland,deutschland,unsupported_framework,,,3 Erläuterungen zur Konzern-Gesamtergebnisrechnung,31,4
+Asien,asien,unsupported_framework,,,3 Erläuterungen zur Konzern-Gesamtergebnisrechnung,31,5
+Nordamerika,nordamerika,unsupported_framework,,,3 Erläuterungen zur Konzern-Gesamtergebnisrechnung,31,6
+Sonstige Regionen,sonstigeregionen,unsupported_framework,,,3 Erläuterungen zur Konzern-Gesamtergebnisrechnung,31,7
+Gesamt,gesamt,unsupported_framework,,,3 Erläuterungen zur Konzern-Gesamtergebnisrechnung,31,8
+Märkte,maerkte,unsupported_framework,,,3 Erläuterungen zur Konzern-Gesamtergebnisrechnung,31,9
+Medizintechnik,medizintechnik,unsupported_framework,,,3 Erläuterungen zur Konzern-Gesamtergebnisrechnung,31,10
+Industrieanwendungen,industrieanwendungen,unsupported_framework,,,3 Erläuterungen zur Konzern-Gesamtergebnisrechnung,31,11
+Material- und Verpackungskosten,materialundverpackungskosten,unsupported_framework,,,3.2 Umsatzkosten,32,2
+Personalaufwendungen,personalaufwendungen,unsupported_framework,,,3.2 Umsatzkosten,32,3
+Energiekosten,energiekosten,unsupported_framework,,,3.2 Umsatzkosten,32,5
+Übrige Umsatzkosten,uebrigeumsatzkosten,unsupported_framework,,,3.2 Umsatzkosten,32,6
+Wertminderungen Geschäfts- oder Firmenwert,wertminderungengeschaeftsoderfirmenwert,unsupported_framework,,,3.5 Allgemeine Verwaltungskosten,32,2
+Wertminderungen (-) / Wertaufholungen,wertminderungenwertaufholungen,unsupported_framework,,,3.5 Allgemeine Verwaltungskosten,32,3
+Wertminderungen auf Sachanlagen,wertminderungenaufsachanlagen,unsupported_framework,,,3.5 Allgemeine Verwaltungskosten,32,5
+Zuführung zur Wertberichtigung auf Forderungen,zufuehrungzurwertberichtigungaufforderungen,unsupported_framework,,,3.5 Allgemeine Verwaltungskosten,32,6
+Währungsergebnis,waehrungsergebnis,unsupported_framework,,,3.5 Allgemeine Verwaltungskosten,32,7
+Erträge aus Auflösung von Wertberichtigungen auf Forderungen,ertraegeausaufloesungvonwertberichtigungenaufforderungen,unsupported_framework,,,3.5 Allgemeine Verwaltungskosten,32,8
+Verlust (-) / Gewinn (+) aus dem Abgang von Sachanlagevermögen,verlustgewinnausdemabgangvonsachanlagevermoegen,unsupported_framework,,,3.5 Allgemeine Verwaltungskosten,32,9
+Übrige sonstige Erträge,uebrigesonstigeertraege,unsupported_framework,,,3.5 Allgemeine Verwaltungskosten,32,10
+Übrige sonstige Aufwendungen,uebrigesonstigeaufwendungen,unsupported_framework,,,3.5 Allgemeine Verwaltungskosten,32,11
+Steuerertrag (-) / Steueraufwand,steuerertragsteueraufwand,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,3
+Zinsergebnis (ohne Zeitwertveränderung Derivate),zinsergebnisohnezeitwertveraenderungderivate,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,4
+Abschreibungen und Wertminderungen auf l angfristige Vermögenswerte,abschreibungenundwertminderungenauflangfristigevermoegenswerte,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,5
+Verluste / Gewinne (-) aus Abgang Sachanlagen und immaterieller Vermögensgegenstände,verlustegewinneausabgangsachanlagenundimmateriellervermoegensgegenstaende,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,6
+Zunahme / Abnahme (-) der Rückstellungen (ohne latente Steuern),zunahmeabnahmederrueckstellungenohnelatentesteuern,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,7
+Ertragsteuerzahlung,ertragsteuerzahlung,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,8
+Sonstige zahlungsunwirksame Aufwendungen,sonstigezahlungsunwirksameaufwendungen,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,9
+Zunahme der Vorräte,zunahmedervorraete,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,10
+Abnahme der Forderungen aus Lieferungen und Leistungen,abnahmederforderungenauslieferungenundleistungen,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,11
+Abnahme / Zunahme (-) der sonstigen Forderungen und (finanziellen) Vermögenswerte,abnahmezunahmedersonstigenforderungenundfinanziellenvermoegenswerte,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,12
+Abnahme der Verbindlichkeiten aus Lieferungen und Leistungen,abnahmederverbindlichkeitenauslieferungenundleistungen,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,13
+Zunahme / Abnahme (-) der sonstigen (finanziellen),zunahmeabnahmedersonstigenfinanziellen,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,14
+Cashflow aus betrieblicher Tätigkeit,cashflowausbetrieblichertaetigkeit,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,16
+Einzahlungen aus Abgängen von Sachanlagen,einzahlungenausabgaengenvonsachanlagen,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,17
+Auszahlungen (-) für Investitionen in Sachanlagen,auszahlungenfuerinvestitioneninsachanlagen,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,18
+Einzahlungen aus Zuschüssen,einzahlungenauszuschuessen,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,19
+Auszahlungen (-) für Investitionen in immaterielle Vermögenswerte,auszahlungenfuerinvestitioneninimmateriellevermoegenswerte,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,20
+An Gesellschafter gewährtes Darlehen,angesellschaftergewaehrtesdarlehen,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,23
+"Realisierte Gewinne (+) aus / Prämienkosten (-) für Derivate, netto",realisiertegewinneauspraemienkostenfuerderivatenetto,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,24
+Tilgungsanteil von Leasingzahlungen,tilgungsanteilvonleasingzahlungen,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,25
+Zahlungswirksame Veränderung des Finanzmittelfonds,zahlungswirksameveraenderungdesfinanzmittelfonds,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,27
+Währungseffekte,waehrungseffekte,unsupported_framework,,,Konzern-Kapitalflussrechnung für das Geschäftsjahr vom 1. Januar bis 31. Dezember 2025,14,28
+Finanzielle Vermögenswerte,finanziellevermoegenswerte,unsupported_framework,,,4.14 Finanzinstrumente,57,3
+Abgespaltene Kündigungsrechte,abgespaltenekuendigungsrechte,unsupported_framework,,,4.14 Finanzinstrumente,57,6
+Devisentermingeschäfte,devisentermingeschaefte,unsupported_framework,,,4.14 Finanzinstrumente,57,7
+Finanzforderungen gegen,finanzforderungengegen,unsupported_framework,,,4.14 Finanzinstrumente,57,8
+verbundene Unternehmen,verbundeneunternehmen,unsupported_framework,,,4.14 Finanzinstrumente,57,9
+Finanzielle Verbindlichkeiten,finanzielleverbindlichkeiten,unsupported_framework,,,4.14 Finanzinstrumente,57,13
+Verbindlichkeiten gegenüber Kreditinstituten,verbindlichkeitengegenueberkreditinstituten,unsupported_framework,,,4.14 Finanzinstrumente,57,14
+Anleiheverbindlichkeiten,anleiheverbindlichkeiten,unsupported_framework,,,4.14 Finanzinstrumente,57,15
+Verbindlichkeiten aus Leasing,verbindlichkeitenausleasing,unsupported_framework,,,4.14 Finanzinstrumente,57,17
+Verbindlichkeiten aus Reverse Factoring,verbindlichkeitenausreversefactoring,unsupported_framework,,,4.14 Finanzinstrumente,57,18
+Zinscap,zinscap,unsupported_framework,,,4.14 Finanzinstrumente,57,19
+Sonstige finanzielle Verbindlichkeiten,sonstigefinanzielleverbindlichkeiten,unsupported_framework,,,4.14 Finanzinstrumente,57,21
+Abgespaltene Kündigungsrechte - FVtPL,abgespaltenekuendigungsrechtefvtpl,unsupported_framework,,,Stufe 1 31. Dezember 2024 Stufe 2 Stufe 3,60,6
+Zinsbegrenzungsverein- barungen - FVtPL,zinsbegrenzungsvereinbarungenfvtpl,unsupported_framework,,,Stufe 1 31. Dezember 2024 Stufe 2 Stufe 3,60,10
+Anleiheverbindlichkeiten (Nennwert),anleiheverbindlichkeitennennwert,unsupported_framework,,,Kapitalmanagement,68,2
+Verbindlichkeiten gegenüber Kreditinstituten (Nennwert),verbindlichkeitengegenueberkreditinstitutennennwert,unsupported_framework,,,Kapitalmanagement,68,3
+abgegrenzte Zinsen,abgegrenztezinsen,unsupported_framework,,,Kapitalmanagement,68,4
+Bruttoschulden,bruttoschulden,unsupported_framework,,,Kapitalmanagement,68,5
+Nettoschulden,nettoschulden,unsupported_framework,,,Kapitalmanagement,68,7
+nicht in Anspruch genommene revolvierende Kreditlinie,nichtinanspruchgenommenerevolvierendekreditlinie,unsupported_framework,,,Kapitalmanagement,68,8

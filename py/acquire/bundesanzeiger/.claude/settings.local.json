@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(playwright install chromium)",
+      "PowerShell(python -m playwright install chromium)",
+      "PowerShell(python -m pip install -r \"c:\\\\Users\\\\Christian.Wolf\\\\OneDrive - Ankura Consulting\\\\Programming\\\\Projects\\\\Bundesanzeiger_Financial_Extracts\\\\requirements.txt\")",
+      "PowerShell(cd \"c:\\\\Users\\\\Christian.Wolf\\\\OneDrive - Ankura Consulting\\\\Programming\\\\Projects\\\\Bundesanzeiger_Financial_Extracts\"; \\(Select-String \"_alt_tab|_bring_browser|_split_mixed|_pin_key|_classify_stmt|_DATE_ONLY_RE|confirm_func|captcha_cb\" ur_extractor.py\\).Line | Select-Object -First 30)",
+      "PowerShell(cd \"c:\\\\Users\\\\Christian.Wolf\\\\OneDrive - Ankura Consulting\\\\Programming\\\\Projects\\\\Bundesanzeiger_Financial_Extracts\"; \\(Select-String \"^async def open_document|^async def download_pdf|^async def run_search\" ur_extractor.py\\).Line)",
+      "PowerShell(cd \"c:\\\\Users\\\\Christian.Wolf\\\\OneDrive - Ankura Consulting\\\\Programming\\\\Projects\\\\Bundesanzeiger_Financial_Extracts\"; \\(Select-String \"input\\\\\\(\\\\\\)\" ur_extractor.py\\).LineNumber)",
+      "Bash(python -c ' *)",
+      "PowerShell($file = \"c:\\\\Users\\\\Christian.Wolf\\\\OneDrive - Ankura Consulting\\\\Programming\\\\Projects\\\\Bundesanzeiger_Financial_Extracts\\\\ur_gui.py\"; $lines = Get-Content $file; $lines[144..195] | ForEach-Object { \"[$_]\" })",
+      "PowerShell($py = \"c:\\\\Users\\\\Christian.Wolf\\\\OneDrive - Ankura Consulting\\\\Programming\\\\Projects\\\\Bundesanzeiger_Financial_Extracts\\\\.venv\\\\Scripts\\\\python.exe\"; & $py \"c:\\\\Users\\\\Christian.Wolf\\\\OneDrive - Ankura Consulting\\\\Programming\\\\Projects\\\\Bundesanzeiger_Financial_Extracts\\\\_p.py\")",
+      "PowerShell(\\(Get-Content \"c:\\\\Users\\\\Christian.Wolf\\\\OneDrive - Ankura Consulting\\\\Programming\\\\Projects\\\\Bundesanzeiger_Financial_Extracts\\\\ur_gui.py\"\\).Count)",
+      "PowerShell(& \"c:\\\\Users\\\\Christian.Wolf\\\\OneDrive - Ankura Consulting\\\\Programming\\\\Projects\\\\Bundesanzeiger_Financial_Extracts\\\\.venv\\\\Scripts\\\\pip.exe\" install pyinstaller --quiet)",
+      "PowerShell(& \"c:\\\\Users\\\\Christian.Wolf\\\\OneDrive - Ankura Consulting\\\\Programming\\\\Projects\\\\Bundesanzeiger_Financial_Extracts\\\\.venv\\\\Scripts\\\\pyinstaller.exe\" --version)"
+    ]
+  }
+}

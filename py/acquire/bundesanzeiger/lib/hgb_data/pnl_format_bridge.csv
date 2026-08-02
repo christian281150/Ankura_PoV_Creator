@@ -1,0 +1,21 @@
+gkv_code,gkv_name_de,ukv_codes,allocation_required,allocation_method,notes
+PL_GKV-1,Umsatzerlöse,PL_UKV-1,False,1:1,Same definition in both formats. Identical accounts.
+PL_GKV-2,Bestandsveränderungen fertige/unfertige Erzeugnisse,PL_UKV-2,False,absorbed into COGS,"GKV-ONLY line. In UKV, inventory movements are absorbed into Herstellungskosten (COGS only contains expenses for goods actually sold)."
+PL_GKV-3,Andere aktivierte Eigenleistungen,PL_UKV-2,False,absorbed into COGS via capitalised costs,"GKV-ONLY line. In UKV, self-built assets reduce the period's functional cost lines (typically COGS) via capitalisation entries."
+PL_GKV-4,Sonstige betriebliche Erträge,PL_UKV-6,False,1:1,Position exists in both. No reclassification.
+PL_GKV-5a,Materialaufwand RHB und bezogene Waren,"PL_UKV-2,PL_UKV-4,PL_UKV-5",True,cost-center,"ALLOCATION REQUIRED. Production material → COGS. Marketing material/swag → Vertrieb. Office supplies → Verwaltung. Without cost-center data, default everything to COGS as best-effort."
+PL_GKV-5b,Aufwendungen für bezogene Leistungen,"PL_UKV-2,PL_UKV-4,PL_UKV-5",True,cost-center,ALLOCATION REQUIRED. Subcontracted production → COGS. Outsourced sales → Vertrieb. Consulting/IT/audit → Verwaltung.
+PL_GKV-6a,Löhne und Gehälter,"PL_UKV-2,PL_UKV-4,PL_UKV-5",True,cost-center (department),ALLOCATION REQUIRED. Direct labor (production) → COGS. Sales/marketing → Vertrieb. G&A → Verwaltung. The single biggest item that disappears in UKV.
+PL_GKV-6b,Soziale Abgaben und Altersversorgung,"PL_UKV-2,PL_UKV-4,PL_UKV-5",True,follows Löhne und Gehälter split,ALLOCATION REQUIRED. Same split-ratio as the underlying salary line.
+PL_GKV-7a,Abschreibungen auf imm. VG / Sachanlagen (planmäßig),"PL_UKV-2,PL_UKV-4,PL_UKV-5",True,by asset location/use,ALLOCATION REQUIRED. Factory equipment & buildings → COGS. Sales fleet → Vertrieb. HQ building → Verwaltung.
+PL_GKV-7b,Abschreibungen UV (außerplanmäßig),PL_UKV-7,False,non-operating-ish,Typically Wertberichtigungen Forderungen — maps to sonstige betriebliche Aufwendungen in UKV.
+PL_GKV-8,Sonstige betriebliche Aufwendungen,"PL_UKV-2,PL_UKV-4,PL_UKV-5,PL_UKV-7",True,cost-center,"ALLOCATION REQUIRED. Mieten/Energie production → COGS. Vertriebskosten (Werbung, Reise) → Vertrieb. Büro/IT/Versicherungen → Verwaltung. Residuals (Verluste Anlagenabgang, etc.) → sonstige betr. Aufwendungen."
+PL_GKV-9,Erträge aus Beteiligungen,PL_UKV-8,False,1:1,
+PL_GKV-10,Erträge aus anderen WP/Ausleihungen FA,PL_UKV-9,False,1:1,
+PL_GKV-11,Sonstige Zinsen und ähnliche Erträge,PL_UKV-10,False,1:1,
+PL_GKV-12,Abschreibungen auf Finanzanlagen,PL_UKV-11,False,1:1,
+PL_GKV-13,Zinsen und ähnliche Aufwendungen,PL_UKV-12,False,1:1,
+PL_GKV-14,Steuern vom Einkommen und Ertrag,PL_UKV-13,False,1:1,
+PL_GKV-15,Ergebnis nach Steuern,PL_UKV-14,False,subtotal,Calculated subtotal in both.
+PL_GKV-16,Sonstige Steuern,PL_UKV-15,False,1:1,
+PL_GKV-17,Jahresüberschuss / Jahresfehlbetrag,PL_UKV-16,False,1:1,"Bottom-line is identical: total expenses captured the same way, just grouped differently."

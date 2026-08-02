@@ -2,19 +2,21 @@
 openpyxl>=3.1.5          # xlsx read/write - normalise layer
 pydantic>=2.9            # contract/models.py validation
 pdfplumber>=0.11.4       # PDF table + text extraction
+pdfminer.six>=20221105   # pdfplumber backend
+pandas>=2.2.3            # DataFrame helpers, CSV export
 
-# Acquisition (lanes B and C)
+# Acquisition
 httpx>=0.27              # register + web fetch
 beautifulsoup4>=4.12     # HTML parsing
 lxml>=5.3                # bs4 backend
+playwright>=1.50.0       # extractor - imported at module load; Edge via CDP
+rich>=13.9.4             # extractor CLI output
+customtkinter>=5.2.0     # ur_gui.py
 
-# Render (lane F)
+# Render
 python-pptx>=1.0.2
+pillow>=11.0.0           # image normalise, perceptual hash, pdfplumber
 
 # Dev
 pytest>=8.3
 ruff>=0.7
-
-playwright>=1.48         # bundesanzeiger extractor - imported at module load
-rich>=13.9               # extractor CLI output
-pillow>=11.0             # image normalise + perceptual hash (lane img)
