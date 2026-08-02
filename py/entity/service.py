@@ -62,13 +62,35 @@ class EntityResolutionService:
         path = [start]
         seen = {start.register}
         current = start
-        while current.parent_register is not None:
-            if current.parent_register in seen:
-                raise ResolutionError(f"Corporate-tree cycle at {current.parent_register.display}")
-            current = self._require_record(current.parent_register)
+        while (parent_register := self._derive_parent_register(current)) is not None:
+            if parent_register in seen:
+                raise ResolutionError(f"Corporate-tree cycle at {parent_register.display}")
+            current = self._require_record(parent_register)
             seen.add(current.register)
             path.append(current)
         return path, current
+
+    @staticmethod
+    def _derive_parent_register(entity: EntityRecord) -> RegisterId | None:
+        """Derive a parent solely from raw Gesellschafterliste entries.
+
+        A natural person is not a corporate parent.  More than one distinct
+        corporate shareholder is intentionally ambiguous: choosing one would
+        invent a group tree that the register evidence does not establish.
+        """
+        corporate_holders = {
+            entry.shareholder_register
+            for entry in entity.shareholder_entries
+            if entry.shareholder_register is not None
+        }
+        if not corporate_holders:
+            return None
+        if len(corporate_holders) > 1:
+            identities = ", ".join(holder.display for holder in sorted(corporate_holders, key=lambda item: item.display))
+            raise ResolutionError(
+                f"Ambiguous corporate parents in Gesellschafterliste for {entity.register.display}: {identities}"
+            )
+        return next(iter(corporate_holders))
 
     def _validate_path(self, discovered: EntityRecord, path: list[EntityRecord]) -> list[ResolutionWarning]:
         warnings: list[ResolutionWarning] = []

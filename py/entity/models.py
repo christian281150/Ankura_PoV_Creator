@@ -9,7 +9,7 @@ from __future__ import annotations
 from datetime import UTC, date, datetime
 from enum import Enum
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field, field_validator
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, field_validator, model_validator
 
 
 class RegisterType(str, Enum):
@@ -71,6 +71,31 @@ class FilingRecord(BaseModel):
         return max(0, (self.published_at - self.statutory_deadline).days)
 
 
+class ShareholderKind(str, Enum):
+    COMPANY = "company"
+    NATURAL_PERSON = "natural_person"
+    UNKNOWN = "unknown"
+
+
+class ShareholderEntry(BaseModel):
+    """One raw entry from a Gesellschafterliste, with page-level provenance."""
+
+    shareholder_name: str = Field(min_length=1)
+    kind: ShareholderKind
+    shareholder_register: RegisterId | None = None
+    ownership_percent: float | None = Field(default=None, ge=0, le=100)
+    source_doc: str = Field(min_length=1)
+    page: int | None = Field(default=None, ge=1)
+
+    @model_validator(mode="after")
+    def company_entries_need_a_register_identity(self) -> "ShareholderEntry":
+        if self.kind is ShareholderKind.COMPANY and self.shareholder_register is None:
+            raise ValueError("a company shareholder must carry a register identity")
+        if self.kind is ShareholderKind.NATURAL_PERSON and self.shareholder_register is not None:
+            raise ValueError("a natural-person shareholder cannot carry a register identity")
+        return self
+
+
 class EntityRecord(BaseModel):
     """A register-backed record supplied by the fetch layer."""
 
@@ -81,7 +106,7 @@ class EntityRecord(BaseModel):
     legal_name: str = Field(min_length=1)
     legal_form: str = Field(min_length=1)
     seat: str | None = None
-    parent_register: RegisterId | None = None
+    shareholder_entries: list[ShareholderEntry] = Field(default_factory=list)
     files_konzernabschluss: bool = False
     aliases: list[str] = Field(default_factory=list)
     historical_names: list[str] = Field(default_factory=list)

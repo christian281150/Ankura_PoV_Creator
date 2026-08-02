@@ -1,0 +1,19 @@
+{
+  "records": [
+    {
+      "register": {"court": "Musterstadt", "register_type": "HRB", "number": "100"},
+      "legal_name": "Familienbetrieb GmbH",
+      "legal_form": "GmbH",
+      "shareholder_entries": [
+        {
+          "shareholder_name": "Erika Beispiel",
+          "kind": "natural_person",
+          "ownership_percent": 100.0,
+          "source_doc": "Gesellschafterliste Familienbetrieb GmbH (fixture)",
+          "page": 1
+        }
+      ]
+    }
+  ],
+  "lookups": {"familienbetrieb": [{"court": "Musterstadt", "register_type": "HRB", "number": "100"}]}
+}

@@ -14,13 +14,17 @@ from entity.store import JsonEntityStore
 
 class EntityResolutionServiceTests(unittest.TestCase):
     def setUp(self) -> None:
-        fixture = json.loads((Path(__file__).parent / "fixtures" / "seidensticker.json").read_text(encoding="utf-8"))
+        self.service = self._service_from_fixture("seidensticker.json")
+
+    @staticmethod
+    def _service_from_fixture(name: str) -> EntityResolutionService:
+        fixture = json.loads((Path(__file__).parent / "fixtures" / name).read_text(encoding="utf-8"))
         records = [EntityRecord.model_validate(record) for record in fixture["records"]]
         lookups = {
             query: [RegisterId.model_validate(register) for register in registers]
             for query, registers in fixture["lookups"].items()
         }
-        self.service = EntityResolutionService(FixtureEntityFetch(records, lookups))
+        return EntityResolutionService(FixtureEntityFetch(records, lookups))
 
     def test_impressum_url_resolves_to_terminal_hra_group(self) -> None:
         result = self.service.resolve("seidensticker.com")
@@ -29,31 +33,27 @@ class EntityResolutionServiceTests(unittest.TestCase):
         self.assertEqual(result.target.register.register_type, RegisterType.HRA)
         self.assertEqual(result.target.register.number, "8217")
         self.assertEqual(result.discovered.legal_name, "TK Store-Management GmbH")
+        self.assertEqual(result.discovered.register.number, "39109")
         self.assertIn("TK Store-Management GmbH", [entity.legal_name for entity in result.subsidiaries])
         self.assertTrue(any(warning.code == "IMPRESSUM_ENTITY_NOT_GROUP" for warning in result.warnings))
         self.assertTrue(result.requires_confirmation)
 
-    def test_rejects_unknown_and_ambiguous_lookup(self) -> None:
+    def test_rejects_unknown_lookup(self) -> None:
         with self.assertRaises(ResolutionError):
             self.service.resolve("unknown.example")
 
-        parent = self.service.resolve("textilkontor walter seidensticker gmbh & co. kg").target
-        ambiguous = EntityResolutionService(FixtureEntityFetch([parent], {"ambiguous": [parent.register, parent.register]}))
+    def test_refuses_name_with_two_register_candidates(self) -> None:
+        ambiguous = self._service_from_fixture("ambiguous_name.json")
         with self.assertRaises(ResolutionError):
-            ambiguous.resolve("ambiguous")
+            ambiguous.resolve("example gmbh")
 
-    def test_hrb_consolidated_filer_above_hra_parent_is_hard_flag(self) -> None:
-        parent_register = RegisterId(court="Bielefeld", register_type=RegisterType.HRA, number="8217")
-        filer_register = RegisterId(court="Bielefeld", register_type=RegisterType.HRB, number="7")
-        parent = EntityRecord(register=parent_register, legal_name="Operating KG", legal_form="GmbH & Co. KG")
-        filer = EntityRecord(
-            register=filer_register,
-            legal_name="Wrong consolidated filer GmbH",
-            legal_form="GmbH",
-            parent_register=parent_register,
-            files_konzernabschluss=True,
-        )
-        result = EntityResolutionService(FixtureEntityFetch([parent, filer], {"wrong.example": [filer_register]})).resolve("wrong.example")
+    def test_natural_person_shareholder_produces_no_parent(self) -> None:
+        result = self._service_from_fixture("natural_person_parentless.json").resolve("familienbetrieb")
+        self.assertEqual(result.target.register, result.discovered.register)
+        self.assertEqual(len(result.upward_path), 1)
+
+    def test_hrb_consolidated_filer_under_hra_parent_is_hard_flag(self) -> None:
+        result = self._service_from_fixture("hrb_consolidated_filer_under_hra.json").resolve("wrong.example")
         flags = [warning for warning in result.warnings if warning.severity is WarningSeverity.HARD]
         self.assertIn("CONSOLIDATED_FILER_PARENT_MISMATCH", [warning.code for warning in flags])
 

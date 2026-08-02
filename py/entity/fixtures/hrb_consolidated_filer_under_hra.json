@@ -1,0 +1,27 @@
+{
+  "records": [
+    {
+      "register": {"court": "Bielefeld", "register_type": "HRA", "number": "8217"},
+      "legal_name": "Operating Parent GmbH & Co. KG",
+      "legal_form": "GmbH & Co. KG",
+      "shareholder_entries": []
+    },
+    {
+      "register": {"court": "Bielefeld", "register_type": "HRB", "number": "7"},
+      "legal_name": "Wrong Consolidated Filer GmbH",
+      "legal_form": "GmbH",
+      "files_konzernabschluss": true,
+      "shareholder_entries": [
+        {
+          "shareholder_name": "Operating Parent GmbH & Co. KG",
+          "kind": "company",
+          "shareholder_register": {"court": "Bielefeld", "register_type": "HRA", "number": "8217"},
+          "ownership_percent": 100.0,
+          "source_doc": "Gesellschafterliste Wrong Consolidated Filer GmbH (fixture)",
+          "page": 1
+        }
+      ]
+    }
+  ],
+  "lookups": {"wrong.example": [{"court": "Bielefeld", "register_type": "HRB", "number": "7"}]}
+}

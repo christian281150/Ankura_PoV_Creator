@@ -7,6 +7,7 @@ from .models import (
     ResolutionError,
     ResolutionResult,
     ResolutionWarning,
+    ShareholderEntry,
 )
 from .service import EntityResolutionService
 from .store import JsonEntityStore
@@ -21,4 +22,5 @@ __all__ = [
     "ResolutionError",
     "ResolutionResult",
     "ResolutionWarning",
+    "ShareholderEntry",
 ]
