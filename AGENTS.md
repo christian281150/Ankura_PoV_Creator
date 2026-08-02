@@ -381,3 +381,6 @@ adjustments, same rule as Path A.
 
 Open question: are non-German engagements one-off or recurring? Recurring requires
 saved mappings per company and a refresh path — a materially larger build.
+## Untracked state
+
+py/acquire/bundesanzeiger/data/ is gitignored (.gitignore:19). It holds two append-only GUI event logs: row_merges.csv (label-merge decisions — genuine asserted judgment, currently unattributed and unversioned) and table_overrides.csv (overview-inclusion toggles — UI noise). Both are CTEC-only as of 2026-06-28. row_merges belongs in the asserted-content layer when that is built.
