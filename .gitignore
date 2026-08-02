@@ -24,6 +24,8 @@ py/acquire/bundesanzeiger/data/
 Thumbs.db
 
 .pytest_cache/
+.pytest-assets-tmp/
+.asset-cli-cache/
 
 
 out.json
