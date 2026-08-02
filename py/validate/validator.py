@@ -1,4 +1,4 @@
-"""Deterministic implementation of the validation contract V1--V10.
+"""Deterministic implementation of the validation contract V1--V11.
 
 The normalisation layer deliberately does not infer chart assignment, statement
 scope, or subtotal composition.  This module therefore consumes those fields
@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from math import isclose
-from typing import Any, Iterable, Mapping
+from typing import Any, Callable, Iterable, Mapping
 
 from contract.models import Flag
 
@@ -17,10 +17,11 @@ RULE_SEVERITY: dict[str, str] = {
     "V1": "blocking", "V2": "blocking", "V3": "note_required",
     "V4": "note_required", "V5": "note_required", "V6": "note_required",
     "V7": "blocking", "V8": "blocking", "V9": "advisory",
-    "V10": "note_required",
+    "V10": "note_required", "V11": "blocking",
 }
 
 V5_ABSOLUTE_MATERIALITY_EUR = 1_000_000.0
+V11_ONE_OFF_MATERIALITY_EUR = 1_000_000.0
 
 # Each entry is (component std_id, sign).  A definition is only evaluated when
 # every component is disclosed for the fiscal year in question.
@@ -73,6 +74,10 @@ def _is_revenue_label(value: Any) -> bool:
     # Avoid matching terms such as "revenue growth" differently from a chart
     # entitled "Revenue in EUR m"; both present a Revenue series.
     return "revenue" in _normalise_label(value)
+
+
+def _is_ebitda_label(value: Any) -> bool:
+    return "ebitda" in _normalise_label(value)
 
 
 def _series_name(item: Mapping[str, Any]) -> str:
@@ -161,6 +166,108 @@ def _is_cost(record: Mapping[str, Any]) -> bool:
             or any(word in label for word in ("aufwendung", "kosten", "abschreibung", "material", "personal", "steuer", "zinsen")))
 
 
+def _one_offs(lagebericht: Any | None, segments: Any | None) -> list[dict[str, Any]]:
+    """Return only explicitly stated one-offs from LageberichtExtraction evidence."""
+    source = lagebericht if lagebericht is not None else segments
+    if source is None:
+        return []
+    data = _model_dump(source)
+    if "one_offs" not in data and data.get("lagebericht") is not None:
+        data = _model_dump(data["lagebericht"])
+    return [_model_dump(item) for item in data.get("one_offs", ())]
+
+
+def _provenance_key(value: Any) -> tuple[str, str, int] | None:
+    if value is None:
+        return None
+    provenance = _model_dump(value)
+    doc, sheet, row = provenance.get("doc"), provenance.get("sheet"), provenance.get("row")
+    if not isinstance(doc, str) or not doc.strip() or not isinstance(sheet, str) or not sheet.strip() or not isinstance(row, int):
+        return None
+    return (doc, sheet, row)
+
+
+def _material_one_offs(lagebericht: Any | None, segments: Any | None, threshold_eur: float) -> list[dict[str, Any]]:
+    return [
+        one_off for one_off in _one_offs(lagebericht, segments)
+        if one_off.get("unit") == "EUR"
+        and one_off.get("value") is not None
+        and abs(float(one_off["value"])) >= threshold_eur
+        and _provenance_key(one_off.get("provenance")) is not None
+    ]
+
+
+def _stated_one_offs(lagebericht: Any | None, segments: Any | None) -> list[dict[str, Any]]:
+    return [
+        one_off for one_off in _one_offs(lagebericht, segments)
+        if one_off.get("unit") == "EUR"
+        and one_off.get("value") is not None
+        and _provenance_key(one_off.get("provenance")) is not None
+    ]
+
+
+def _reported_one_off_footnote(one_off: Mapping[str, Any]) -> str:
+    value = abs(float(one_off["value"])) / 1_000_000
+    direction = str(one_off.get("direction") or "unknown")
+    return f"FY{int(one_off['fiscal_year'])} reported EBITDA includes a €{value:.1f}m stated one-off ({direction}): {one_off['description']}"
+
+
+def _series_fiscal_years(series: Mapping[str, Any]) -> set[int] | None:
+    values = series.get("values")
+    if isinstance(values, Mapping):
+        return {int(year) for year in values}
+    points = series.get("series")
+    if isinstance(points, Iterable) and not isinstance(points, (str, bytes, Mapping)):
+        years = {int(_model_dump(point)["fy"]) for point in points if _model_dump(point).get("fy") is not None}
+        return years or None
+    return None
+
+
+def validate_v11(
+    charted_series: Iterable[Any] | None,
+    slot_assignments: Mapping[str, Any] | Iterable[Any] | None,
+    *,
+    axis_labels: Mapping[str, str] | None = None,
+    lagebericht: Any | None = None,
+    segments: Any | None = None,
+    one_off_materiality_eur: float = V11_ONE_OFF_MATERIALITY_EUR,
+) -> list[Flag]:
+    """Enforce auditable EBITDA basis and disclosure of material stated one-offs."""
+    flags: list[Flag] = []
+    material_one_offs = _material_one_offs(lagebericht, segments, one_off_materiality_eur)
+    for series in _assigned_series(charted_series, slot_assignments, axis_labels):
+        name = _series_name(series)
+        if not (_is_ebitda_label(series.get("axis_label")) or _is_ebitda_label(name)):
+            continue
+        basis = series.get("earnings_basis")
+        if basis not in {"reported", "adjusted"}:
+            flags.append(_flag("V11", f"{name} in {series['slot']} is labelled EBITDA but has no valid earnings_basis."))
+            continue
+        if basis == "adjusted":
+            adjustments = series.get("adjustments")
+            if not isinstance(adjustments, list) or not adjustments:
+                flags.append(_flag("V11", f"{name} in {series['slot']} is adjusted EBITDA without stated Lagebericht adjustments."))
+                continue
+            stated = {(_provenance_key(one_off.get("provenance")), abs(float(one_off["value"]))) for one_off in _stated_one_offs(lagebericht, segments)}
+            for adjustment in adjustments:
+                adjustment_data = _model_dump(adjustment)
+                amount = adjustment_data.get("amount")
+                key = _provenance_key(adjustment_data.get("provenance"))
+                if not isinstance(amount, (int, float)) or key is None or (key, abs(float(amount))) not in stated:
+                    flags.append(_flag("V11", f"{name} in {series['slot']} has an adjustment not traced to a stated Lagebericht OneOffAmount."))
+                    break
+        else:
+            footnotes = {str(note) for note in (*series.get("footnotes_auto", ()), *series.get("footnotes", ())) }
+            series_years = _series_fiscal_years(series)
+            for one_off in material_one_offs:
+                if series_years is not None and int(one_off["fiscal_year"]) not in series_years:
+                    continue
+                required_note = _reported_one_off_footnote(one_off)
+                if required_note not in footnotes:
+                    flags.append(_flag("V11", f"{name} in {series['slot']} is reported EBITDA and omits a material stated one-off footnote.", required_note))
+    return flags
+
+
 def validate_normalised(
     normalised: Mapping[str, Any],
     segments: Any | None = None,
@@ -169,6 +276,8 @@ def validate_normalised(
     slot_assignments: Mapping[str, Any] | Iterable[Any] | None = None,
     axis_labels: Mapping[str, str] | None = None,
     v5_absolute_materiality_eur: float = V5_ABSOLUTE_MATERIALITY_EUR,
+    one_off_materiality_eur: float = V11_ONE_OFF_MATERIALITY_EUR,
+    lagebericht: Any | None = None,
 ) -> ValidationResult:
     """Validate P0 and segment evidence, returning every applicable Flag.
 
@@ -180,6 +289,12 @@ def validate_normalised(
     rows = [_model_dump(row) for row in normalised.get("rows", ())]
     flags: list[Flag] = []
     assigned = _assigned_series(charted_series, slot_assignments, axis_labels)
+
+    flags.extend(validate_v11(
+        charted_series, slot_assignments, axis_labels=axis_labels,
+        lagebericht=lagebericht, segments=segments,
+        one_off_materiality_eur=one_off_materiality_eur,
+    ))
 
     # V1, V2 and V7: only an assigned slide series has a presentation label.
     for series in assigned:
@@ -287,10 +402,22 @@ def validate(
     slot_assignments: Mapping[str, Any] | Iterable[Any] | None = None,
     axis_labels: Mapping[str, str] | None = None,
     v5_absolute_materiality_eur: float = V5_ABSOLUTE_MATERIALITY_EUR,
+    one_off_materiality_eur: float = V11_ONE_OFF_MATERIALITY_EUR,
+    lagebericht: Any | None = None,
 ) -> list[Flag]:
     """Convenience API returning the contract Flag objects directly."""
     return validate_normalised(
         normalised, segments, charted_series=charted_series,
         slot_assignments=slot_assignments, axis_labels=axis_labels,
-        v5_absolute_materiality_eur=v5_absolute_materiality_eur,
+    v5_absolute_materiality_eur=v5_absolute_materiality_eur,
+        one_off_materiality_eur=one_off_materiality_eur, lagebericht=lagebericht,
     ).flags
+
+
+# The registry is intentionally tested against contract/rules.json.  Existing
+# rules share the normalised-record handler; V11 also exposes its narrow
+# handler so render preflight can apply the same server-side rule.
+RULE_HANDLERS: dict[str, Callable[..., Any]] = {
+    "V1": validate_normalised, "V2": validate_normalised, "V7": validate_normalised,
+    "V8": validate_normalised, "V11": validate_v11,
+}

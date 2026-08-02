@@ -10,9 +10,11 @@
   "V9": { "severity": "advisory",      "check": "negative equity position present" },
   "V10": { "severity": "note_required", "check": "a subtotal must equal the sum of its component lines" },
   "V11": {
-  "severity": "blocking",
-  "implemented": false,
-  "enforced_in": ["ui"],
-  "check": "a series labelled EBITDA states its earnings_basis; adjusted requires every adjustment traced to a stated Lagebericht amount"
-}
+    "severity": "blocking",
+    "implemented": true,
+    "enforced_in": ["py", "ui"],
+    "materiality_threshold_eur": 1000000,
+    "materiality_threshold_rationale": "EUR 1m matches V5 absolute materiality, avoiding mandatory EBITDA disclosures for immaterial stated one-offs.",
+    "check": "a series labelled EBITDA states its earnings_basis; adjusted requires every adjustment traced to a stated Lagebericht amount; reported requires a footnote for each material stated Lagebericht one-off"
+  }
 }

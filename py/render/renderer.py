@@ -21,6 +21,8 @@ from pptx.enum.shapes import MSO_SHAPE_TYPE
 from pptx.enum.text import MSO_ANCHOR, PP_ALIGN
 from pptx.util import Inches, Pt
 
+from validate.validator import validate_v11
+
 MASTER_FILENAME = "ankura_master_reference.pptx"
 SLIDE_INDEX = 5  # Zero-based: slide 6, the designated At a glance slide.
 
@@ -142,6 +144,12 @@ def _validate_assignments(profile: Mapping[str, Any], assignments: Mapping[str, 
         raise RenderError("Exactly one explicit assignment is required for each of the four slots.")
     if len(set(assignments.values())) != len(assignments):
         raise RenderError("One content block cannot be rendered in more than one slot.")
+    one_off_evidence = profile.get("lagebericht")
+    if one_off_evidence is None and profile.get("one_offs") is not None:
+        one_off_evidence = {"one_offs": profile["one_offs"]}
+    v11_flags = validate_v11(profile.get("blocks", ()), assignments, lagebericht=one_off_evidence)
+    if v11_flags:
+        raise RenderError(f"Profile has unresolved V11 flags: {[flag.model_dump() for flag in v11_flags]!r}")
     block_ids = {str(block.get("id")) for block in profile.get("blocks", [])}
     for slot, block_id in assignments.items():
         if block_id not in block_ids:

@@ -17,16 +17,9 @@ export const SLOT_LABEL: Record<SlotId, string> = {
 /** Â§267 HGB size class â€” determines what disclosure exists at all. */
 export type SizeClass = 'klein' | 'mittelgross' | 'gross';
 
-/**
- * Reported = as filed. Adjusted = ex management-flagged one-offs.
- * A chart labelled "EBITDA" must state which. See rules.json V11.
- */
-export type EarningsBasis = 'reported' | 'adjusted';
-
-export const EARNINGS_BASIS_LABEL: Record<EarningsBasis, string> = {
-  reported: 'EBITDA (reported)',
-  adjusted: 'EBITDA (adj.)',
-};
+export type { EarningsBasis } from '../../../contract/profile';
+export { EARNINGS_BASIS_LABEL } from '../../../contract/profile';
+import type { EarningsBasis } from '../../../contract/profile';
 
 
 /**
