@@ -81,7 +81,25 @@ Two facts about this fixture that every agent must know:
    **Gesamtleistung** (Umsatzerlöse + Bestandsveränderung + sonstige betriebliche
    Erträge). Rule V1 exists to catch exactly this.
 
-### Golden reconciliation (all values EUR m, from `p0_normalise.py`)
+### Golden reconciliation (all values EUR m)
+
+> **Provenance warning.** This table was produced by `p0_normalise.py`, the
+> superseded normaliser whose other outputs (`out.json`, `py/render/qa/*`) have been
+> deleted as unwitnessed. It is retained because parts of it *do* have external
+> witnesses — but not all of it, and the difference matters:
+>
+> | Rows | Witness |
+> |---|---|
+> | Gesamtleistung, FY2021–FY2025 | **The published deck.** Five-for-five against the slide (spec §6.1). Genuine external corroboration |
+> | FY2024 Umsatzerlöse 103.2 | **The extractor**, independently, from the PDF: 103,152,036.57 |
+> | FY2017–FY2020, all columns | **None.** `p0_normalise` self-report only |
+> | Every component column not listed above | **None.** Self-report |
+>
+> Treat unwitnessed rows as provisional. Do not cite a coverage or map-rate figure
+> derived from them. Note also that the one figure in this project with an
+> independent witness — **EBIT −993,758.07, corroborated by the FY2024 Lagebericht's
+> T€ −993 through `tests/test_lagebericht.py`** — does not appear in this table at
+> all. It is the strongest acceptance target the project has.
 
 | FY | Umsatzerlöse | Bestandsver. | Sonst. Erträge | Gesamtleistung |
 |---|---|---|---|---|
@@ -108,17 +126,40 @@ Derived assertions for tests:
 
 ## Task list
 
-### P0 — Extraction fixes  ✅ reference implementation in `p0_normalise.py`
+### P0 — Extraction fixes  ✅ LANDED. Do not re-implement.
+
+> Verified against `main` @ ddc94e6, `109 passed, 1 xfailed`. The live
+> implementation is `py/acquire/bundesanzeiger/extractor/consolidate.py`, **not**
+> `p0_normalise.py`. Rows below are kept for provenance; all are done, and P0.6 as
+> originally written is **wrong** — see the note beneath the table.
 
 | ID | Task | Acceptance |
 |---|---|---|
-| P0.1 | Wire the mapper into export | `Mapping Audit` map rate ≥ 90%; currently 0% |
-| P0.2 | Year-block column coalescing | Umsatzerlöse non-null for all 12 years in the multi-year GuV |
-| P0.3 | German number parsing | `'+ 1.914.645,32'` → `1914645.32`; `'+142.366,40'` → `142366.40` |
-| P0.4 | Unit normalisation | FY2015–16 TEuro sheets scaled ×1000; no 1000× cliff in any series |
-| P0.5 | Merge on `std_id` not raw label | No duplicate `6. Abschreibungen` rows; no `- davon` rows in output |
-| P0.6 | Longest-match mapper | `4. Materialaufwand` → parent, **never** `PL_GKV-5a` |
-| P0.7 | Add missing taxonomy rows | `Veränderung des Bestands…`, `Konzernbilanzverlust`, `Nicht durch Vermögenseinlagen gedeckter Verlustanteil` all resolve |
+| ~~P0.1~~ | Wire the mapper into export | DONE. 14 rows consolidate on the FY2024 GuV; six labels unmapped on that fixture. "0%" and "93 unmapped" are both stale |
+| ~~P0.2~~ | Year-block column coalescing | DONE — `_year_blocks` + `_column_actuals`. FY2024 Umsatzerlöse = 103,152,036.57 |
+| ~~P0.3~~ | German number parsing | DONE — `_parse_eur` / `_parse_num_cell` |
+| ~~P0.4~~ | Unit normalisation | DONE — `_unit_multiplier`. Note: a **mid-series** T€→€ break still cannot be expressed per-year in Path B |
+| ~~P0.5~~ | Merge on `std_id` not raw label | DONE, plus `_is_davon_note` exclusion and std_id collision detection that queues **both** sides |
+| **P0.6** | ~~Longest-match mapper~~ | **SUPERSEDED — THIS INSTRUCTION IS WRONG. DO NOT FOLLOW IT.** See below |
+| ~~P0.7~~ | Add missing taxonomy rows | DONE, but **not** as taxonomy rows — as `_SUBTOTAL_EXTENSIONS` (`PL_GKV-GESAMTLEISTUNG`, `-ROHERGEBNIS`, `-BILANZVERLUST`) and a client alias for `Veränderung des Bestands…` |
+
+#### P0.6 is inverted — read this before touching the mapper
+
+There is **no parent** to map an aggregate heading to. `PL_GKV-5`, `PL_GKV-6` and
+`PL_GKV-7` are **deliberately absent from `hgb_taxonomy.csv`** so that a heading can
+never resolve to one of its own children. `_UNSAFE_AGGREGATE_KEYS` in
+`consolidate.py` covers `materialaufwand`, `personalaufwand`, `abschreibungen` and
+returns `unsafe_aggregate_heading`, leaving the row **unmapped and visible in the
+review queue**.
+
+That is the intended behaviour, not a defect. An agent that "fixes" P0.6 as written
+will reintroduce the parent/child conflation the guard exists to prevent, and the
+fix will look like it works.
+
+Correct rule: **an aggregate heading maps to nothing. Sum its children instead.**
+This filing reports `PL_GKV-7a` only; a filing reporting 7a *and* 7b must sum both,
+and must fail closed when it cannot distinguish "child absent from the filing" from
+"child present but unmapped" (rule V12, not yet written).
 
 Notes for the agent:
 
@@ -306,29 +347,70 @@ queue beats a high one with silent misclassifications. A queue of pre-BilRUG
 subtotals is a healthy end state - do not force it to zero.
 
 The taxonomy is generated from HGB_GKV_UKV_Standardisation_Map.xlsx. Do not
-hand-edit lib/hgb_map.py embedded data. Aliases go in
-py/normalise/aliases/client_aliases.csv with a note explaining why each mapping
-is correct - "exact published-label variant" is not a justification.
+hand-edit lib/hgb_map.py embedded data.
+
+**Aliases go in `py/acquire/bundesanzeiger/aliases/client_aliases.csv`.** This
+instruction previously named `py/normalise/aliases/client_aliases.csv`, which is
+read by `p0_normalise.py` only. `consolidate.py` — the live mapper — resolves
+`_ALIASES_PATH` to the extractor directory and **never reads the normalise file**.
+Following the old instruction adds a row that loads without error and never
+matches: silent, and the direct cause of the two divergent alias files that existed
+until e033262.
+
+Schema is `client_label,std_id,client,note`. Quote any field containing a comma —
+an unquoted `Roh-, Hilfs-` splits silently, no parse error, no queue entry, the
+mapping simply never happens. Ensure the file ends with a newline before appending.
+
+Every alias needs a note stating **why the mapping is accounting-correct**. "Exact
+published-label variant" is not a justification; every row that carried only that
+note has been reviewed, and two were wrong (see e033262).
 
 
 ## Environment
 
 Agent sandboxes have NO network access. Do not attempt pip install or npm install.
 Dependencies are pre-installed by the human before the session starts.
-Use .venv\Scripts\python.exe directly; do not activate the venv.
+Use .venv\Scripts\python.exe directly; do not activate the venv. (Activating also
+works, but calling the interpreter by path removes a whole class of
+"ModuleNotFoundError on a package that is already installed" false alarms caused by
+hitting the global interpreter.)
 If a dependency is missing, stop and report it - do not work around it.
+
+Known trap: `rich` is a **hard import at `extractor/_core.py:7`**. Without it the
+suite does not fail — it fails to *collect*, and reports nothing at all. A CLI
+presentation library currently gates test collection. Lazy-import it when convenient.
+
+`pwsh` is not installed; use `powershell`. PowerShell has no heredoc: use `@'...'@`
+for literal here-strings, `@"..."@` for interpolating. `Get-Content` renders UTF-8
+as cp1252 — `VerÃ¤nderung` in the console does not mean the file is corrupt; check
+bytes with `python -c "print(open(p,'rb').read()[:120])"` and expect `\xc3\xa4`.
 ## Unmapped queue location
 
-Lane A writes its queue to py/normalise/reviews/unmapped_queue.csv.
-The file at py/acquire/bundesanzeiger/reviews/ is inside the submodule and is
-the extractor's own queue - read it as a format reference, never write to it.
+**Inverted as of the absorb — the old text below the line was correct only while
+the extractor was a submodule. It is not one.**
+
+`consolidate.py` resolves `_QUEUE_PATH` to
+`py/acquire/bundesanzeiger/reviews/unmapped_queue.csv` and **writes there**. That is
+the live queue (238 rows, 8 columns, carrying `doc_label` / `heading` / `page_start`).
+`py/normalise/reviews/unmapped_queue.csv` (12 rows, 4 columns) belongs to
+`p0_normalise.py` and cannot carry page provenance.
+
+Two standing cautions on the live queue:
+
+1. It is **append-only across every filing ever run** and mixed-provenance — the
+   "93 unmapped labels" figure is the deduped historical total including 124 CTEC
+   IFRS refusals, not a per-run number. Filter before quoting it.
+2. It **systematically under-reports.** Rows discarded by `if not label: continue`
+   (`consolidate.py`, ~line 220) never reach the mapper, so they never reach the
+   queue. Any coverage metric built on it is optimistic by exactly the subtotal rows
+   — which are the structurally important ones. Unresolved: whether this file is
+   tracked state or scratch.
 The mapper is exact-match only. Never auto-pick an ambiguous match: exact match, else queue to py/normalise/reviews/unmapped_queue.csv. Raise the map rate by adding taxonomy rows or client aliases, never by widening the matcher.
 
 ## Backlog - mapper correctness (lane A follow-up)
 
-1. Collision detection. Two labels in one statement mapping to the same std_id
-   are resolved by first-wins in merge_on_std_id, silently discarding data.
-   Flag and queue both instead.
+1. ~~Collision detection.~~ **DONE.** `_column_actuals` queues both sides with
+   `match_type = std_id_collision` and drops the entry rather than first-wins.
 2. Alias justification. "Exact published-label variant" is not a reason. Each
    alias needs a note stating why the mapping is accounting-correct.
 3. CSV loaders must use encoding="utf-8-sig". PowerShell's Set-Content -Encoding
@@ -337,7 +419,12 @@ The mapper is exact-match only. Never auto-pick an ambiguous match: exact match,
    Anteile entfallender Gewinn/Verlust), participation losses (the taxonomy has
    Ertraege only), and a decision on whether Gewinnruecklagen appropriation flows
    belong in the model at all.
-5. V10 tie-out check. Subtotals are now retained with row_type = "subtotal".
+5. V10 tie-out check. **The rule is written** — `contract/rules.json` V10,
+   implemented at `py/validate/validator.py:392` with an expected/actual/delta
+   message. It has nothing to check, because the subtotal rows are discarded at
+   `consolidate.py` ~line 220 before the mapper sees them. **Removing that guard
+   turns on a rule that already exists** — which is the acceptance criterion for
+   that work, not a new test. Subtotals are retained with row_type = "subtotal".
    Betriebsergebnis should equal the operating lines above it; Ergebnis nach
    Steuern should equal the lines above it. Where a subtotal does not reconcile,
    either the parser missed a row or the filing uses a different presentation
