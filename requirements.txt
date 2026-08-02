@@ -14,3 +14,7 @@ python-pptx>=1.0.2
 # Dev
 pytest>=8.3
 ruff>=0.7
+
+playwright>=1.48         # bundesanzeiger extractor - imported at module load
+rich>=13.9               # extractor CLI output
+pillow>=11.0             # image normalise + perceptual hash (lane img)
