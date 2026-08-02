@@ -8,5 +8,6 @@
   "V7": { "severity": "blocking",      "check": "unmapped label used in a charted series" },
   "V8": { "severity": "blocking",      "check": "Aktiva equals Passiva" },
   "V9": { "severity": "advisory",      "check": "negative equity position present" },
-  "V10": { "severity": "note_required", "check": "a subtotal must equal the sum of its component lines" }
+  "V10": { "severity": "note_required", "check": "a subtotal must equal the sum of its component lines" },
+  "V11": { "severity": "blocking", "check": "a series labelled EBITDA states its earnings_basis; adjusted requires every adjustment traced to a stated Lagebericht amount" }
 }

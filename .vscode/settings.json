@@ -1,0 +1,15 @@
+{
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.venv/**": true,
+    "**/dist/**": true,
+    "**/.git/objects/**": true,
+    "**/py/acquire/bundesanzeiger/**": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.venv": true,
+    "**/dist": true
+  },
+  "python.analysis.exclude": ["**/node_modules", "**/.venv"]
+}

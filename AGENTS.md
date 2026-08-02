@@ -326,3 +326,9 @@ The mapper is exact-match only. Never auto-pick an ambiguous match: exact match,
    Anteile entfallender Gewinn/Verlust), participation losses (the taxonomy has
    Ertraege only), and a decision on whether Gewinnruecklagen appropriation flows
    belong in the model at all.
+5. V10 tie-out check. Subtotals are now retained with row_type = "subtotal".
+   Betriebsergebnis should equal the operating lines above it; Ergebnis nach
+   Steuern should equal the lines above it. Where a subtotal does not reconcile,
+   either the parser missed a row or the filing uses a different presentation
+   basis than assumed. This is the only validation that checks against the
+   filing's own arithmetic rather than against our assumptions. Implement in P4.

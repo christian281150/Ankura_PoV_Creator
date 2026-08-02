@@ -18,6 +18,18 @@ export const SLOT_LABEL: Record<SlotId, string> = {
 export type SizeClass = 'klein' | 'mittelgross' | 'gross';
 
 /**
+ * Reported = as filed. Adjusted = ex management-flagged one-offs.
+ * A chart labelled "EBITDA" must state which. See rules.json V11.
+ */
+export type EarningsBasis = 'reported' | 'adjusted';
+
+export const EARNINGS_BASIS_LABEL: Record<EarningsBasis, string> = {
+  reported: 'EBITDA (reported)',
+  adjusted: 'EBITDA (adj.)',
+};
+
+
+/**
  * The basis a monetary series is stated on. Exists because a series labelled
  * "Revenue" that is actually Gesamtleistung is the failure mode rule V1 catches.
  */
@@ -56,7 +68,7 @@ export interface Entity {
   impostors: { name: string; reason: string }[];
 }
 
-export type RuleId = 'V1' | 'V2' | 'V3' | 'V4' | 'V5' | 'V6' | 'V7' | 'V8' | 'V9' | 'V10';
+export type RuleId = 'V1' | 'V2' | 'V3' | 'V4' | 'V5' | 'V6' | 'V7' | 'V8' | 'V9' | 'V10' | 'V11';
 
 export interface Flag {
   rule: RuleId;
@@ -79,6 +91,7 @@ export interface ContentBlock {
   id: string;
   title: string;
   kind: BlockKind;
+  earningsBasis?: EarningsBasis;
   eligibleSlots: SlotId[];
   /** 0â€“1. How complete the underlying data is. */
   coverage: number;

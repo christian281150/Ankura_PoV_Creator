@@ -16,8 +16,9 @@ SLOT_ORDER: list[SlotId] = ["top_left", "top_right", "bottom_left", "bottom_righ
 SizeClass = Literal["klein", "mittelgross", "gross"]
 PresentationBasis = Literal["umsatzerloese","bruttoumsatzerloese", "nettoumsatzerloese", "gesamtleistung", "rohergebnis", "betriebsleistung", "n/a"]
 Confidence = Literal["high", "medium", "low"]
-RuleId = Literal["V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10"]
+RuleId = Literal["V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10","V11"]
 Severity = Literal["blocking", "note_required", "advisory"]
+EarningsBasis = Literal["reported", "adjusted"]
 
 BlockKind = Literal[
     "bullets",
@@ -78,6 +79,7 @@ class ContentBlock(BaseModel):
     title: str
     kind: BlockKind
     eligible_slots: list[SlotId]
+    earnings_basis: EarningsBasis | None = None
     coverage: float = Field(ge=0, le=1)
     confidence: Confidence
     source: str
