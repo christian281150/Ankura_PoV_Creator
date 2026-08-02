@@ -28,3 +28,5 @@ ruff>=0.7
 # 10/11. If unavailable: playwright install chromium
 # Build-only: pyinstaller>=6.0.0, then build.bat
 >>>>>>> Stashed changes
+
+rich>=13.0            # extractor CLI console
