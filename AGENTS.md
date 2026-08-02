@@ -83,7 +83,7 @@ Two facts about this fixture that every agent must know:
 
 ### Golden reconciliation (all values EUR m)
 
-> **Provenance warning.** This table was produced by `p0_normalise.py`, the
+> **Provenance warning.** This table was produced by `p0_normalise.py` (deleted - see below), the
 > superseded normaliser whose other outputs (`out.json`, `py/render/qa/*`) have been
 > deleted as unwitnessed. It is retained because parts of it *do* have external
 > witnesses — but not all of it, and the difference matters:
@@ -92,7 +92,7 @@ Two facts about this fixture that every agent must know:
 > |---|---|
 > | Gesamtleistung, FY2021–FY2025 | **The published deck.** Five-for-five against the slide (spec §6.1). Genuine external corroboration |
 > | FY2024 Umsatzerlöse 103.2 | **The extractor**, independently, from the PDF: 103,152,036.57 |
-> | FY2017–FY2020, all columns | **None.** `p0_normalise` self-report only |
+> | FY2017–FY2020, all columns | **None.** `p0_normalise` (deleted - see below) self-report only |
 > | Every component column not listed above | **None.** Self-report |
 >
 > Treat unwitnessed rows as provisional. Do not cite a coverage or map-rate figure
@@ -130,7 +130,7 @@ Derived assertions for tests:
 
 > Verified against `main` @ ddc94e6, `109 passed, 1 xfailed`. The live
 > implementation is `py/acquire/bundesanzeiger/extractor/consolidate.py`, **not**
-> `p0_normalise.py`. Rows below are kept for provenance; all are done, and P0.6 as
+> `p0_normalise.py` (deleted - see below). Rows below are kept for provenance; all are done, and P0.6 as
 > originally written is **wrong** — see the note beneath the table.
 
 | ID | Task | Acceptance |
@@ -353,7 +353,7 @@ hand-edit lib/hgb_map.py embedded data.
 
 **Aliases go in `py/acquire/bundesanzeiger/aliases/client_aliases.csv`.** This
 instruction previously named `py/normalise/aliases/client_aliases.csv`, which is
-read by `p0_normalise.py` only. `consolidate.py` — the live mapper — resolves
+read by `p0_normalise.py` (deleted - see below) only. `consolidate.py` — the live mapper — resolves
 `_ALIASES_PATH` to the extractor directory and **never reads the normalise file**.
 Following the old instruction adds a row that loads without error and never
 matches: silent, and the direct cause of the two divergent alias files that existed
@@ -397,7 +397,7 @@ the extractor was a submodule. It is not one.**
 `py/acquire/bundesanzeiger/reviews/unmapped_queue.csv` and **writes there**. That is
 the live queue (238 rows, 8 columns, carrying `doc_label` / `heading` / `page_start`).
 `py/normalise/reviews/unmapped_queue.csv` (12 rows, 4 columns) belongs to
-`p0_normalise.py` and cannot carry page provenance.
+`p0_normalise.py` (deleted - see below) and cannot carry page provenance.
 
 Two standing cautions on the live queue:
 

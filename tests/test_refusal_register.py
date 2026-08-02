@@ -13,7 +13,6 @@ ROOT = Path(__file__).resolve().parents[1]
 REGISTER_PATH = ROOT / "py" / "acquire" / "bundesanzeiger" / "reviews" / "refusal_register.csv"
 ALIAS_PATHS = (
     ROOT / "py" / "acquire" / "bundesanzeiger" / "aliases" / "client_aliases.csv",
-    ROOT / "py" / "normalise" / "aliases" / "client_aliases.csv",
 )
 
 
