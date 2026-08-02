@@ -1,3 +1,6 @@
 client_label,std_id,client,note
 Veränderung des Bestands an unfertigen und fertigen Erzeugnissen,PL_GKV-2,,Published GKV inventory-change line; same HGB §275(2) position as PL_GKV-2.
 Erhöhung oder Verminderung des Bestandes an fertigen und unfertigen Erzeugnissen,PL_GKV-2,,Pre-BilRUG published GKV wording for the HGB §275(2) inventory-change line.
+6. Abschreibungen auf immaterielle Vermögensgegenstände des Anlagevermögens und Sachanlagen,PL_GKV-7a,,Filing renumbers (omits Nr. 3); reports §275(2) Nr. 7a only, no 7b write-downs.
+"a) Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren",PL_GKV-5a,,Filing wording; taxonomy differs in punctuation.
+b) Soziale Abgaben und Aufwendungen für Altersversorgung und für Unterstützung,PL_GKV-6b,,Filing appends "und für Unterstützung" to the §275 caption.
