@@ -7,5 +7,6 @@
   "V6": { "severity": "note_required", "check": "cost ratio breaks trend more than 5pp" },
   "V7": { "severity": "blocking",      "check": "unmapped label used in a charted series" },
   "V8": { "severity": "blocking",      "check": "Aktiva equals Passiva" },
-  "V9": { "severity": "advisory",      "check": "negative equity position present" }
+  "V9": { "severity": "advisory",      "check": "negative equity position present" },
+  "V10": { "severity": "note_required", "check": "a subtotal must equal the sum of its component lines" }
 }
