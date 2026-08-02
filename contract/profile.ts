@@ -55,6 +55,83 @@ export interface Provenance {
   stdId: string | null;
 }
 
+/** The annual closing-date convention carried by an EntitySeries. */
+export interface FiscalYearEnd {
+  month: number;
+  day: number;
+}
+
+/** A filing-backed observation is incomplete without its source document and page. */
+export interface FilingSeriesProvenance {
+  kind: 'filing';
+  document: string;
+  page: number;
+}
+
+/** Explicit source marker for a value supplied through the workbook path. */
+export interface UserSuppliedSeriesProvenance {
+  kind: 'user_supplied';
+}
+
+export type SeriesProvenance = FilingSeriesProvenance | UserSuppliedSeriesProvenance;
+
+/** Explicit ISO 4217 codes currently accepted by the canonical contract. */
+export type CurrencyCode = 'EUR' | 'GBP' | 'USD';
+
+export interface LineItemObservation {
+  /** Base-ten decimal serialised as a string to preserve fail-closed equality. */
+  value: string;
+  unit: CurrencyCode;
+  presentationBasis: PresentationBasis;
+  framework: Framework;
+  pnlMethod: PnlMethod;
+  provenance: SeriesProvenance;
+  restated: boolean;
+}
+
+export interface LineItemConflictResolution {
+  /** Zero-based index into the point's retained observations. */
+  chosenObservationIndex: number;
+  reason: string;
+  decidedBy: string;
+}
+
+/**
+ * All reported candidates for one line item and fiscal year.
+ *
+ * `fy` is the fiscal-year end year: Seidensticker FY2025 ended on 30 April
+ * 2025, and is not calendar year 2025.
+ *
+ * One observation is unambiguous. More than one is an unresolved source
+ * conflict: every candidate remains present with its provenance rather than
+ * silently selecting a value for an overlapping fiscal year. `resolution` is
+ * null until an authorised decision selects an observation with a rationale and
+ * decision-maker; consumers must use that recorded decision rather than create
+ * their own selection rule.
+ */
+export interface LineItemPoint {
+  fy: number;
+  observations: LineItemObservation[];
+  resolution: LineItemConflictResolution | null;
+}
+
+export interface LineItemSeries {
+  stdId: string;
+  points: LineItemPoint[];
+}
+
+/**
+ * Producer-neutral multi-year financial-series boundary. Both merged filings
+ * and user workbooks emit this shape; mixed series retain both source kinds.
+ */
+export interface EntitySeries {
+  entityId: string;
+  sourceKind: 'filings' | 'user_workbook' | 'mixed';
+  fiscalYearEnd: FiscalYearEnd;
+  fiscalYears: number[];
+  lineItems: LineItemSeries[];
+}
+
 export interface Entity {
   legalName: string;
   register: { court: string; type: 'HRA' | 'HRB'; number: string };

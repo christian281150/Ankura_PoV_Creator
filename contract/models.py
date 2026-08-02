@@ -5,10 +5,12 @@ the CI regeneration check exists.
 """
 from __future__ import annotations
 
+from datetime import date
+from decimal import Decimal
 from enum import Enum
-from typing import Literal
+from typing import Annotated, Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 SlotId = Literal["top_left", "top_right", "bottom_left", "bottom_right"]
 SLOT_ORDER: list[SlotId] = ["top_left", "top_right", "bottom_left", "bottom_right"]
@@ -75,6 +77,148 @@ class Flag(BaseModel):
 class SeriesPoint(BaseModel):
     fy: int
     value: float
+
+
+class FiscalYearEnd(BaseModel):
+    """The annual closing date convention for every year in an EntitySeries."""
+
+    month: int = Field(ge=1, le=12)
+    day: int = Field(ge=1, le=31)
+
+    @model_validator(mode="after")
+    def validate_calendar_day(self) -> "FiscalYearEnd":
+        try:
+            date(2000, self.month, self.day)
+        except ValueError as error:
+            raise ValueError("fiscal_year_end must be a valid month/day pair") from error
+        return self
+
+
+# Explicit ISO 4217 codes currently supported by the canonical contract.
+# Add a code deliberately when a new user-workbook currency is accepted.
+CurrencyCode = Literal["EUR", "GBP", "USD"]
+
+
+class FilingSeriesProvenance(BaseModel):
+    """A filing-backed observation must identify both its document and page."""
+
+    kind: Literal["filing"]
+    document: str = Field(min_length=1)
+    page: int = Field(ge=1)
+
+
+class UserSuppliedSeriesProvenance(BaseModel):
+    """Explicit provenance marker for a value entered from a user workbook."""
+
+    kind: Literal["user_supplied"]
+
+
+SeriesProvenance = Annotated[
+    FilingSeriesProvenance | UserSuppliedSeriesProvenance,
+    Field(discriminator="kind"),
+]
+
+
+class LineItemObservation(BaseModel):
+    """One complete, source-specific observation for a standardised line item.
+
+    ``unit`` uses the explicit supported ISO 4217 ``CurrencyCode`` set (EUR,
+    GBP, USD), rather than assuming all user-workbook amounts are EUR.
+    """
+
+    value: Decimal
+    unit: CurrencyCode
+    presentation_basis: PresentationBasis
+    framework: Framework
+    pnl_method: PnlMethod
+    provenance: SeriesProvenance
+    restated: bool
+
+
+class LineItemConflictResolution(BaseModel):
+    """An explicit decision selecting one retained observation from a conflict."""
+
+    chosen_observation_index: int = Field(ge=0)
+    reason: str = Field(min_length=1)
+    decided_by: str = Field(min_length=1)
+
+
+class LineItemPoint(BaseModel):
+    """All observations for one line item in one fiscal year.
+
+    ``fy`` is the fiscal-year end year: for Seidensticker, ``fy=2025`` means
+    the year ended 30 April 2025, not calendar year 2025.
+
+    A point with one observation is unambiguous. A point with two or more
+    observations is an unresolved source conflict: each candidate is retained
+    with its own provenance, so a producer cannot silently select a value for
+    overlapping fiscal years. ``resolution`` is null until an authorised
+    decision records the selected observation, rationale, and decision-maker;
+    consumers must use that recorded decision rather than inventing a rule.
+    """
+
+    fy: int
+    observations: list[LineItemObservation] = Field(min_length=1)
+    resolution: LineItemConflictResolution | None
+
+    @model_validator(mode="after")
+    def validate_resolution(self) -> "LineItemPoint":
+        if self.resolution is not None:
+            if len(self.observations) < 2:
+                raise ValueError("resolution is only valid for conflicting observations")
+            if self.resolution.chosen_observation_index >= len(self.observations):
+                raise ValueError("resolution must select an existing observation")
+        return self
+
+
+class LineItemSeries(BaseModel):
+    std_id: str = Field(min_length=1)
+    points: list[LineItemPoint] = Field(min_length=1)
+
+
+class EntitySeries(BaseModel):
+    """Canonical multi-year financial series, independent of its producer.
+
+    Conflicts are represented by multiple complete ``observations`` in one
+    ``LineItemPoint`` rather than a selected value. This preserves overlapping
+    filing comparatives and user-workbook values until an explicit resolution.
+    """
+
+    entity_id: str = Field(min_length=1)
+    source_kind: Literal["filings", "user_workbook", "mixed"]
+    fiscal_year_end: FiscalYearEnd
+    fiscal_years: list[int] = Field(min_length=1)
+    line_items: list[LineItemSeries] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def validate_series(self) -> "EntitySeries":
+        if self.fiscal_years != sorted(self.fiscal_years) or len(set(self.fiscal_years)) != len(self.fiscal_years):
+            raise ValueError("fiscal_years must be a unique ascending list")
+
+        if len({line_item.std_id for line_item in self.line_items}) != len(self.line_items):
+            raise ValueError("line_items must contain each std_id only once")
+
+        provenance_kinds: set[str] = set()
+        for line_item in self.line_items:
+            point_years = [point.fy for point in line_item.points]
+            if point_years != sorted(point_years) or len(set(point_years)) != len(point_years):
+                raise ValueError(f"points for {line_item.std_id} must be a unique ascending list")
+            if any(year not in self.fiscal_years for year in point_years):
+                raise ValueError(f"points for {line_item.std_id} must use declared fiscal_years")
+            provenance_kinds.update(
+                observation.provenance.kind
+                for point in line_item.points
+                for observation in point.observations
+            )
+
+        expected_kinds = {
+            "filings": {"filing"},
+            "user_workbook": {"user_supplied"},
+            "mixed": {"filing", "user_supplied"},
+        }[self.source_kind]
+        if provenance_kinds != expected_kinds:
+            raise ValueError("source_kind must match the provenance kinds present")
+        return self
 
 
 class ContentBlock(BaseModel):
