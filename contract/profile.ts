@@ -21,10 +21,11 @@ export type SizeClass = 'klein' | 'mittelgross' | 'gross';
  * The basis a monetary series is stated on. Exists because a series labelled
  * "Revenue" that is actually Gesamtleistung is the failure mode rule V1 catches.
  */
-export type PresentationBasis = 'umsatzerloese' | 'nettoumsatzerloese' | 'gesamtleistung' | 'rohergebnis' | 'betriebsleistung' | 'n/a';
+export type PresentationBasis = 'umsatzerloese' | 'bruttoumsatzerloese' | 'nettoumsatzerloese' | 'gesamtleistung' | 'rohergebnis' | 'betriebsleistung' | 'n/a';
 
 export const BASIS_LABEL: Record<PresentationBasis, string> = {
   umsatzerloese: 'Umsatzerlöse',
+  bruttoumsatzerloese: 'Bruttoumsatzerlöse',
   nettoumsatzerloese: 'Nettoumsatzerlöse',
   gesamtleistung: 'Gesamtleistung',
   rohergebnis: 'Rohergebnis',

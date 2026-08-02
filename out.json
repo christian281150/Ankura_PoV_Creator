@@ -262,6 +262,7 @@
       "raw_label": "1. Umsatzerlöse",
       "std_id": "PL_GKV-1",
       "match_type": "exact",
+      "row_type": "line",
       "values": {
         "2025": 111815106.14,
         "2024": 103152036.57,
@@ -363,6 +364,7 @@
       "raw_label": "2. Veränderung des Bestands an unfertigen und fertigen Erzeugnissen",
       "std_id": "PL_GKV-2",
       "match_type": "extension_exact",
+      "row_type": "line",
       "values": {
         "2025": 2732346.13,
         "2024": -8833400.55,
@@ -464,6 +466,7 @@
       "raw_label": "3. Sonstige betriebliche Erträge",
       "std_id": "PL_GKV-4",
       "match_type": "exact",
+      "row_type": "line",
       "values": {
         "2025": 1914645.32,
         "2024": 7760014.88,
@@ -565,6 +568,7 @@
       "raw_label": "a) Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren",
       "std_id": "PL_GKV-5a",
       "match_type": "client_alias_exact",
+      "row_type": "line",
       "values": {
         "2025": -50713096.3,
         "2024": -34344811.22,
@@ -666,6 +670,7 @@
       "raw_label": "b) Aufwendungen für bezogene Leistungen",
       "std_id": "PL_GKV-5b",
       "match_type": "exact",
+      "row_type": "line",
       "values": {
         "2025": -3033367.79,
         "2024": -2548362.53,
@@ -767,6 +772,7 @@
       "raw_label": "a) Löhne und Gehälter",
       "std_id": "PL_GKV-6a",
       "match_type": "exact",
+      "row_type": "line",
       "values": {
         "2025": -25139754.38,
         "2024": -23566732.33,
@@ -868,6 +874,7 @@
       "raw_label": "b) Soziale Abgaben und Aufwendungen für Altersversorgung und für Unterstützung",
       "std_id": "PL_GKV-6b",
       "match_type": "client_alias_exact",
+      "row_type": "line",
       "values": {
         "2025": -4011749.11,
         "2024": -4223726.09,
@@ -969,6 +976,7 @@
       "raw_label": "auf immaterielle Vermögensgegenstände des Anlagevermögens und Sachanlagen",
       "std_id": "PL_GKV-7a",
       "match_type": "client_alias_exact",
+      "row_type": "line",
       "values": {
         "2025": -1102920.25,
         "2024": -1217094.39,
@@ -1063,6 +1071,7 @@
       "raw_label": "7. Sonstige betriebliche Aufwendungen",
       "std_id": "PL_GKV-8",
       "match_type": "exact",
+      "row_type": "line",
       "values": {
         "2025": -33064506.75,
         "2024": -37171682.41,
@@ -1164,6 +1173,7 @@
       "raw_label": "8. Gewinne aus Beteiligungen an assoziierten Unternehmen",
       "std_id": "PL_GKV-9",
       "match_type": "client_alias_exact",
+      "row_type": "line",
       "values": {
         "2025": 422867.36,
         "2024": 21429.01,
@@ -1230,6 +1240,7 @@
       "raw_label": "9. Sonstige Zinsen und ähnliche Erträge",
       "std_id": "PL_GKV-11",
       "match_type": "exact",
+      "row_type": "line",
       "values": {
         "2025": 69102.7,
         "2024": 30471.04,
@@ -1331,6 +1342,7 @@
       "raw_label": "10. Zinsen und ähnliche Aufwendungen",
       "std_id": "PL_GKV-13",
       "match_type": "exact",
+      "row_type": "line",
       "values": {
         "2025": -2271393.69,
         "2024": -3209550.23,
@@ -1432,6 +1444,7 @@
       "raw_label": "11. Steuern vom Einkommen und vom Ertrag",
       "std_id": "PL_GKV-14",
       "match_type": "exact",
+      "row_type": "line",
       "values": {
         "2025": -721276.5,
         "2024": -788080.4,
@@ -1533,6 +1546,7 @@
       "raw_label": "12. Ergebnis nach Steuern / Konzernjahresfehlbetrag",
       "std_id": "PL_GKV-17",
       "match_type": "client_alias_exact",
+      "row_type": "subtotal",
       "values": {
         "2025": -3103997.12,
         "2024": -4939488.65,
@@ -1634,6 +1648,7 @@
       "raw_label": "13. Verlustvortrag",
       "std_id": "BS-P.A.IV",
       "match_type": "exact",
+      "row_type": "line",
       "values": {
         "2025": -54181477.9,
         "2024": -49241989.25,
@@ -1721,6 +1736,7 @@
       "raw_label": "14. Konzernbilanzverlust",
       "std_id": "PL_GKV-BILANZVERLUST",
       "match_type": "extension_exact",
+      "row_type": "line",
       "values": {
         "2025": -57285475.02,
         "2024": -54181477.9,
@@ -1808,6 +1824,7 @@
       "raw_label": "1. Gesamtleistung (GKV)",
       "std_id": "PL_GKV-GESAMTLEISTUNG",
       "match_type": "extension_exact",
+      "row_type": "line",
       "values": {
         "2015": 198727000.0,
         "2014": 186716000.0,
@@ -1846,6 +1863,7 @@
       "raw_label": "3. Materialaufwand (GKV)",
       "std_id": "PL_GKV-5",
       "match_type": "extension_exact",
+      "row_type": "line",
       "values": {
         "2015": 89113000.0,
         "2014": 83664000.0,
@@ -1884,6 +1902,7 @@
       "raw_label": "4. Personalaufwand (GKV)",
       "std_id": "PL_GKV-6",
       "match_type": "extension_exact",
+      "row_type": "line",
       "values": {
         "2015": 42274000.0,
         "2014": 41448000.0,
@@ -1922,6 +1941,7 @@
       "raw_label": "5. Abschreibungen (GKV)",
       "std_id": "PL_GKV-7",
       "match_type": "extension_exact",
+      "row_type": "line",
       "values": {
         "2015": 3754000.0,
         "2014": 3626000.0,
@@ -1960,6 +1980,7 @@
       "raw_label": "b) auf Vermögensgegenstände des Umlaufvermögens, soweit diese die im Konzern üblichen Abschreibungen überschreiten",
       "std_id": "PL_GKV-7b",
       "match_type": "client_alias_exact",
+      "row_type": "line",
       "values": {
         "2021": -2780501.0,
         "2020": 0.0,
@@ -1998,6 +2019,7 @@
       "raw_label": "1. Betriebsergebnis",
       "std_id": "PL_GKV-15",
       "match_type": "exact",
+      "row_type": "subtotal",
       "values": {
         "2016": 9070000.0,
         "2015": 5603000.0
@@ -2029,6 +2051,7 @@
       "raw_label": "a) Rohergebnis",
       "std_id": "PL_GKV-ROHERGEBNIS",
       "match_type": "extension_exact",
+      "row_type": "line",
       "values": {
         "2016": 115125000.0,
         "2015": 115456000.0
@@ -2060,6 +2083,7 @@
       "raw_label": "Aufwendungen für Altersversorgung",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2015": 1010000.0,
         "2014": 1123000.0
@@ -2077,6 +2101,7 @@
       "raw_label": "7. Finanz- und Beteiligungsergebnis",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2015": -3251000.0,
         "2014": -3485000.0
@@ -2094,6 +2119,7 @@
       "raw_label": "8. Ergebnis der gewöhnlichen Geschäftstätigkeit",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2015": 2352000.0,
         "2014": -1842000.0
@@ -2111,6 +2137,7 @@
       "raw_label": "9. außerordentliches Ergebnis",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2015": -3407000.0,
         "2014": -211000.0
@@ -2128,6 +2155,7 @@
       "raw_label": "14. auf nicht beherrschende Anteile entfallender Gewinn/Verlust",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2021": -11900.38,
         "2020": 20368.8
@@ -2145,6 +2173,7 @@
       "raw_label": "14. auf nicht beherrschende Anteile entfallender Gewinn/Verlust",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2022": 0.0,
         "2021": -11900.38
@@ -2162,6 +2191,7 @@
       "raw_label": "14. auf nicht beherrschende Anteile entfallender Verlust",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2020": 20368.8,
         "2019": 13498.95
@@ -2179,6 +2209,7 @@
       "raw_label": "12. Entnahme aus den Gewinnrücklagen",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2018": 1466817.52,
         "2017": 41056.11
@@ -2196,6 +2227,7 @@
       "raw_label": "13. Zuführung zu den Gewinnrücklagen",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2017": -236.85
       },
@@ -2212,6 +2244,7 @@
       "raw_label": "15. auf nicht beherrschende Anteile entfallender Verlust",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2018": 1472.22,
         "2017": 1541.51
@@ -2229,6 +2262,7 @@
       "raw_label": "8. Verluste aus Beteiligungen an assoziierten Unternehmen",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2017": 0.0,
         "2016": -7197.34
@@ -2246,6 +2280,7 @@
       "raw_label": "13. Entnahme aus den Gewinnrücklagen",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2017": 41056.11,
         "2016": 41056.11
@@ -2263,6 +2298,7 @@
       "raw_label": "14. Zuführung zu den Gewinnrücklagen",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2017": -236.85,
         "2016": -13986.22
@@ -2280,6 +2316,7 @@
       "raw_label": "16. auf nicht beherrschende Anteile entfallender Verlust",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2017": 1541.51,
         "2016": 800.7
@@ -2297,6 +2334,7 @@
       "raw_label": "12. Entnahme aus den Gewinnrücklagen",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2019": 0.0,
         "2018": 1466817.52
@@ -2314,6 +2352,7 @@
       "raw_label": "14. auf nicht beherrschende Anteile entfallender Verlust",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2019": 13498.95,
         "2018": 1472.22
@@ -2331,6 +2370,7 @@
       "raw_label": "Aufwendungen für Altersversorgung",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2016": -171000.0,
         "2015": 1010000.0
@@ -2348,6 +2388,7 @@
       "raw_label": "2. Finanz- und Beteiligungsergebnis",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2016": -3153000.0,
         "2015": -3251000.0
@@ -2365,6 +2406,7 @@
       "raw_label": "a) Ergebnis aus Beteiligungen an assoziierten Unternehmen",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2015": 6000.0
       },
@@ -2381,6 +2423,7 @@
       "raw_label": "3. Ergebnis der gewöhnlichen Geschäftstätigkeit",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2016": 5917000.0,
         "2015": 2352000.0
@@ -2398,6 +2441,7 @@
       "raw_label": "4. außerordentliche Aufwendungen",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2016": 217000.0,
         "2015": 3407000.0
@@ -2415,6 +2459,7 @@
       "raw_label": "5. außerordentliches Ergebnis",
       "std_id": null,
       "match_type": "none",
+      "row_type": "line",
       "values": {
         "2016": -217000.0,
         "2015": -3407000.0
