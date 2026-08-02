@@ -25,7 +25,6 @@ Thumbs.db
 
 .pytest_cache/
 
-.pytest_cache/
 
 out.json
 
@@ -33,4 +32,3 @@ out.json
 
 !render/templates/*.pptx
 
-!render/templates/*.pptx
