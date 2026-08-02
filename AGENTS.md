@@ -339,8 +339,10 @@ Not an estimate. Not a proxy. Not a blank chart.
 ## Mapping discipline - inherited from the extractor's CLAUDE.md
 
 The mapper is exact-match only. Never auto-pick an ambiguous match: exact match,
-else queue to py/normalise/reviews/unmapped_queue.csv. Raise the map rate by
-adding taxonomy rows or client aliases, never by widening the matcher.
+else queue to `py/acquire/bundesanzeiger/reviews/unmapped_queue.csv` (see "Unmapped
+queue location" below — the normalise path named here previously is the wrong one).
+Raise the map rate by adding taxonomy rows or client aliases, never by widening the
+matcher.
 
 Report map rate and queue length separately. A lower map rate with an honest
 queue beats a high one with silent misclassifications. A queue of pre-BilRUG
@@ -405,7 +407,7 @@ Two standing cautions on the live queue:
    queue. Any coverage metric built on it is optimistic by exactly the subtotal rows
    — which are the structurally important ones. Unresolved: whether this file is
    tracked state or scratch.
-The mapper is exact-match only. Never auto-pick an ambiguous match: exact match, else queue to py/normalise/reviews/unmapped_queue.csv. Raise the map rate by adding taxonomy rows or client aliases, never by widening the matcher.
+
 
 ## Backlog - mapper correctness (lane A follow-up)
 
