@@ -372,6 +372,8 @@ note has been reviewed, and two were wrong (see e033262).
 
 Agent sandboxes have NO network access. Do not attempt pip install or npm install.
 Dependencies are pre-installed by the human before the session starts.
+CI installs from `requirements.lock`; regenerate it whenever a dependency is added.
+Regenerate from a clean venv containing only this project's dependencies - `pip freeze` captures whatever is installed, not this project's dependency closure.
 Use .venv\Scripts\python.exe directly; do not activate the venv. (Activating also
 works, but calling the interpreter by path removes a whole class of
 "ModuleNotFoundError on a package that is already installed" false alarms caused by
