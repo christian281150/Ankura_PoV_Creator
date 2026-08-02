@@ -6,10 +6,9 @@ when callers supply them, and never fabricates them when they are absent.
 """
 from __future__ import annotations
 
-from collections import defaultdict
 from dataclasses import dataclass
 from math import isclose
-from typing import Any, Iterable, Mapping, Sequence
+from typing import Any, Iterable, Mapping
 
 from contract.models import Flag
 
@@ -20,6 +19,8 @@ RULE_SEVERITY: dict[str, str] = {
     "V7": "blocking", "V8": "blocking", "V9": "advisory",
     "V10": "note_required",
 }
+
+V5_ABSOLUTE_MATERIALITY_EUR = 1_000_000.0
 
 # Each entry is (component std_id, sign).  A definition is only evaluated when
 # every component is disclosed for the fiscal year in question.
@@ -52,16 +53,8 @@ def _model_dump(value: Any) -> dict[str, Any]:
 
 
 def _flag(rule: str, message: str, note: str | None = None) -> Flag:
-    """Build a contract Flag.
-
-    ``contract.models.RuleId`` currently ends at V9 although ``rules.json``
-    defines V10.  ``model_construct`` preserves the contract-shaped Flag for
-    V10 without changing files outside this owned package.
-    """
-    values = {"rule": rule, "severity": RULE_SEVERITY[rule], "message": message, "note": note}
-    if rule == "V10":
-        return Flag.model_construct(**values)
-    return Flag(**values)  # type: ignore[arg-type]
+    """Build a Flag validated by the current contract model."""
+    return Flag(rule=rule, severity=RULE_SEVERITY[rule], message=message, note=note)  # type: ignore[arg-type]
 
 
 def _years(values: Mapping[Any, Any]) -> dict[int, float]:
@@ -86,20 +79,70 @@ def _series_name(item: Mapping[str, Any]) -> str:
     return str(item.get("title") or item.get("label") or item.get("metric") or item.get("raw_label") or item.get("std_id") or "series")
 
 
-def _chart_series(charted_series: Iterable[Any] | None, segment_figures: Iterable[Any]) -> list[dict[str, Any]]:
-    series = [_model_dump(item) for item in charted_series or ()]
-    # SegmentExtraction figures are explicitly revenue/revenue_share series.
-    # Their stated basis must survive into V1 even before a GUI block exists.
-    grouped: dict[tuple[Any, ...], dict[str, Any]] = {}
-    for figure in segment_figures:
-        value = _model_dump(figure)
-        key = (value.get("segment_type"), value.get("segment_name"), value.get("metric"),
-               value.get("presentation_basis"), value.get("unit"))
-        target = grouped.setdefault(key, {**value, "title": value.get("metric"), "values": {},
-                                          "charted": value.get("metric") == "revenue"})
-        target["values"][value["fiscal_year"]] = value["value"]
-    series.extend(grouped.values())
-    return series
+def _assigned_series(
+    charted_series: Iterable[Any] | None,
+    slot_assignments: Mapping[str, Any] | Iterable[Any] | None,
+    axis_labels: Mapping[str, str] | None,
+) -> list[dict[str, Any]]:
+    """Return only series actually assigned to a slide slot.
+
+    ``slot_assignments`` accepts either ``{slot: series_id}`` or
+    ``{slot: {series_id: ..., axis_label: ...}}``.  An assignment may also
+    embed a complete series.  ``axis_labels`` is keyed by slot (or series id)
+    and is deliberately separate from a source title.
+    """
+    available = [_model_dump(item) for item in charted_series or ()]
+    by_id = {str(item["id"]): item for item in available if item.get("id") is not None}
+    if isinstance(slot_assignments, Mapping):
+        assignments = [{"slot": slot, "assignment": assignment} for slot, assignment in slot_assignments.items()]
+    else:
+        assignments = []
+        for item in slot_assignments or ():
+            assignment = _model_dump(item)
+            assignments.append({"slot": assignment.get("slot"), "assignment": assignment})
+
+    selected: list[dict[str, Any]] = []
+    for entry in assignments:
+        slot = str(entry["slot"])
+        assignment = entry["assignment"]
+        if isinstance(assignment, str):
+            source = by_id.get(assignment)
+            assignment_data: dict[str, Any] = {"series_id": assignment}
+        else:
+            assignment_data = _model_dump(assignment)
+            series_id = assignment_data.get("series_id") or assignment_data.get("id") or assignment_data.get("block_id")
+            source = by_id.get(str(series_id)) if series_id is not None else assignment_data.get("series")
+            if source is not None:
+                source = _model_dump(source)
+            elif "values" in assignment_data or "row" in assignment_data:
+                source = assignment_data
+        if source is None:
+            continue
+        series = {**source, **{key: value for key, value in assignment_data.items() if key not in {"series", "series_id", "block_id"}}}
+        series["slot"] = slot
+        series_id = str(series.get("id") or assignment_data.get("series_id") or "")
+        series["axis_label"] = assignment_data.get("axis_label") or (axis_labels or {}).get(slot) or (axis_labels or {}).get(series_id)
+        selected.append(series)
+    return selected
+
+
+def _v5_rows(assigned: Iterable[Mapping[str, Any]], rows: Iterable[Mapping[str, Any]]) -> list[dict[str, Any]]:
+    """Resolve only material, slot-assigned lines for V5."""
+    output: list[dict[str, Any]] = []
+    row_list = list(rows)
+    for series in assigned:
+        if series.get("material_line") is False:
+            continue
+        if series.get("values") is not None:
+            output.append(dict(series))
+            continue
+        embedded = series.get("row")
+        if embedded is not None:
+            output.append(_model_dump(embedded))
+            continue
+        std_ids = series.get("std_ids") or ([series["std_id"]] if series.get("std_id") else [])
+        output.extend(row for row in row_list if row.get("std_id") in std_ids)
+    return output
 
 
 def _components(record: Mapping[str, Any]) -> tuple[tuple[str, int], ...] | None:
@@ -123,26 +166,28 @@ def validate_normalised(
     segments: Any | None = None,
     *,
     charted_series: Iterable[Any] | None = None,
+    slot_assignments: Mapping[str, Any] | Iterable[Any] | None = None,
+    axis_labels: Mapping[str, str] | None = None,
+    v5_absolute_materiality_eur: float = V5_ABSOLUTE_MATERIALITY_EUR,
 ) -> ValidationResult:
     """Validate P0 and segment evidence, returning every applicable Flag.
 
-    ``charted_series`` is optional but required for V1/V2/V7 checks on P0
-    rows: each item may contain ``title``/``label``, ``presentation_basis``,
-    ``unit``, ``values`` and/or ``row``.  Segment figures are validated as
-    their own disclosed revenue series.
+    V1, V2, V5 and V7 run only for explicit ``slot_assignments``.  Give each
+    assigned series an ``id`` and pass ``{slot: series_id}``; use
+    ``axis_labels={slot: "Revenue"}`` (or an assignment ``axis_label``) to
+    identify its displayed axis label.  Unassigned disclosed series are legal.
     """
     rows = [_model_dump(row) for row in normalised.get("rows", ())]
-    segment_figures = list(getattr(segments, "figures", ()) if segments is not None else ())
     flags: list[Flag] = []
+    assigned = _assigned_series(charted_series, slot_assignments, axis_labels)
 
-    # V1 and V2: chart data is the only source that establishes a "series".
-    for series in _chart_series(charted_series, segment_figures):
-        if not series.get("charted", True):
-            continue
+    # V1, V2 and V7: only an assigned slide series has a presentation label.
+    for series in assigned:
         name = _series_name(series)
         basis = series.get("presentation_basis")
-        if _is_revenue_label(name) and basis != "umsatzerloese":
-            flags.append(_flag("V1", f"{name} is labelled Revenue but presentation_basis is {basis!r}, not 'umsatzerloese'."))
+        axis_label = series.get("axis_label")
+        if _is_revenue_label(axis_label) and basis != "umsatzerloese":
+            flags.append(_flag("V1", f"{name} in {series['slot']} is labelled {axis_label!r} but presentation_basis is {basis!r}, not 'umsatzerloese'."))
         units = series.get("units")
         if units is None:
             units = [series["unit"]] if series.get("unit") is not None else []
@@ -157,7 +202,8 @@ def validate_normalised(
         if row is not None and not row.get("std_id"):
             flags.append(_flag("V7", f"Charted series {name} uses unmapped label {row.get('raw_label')!r}."))
 
-    # V3/V4/V5 operate on all disclosed P0 lines, not merely selected charts.
+    # V3/V4 apply to all disclosed P0 lines.  V5 applies only to slot-assigned
+    # material lines, and demands both percentage and absolute materiality.
     for row in rows:
         name = _series_name(row)
         values = _years(row.get("values", {}))
@@ -170,12 +216,16 @@ def validate_normalised(
                 flags.append(_flag("V3", f"{name}: consolidation perimeter changes from FY{previous} to FY{current}.", "Explain the perimeter change and comparability impact."))
             if isinstance(method, Mapping) and method.get(previous) != method.get(current):
                 flags.append(_flag("V4", f"{name}: method changes from {method.get(previous)} in FY{previous} to {method.get(current)} in FY{current}.", "Explain the GKV/UKV method change and comparability impact."))
-            prior = values[previous]
-            if prior == 0:
+    for row in _v5_rows(assigned, rows):
+        name = _series_name(row)
+        values = _years(row.get("values", {}))
+        for previous, current in zip(sorted(values), sorted(values)[1:]):
+            if current != previous + 1 or values[previous] == 0:
                 continue
-            change = (values[current] - prior) / abs(prior)
-            if abs(change) > 0.15:
-                flags.append(_flag("V5", f"{name}: FY{current} changed {change:+.1%} versus FY{previous}.", "Explain the material year-on-year movement."))
+            delta = values[current] - values[previous]
+            change = delta / abs(values[previous])
+            if abs(change) > 0.15 and abs(delta) >= v5_absolute_materiality_eur:
+                flags.append(_flag("V5", f"{name}: FY{current} changed {change:+.1%} versus FY{previous} ({delta:+,.2f} EUR).", "Explain the material year-on-year movement."))
 
     # V6: calculate ratios only where reported revenue and a cost line coexist.
     revenue: dict[int, float] = {}
@@ -229,6 +279,18 @@ def validate_normalised(
     return ValidationResult(flags=flags)
 
 
-def validate(normalised: Mapping[str, Any], segments: Any | None = None, *, charted_series: Iterable[Any] | None = None) -> list[Flag]:
+def validate(
+    normalised: Mapping[str, Any],
+    segments: Any | None = None,
+    *,
+    charted_series: Iterable[Any] | None = None,
+    slot_assignments: Mapping[str, Any] | Iterable[Any] | None = None,
+    axis_labels: Mapping[str, str] | None = None,
+    v5_absolute_materiality_eur: float = V5_ABSOLUTE_MATERIALITY_EUR,
+) -> list[Flag]:
     """Convenience API returning the contract Flag objects directly."""
-    return validate_normalised(normalised, segments, charted_series=charted_series).flags
+    return validate_normalised(
+        normalised, segments, charted_series=charted_series,
+        slot_assignments=slot_assignments, axis_labels=axis_labels,
+        v5_absolute_materiality_eur=v5_absolute_materiality_eur,
+    ).flags
