@@ -192,6 +192,29 @@ Mittelstand better than nationals.
 
 ## 5. Layer 2 — Normalisation, and current extractor defects
 
+> **STALE — defects 1–5 below are fixed.** Diagnosed in 2026 against the FY2025
+> Seidensticker *model workbook*, before the extractor was absorbed. The live
+> normalisation path is `py/acquire/bundesanzeiger/extractor/consolidate.py`, which
+> reads extracted-tables JSON, not the workbook. Verified against `main` @ ddc94e6,
+> `109 passed, 1 xfailed`. Retained for provenance; do not action.
+>
+> | # | Status |
+> |---|---|
+> | 1 mapper not wired | Fixed. 14 rows consolidate on the FY2024 GuV |
+> | 2 column-offset loss | Fixed in `consolidate.py` (`_year_blocks`). **Still open in the `ALL —` workbook writer**, which is a different module |
+> | 3 German numbers | Fixed (`_parse_eur`) |
+> | 4 unit mixing | Fixed per source table (`_unit_multiplier`) |
+> | 5 phantom rows | Fixed (`_is_davon_note`, std_id collision detection) |
+> | 6 year coverage | Open — multi-year assembly does not exist |
+>
+> **§5.2 is inverted.** It prescribes "longest-match wins, plus a parent/child level
+> check." The implementation went further and better: `PL_GKV-5`, `-6`, `-7` are
+> **deliberately absent from the taxonomy**, and `_UNSAFE_AGGREGATE_KEYS` leaves an
+> aggregate heading unmapped rather than resolving it anywhere. An aggregate maps to
+> nothing; sum its children. See `AGENTS.md` §P0.6.
+>
+> **§5.3** landed as `_SUBTOTAL_EXTENSIONS` plus a client alias, not as taxonomy rows.
+
 Diagnosed against the FY2025 Seidensticker Konzernabschluss workbook.
 
 | # | Defect | Evidence | Severity |
