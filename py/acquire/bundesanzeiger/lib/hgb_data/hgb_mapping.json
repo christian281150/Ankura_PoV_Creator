@@ -3321,6 +3321,11 @@
       "hgb_code": "BS-A.A.I.2"
     },
     {
+      "normalized_key": "entgeltlicherworbenegewerblicheschutzrechteundaehnlicherechteundwerte",
+      "original_label": "Entgeltlich erworbene gewerbliche Schutzrechte und ähnliche Rechte und Werte",
+      "hgb_code": "BS-A.A.I.2"
+    },
+    {
       "normalized_key": "geschaeftsoderfirmenwert",
       "original_label": "Geschäfts- oder Firmenwert",
       "hgb_code": "BS-A.A.I.3"

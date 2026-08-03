@@ -205,6 +205,22 @@ def _values_match(window: list[tuple[str, dict[int, tuple[float, int]]]],
     return True
 
 
+def _dominant_bs_side(table_accumulator: list[tuple[str, dict[int, tuple[float, int]]]]) -> Optional[str]:
+    """Which balance-sheet side a table's resolved lines belong to, by simple
+    majority of std_id prefix. ``BS-P-NEGEQ`` (a KG's negative-equity offset,
+    disclosed on the Aktiva side per Sec.264c HGB) does not count toward
+    either side."""
+    counts = {"BS-A": 0, "BS-P": 0}
+    for std_id, _ in table_accumulator:
+        if std_id.startswith("BS-A"):
+            counts["BS-A"] += 1
+        elif std_id.startswith("BS-P") and std_id != "BS-P-NEGEQ":
+            counts["BS-P"] += 1
+    if counts["BS-A"] == counts["BS-P"]:
+        return None
+    return "BS-A" if counts["BS-A"] > counts["BS-P"] else "BS-P"
+
+
 def _column_actuals(table: dict, aliases: dict[str, str], queued: list[dict[str, Any]]) -> dict[int, OrderedDict[str, dict]]:
     """Return ``year -> std_id -> actual`` using left-to-right block coalescing.
 
@@ -223,11 +239,18 @@ def _column_actuals(table: dict, aliases: dict[str, str], queued: list[dict[str,
     if header_row < 0:
         return {}
     multiplier = _unit_multiplier(table)
+    table_type = effective_table_type(table)
     result: dict[int, OrderedDict[str, dict]] = {}
     collisions: dict[int, set[str]] = {}
     accumulator: list[tuple[str, dict[int, tuple[float, int]]]] = []
+    # Unlike ``accumulator``, this never resets on a successful intermediate
+    # subtotal -- it is the only way a table-closing "Summe Aktiva"/"Summe
+    # Passiva" row (which sits below several already-consumed subtotals) can
+    # ever be recognised against the filing's own arithmetic.
+    table_accumulator: list[tuple[str, dict[int, tuple[float, int]]]] = []
     open_group_label: Optional[str] = None
     group_start: int = 0
+    last_row_number = len(rows) - 1
 
     def _store(group_key: str, label: str, record: dict, row_number: int,
                values: dict[int, tuple[float, int]]) -> None:
@@ -289,6 +312,20 @@ def _column_actuals(table: dict, aliases: dict[str, str], queued: list[dict[str,
                 group_start = 0
                 open_group_label = None
                 continue
+            if table_type == 0 and row_number == last_row_number:
+                # The table-closing Bilanz total: every intermediate subtotal
+                # since the top of the table has already reset ``accumulator``,
+                # so only the full-table accumulator can still tie to it.
+                side = _dominant_bs_side(table_accumulator)
+                if side is not None and _values_match(table_accumulator, values):
+                    record = {"std_id": side, "canonical_de": "", "canonical_en": "",
+                              "row_type": "subtotal", "statement": table.get("framework") or "",
+                              "components": {std_id: 1 for std_id, _ in table_accumulator}}
+                    _store(side, "", record, row_number, values)
+                    accumulator = []
+                    group_start = 0
+                    open_group_label = None
+                    continue
             queued.append({
                 "raw_label": "", "normalized_key": "",
                 "match_type": "unlabelled_no_verified_subtotal", "candidates": "",
@@ -327,6 +364,7 @@ def _column_actuals(table: dict, aliases: dict[str, str], queued: list[dict[str,
             continue
         std_id = record["std_id"]
         accumulator.append((std_id, values))
+        table_accumulator.append((std_id, values))
         _store(std_id, label, record, row_number, values)
     return result
 
