@@ -108,6 +108,42 @@ def _build_point(fy: int, entries: list[dict[str, Any]]) -> LineItemPoint:
     )
 
 
+def entity_series_to_rows(series: EntitySeries) -> list[dict[str, Any]]:
+    """Flatten an EntitySeries into the row shape ``validate.validator``
+    expects: one dict per std_id, with per-year values plus ``scope_by_fy``
+    and ``method_by_fy`` built from each point's own ``scope_flag``/
+    ``method_flag`` -- the year-keyed shape V3/V4 read, which nothing
+    upstream of this produced before.
+
+    A year with an unresolved conflict (more than one observation, no
+    ``resolution``) has no single canonical value yet -- consistent with this
+    module never inventing one, such a year is simply left out of the row
+    rather than guessing which observation to report.
+    """
+    rows: list[dict[str, Any]] = []
+    for item in series.line_items:
+        values: dict[int, float] = {}
+        scope_by_fy: dict[int, str | None] = {}
+        method_by_fy: dict[int, str | None] = {}
+        for point in item.points:
+            if point.resolution is not None:
+                observation = point.observations[point.resolution.chosen_observation_index]
+            elif len(point.observations) == 1:
+                observation = point.observations[0]
+            else:
+                continue
+            values[point.fy] = float(observation.value)
+            scope_by_fy[point.fy] = point.scope_flag
+            method_by_fy[point.fy] = point.method_flag
+        rows.append({
+            "std_id": item.std_id,
+            "values": values,
+            "scope_by_fy": scope_by_fy,
+            "method_by_fy": method_by_fy,
+        })
+    return rows
+
+
 def build_entity_series(
     entity_id: str,
     fiscal_year_end: FiscalYearEnd,

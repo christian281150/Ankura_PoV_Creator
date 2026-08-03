@@ -34,6 +34,7 @@ def assemble_profile(
     flags = [dict(flag) for flag in validation_flags or ()]
     revenue_block = {
         "id": "fin.revenue_series",
+        "std_id": revenue["std_id"],
         "title": "Revenue in €m",
         "series_label": "Revenue",
         "kind": "chart.column_line",
@@ -59,7 +60,7 @@ def assemble_profile(
     return {"entity": entity, "blocks": blocks, "canonical_layout": {
         "top_left": blocks[0]["id"], "top_right": revenue_block["id"],
         "bottom_left": blocks[2]["id"], "bottom_right": blocks[3]["id"],
-    }, "coverage": []}
+    }, "coverage": [], "rows": list(normalised.get("rows", []))}
 
 
 def _merged_row(rows: Iterable[Mapping[str, Any]], std_id: str) -> dict[str, Any] | None:
