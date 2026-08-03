@@ -351,6 +351,24 @@ subtotals is a healthy end state - do not force it to zero.
 The taxonomy is generated from HGB_GKV_UKV_Standardisation_Map.xlsx. Do not
 hand-edit lib/hgb_map.py embedded data.
 
+### Taxonomy source and regeneration
+
+- Edit `lib/hgb_data/hgb_mapping.json`.
+- Then run `lib/hgb_data/generate_hgb_map.py`.
+- `hgb_taxonomy.csv` is a generated view; editing it has no effect at runtime.
+- `generate_hgb_map.py` rewrites `hgb_mapping.json` in place while recomputing
+  `normalized_key` for every synonym, so expect that file in your own diff.
+
+### Known, not yet fixed
+
+`effective_table_type` in `extract.py` types the Lagebericht `3.2
+Vermoegenslage` table as Bilanz, `3.3 Finanzlage` as Kapitalflussrechnung, and
+the Anhang revenue-split tables as GuV. This is harmless today because those
+labels do not map. It arms itself the moment synonyms are added for labels such
+as `Summe Aktiva` or `Fremdkapital`: narrative rows would then join the
+statutory series silently. Fix the classifier before adding balance-sheet
+synonyms.
+
 **Aliases go in `py/acquire/bundesanzeiger/aliases/client_aliases.csv`.** This
 instruction previously named `py/normalise/aliases/client_aliases.csv`, which is
 read by `p0_normalise.py` (deleted - see below) only. `consolidate.py` — the live mapper — resolves
