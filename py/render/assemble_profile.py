@@ -13,6 +13,8 @@ from collections.abc import Iterable, Mapping
 from pathlib import Path
 from typing import Any
 
+from validate.validator import validate_normalised
+
 
 class AssemblyError(ValueError):
     """The upstream evidence cannot support a contract profile."""
@@ -126,16 +128,33 @@ def _unique_provenance(items: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
     return list({(item["doc"], item["sheet"], item["row"], item["page"]): item for item in items}.values())
 
 
+def auto_footnote_flags(normalised: Mapping[str, Any], segments: Mapping[str, Any] | None = None) -> list[dict[str, Any]]:
+    """The V3-V6 flags real filing evidence needs surfaced as automatic slide
+    footnotes, per AGENTS.md's stated design ("Notes written against V3-V6
+    become slide footnotes automatically").
+
+    This is the caller assemble_profile's own docstring expects: the adapter
+    itself never computes validation flags, so whoever invokes it must. Only
+    V3, V4 and V6 can actually fire from rows alone -- V5 also carries a note
+    but needs an assigned chart series to evaluate, and no slot assignment
+    exists yet at this stage (that happens later, in render_profile); V5 is
+    covered separately by renderer.py's render-time preflight, which runs
+    after slots are known.
+    """
+    result = validate_normalised({"rows": normalised.get("rows", [])}, segments)
+    return [flag.model_dump() for flag in result.flags if flag.rule in {"V3", "V4", "V5", "V6"}]
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("normalised", type=Path)
     parser.add_argument("output", type=Path)
     parser.add_argument("--segments", type=Path)
-    parser.add_argument("--flags", type=Path)
+    parser.add_argument("--flags", type=Path, help="Pre-computed flags JSON, overriding the automatic V3-V6 validation run")
     args = parser.parse_args()
     normalised = json.loads(args.normalised.read_text(encoding="utf-8"))
     segments = json.loads(args.segments.read_text(encoding="utf-8")) if args.segments else None
-    flags = json.loads(args.flags.read_text(encoding="utf-8")) if args.flags else None
+    flags = json.loads(args.flags.read_text(encoding="utf-8")) if args.flags else auto_footnote_flags(normalised, segments)
     args.output.write_text(json.dumps(assemble_profile(normalised, segments, flags), ensure_ascii=False, indent=2), encoding="utf-8")
     return 0
 
