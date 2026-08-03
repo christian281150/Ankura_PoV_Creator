@@ -9,6 +9,23 @@ from ._core import _HGB_AVAILABLE, _hgb, _parse_num_cell, console, sanitize_file
 from .extract import _classify_table
 
 
+def _as_number(raw, thousand_sep: str = ".", decimal_sep: str = ",") -> Optional[float]:
+    """Coerce one cell value to a float, or None if it isn't numeric.
+
+    _parse_num_cell expects raw PDF-extracted text in German locale (e.g.
+    "103.152.036,57") -- the shape of a per-year raw table's own cells. A
+    multi-year overview table's cells (consolidate.py's build_multi_year_tables
+    output) are already-parsed Python floats; str()-ing one of those back
+    through _parse_num_cell reinterprets its "." as a German thousands
+    separator and fails silently (returns None), so the value fell through
+    to the plain-text branch below instead of being written as a formatted
+    number. Handle the already-numeric case directly instead of re-parsing it.
+    """
+    if isinstance(raw, (int, float)):
+        return float(raw)
+    return _parse_num_cell(raw, thousand_sep=thousand_sep, decimal_sep=decimal_sep)
+
+
 def export_to_csv(tables: list[dict], result: dict, out_dir: Optional[Path] = None) -> int:
     """
     Export each table to a CSV file using pandas.
@@ -238,7 +255,7 @@ def export_to_excel(tables: list[dict], result: dict,
             padded0 = (list(row0) + [""] * max_cols)[:max_cols]
             desc0   = str(padded0[0] if padded0 else "").strip()
             if not desc0 and any(
-                _parse_num_cell(v, thousand_sep=".", decimal_sep=",") is not None
+                _as_number(v) is not None
                 for v in padded0[1:]
             ):
                 subtotal_set.add(ri0)
@@ -253,7 +270,7 @@ def export_to_excel(tables: list[dict], result: dict,
             for ci, val in enumerate(padded, 1):
                 raw = val if val is not None else ""
                 if ri > 1 and ci > 1:
-                    num = _parse_num_cell(raw, thousand_sep=".", decimal_sep=",")
+                    num = _as_number(raw)
                     if num is not None:
                         cell = ws.cell(row=xr, column=ci, value=num)
                         cell.font = Font(name="Calibri", size=11, bold=is_subtotal)
@@ -403,7 +420,7 @@ def export_to_excel_v2(tables: list,
             padded0 = (list(row0) + [""] * max_cols)[:max_cols]
             desc0   = str(padded0[0] if padded0 else "").strip()
             if not desc0 and any(
-                _parse_num_cell(v, thousand_sep=".", decimal_sep=",") is not None
+                _as_number(v) is not None
                 for v in padded0[1:]):
                 subtotal_set.add(ri0)
         last_subtotal = max(subtotal_set) if subtotal_set else -1
@@ -416,7 +433,7 @@ def export_to_excel_v2(tables: list,
             for ci, val in enumerate(padded, 1):
                 raw = val if val is not None else ""
                 if ri > 1 and ci > 1:
-                    num = _parse_num_cell(raw, thousand_sep=".", decimal_sep=",")
+                    num = _as_number(raw)
                     if num is not None:
                         cell = ws.cell(row=xr, column=ci, value=num)
                         cell.font = Font(name="Calibri", size=11, bold=is_subtotal)
