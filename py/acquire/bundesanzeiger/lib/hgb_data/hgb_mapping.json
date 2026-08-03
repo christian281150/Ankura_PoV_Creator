@@ -476,6 +476,83 @@
       "ukv_allocation_required": false
     },
     {
+      "hgb_code": "BS-P.A.KG-I",
+      "statement": "BS",
+      "level": 3,
+      "parent_code": "BS-P.A",
+      "name_de": "I. Kapitalanteile",
+      "name_en": "Partners' capital contributions",
+      "pnl_format": "BS",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "BS-P.A.KG-II",
+      "statement": "BS",
+      "level": 3,
+      "parent_code": "BS-P.A",
+      "name_de": "II. Rücklagen",
+      "name_en": "Reserves",
+      "pnl_format": "BS",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "BS-P.A.KG-II.1",
+      "statement": "BS",
+      "level": 4,
+      "parent_code": "BS-P.A.KG-II",
+      "name_de": "1. Andere Gewinnrücklagen",
+      "name_en": "Other retained earnings",
+      "pnl_format": "BS",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "BS-P.A.KG-II.2",
+      "statement": "BS",
+      "level": 4,
+      "parent_code": "BS-P.A.KG-II",
+      "name_de": "2. Unterschiedsbetrag aus der Kapitalkonsolidierung",
+      "name_en": "Capital consolidation difference",
+      "pnl_format": "BS",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "BS-P.A.KG-III",
+      "statement": "BS",
+      "level": 3,
+      "parent_code": "BS-P.A",
+      "name_de": "III. Eigenkapitaldifferenz aus Währungsumrechnung",
+      "name_en": "Equity difference from currency translation",
+      "pnl_format": "BS",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "BS-P-NEGEQ",
+      "statement": "BS",
+      "level": 3,
+      "parent_code": "BS-P.A",
+      "name_de": "V. Nicht durch Vermögenseinlagen gedeckte Verlustanteile der Kommanditisten",
+      "name_en": "Loss shares of limited partners not covered by capital contributions",
+      "pnl_format": "BS",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "BS-P.A.KG-VI",
+      "statement": "BS",
+      "level": 3,
+      "parent_code": "BS-P.A",
+      "name_de": "VI. Genussrechtskapital",
+      "name_en": "Profit participation capital",
+      "pnl_format": "BS",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
       "hgb_code": "BS-P.B",
       "statement": "BS",
       "level": 2,
@@ -3257,6 +3334,41 @@
       "normalized_key": "netincome",
       "original_label": "Net income",
       "hgb_code": "BS-P.A.V"
+    },
+    {
+      "normalized_key": "kapitalanteile",
+      "original_label": "Kapitalanteile",
+      "hgb_code": "BS-P.A.KG-I"
+    },
+    {
+      "normalized_key": "ruecklagen",
+      "original_label": "Rücklagen",
+      "hgb_code": "BS-P.A.KG-II"
+    },
+    {
+      "normalized_key": "anderegewinnruecklagen",
+      "original_label": "Andere Gewinnrücklagen",
+      "hgb_code": "BS-P.A.KG-II.1"
+    },
+    {
+      "normalized_key": "unterschiedsbetragausderkapitalkonsolidierung",
+      "original_label": "Unterschiedsbetrag aus der Kapitalkonsolidierung",
+      "hgb_code": "BS-P.A.KG-II.2"
+    },
+    {
+      "normalized_key": "eigenkapitaldifferenzauswaehrungsumrechnung",
+      "original_label": "Eigenkapitaldifferenz aus Währungsumrechnung",
+      "hgb_code": "BS-P.A.KG-III"
+    },
+    {
+      "normalized_key": "nichtdurchvermoegenseinlagengedeckteverlustanteilederkommanditisten",
+      "original_label": "Nicht durch Vermögenseinlagen gedeckte Verlustanteile der Kommanditisten",
+      "hgb_code": "BS-P-NEGEQ"
+    },
+    {
+      "normalized_key": "genussrechtskapital",
+      "original_label": "Genussrechtskapital",
+      "hgb_code": "BS-P.A.KG-VI"
     },
     {
       "normalized_key": "rueckstellungen",
