@@ -1134,6 +1134,336 @@
       "pnl_format": "STAT",
       "is_subtotal": false,
       "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF",
+      "statement": "CF",
+      "level": 1,
+      "parent_code": "",
+      "name_de": "KAPITALFLUSSRECHNUNG",
+      "name_en": "CASH FLOW STATEMENT",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-OPERATING",
+      "statement": "CF",
+      "level": 2,
+      "parent_code": "CF",
+      "name_de": "Cashflow aus laufender Geschäftstätigkeit",
+      "name_en": "Cash flow from operating activities",
+      "pnl_format": "CF",
+      "is_subtotal": true,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-1",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-OPERATING",
+      "name_de": "Konzernjahresfehlbetrag",
+      "name_en": "Net loss for the year (Group)",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-2",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-OPERATING",
+      "name_de": "Abschreibungen auf Anlagevermögen",
+      "name_en": "Depreciation and amortisation of non-current assets",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-3",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-OPERATING",
+      "name_de": "Abnahme (-) / Zunahme (+) Rückstellungen (vor Aufzinsung und Steuern)",
+      "name_en": "Decrease(-)/increase(+) in provisions (before discount unwinding and taxes)",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-4",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-OPERATING",
+      "name_de": "Abnahme (+) / Zunahme (-) der Vorräte, der Forderungen aus Lieferungen und Leistungen sowie anderer Aktiva (ohne Forderungen aus Steuern), die nicht der Investitions- oder Finanzierungstätigkeit zuzuordnen sind",
+      "name_en": "Decrease(+)/increase(-) in inventories, trade receivables and other assets not attributable to investing or financing activities",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-5",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-OPERATING",
+      "name_de": "Zunahme (+) / Abnahme (-) der Verbindlichkeiten aus Lieferungen und Leistungen sowie anderer Passiva, die nicht der Investitions- oder Finanzierungstätigkeit zuzuordnen sind",
+      "name_en": "Increase(+)/decrease(-) in trade payables and other liabilities not attributable to investing or financing activities",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-6",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-OPERATING",
+      "name_de": "Verlust (+) / Gewinn (-) aus Anlagenabgängen (i. Vj. inkl. Abgang aus dem Konsolidierungskreis)",
+      "name_en": "Loss(+)/gain(-) on disposal of fixed assets",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-7",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-OPERATING",
+      "name_de": "Gewinn (-) / Verlust (+) aus Beteiligungen an assoz. Unternehmen",
+      "name_en": "Gain(-)/loss(+) from investments in associates",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-8",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-OPERATING",
+      "name_de": "Zinsaufwendungen (+) / Zinserträge (-)",
+      "name_en": "Interest expense(+)/interest income(-)",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-9",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-OPERATING",
+      "name_de": "Ertragsteueraufwand",
+      "name_en": "Income tax expense",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-10",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-OPERATING",
+      "name_de": "Ertragsteuerzahlungen",
+      "name_en": "Income tax paid",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-INVESTING",
+      "statement": "CF",
+      "level": 2,
+      "parent_code": "CF",
+      "name_de": "Cashflow aus der Investitionstätigkeit",
+      "name_en": "Cash flow from investing activities",
+      "pnl_format": "CF",
+      "is_subtotal": true,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-11",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-INVESTING",
+      "name_de": "Einzahlungen aus Abgängen von Gegenständen des immateriellen Anlagevermögens / Sachanlagevermögens",
+      "name_en": "Proceeds from disposal of intangible and tangible fixed assets",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-12",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-INVESTING",
+      "name_de": "Auszahlungen für Investitionen in das immaterielle Anlagevermögen / Sachanlagevermögen",
+      "name_en": "Payments for investments in intangible and tangible fixed assets",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-13",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-INVESTING",
+      "name_de": "Einzahlungen aus Abgängen Finanzanlagevermögen",
+      "name_en": "Proceeds from disposal of financial assets",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-14",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-INVESTING",
+      "name_de": "Auszahlungen für Investitionen in das Finanzanlagevermögen",
+      "name_en": "Payments for investments in financial assets",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-15",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-INVESTING",
+      "name_de": "Einzahlungen aus dem Abgang aus dem Konsolidierungskreis in Vorjahren",
+      "name_en": "Proceeds from disposal from the consolidation scope in prior years",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-16",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-INVESTING",
+      "name_de": "Erhaltene Gewinnausschüttungen von assoziierten Unternehmen",
+      "name_en": "Dividends received from associates",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-17",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-INVESTING",
+      "name_de": "Erhaltene Zinsen",
+      "name_en": "Interest received",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-FINANCING",
+      "statement": "CF",
+      "level": 2,
+      "parent_code": "CF",
+      "name_de": "Cashflow aus der Finanzierungstätigkeit",
+      "name_en": "Cash flow from financing activities",
+      "pnl_format": "CF",
+      "is_subtotal": true,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-18",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-FINANCING",
+      "name_de": "Einzahlungen (+) / Auszahlungen (-) von / an Gesellschafter(n)",
+      "name_en": "Proceeds(+)/payments(-) from/to shareholders",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-19",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-FINANCING",
+      "name_de": "Auszahlungen (-) / Einzahlungen (+) aus Finanzkrediten",
+      "name_en": "Payments(-)/proceeds(+) from financial credits",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-20",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-FINANCING",
+      "name_de": "Gezahlte Zinsen",
+      "name_en": "Interest paid",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-NETCHANGE",
+      "statement": "CF",
+      "level": 2,
+      "parent_code": "CF",
+      "name_de": "Zahlungswirksame Veränderungen des Finanzmittelfonds",
+      "name_en": "Net change in cash and cash equivalents",
+      "pnl_format": "CF",
+      "is_subtotal": true,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-FX",
+      "statement": "CF",
+      "level": 2,
+      "parent_code": "CF",
+      "name_de": "Wechselkursbedingte Änderung des Finanzmittelfonds",
+      "name_en": "Exchange-rate effect on cash and cash equivalents",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-BEGIN",
+      "statement": "CF",
+      "level": 2,
+      "parent_code": "CF",
+      "name_de": "Finanzmittelfonds am Anfang der Periode",
+      "name_en": "Cash and cash equivalents at the beginning of the period",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-END",
+      "statement": "CF",
+      "level": 2,
+      "parent_code": "CF",
+      "name_de": "Finanzmittelfonds am Ende der Periode",
+      "name_en": "Cash and cash equivalents at the end of the period",
+      "pnl_format": "CF",
+      "is_subtotal": true,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-END.1",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-END",
+      "name_de": "Kassenbestand, Guthaben bei Kreditinstituten",
+      "name_en": "Cash on hand and bank balances",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "CF-END.2",
+      "statement": "CF",
+      "level": 3,
+      "parent_code": "CF-END",
+      "name_de": "in die Finanzdisposition einbezogene kurzfristige Finanzkredite",
+      "name_en": "Short-term credit lines included in cash management",
+      "pnl_format": "CF",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
     }
   ],
   "account_ranges": [
@@ -4039,6 +4369,151 @@
       "normalized_key": "noncontrollinginterests",
       "original_label": "Non-controlling interests",
       "hgb_code": "BS-P.A.V"
+    },
+    {
+      "normalized_key": "cashflowauslaufendergeschaeftstaetigkeit",
+      "original_label": "Cashflow aus laufender Geschäftstätigkeit",
+      "hgb_code": "CF-OPERATING"
+    },
+    {
+      "normalized_key": "konzernjahresfehlbetrag",
+      "original_label": "Konzernjahresfehlbetrag",
+      "hgb_code": "CF-1"
+    },
+    {
+      "normalized_key": "abschreibungenaufanlagevermoegen",
+      "original_label": "Abschreibungen auf Anlagevermögen",
+      "hgb_code": "CF-2"
+    },
+    {
+      "normalized_key": "abnahmezunahmerueckstellungenvoraufzinsungundsteuern",
+      "original_label": "Abnahme (-) / Zunahme (+) Rückstellungen (vor Aufzinsung und Steuern)",
+      "hgb_code": "CF-3"
+    },
+    {
+      "normalized_key": "abnahmezunahmedervorraetederforderungenauslieferungenundleistungensowieandereraktivaohneforderungenaussteuerndienichtderinvestitionsoderfinanzierungstaetigkeitzuzuordnensind",
+      "original_label": "Abnahme (+) / Zunahme (-) der Vorräte, der Forderungen aus Lieferungen und Leistungen sowie anderer Aktiva (ohne Forderungen aus Steuern), die nicht der Investitions- oder Finanzierungstätigkeit zuzuordnen sind",
+      "hgb_code": "CF-4"
+    },
+    {
+      "normalized_key": "zunahmeabnahmederverbindlichkeitenauslieferungenundleistungensowieandererpassivadienichtderinvestitionsoderfinanzierungstaetigkeitzuzuordnensind",
+      "original_label": "Zunahme (+) / Abnahme (-) der Verbindlichkeiten aus Lieferungen und Leistungen sowie anderer Passiva, die nicht der Investitions- oder Finanzierungstätigkeit zuzuordnen sind",
+      "hgb_code": "CF-5"
+    },
+    {
+      "normalized_key": "verlustgewinnausanlagenabgaengenivjinklabgangausdemkonsolidierungskreis",
+      "original_label": "Verlust (+) / Gewinn (-) aus Anlagenabgängen (i. Vj. inkl. Abgang aus dem Konsolidierungskreis)",
+      "hgb_code": "CF-6"
+    },
+    {
+      "normalized_key": "gewinnverlustausbeteiligungenanassozunternehmen",
+      "original_label": "Gewinn (-) / Verlust (+) aus Beteiligungen an assoz. Unternehmen",
+      "hgb_code": "CF-7"
+    },
+    {
+      "normalized_key": "zinsaufwendungenzinsertraege",
+      "original_label": "Zinsaufwendungen (+) / Zinserträge (-)",
+      "hgb_code": "CF-8"
+    },
+    {
+      "normalized_key": "ertragsteueraufwand",
+      "original_label": "Ertragsteueraufwand",
+      "hgb_code": "CF-9"
+    },
+    {
+      "normalized_key": "ertragsteuerzahlungen",
+      "original_label": "Ertragsteuerzahlungen",
+      "hgb_code": "CF-10"
+    },
+    {
+      "normalized_key": "cashflowausderinvestitionstaetigkeit",
+      "original_label": "Cashflow aus der Investitionstätigkeit",
+      "hgb_code": "CF-INVESTING"
+    },
+    {
+      "normalized_key": "einzahlungenausabgaengenvongegenstaendendesimmateriellenanlagevermoegenssachanlagevermoegens",
+      "original_label": "Einzahlungen aus Abgängen von Gegenständen des immateriellen Anlagevermögens / Sachanlagevermögens",
+      "hgb_code": "CF-11"
+    },
+    {
+      "normalized_key": "auszahlungenfuerinvestitionenindasimmaterielleanlagevermoegensachanlagevermoegen",
+      "original_label": "Auszahlungen für Investitionen in das immaterielle Anlagevermögen / Sachanlagevermögen",
+      "hgb_code": "CF-12"
+    },
+    {
+      "normalized_key": "einzahlungenausabgaengenfinanzanlagevermoegen",
+      "original_label": "Einzahlungen aus Abgängen Finanzanlagevermögen",
+      "hgb_code": "CF-13"
+    },
+    {
+      "normalized_key": "auszahlungenfuerinvestitionenindasfinanzanlagevermoegen",
+      "original_label": "Auszahlungen für Investitionen in das Finanzanlagevermögen",
+      "hgb_code": "CF-14"
+    },
+    {
+      "normalized_key": "einzahlungenausdemabgangausdemkonsolidierungskreisinvorjahren",
+      "original_label": "Einzahlungen aus dem Abgang aus dem Konsolidierungskreis in Vorjahren",
+      "hgb_code": "CF-15"
+    },
+    {
+      "normalized_key": "erhaltenegewinnausschuettungenvonassoziiertenunternehmen",
+      "original_label": "Erhaltene Gewinnausschüttungen von assoziierten Unternehmen",
+      "hgb_code": "CF-16"
+    },
+    {
+      "normalized_key": "erhaltenezinsen",
+      "original_label": "Erhaltene Zinsen",
+      "hgb_code": "CF-17"
+    },
+    {
+      "normalized_key": "cashflowausderfinanzierungstaetigkeit",
+      "original_label": "Cashflow aus der Finanzierungstätigkeit",
+      "hgb_code": "CF-FINANCING"
+    },
+    {
+      "normalized_key": "einzahlungenauszahlungenvonangesellschaftern",
+      "original_label": "Einzahlungen (+) / Auszahlungen (-) von / an Gesellschafter(n)",
+      "hgb_code": "CF-18"
+    },
+    {
+      "normalized_key": "auszahlungeneinzahlungenausfinanzkrediten",
+      "original_label": "Auszahlungen (-) / Einzahlungen (+) aus Finanzkrediten",
+      "hgb_code": "CF-19"
+    },
+    {
+      "normalized_key": "gezahltezinsen",
+      "original_label": "Gezahlte Zinsen",
+      "hgb_code": "CF-20"
+    },
+    {
+      "normalized_key": "zahlungswirksameveraenderungendesfinanzmittelfonds",
+      "original_label": "Zahlungswirksame Veränderungen des Finanzmittelfonds",
+      "hgb_code": "CF-NETCHANGE"
+    },
+    {
+      "normalized_key": "wechselkursbedingteaenderungdesfinanzmittelfonds",
+      "original_label": "Wechselkursbedingte Änderung des Finanzmittelfonds",
+      "hgb_code": "CF-FX"
+    },
+    {
+      "normalized_key": "finanzmittelfondsamanfangderperiode",
+      "original_label": "Finanzmittelfonds am Anfang der Periode",
+      "hgb_code": "CF-BEGIN"
+    },
+    {
+      "normalized_key": "finanzmittelfondsamendederperiode",
+      "original_label": "Finanzmittelfonds am Ende der Periode",
+      "hgb_code": "CF-END"
+    },
+    {
+      "normalized_key": "kassenbestandguthabenbeikreditinstituten",
+      "original_label": "Kassenbestand, Guthaben bei Kreditinstituten",
+      "hgb_code": "CF-END.1"
+    },
+    {
+      "normalized_key": "indiefinanzdispositioneinbezogenekurzfristigefinanzkredite",
+      "original_label": "in die Finanzdisposition einbezogene kurzfristige Finanzkredite",
+      "hgb_code": "CF-END.2"
     }
   ],
   "pnl_format_bridge": [
