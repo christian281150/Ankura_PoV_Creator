@@ -5,10 +5,10 @@ produce. That fixture is the raw output of `extract_tables_from_pdf` over
 `Textilkontor_HRA8217_Konzernabschluss_FY2024.pdf`, committed so that
 consolidation can be exercised without a PDF, a browser, or the GUI.
 
-Three tests pass today. `test_no_value_bearing_row_is_silently_discarded`
-is a strict xfail: it is the specification for the unlabelled-subtotal fix
-in `_column_actuals`, and must flip to passing (and lose the marker) when
-that lands.
+`test_no_value_bearing_row_is_silently_discarded` locks in the
+unlabelled-subtotal fix in `_column_actuals`: blank-label rows are recognised
+as subtotals only by exact arithmetic verification against already-resolved
+component lines, never by position or guesswork.
 
 The EBIT assertion is the only figure in this file with an external
 witness: the FY2024 Lagebericht states an operating result of T-993, and
@@ -17,8 +17,10 @@ Every other number here is self-reported by the pipeline.
 """
 from __future__ import annotations
 
+import csv
 import json
 from pathlib import Path
+from tempfile import TemporaryDirectory
 from typing import Any
 
 import pytest
@@ -111,20 +113,47 @@ def test_ebit_reconciles_to_the_lagebericht() -> None:
     assert ebitda == pytest.approx(223_336.32, abs=0.01)
 
 
-@pytest.mark.xfail(
-    strict=True,
-    reason=(
-        "`if not label: continue` in _column_actuals discards unlabelled "
-        "subtotal rows before their values are read. In the FY2024 GuV this "
-        "loses Gesamtleistung, the Materialaufwand and Personalaufwand totals, "
-        "the operating-expense block and the Finanzergebnis. Because the drop "
-        "happens before the mapper, none of them reach the review queue, so "
-        "the queue under-reports coverage by exactly these rows."
-    ),
-)
+def test_v10_subtotal_tie_out_fires_clean_on_the_recognised_subtotals() -> None:
+    """V10 (validator.py:392) has real subtotal rows to check for the first time.
+
+    Each blank-label row `_column_actuals` recognises (Gesamtleistung, the
+    Materialaufwand and Personalaufwand totals, the operating-expense block)
+    carries its own disclosed component std_ids, so V10 must reconcile every
+    one of them to zero delta -- not just fail to find anything to check.
+    """
+    from validate.validator import validate_normalised
+
+    table = _consolidated_guv()
+    years = table["years"]
+    rows = [
+        {**meta, "values": {year: row[i + 1] for i, year in enumerate(years) if row[i + 1] != ""}}
+        for meta, row in zip(table["row_metadata"], table["rows"][1:])
+    ]
+    subtotal_rows = [row for row in rows if row.get("row_type") == "subtotal"]
+    assert len(subtotal_rows) >= 4, "expected Gesamtleistung, both cost totals, and the expense block"
+
+    result = validate_normalised({"rows": rows})
+    v10_flags = [flag for flag in result.flags if flag.rule == "V10"]
+    assert not v10_flags, [flag.message for flag in v10_flags]
+
+
 def test_no_value_bearing_row_is_silently_discarded() -> None:
-    """Every input row carrying a value must be mapped or queued, never dropped."""
+    """Every input row carrying a value must be mapped or queued, never dropped.
+
+    Blank-label subtotal rows (Gesamtleistung, the Materialaufwand and
+    Personalaufwand totals, the operating-expense block) are recognised in
+    ``_column_actuals`` by verifying their disclosed value against an exact
+    window of already-resolved component lines -- never guessed. One blank
+    row, Finanzergebnis (row 22), cannot be verified this way: one of its
+    three components -- "Gewinne aus Beteiligungen an assoziierten
+    Unternehmen" -- resolves to no taxonomy entry at all (the open
+    "Associates" gap in final-push-lanes.md). It is correctly left queued
+    rather than forced, which this test accepts as "not dropped".
+    """
+    from extractor.consolidate import _year_blocks
+
     source = next(t for t in _extracted_tables() if t.get("index") == GUV_SOURCE_INDEX)
+    header_row, _blocks = _year_blocks(source["rows"])
 
     def carries_a_value(row: list[Any]) -> bool:
         return any(str(cell or "").strip().rstrip(".,") not in ("", "PDF Page")
@@ -133,12 +162,16 @@ def test_no_value_bearing_row_is_silently_discarded() -> None:
 
     unlabelled_with_values = [
         index for index, row in enumerate(source["rows"])
-        if not str(row[0] or "").strip() and carries_a_value(row)
+        if index > header_row and not str(row[0] or "").strip() and carries_a_value(row)
     ]
 
-    accounted_for = {
-        meta.get("provenance", {}).get("row")
-        for meta in _consolidated_guv()["row_metadata"]
-    }
+    with TemporaryDirectory() as tmp_dir:
+        queue_path = Path(tmp_dir) / "unmapped_queue.csv"
+        result = build_multi_year_tables(_extracted_tables(), queue_path=queue_path)
+        guv = next(t for t in result if t.get("type") == GUV_TABLE_TYPE and t.get("multi_year"))
+        accounted_for = {meta.get("provenance", {}).get("row") for meta in guv["row_metadata"]}
+        with queue_path.open(encoding="utf-8") as handle:
+            accounted_for |= {int(row["row"]) for row in csv.DictReader(handle) if row["row"]}
+
     lost = [index for index in unlabelled_with_values if index not in accounted_for]
     assert not lost, f"input rows dropped without a queue entry: {lost}"
