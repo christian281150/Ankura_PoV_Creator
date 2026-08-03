@@ -1,0 +1,2671 @@
+{
+  "profile": {
+    "entity": {
+      "legal_name": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+      "fiscal_year_end": "2024-04-30"
+    },
+    "blocks": [
+      {
+        "id": "bo.business_overview_gap",
+        "title": "Business Overview",
+        "kind": "bullets",
+        "eligible_slots": [
+          "top_left"
+        ],
+        "coverage": 0.0,
+        "confidence": "low",
+        "source": "coverage",
+        "framework": null,
+        "pnl_method": null,
+        "presentation_basis": "n/a",
+        "unit": "n/a",
+        "flags": [],
+        "footnotes_auto": [],
+        "provenance": [
+          {
+            "std_id": "COVERAGE-GAP",
+            "doc": "Profile coverage",
+            "sheet": "Business Overview",
+            "row": 0,
+            "page": null
+          }
+        ],
+        "content": [
+          "Business-overview evidence was not supplied."
+        ]
+      },
+      {
+        "id": "fin.revenue_series",
+        "std_id": "PL_GKV-1",
+        "title": "Revenue in €m",
+        "series_label": "Revenue",
+        "kind": "chart.column_line",
+        "eligible_slots": [
+          "top_right"
+        ],
+        "coverage": 1.0,
+        "confidence": "high",
+        "source": "filing",
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "presentation_basis": "umsatzerloese",
+        "unit": "EUR",
+        "flags": [
+          {
+            "rule": "V6",
+            "severity": "note_required",
+            "message": "a) Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren: cost ratio changed -14.3pp from FY2023 to FY2024.",
+            "note": "Explain the cost-ratio trend break."
+          },
+          {
+            "rule": "V6",
+            "severity": "note_required",
+            "message": "7. Sonstige betriebliche Aufwendungen: cost ratio changed +6.9pp from FY2023 to FY2024.",
+            "note": "Explain the cost-ratio trend break."
+          }
+        ],
+        "footnotes_auto": [
+          "Explain the cost-ratio trend break.",
+          "Explain the cost-ratio trend break."
+        ],
+        "provenance": [
+          {
+            "std_id": "PL_GKV-1",
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 2,
+            "page": 3
+          },
+          {
+            "std_id": "PL_GKV-1",
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 2,
+            "page": 3
+          }
+        ],
+        "series": [
+          {
+            "fy": 2023,
+            "value": 126812470.7
+          },
+          {
+            "fy": 2024,
+            "value": 103152036.57
+          }
+        ]
+      },
+      {
+        "id": "prod.product_grid_gap",
+        "title": "Selected Products and Services",
+        "kind": "bullets",
+        "eligible_slots": [
+          "bottom_left"
+        ],
+        "coverage": 0.0,
+        "confidence": "low",
+        "source": "coverage",
+        "framework": null,
+        "pnl_method": null,
+        "presentation_basis": "n/a",
+        "unit": "n/a",
+        "flags": [],
+        "footnotes_auto": [],
+        "provenance": [
+          {
+            "std_id": "COVERAGE-GAP",
+            "doc": "Profile coverage",
+            "sheet": "Selected Products and Services",
+            "row": 0,
+            "page": null
+          }
+        ],
+        "content": [
+          "Product evidence was not supplied."
+        ]
+      },
+      {
+        "id": "geo.revenue_split_gap",
+        "title": "Revenue Split by Geography",
+        "kind": "bullets",
+        "eligible_slots": [
+          "bottom_right"
+        ],
+        "coverage": 0.0,
+        "confidence": "low",
+        "source": "coverage",
+        "framework": null,
+        "pnl_method": null,
+        "presentation_basis": "n/a",
+        "unit": "n/a",
+        "flags": [],
+        "footnotes_auto": [],
+        "provenance": [
+          {
+            "std_id": "COVERAGE-GAP",
+            "doc": "Profile coverage",
+            "sheet": "Revenue Split by Geography",
+            "row": 0,
+            "page": null
+          }
+        ],
+        "content": [
+          "Geographic revenue split not supplied; no proxy chart is rendered."
+        ]
+      }
+    ],
+    "canonical_layout": {
+      "top_left": "bo.business_overview_gap",
+      "top_right": "fin.revenue_series",
+      "bottom_left": "prod.product_grid_gap",
+      "bottom_right": "geo.revenue_split_gap"
+    },
+    "coverage": [],
+    "rows": [
+      {
+        "std_id": "BS-A.A.I.2",
+        "raw_label": "Entgeltlich erworbene gewerbliche Schutzrechte und ähnliche Rechte und Werte",
+        "values": {
+          "2024": 933109.56,
+          "2023": 739578.84
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+          "row": 4,
+          "page": 1
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 4,
+            "page": 1
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 4,
+            "page": 1
+          }
+        }
+      },
+      {
+        "std_id": "BS-A.A.II.2",
+        "raw_label": "2. Technische Anlagen und Maschinen",
+        "values": {
+          "2024": 896882.96,
+          "2023": 1180860.85
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+          "row": 7,
+          "page": 1
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 7,
+            "page": 1
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 7,
+            "page": 1
+          }
+        }
+      },
+      {
+        "std_id": "BS-A.A.II.3",
+        "raw_label": "3. Andere Anlagen, Betriebs- und Geschäftsausstattung",
+        "values": {
+          "2024": 1249941.93,
+          "2023": 841191.88
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+          "row": 8,
+          "page": 1
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 8,
+            "page": 1
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 8,
+            "page": 1
+          }
+        }
+      },
+      {
+        "std_id": "BS-A.A.II.4",
+        "raw_label": "4. Geleistete Anzahlungen und Anlagen im Bau",
+        "values": {
+          "2024": 0.0,
+          "2023": 122062.61
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+          "row": 9,
+          "page": 1
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 9,
+            "page": 1
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 9,
+            "page": 1
+          }
+        }
+      },
+      {
+        "std_id": "BS-A.A.III.1",
+        "raw_label": "1. Anteile an verbundenen Unternehmen",
+        "values": {
+          "2024": 52000.0,
+          "2023": 52000.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+          "row": 12,
+          "page": 1
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 12,
+            "page": 1
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 12,
+            "page": 1
+          }
+        }
+      },
+      {
+        "std_id": "BS-A.A.III.6",
+        "raw_label": "3. Sonstige Ausleihungen",
+        "values": {
+          "2024": 95745.09,
+          "2023": 56380.76
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+          "row": 14,
+          "page": 1
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 14,
+            "page": 1
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 14,
+            "page": 1
+          }
+        }
+      },
+      {
+        "std_id": "BS-A.B.I.1",
+        "raw_label": "1. Roh-, Hilfs- und Betriebsstoffe",
+        "values": {
+          "2024": 8392558.38,
+          "2023": 5742651.61
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+          "row": 19,
+          "page": 1
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 19,
+            "page": 1
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 19,
+            "page": 1
+          }
+        }
+      },
+      {
+        "std_id": "BS-A.B.I.3",
+        "raw_label": "2. Fertige Erzeugnisse und Waren",
+        "values": {
+          "2024": 15280997.22,
+          "2023": 24114397.77
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+          "row": 20,
+          "page": 1
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 20,
+            "page": 1
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 20,
+            "page": 1
+          }
+        }
+      },
+      {
+        "std_id": "BS-A.B.I.4",
+        "raw_label": "3. Geleistete Anzahlungen",
+        "values": {
+          "2024": 610885.83,
+          "2023": 314095.69
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+          "row": 21,
+          "page": 1
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 21,
+            "page": 1
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 21,
+            "page": 1
+          }
+        }
+      },
+      {
+        "std_id": "BS-A.B.II.1",
+        "raw_label": "1. Forderungen aus Lieferungen und Leistungen",
+        "values": {
+          "2024": 6131305.75,
+          "2023": 8551779.2
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+          "row": 24,
+          "page": 1
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 24,
+            "page": 1
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 24,
+            "page": 1
+          }
+        }
+      },
+      {
+        "std_id": "BS-A.B.II.2a",
+        "raw_label": "2. Forderungen gegen Gesellschafter",
+        "values": {
+          "2024": 0.0,
+          "2023": 515061.48
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+          "row": 25,
+          "page": 1
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 25,
+            "page": 1
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 25,
+            "page": 1
+          }
+        }
+      },
+      {
+        "std_id": "BS-A.B.II.3",
+        "raw_label": "3. Forderungen gegen Unternehmen, mit denen ein Beteiligungsverhältnis besteht",
+        "values": {
+          "2024": 1464762.78,
+          "2023": 546530.87
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+          "row": 27,
+          "page": 1
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 27,
+            "page": 1
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 27,
+            "page": 1
+          }
+        }
+      },
+      {
+        "std_id": "BS-A.B.II.4",
+        "raw_label": "4. Sonstige Vermögensgegenstände",
+        "values": {
+          "2024": 2277256.37,
+          "2023": 5300558.98
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+          "row": 28,
+          "page": 1
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 28,
+            "page": 1
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 28,
+            "page": 1
+          }
+        }
+      },
+      {
+        "std_id": "BS-A.B.IV",
+        "raw_label": "III. Kassenbestand, Guthaben bei Kreditinstituten und Schecks",
+        "values": {
+          "2024": 3136261.52,
+          "2023": 2982652.92
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+          "row": 30,
+          "page": 1
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 30,
+            "page": 1
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 30,
+            "page": 1
+          }
+        }
+      },
+      {
+        "std_id": "BS-A.C",
+        "raw_label": "C. Rechnungsabgrenzungsposten",
+        "values": {
+          "2024": 1394030.64,
+          "2023": 1338259.28
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+          "row": 32,
+          "page": 1
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 32,
+            "page": 1
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 32,
+            "page": 1
+          }
+        }
+      },
+      {
+        "std_id": "BS-A.D",
+        "raw_label": "D. Aktive latente Steuern",
+        "values": {
+          "2024": 126802.0,
+          "2023": 131675.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+          "row": 33,
+          "page": 1
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 33,
+            "page": 1
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 33,
+            "page": 1
+          }
+        }
+      },
+      {
+        "std_id": "BS-P-NEGEQ",
+        "raw_label": "E. Nicht durch Vermögenseinlagen gedeckte Verlustanteile der Kommanditisten",
+        "values": {
+          "2024": 19821701.76,
+          "2023": 19254606.7
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+          "row": 34,
+          "page": 1
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 34,
+            "page": 1
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "Textilkontor Walter Seidensticker GmbH & Co. KG",
+            "row": 34,
+            "page": 1
+          }
+        }
+      },
+      {
+        "std_id": "BS-P.A.KG-I",
+        "raw_label": "I. Kapitalanteile",
+        "values": {
+          "2024": 8691961.98,
+          "2023": 8691961.98
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "30.04.2024 30.04.2023",
+          "row": 3,
+          "page": 2
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 3,
+            "page": 2
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 3,
+            "page": 2
+          }
+        }
+      },
+      {
+        "std_id": "BS-P.A.KG-II.1",
+        "raw_label": "1. Andere Gewinnrücklagen",
+        "values": {
+          "2024": 16345450.17,
+          "2023": 10964270.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "30.04.2024 30.04.2023",
+          "row": 5,
+          "page": 2
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 5,
+            "page": 2
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 5,
+            "page": 2
+          }
+        }
+      },
+      {
+        "std_id": "BS-P.A.KG-II.2",
+        "raw_label": "2. Unterschiedsbetrag aus der Kapitalkonsolidierung",
+        "values": {
+          "2024": 14606239.19,
+          "2023": 14606239.19
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "30.04.2024 30.04.2023",
+          "row": 6,
+          "page": 2
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 6,
+            "page": 2
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 6,
+            "page": 2
+          }
+        }
+      },
+      {
+        "std_id": "BS-P.A.KG-III",
+        "raw_label": "III. Eigenkapitaldifferenz aus Währungsumrechnung",
+        "values": {
+          "2024": -5283875.2,
+          "2023": -4275088.62
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "30.04.2024 30.04.2023",
+          "row": 8,
+          "page": 2
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 8,
+            "page": 2
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 8,
+            "page": 2
+          }
+        }
+      },
+      {
+        "std_id": "PL_GKV-BILANZVERLUST",
+        "raw_label": "IV. Konzernbilanzverlust",
+        "values": {
+          "2024": -54181477.9,
+          "2023": -49241989.25
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "subtotal",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "30.04.2024 30.04.2023",
+          "row": 9,
+          "page": 2
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 9,
+            "page": 2
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 9,
+            "page": 2
+          }
+        }
+      },
+      {
+        "std_id": "BS-P.B.1",
+        "raw_label": "1. Rückstellungen für Pensionen und ähnliche Verpflichtungen",
+        "values": {
+          "2024": 11457770.63,
+          "2023": 11990256.85
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "30.04.2024 30.04.2023",
+          "row": 15,
+          "page": 2
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 15,
+            "page": 2
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 15,
+            "page": 2
+          }
+        }
+      },
+      {
+        "std_id": "BS-P.B.2",
+        "raw_label": "2. Steuerrückstellungen",
+        "values": {
+          "2024": 898856.22,
+          "2023": 983692.88
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "30.04.2024 30.04.2023",
+          "row": 16,
+          "page": 2
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 16,
+            "page": 2
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 16,
+            "page": 2
+          }
+        }
+      },
+      {
+        "std_id": "BS-P.B.3",
+        "raw_label": "3. Sonstige Rückstellungen",
+        "values": {
+          "2024": 7263887.51,
+          "2023": 8804181.15
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "30.04.2024 30.04.2023",
+          "row": 17,
+          "page": 2
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 17,
+            "page": 2
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 17,
+            "page": 2
+          }
+        }
+      },
+      {
+        "std_id": "BS-P.C.2",
+        "raw_label": "2. Verbindlichkeiten gegenüber Kreditinstituten",
+        "values": {
+          "2024": 26677369.86,
+          "2023": 35093354.29
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "30.04.2024 30.04.2023",
+          "row": 22,
+          "page": 2
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 22,
+            "page": 2
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 22,
+            "page": 2
+          }
+        }
+      },
+      {
+        "std_id": "BS-P.C.3",
+        "raw_label": "3. Erhaltene Anzahlungen auf Bestellungen",
+        "values": {
+          "2024": 100000.0,
+          "2023": 100000.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "30.04.2024 30.04.2023",
+          "row": 23,
+          "page": 2
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 23,
+            "page": 2
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 23,
+            "page": 2
+          }
+        }
+      },
+      {
+        "std_id": "BS-P.C.4",
+        "raw_label": "4. Verbindlichkeiten aus Lieferungen und Leistungen",
+        "values": {
+          "2024": 8556837.45,
+          "2023": 7873413.23
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "30.04.2024 30.04.2023",
+          "row": 24,
+          "page": 2
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 24,
+            "page": 2
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 24,
+            "page": 2
+          }
+        }
+      },
+      {
+        "std_id": "BS-P.C.8",
+        "raw_label": "6. Sonstige Verbindlichkeiten",
+        "values": {
+          "2024": 2359588.78,
+          "2023": 2717143.88
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "30.04.2024 30.04.2023",
+          "row": 26,
+          "page": 2
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 26,
+            "page": 2
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "30.04.2024 30.04.2023",
+            "row": 26,
+            "page": 2
+          }
+        }
+      },
+      {
+        "std_id": "PL_GKV-1",
+        "raw_label": "1. Umsatzerlöse",
+        "values": {
+          "2024": 103152036.57,
+          "2023": 126812470.7
+        },
+        "unit": "EUR",
+        "presentation_basis": "umsatzerloese",
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 2,
+          "page": 3
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 2,
+            "page": 3
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 2,
+            "page": 3
+          }
+        }
+      },
+      {
+        "std_id": "PL_GKV-2",
+        "raw_label": "2. Veränderung des Bestands an unfertigen und fertigen Erzeugnissen",
+        "values": {
+          "2024": -8833400.55,
+          "2023": 4019168.66
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 3,
+          "page": 3
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 3,
+            "page": 3
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 3,
+            "page": 3
+          }
+        }
+      },
+      {
+        "std_id": "PL_GKV-4",
+        "raw_label": "3. Sonstige betriebliche Erträge",
+        "values": {
+          "2024": 7760014.88,
+          "2023": 3127775.57
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 5,
+          "page": 3
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 5,
+            "page": 3
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 5,
+            "page": 3
+          }
+        }
+      },
+      {
+        "std_id": "PL_GKV-5a",
+        "raw_label": "a) Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren",
+        "values": {
+          "2024": -34344811.22,
+          "2023": -60325299.8
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 7,
+          "page": 3
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 7,
+            "page": 3
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 7,
+            "page": 3
+          }
+        }
+      },
+      {
+        "std_id": "PL_GKV-5b",
+        "raw_label": "b) Aufwendungen für bezogene Leistungen",
+        "values": {
+          "2024": -2548362.53,
+          "2023": -6515429.97
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 8,
+          "page": 3
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 8,
+            "page": 3
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 8,
+            "page": 3
+          }
+        }
+      },
+      {
+        "std_id": "PL_GKV-6a",
+        "raw_label": "a) Löhne und Gehälter",
+        "values": {
+          "2024": -23566732.33,
+          "2023": -25978461.49
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 11,
+          "page": 3
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 11,
+            "page": 3
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 11,
+            "page": 3
+          }
+        }
+      },
+      {
+        "std_id": "PL_GKV-6b",
+        "raw_label": "b) Soziale Abgaben und Aufwendungen für Altersversorgung und für Unterstützung",
+        "values": {
+          "2024": -4223726.09,
+          "2023": -5611785.52
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 12,
+          "page": 3
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 12,
+            "page": 3
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 12,
+            "page": 3
+          }
+        }
+      },
+      {
+        "std_id": "PL_GKV-7a",
+        "raw_label": "6. Abschreibungen auf immaterielle Vermögensgegenstände des Anlagevermögens und Sachanlagen",
+        "values": {
+          "2024": -1217094.39,
+          "2023": -1536565.43
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 15,
+          "page": 3
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 15,
+            "page": 3
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 15,
+            "page": 3
+          }
+        }
+      },
+      {
+        "std_id": "PL_GKV-8",
+        "raw_label": "7. Sonstige betriebliche Aufwendungen",
+        "values": {
+          "2024": -37171682.41,
+          "2023": -36921543.22
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 16,
+          "page": 3
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 16,
+            "page": 3
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 16,
+            "page": 3
+          }
+        }
+      },
+      {
+        "std_id": "PL_GKV-11",
+        "raw_label": "9. Sonstige Zinsen und ähnliche Erträge",
+        "values": {
+          "2024": 30471.04,
+          "2023": 25305.86
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 20,
+          "page": 3
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 20,
+            "page": 3
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 20,
+            "page": 3
+          }
+        }
+      },
+      {
+        "std_id": "PL_GKV-13",
+        "raw_label": "10. Zinsen und ähnliche Aufwendungen",
+        "values": {
+          "2024": -3209550.23,
+          "2023": -2872290.57
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 21,
+          "page": 3
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 21,
+            "page": 3
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 21,
+            "page": 3
+          }
+        }
+      },
+      {
+        "std_id": "PL_GKV-14",
+        "raw_label": "11. Steuern vom Einkommen und vom Ertrag",
+        "values": {
+          "2024": -788080.4,
+          "2023": -1095538.98
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 23,
+          "page": 3
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 23,
+            "page": 3
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 23,
+            "page": 3
+          }
+        }
+      },
+      {
+        "std_id": "BS-P.A.IV",
+        "raw_label": "13. Verlustvortrag",
+        "values": {
+          "2024": -49241989.25,
+          "2023": -42593861.38
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 25,
+          "page": 3
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 25,
+            "page": 3
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 25,
+            "page": 3
+          }
+        }
+      },
+      {
+        "std_id": "PL_GKV-BILANZVERLUST",
+        "raw_label": "14. Konzernbilanzverlust",
+        "values": {
+          "2024": -54181477.9,
+          "2023": -49241989.25
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "subtotal",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 26,
+          "page": 3
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 26,
+            "page": 3
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 26,
+            "page": 3
+          }
+        }
+      },
+      {
+        "std_id": "CF-1",
+        "raw_label": "Konzernjahresfehlbetrag",
+        "values": {
+          "2024": -4939489.0,
+          "2023": -6648128.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 2,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 2,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 2,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-2",
+        "raw_label": "Abschreibungen auf Anlagevermögen",
+        "values": {
+          "2024": 1217094.0,
+          "2023": 1536565.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 3,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 3,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 3,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-3",
+        "raw_label": "Abnahme (-) / Zunahme (+) Rückstellungen (vor Aufzinsung und Steuern)",
+        "values": {
+          "2024": -2087142.0,
+          "2023": -390997.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 4,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 4,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 4,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-4",
+        "raw_label": "Abnahme (+) / Zunahme (-) der Vorräte, der Forderungen aus Lieferungen und Leistungen\nsowie anderer Aktiva (ohne Forderungen aus Steuern), die nicht der Investitions- oder Finan-\nzierungstätigkeit zuzuordnen sind",
+        "values": {
+          "2024": 9071760.0,
+          "2023": 6520593.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 5,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 5,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 5,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-5",
+        "raw_label": "Zunahme (+) / Abnahme (-) der Verbindlichkeiten aus Lieferungen und Leistungen sowie an-\nderer Passiva, die nicht der Investitions- oder Finanzierungstätigkeit zuzuordnen sind",
+        "values": {
+          "2024": 448835.0,
+          "2023": -9100084.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 6,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 6,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 6,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-6",
+        "raw_label": "Verlust (+) / Gewinn (-) aus Anlagenabgängen (i. Vj. inkl. Abgang aus dem Konsolidierungs-\nkreis)",
+        "values": {
+          "2024": 1202979.0,
+          "2023": 88038.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 7,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 7,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 7,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-7",
+        "raw_label": "Gewinn (-) / Verlust (+) aus Beteiligungen an assoz. Unternehmen",
+        "values": {
+          "2024": -21429.0,
+          "2023": -224066.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 8,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 8,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 8,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-8",
+        "raw_label": "Zinsaufwendungen (+) / Zinserträge (-)",
+        "values": {
+          "2024": 3179079.0,
+          "2023": 2846985.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 10,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 10,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 10,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-9",
+        "raw_label": "Ertragsteueraufwand",
+        "values": {
+          "2024": 788080.0,
+          "2023": 1095539.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 11,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 11,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 11,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-10",
+        "raw_label": "Ertragsteuerzahlungen",
+        "values": {
+          "2024": -863930.0,
+          "2023": -899119.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 12,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 12,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 12,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-OPERATING",
+        "raw_label": "Cashflow aus laufender Geschäftstätigkeit",
+        "values": {
+          "2024": 7995837.0,
+          "2023": -5174674.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "subtotal",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 13,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 13,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 13,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-11",
+        "raw_label": "Einzahlungen aus Abgängen von Gegenständen des immateriellen Anlagevermögens / Sach-\nanlagevermögens",
+        "values": {
+          "2024": 43721.0,
+          "2023": 23596.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 14,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 14,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 14,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-12",
+        "raw_label": "Auszahlungen für Investitionen in das immaterielle Anlagevermögen / Sachanlagevermögen",
+        "values": {
+          "2024": -1640156.0,
+          "2023": -650074.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 15,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 15,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 15,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-13",
+        "raw_label": "Einzahlungen aus Abgängen Finanzanlagevermögen",
+        "values": {
+          "2024": 0.0,
+          "2023": 0.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 16,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 16,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 16,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-14",
+        "raw_label": "Auszahlungen für Investitionen in das Finanzanlagevermögen",
+        "values": {
+          "2024": -39364.0,
+          "2023": -1274.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 17,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 17,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 17,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-15",
+        "raw_label": "Einzahlungen aus dem Abgang aus dem Konsolidierungskreis in Vorjahren",
+        "values": {
+          "2024": 0.0,
+          "2023": 2000000.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 18,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 18,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 18,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-16",
+        "raw_label": "Erhaltene Gewinnausschüttungen von assoziierten Unternehmen",
+        "values": {
+          "2024": 0.0,
+          "2023": 244600.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 19,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 19,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 19,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-17",
+        "raw_label": "Erhaltene Zinsen",
+        "values": {
+          "2024": 30471.0,
+          "2023": 25306.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 20,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 20,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 20,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-INVESTING",
+        "raw_label": "Cashflow aus der Investitionstätigkeit",
+        "values": {
+          "2024": -1605328.0,
+          "2023": 1642154.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "subtotal",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 21,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 21,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 21,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-18",
+        "raw_label": "Einzahlungen (+) / Auszahlungen (-) von / an Gesellschafter(n)",
+        "values": {
+          "2024": 5399916.0,
+          "2023": -106177.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 22,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 22,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 22,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-19",
+        "raw_label": "Auszahlungen (-) / Einzahlungen (+) aus Finanzkrediten",
+        "values": {
+          "2024": -5974325.0,
+          "2023": -2089771.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 23,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 23,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 23,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-20",
+        "raw_label": "Gezahlte Zinsen",
+        "values": {
+          "2024": -3206211.0,
+          "2023": -2769354.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 24,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 24,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 24,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-FINANCING",
+        "raw_label": "Cashflow aus der Finanzierungstätigkeit",
+        "values": {
+          "2024": -3780620.0,
+          "2023": -4965302.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "subtotal",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 25,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 25,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 25,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-NETCHANGE",
+        "raw_label": "Zahlungswirksame Veränderungen des Finanzmittelfonds",
+        "values": {
+          "2024": 2609889.0,
+          "2023": -8497822.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "subtotal",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 26,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 26,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 26,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-FX",
+        "raw_label": "Wechselkursbedingte Änderung des Finanzmittelfonds",
+        "values": {
+          "2024": -14621.0,
+          "2023": 34891.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 27,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 27,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 27,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-BEGIN",
+        "raw_label": "Finanzmittelfonds am Anfang der Periode",
+        "values": {
+          "2024": -19237388.0,
+          "2023": -10774457.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 28,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 28,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 28,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-END",
+        "raw_label": "Finanzmittelfonds am Ende der Periode",
+        "values": {
+          "2024": -16642120.0,
+          "2023": -19237388.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "subtotal",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 29,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 29,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 29,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-END.1",
+        "raw_label": "Kassenbestand, Guthaben bei Kreditinstituten",
+        "values": {
+          "2024": 3136262.0,
+          "2023": 2982653.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 31,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 31,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 31,
+            "page": 16
+          }
+        }
+      },
+      {
+        "std_id": "CF-END.2",
+        "raw_label": "in die Finanzdisposition einbezogene kurzfristige Finanzkredite",
+        "values": {
+          "2024": -19778382.0,
+          "2023": -22220041.0
+        },
+        "unit": "EUR",
+        "presentation_basis": null,
+        "framework": "hgb",
+        "pnl_method": "gkv",
+        "row_type": "line",
+        "components": null,
+        "provenance": {
+          "doc": "Konzernabschluss 2024",
+          "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+          "row": 32,
+          "page": 16
+        },
+        "provenance_by_fy": {
+          "2024": {
+            "doc": "Konzernabschluss 2024",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 32,
+            "page": 16
+          },
+          "2023": {
+            "doc": "Konzernabschluss 2023",
+            "sheet": "KONZERN-KAPITALFLUSSRECHNUNG für das Geschäftsjahr vom 1. Mai 2023 bis 30. April 2024",
+            "row": 32,
+            "page": 16
+          }
+        }
+      }
+    ]
+  },
+  "render": {
+    "template": "E:\\Github\\Ankura_PoV_Creator\\render\\templates\\ankura_master_reference.pptx",
+    "slide_number": 6,
+    "layout": "1_Blank with Title",
+    "assignments": {
+      "top_left": "bo.business_overview_gap",
+      "top_right": "fin.revenue_series",
+      "bottom_left": "prod.product_grid_gap",
+      "bottom_right": "geo.revenue_split_gap"
+    },
+    "figures": [
+      {
+        "slot": "top_left",
+        "block_id": "bo.business_overview_gap",
+        "std_id": "COVERAGE-GAP",
+        "doc": "Profile coverage",
+        "page": null
+      },
+      {
+        "slot": "top_right",
+        "block_id": "fin.revenue_series",
+        "std_id": "PL_GKV-1",
+        "doc": "Konzernabschluss 2024",
+        "page": 3
+      },
+      {
+        "slot": "top_right",
+        "block_id": "fin.revenue_series",
+        "std_id": "PL_GKV-1",
+        "doc": "Konzernabschluss 2023",
+        "page": 3
+      },
+      {
+        "slot": "bottom_left",
+        "block_id": "prod.product_grid_gap",
+        "std_id": "COVERAGE-GAP",
+        "doc": "Profile coverage",
+        "page": null
+      },
+      {
+        "slot": "bottom_right",
+        "block_id": "geo.revenue_split_gap",
+        "std_id": "COVERAGE-GAP",
+        "doc": "Profile coverage",
+        "page": null
+      }
+    ],
+    "footnotes": [
+      "Explain the cost-ratio trend break."
+    ],
+    "sources": [
+      "Profile coverage (p. n/a)",
+      "Konzernabschluss 2024 (p. 3)",
+      "Konzernabschluss 2023 (p. 3)"
+    ]
+  }
+}

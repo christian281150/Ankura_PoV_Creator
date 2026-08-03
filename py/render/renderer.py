@@ -21,7 +21,7 @@ from pptx.enum.shapes import MSO_SHAPE_TYPE
 from pptx.enum.text import MSO_ANCHOR, PP_ALIGN
 from pptx.util import Inches, Pt
 
-from validate.validator import validate_v11
+from validate.validator import validate_normalised, validate_v11
 
 MASTER_FILENAME = "ankura_master_reference.pptx"
 SLIDE_INDEX = 5  # Zero-based: slide 6, the designated At a glance slide.
@@ -178,6 +178,29 @@ def _validate_assignments(profile: Mapping[str, Any], assignments: Mapping[str, 
             and block.get("presentation_basis") != "umsatzerloese"
         ):
             raise RenderError("A figure labelled Revenue must use presentation_basis='umsatzerloese' (V1).")
+
+    # V11 above was the only validate.validator rule with a real caller before
+    # this; V1-V10 and V12 otherwise only ever ran from tests. blocks double
+    # as charted_series here -- each already carries an id, and this is the
+    # first point in the render path where slot_assignments (this function's
+    # own ``assignments``) are actually known.
+    # series_label only -- title is set on every block (including bullet/gap
+    # placeholders whose title can itself contain "revenue", e.g. "Revenue
+    # Split by Geography"), so falling back to it here would make V1 flag
+    # unrelated blocks that were never presented as a Revenue chart.
+    blocks_by_id = {str(block.get("id")): block for block in profile.get("blocks", ())}
+    axis_labels = {
+        slot: blocks_by_id[block_id].get("series_label")
+        for slot, block_id in assignments.items() if block_id in blocks_by_id
+    }
+    result = validate_normalised(
+        {"rows": profile.get("rows", ())}, profile.get("segments"),
+        charted_series=profile.get("blocks", ()), slot_assignments=assignments,
+        axis_labels=axis_labels, lagebericht=one_off_evidence,
+    )
+    blocking_flags = [flag for flag in result.flags if flag.severity == "blocking"]
+    if blocking_flags:
+        raise RenderError(f"Profile has unresolved validation flags: {[flag.model_dump() for flag in blocking_flags]!r}")
 
 
 def _clear_content_regions(slide: Any) -> None:
