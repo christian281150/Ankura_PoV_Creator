@@ -19,6 +19,7 @@ data/raw/
 py/acquire/bundesanzeiger/data/
 py/acquire/bundesanzeiger/reviews/unmapped_queue.csv
 !tests/fixtures/*.xlsx
+!py/acquire/pathb/PathB_Input_Template.xlsx
 
 # editor / os
 .DS_Store
