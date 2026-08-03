@@ -1,0 +1,27 @@
+[
+  {
+    "index": 0,
+    "heading": "SYNTHETIC TEST FIXTURE -- NOT A REAL FILING",
+    "type": 99,
+    "_override_applied": true,
+    "_include_in_overview": false,
+    "doc_label": "SYNTHETIC -- see tests/test_series_reconcile.py",
+    "note": "Hand-built for py/series reconciliation tests only. Never extracted from a real Bundesanzeiger filing. Umsatzerloese and sonstige betriebliche Ertraege FY2024 comparatives are exact matches to the real Textilkontor Walter Seidensticker GmbH & Co. KG FY2024 filing (tests/fixtures/seidensticker_extracted_tables.json) to exercise the agreeing-comparative path. Bestandsveraenderung FY2024 comparative (-8.800.000,00) is deliberately different from that same real filing's own figure (-8.833.400,55) to exercise the restatement path. FY2025 current-year figures are round, clearly-synthetic placeholders, not real Seidensticker data.",
+    "rows": [["SEE 'note' FIELD ABOVE -- SYNTHETIC DATA, NOT A REAL FILING"]]
+  },
+  {
+    "index": 1,
+    "heading": "KONZERN-GEWINN- UND VERLUSTRECHNUNG für das Geschäftsjahr vom 1. Mai 2024 bis 30. April 2025",
+    "framework": "hgb",
+    "pnl_method": "gkv",
+    "doc_label": "Konzernabschluss FY2025 (SYNTHETIC)",
+    "page_start": 3,
+    "rows": [
+      ["", "2024/2025", "", "2023/2024", "PDF Page"],
+      ["", "€", "€", "€", 3],
+      ["1. Umsatzerlöse", "", "111.800.000,00", "103.152.036,57", 3],
+      ["2. Veränderung des Bestands an unfertigen und fertigen Erzeugnissen", "", "2.700.000,00", "-8.800.000,00", 3],
+      ["3. Sonstige betriebliche Erträge", "", "1.900.000,00", "7.760.014,88", 3]
+    ]
+  }
+]
