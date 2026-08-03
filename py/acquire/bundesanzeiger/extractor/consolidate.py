@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import re
 from collections import OrderedDict
+from math import isclose
 from pathlib import Path
 from typing import Any, Optional
 
@@ -243,7 +244,8 @@ def _column_actuals(table: dict, aliases: dict[str, str], queued: list[dict[str,
                                     "year_priority": year_priority,
                                     "doc_label": table.get("doc_label", ""),
                                     "heading": table.get("heading", ""),
-                                    "page_start": table.get("page_start")}
+                                    "page_start": table.get("page_start"),
+                                    "table_index": table.get("index")}
 
     for row_number, row in enumerate(rows[header_row + 1:], start=header_row + 1):
         label = str(row[0] or "").strip() if row else ""
@@ -358,6 +360,18 @@ def build_multi_year_tables(tables: list, row_merges: "Optional[dict]" = None,
                     elif actual["year_priority"] > target[std_id]["year_priority"]:
                         continue
                     elif target[std_id]["raw_label"] != actual["raw_label"]:
+                        if (target[std_id].get("table_index") != actual.get("table_index")
+                                and isclose(target[std_id]["value"], actual["value"], abs_tol=0.01)):
+                            # Same std_id, same value, from two distinct source
+                            # tables in this group -- e.g. a GmbH & Co. KG's
+                            # "loss not covered by capital contributions" is
+                            # disclosed on both Aktiva and Passiva with the
+                            # identical figure. That is a confirmed mirror of
+                            # one fact, not an ambiguous collision: two rows
+                            # from the SAME table disagreeing on a std_id would
+                            # still fall through and queue below. Keep the
+                            # first one seen.
+                            continue
                         # Two source rows in the same statement-year may not
                         # compete for one canonical actual. Queue both and
                         # leave the figure blank pending review.
