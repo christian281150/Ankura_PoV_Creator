@@ -110,7 +110,16 @@ def _map_actual(label: str, aliases: dict[str, str], framework: str,
 
 
 def _queue_unmapped(entries: list[dict[str, Any]], path: Optional[str | Path] = None) -> None:
-    """Rewrite one run's distinct unresolved labels to the review queue."""
+    """Rewrite one run's distinct unresolved labels to the review queue.
+
+    Deduplication is meant to collapse the SAME unresolved label recurring
+    across years/tables into one review item. A blank ``raw_label`` (an
+    unverified positional subtotal -- see ``_column_actuals``) has no such
+    identity: two blank rows from two different tables are two different
+    unresolved facts, not one repeated label, and must not collapse into a
+    single queue entry. Fall back to a table+row identifier in that case so
+    dedup never conflates them.
+    """
     queue_path = Path(path) if path is not None else _QUEUE_PATH
     queue_path.parent.mkdir(parents=True, exist_ok=True)
     fields = ("raw_label", "normalized_key", "match_type", "candidates",
@@ -120,7 +129,8 @@ def _queue_unmapped(entries: list[dict[str, Any]], path: Optional[str | Path] = 
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
         for entry in entries:
-            key = entry.get("normalized_key", "") or entry["raw_label"]
+            key = (entry.get("normalized_key", "") or entry["raw_label"]
+                   or f"{entry.get('heading', '')}#{entry.get('row', '')}")
             if key not in seen:
                 writer.writerow({name: entry.get(name, "") for name in fields})
                 seen.add(key)

@@ -171,7 +171,13 @@ def test_no_value_bearing_row_is_silently_discarded() -> None:
         guv = next(t for t in result if t.get("type") == GUV_TABLE_TYPE and t.get("multi_year"))
         accounted_for = {meta.get("provenance", {}).get("row") for meta in guv["row_metadata"]}
         with queue_path.open(encoding="utf-8") as handle:
-            accounted_for |= {int(row["row"]) for row in csv.DictReader(handle) if row["row"]}
+            # Row numbers are only unique within one table -- another table's
+            # row happening to share a number is not evidence this table's
+            # row was queued, so scope to entries from the GuV table itself.
+            accounted_for |= {
+                int(row["row"]) for row in csv.DictReader(handle)
+                if row["row"] and row["heading"] == source["heading"]
+            }
 
     lost = [index for index in unlabelled_with_values if index not in accounted_for]
     assert not lost, f"input rows dropped without a queue entry: {lost}"
