@@ -985,6 +985,17 @@ def _classify_table(t: dict) -> int:
 
     h = (t.get("heading") or "").lower()
 
+    # ── Phase 0: revenue-by-segment/geography disclosure (Anhang) ─────────
+    # These carry standalone "Umsatzerlöse ..." row labels (e.g. "Umsatzerlöse
+    # Inland") that would otherwise satisfy the GuV row-content match below.
+    # They are a component breakdown, not the income statement, and are routed
+    # to segments.py — never to the HGB statement mapper. Same section markers
+    # segments.py itself matches (``_PRODUCT_HEADING`` / ``_GEOGRAPHY_HEADING``).
+    first_cells = " ".join(str((row[0] if row else "") or "") for row in (t.get("rows") or [])[:8]).lower()
+    if re.search(r'(?:^|\s)(?:a|i)\.\s*segmente?\b', first_cells) or \
+            re.search(r'(?:^|\s)(?:b|ii)\.\s*absatzm(?:a|ä)rkte\b', first_cells):
+        return 99
+
     # ── Phase 1: heading-only (high confidence) ───────────────────────────
     # KFR must precede GuV because indirect-method cashflow statements start
     # with "Jahresüberschuss" — a GuV keyword — but the heading is unambiguous.
@@ -992,6 +1003,10 @@ def _classify_table(t: dict) -> int:
     # because its rows contain "Jahresüberschuss" and "Gesamtergebnis".
     if re.search(r'\beigenkapital(?:veränder|spiegel|entwickl)', h):
         return 99  # equity changes statement → Sonstige
+    if re.search(r'\b(vermögenslage|finanzlage|ertragslage)\b', h):
+        return 99  # Lagebericht MD&A narrative sub-section (already the class the
+                   # "Ertragslage" table is manually overridden to) — a rounded,
+                   # illustrative summary, not a statement; must not enter consolidation.
     if re.search(r'kapitalfluss|cashflow|cash\s*flow|\bzahlungsstr[öo]me\b', h):
         return 2   # KFR — heading is conclusive (no trailing \b: "Kapitalflussrechnung" is a compound word)
     if re.search(r'\b(konzernbilanz|jahresbilanz|bilanzsumme)\b', h):

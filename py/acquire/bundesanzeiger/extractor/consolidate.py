@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import re
 from collections import OrderedDict
+from math import isclose
 from pathlib import Path
 from typing import Any, Optional
 
@@ -109,7 +110,16 @@ def _map_actual(label: str, aliases: dict[str, str], framework: str,
 
 
 def _queue_unmapped(entries: list[dict[str, Any]], path: Optional[str | Path] = None) -> None:
-    """Rewrite one run's distinct unresolved labels to the review queue."""
+    """Rewrite one run's distinct unresolved labels to the review queue.
+
+    Deduplication is meant to collapse the SAME unresolved label recurring
+    across years/tables into one review item. A blank ``raw_label`` (an
+    unverified positional subtotal -- see ``_column_actuals``) has no such
+    identity: two blank rows from two different tables are two different
+    unresolved facts, not one repeated label, and must not collapse into a
+    single queue entry. Fall back to a table+row identifier in that case so
+    dedup never conflates them.
+    """
     queue_path = Path(path) if path is not None else _QUEUE_PATH
     queue_path.parent.mkdir(parents=True, exist_ok=True)
     fields = ("raw_label", "normalized_key", "match_type", "candidates",
@@ -119,7 +129,8 @@ def _queue_unmapped(entries: list[dict[str, Any]], path: Optional[str | Path] = 
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
         for entry in entries:
-            key = entry.get("normalized_key", "") or entry["raw_label"]
+            key = (entry.get("normalized_key", "") or entry["raw_label"]
+                   or f"{entry.get('heading', '')}#{entry.get('row', '')}")
             if key not in seen:
                 writer.writerow({name: entry.get(name, "") for name in fields})
                 seen.add(key)
@@ -162,9 +173,15 @@ def _year_blocks(rows: list[list[Any]]) -> tuple[int, list[tuple[int, int, int]]
         hits = [(ci, _year_from_header(cell)) for ci, cell in enumerate(row) if ci and _year_from_header(cell)]
         if not hits:
             continue
+        # The trailing "PDF Page" provenance column is not a value column: every
+        # row in these tables carries a page number there, and a genuinely blank
+        # last year's value would otherwise silently pick it up as a phantom actual.
+        last_col = len(row) - 1
+        if str(row[last_col] or "").strip().lower() == "pdf page":
+            last_col -= 1
         blocks: list[tuple[int, int, int]] = []
         for pos, (start, year) in enumerate(hits):
-            end = hits[pos + 1][0] - 1 if pos + 1 < len(hits) else len(row) - 1
+            end = hits[pos + 1][0] - 1 if pos + 1 < len(hits) else last_col
             if blocks and blocks[-1][0] == year and start <= blocks[-1][2] + 1:
                 blocks[-1] = (year, blocks[-1][1], end)
             else:
@@ -173,8 +190,34 @@ def _year_blocks(rows: list[list[Any]]) -> tuple[int, list[tuple[int, int, int]]
     return -1, []
 
 
+_TOP_LEVEL_HEADER = re.compile(r"^\d+[.)]\s*\S")
+
+
+def _values_match(window: list[tuple[str, dict[int, tuple[float, int]]]],
+                  target: dict[int, tuple[float, int]]) -> bool:
+    """Whether every disclosed year on ``target`` ties exactly to the window's sum."""
+    if not window or not target:
+        return False
+    for year, (value, _priority) in target.items():
+        parts = [values[year][0] for _std_id, values in window if year in values]
+        if len(parts) != len(window) or abs(sum(parts) - value) > 0.01:
+            return False
+    return True
+
+
 def _column_actuals(table: dict, aliases: dict[str, str], queued: list[dict[str, Any]]) -> dict[int, OrderedDict[str, dict]]:
-    """Return ``year -> std_id -> actual`` using left-to-right block coalescing."""
+    """Return ``year -> std_id -> actual`` using left-to-right block coalescing.
+
+    A blank first cell is not necessarily decorative: German GKV/UKV filings
+    print several subtotals (Gesamtleistung, a cost category's own total,
+    Finanzergebnis, ...) with no caption of their own. Such a row is only ever
+    retained if its disclosed value(s) tie exactly to a specific, identifiable
+    run of already-resolved component lines -- never on faith. Two windows are
+    tried, most specific first: the lines since the nearest open, unmapped
+    top-level heading (e.g. "4. Materialaufwand" decomposing into a)/b) lines),
+    then the lines since the last confirmed subtotal. A row that matches
+    neither is queued, not dropped and not guessed.
+    """
     rows = table.get("rows") or []
     header_row, blocks = _year_blocks(rows)
     if header_row < 0:
@@ -182,10 +225,40 @@ def _column_actuals(table: dict, aliases: dict[str, str], queued: list[dict[str,
     multiplier = _unit_multiplier(table)
     result: dict[int, OrderedDict[str, dict]] = {}
     collisions: dict[int, set[str]] = {}
-    for row_number, row in enumerate(rows[header_row + 1:], start=header_row + 2):
+    accumulator: list[tuple[str, dict[int, tuple[float, int]]]] = []
+    open_group_label: Optional[str] = None
+    group_start: int = 0
+
+    def _store(group_key: str, label: str, record: dict, row_number: int,
+               values: dict[int, tuple[float, int]]) -> None:
+        for year, (value, year_priority) in values.items():
+            by_id = result.setdefault(year, OrderedDict())
+            if group_key in collisions.setdefault(year, set()):
+                continue
+            current = by_id.get(group_key)
+            if current and current["raw_label"] != label:
+                # A collision is unsafe: do not silently retain whichever happened first.
+                for collision in (current, {"raw_label": label, "row": row_number}):
+                    queued.append({
+                        "raw_label": collision["raw_label"], "normalized_key": group_key,
+                        "match_type": "std_id_collision", "candidates": group_key,
+                        "doc_label": table.get("doc_label", ""), "heading": table.get("heading", ""),
+                        "page_start": table.get("page_start", ""), "row": collision["row"],
+                    })
+                by_id.pop(group_key, None)
+                collisions[year].add(group_key)
+                continue
+            if group_key not in by_id:
+                by_id[group_key] = {"raw_label": label, "value": value, "row": row_number,
+                                    "record": record, "source_unit": "TEUR" if multiplier == 1_000 else "EUR",
+                                    "year_priority": year_priority,
+                                    "doc_label": table.get("doc_label", ""),
+                                    "heading": table.get("heading", ""),
+                                    "page_start": table.get("page_start"),
+                                    "table_index": table.get("index")}
+
+    for row_number, row in enumerate(rows[header_row + 1:], start=header_row + 1):
         label = str(row[0] or "").strip() if row else ""
-        if not label:
-            continue
         if _is_davon_note(label):
             continue
         values: dict[int, tuple[float, int]] = {}
@@ -195,8 +268,51 @@ def _column_actuals(table: dict, aliases: dict[str, str], queued: list[dict[str,
                 if parsed is not None:
                     values[year] = (parsed, 0 if block_index == 0 else 1)
                     break
-        if not values:
+
+        if not label:
+            if not values:
+                continue
+            narrow = accumulator[group_start:]
+            if open_group_label and _values_match(narrow, values):
+                record = {"std_id": None, "canonical_de": open_group_label, "canonical_en": "",
+                          "row_type": "subtotal", "statement": table.get("framework") or "",
+                          "components": {std_id: 1 for std_id, _ in narrow}}
+                _store(f"__subtotal_row{row_number}", open_group_label, record, row_number, values)
+                open_group_label = None
+                continue
+            if _values_match(accumulator, values):
+                record = {"std_id": None, "canonical_de": "", "canonical_en": "",
+                          "row_type": "subtotal", "statement": table.get("framework") or "",
+                          "components": {std_id: 1 for std_id, _ in accumulator}}
+                _store(f"__subtotal_row{row_number}", "", record, row_number, values)
+                accumulator = []
+                group_start = 0
+                open_group_label = None
+                continue
+            queued.append({
+                "raw_label": "", "normalized_key": "",
+                "match_type": "unlabelled_no_verified_subtotal", "candidates": "",
+                "doc_label": table.get("doc_label", ""), "heading": table.get("heading", ""),
+                "page_start": table.get("page_start", ""), "row": row_number,
+            })
             continue
+
+        if not values:
+            # A top-level heading with no value of its own decomposes into
+            # lettered sub-items below; remember it so a later unlabelled
+            # subtotal can be attributed back to it. A heading that never
+            # reaches _map_actual can't collide with _UNSAFE_AGGREGATE_KEYS,
+            # so this is orthogonal to that guard.
+            if _TOP_LEVEL_HEADER.match(label):
+                open_group_label = label
+                group_start = len(accumulator)
+            continue
+
+        if _TOP_LEVEL_HEADER.match(label):
+            # A fully-valued top-level line (no decomposition) closes out any
+            # stale open heading from a filing shape this fixture doesn't have.
+            open_group_label = None
+
         framework = str(table.get("framework") or "unknown").lower()
         pnl_method = str(table.get("pnl_method") or "unknown").lower()
         record, match_type, candidates = _map_actual(label, aliases, framework, pnl_method)
@@ -209,31 +325,9 @@ def _column_actuals(table: dict, aliases: dict[str, str], queued: list[dict[str,
                 "page_start": table.get("page_start", ""), "row": row_number,
             })
             continue
-        for year, (value, year_priority) in values.items():
-            by_id = result.setdefault(year, OrderedDict())
-            std_id = record["std_id"]
-            if std_id in collisions.setdefault(year, set()):
-                continue
-            current = by_id.get(std_id)
-            if current and current["raw_label"] != label:
-                # A collision is unsafe: do not silently retain whichever happened first.
-                for collision in (current, {"raw_label": label, "row": row_number}):
-                    queued.append({
-                        "raw_label": collision["raw_label"], "normalized_key": std_id,
-                        "match_type": "std_id_collision", "candidates": std_id,
-                        "doc_label": table.get("doc_label", ""), "heading": table.get("heading", ""),
-                        "page_start": table.get("page_start", ""), "row": collision["row"],
-                    })
-                by_id.pop(std_id, None)
-                collisions[year].add(std_id)
-                continue
-            if std_id not in by_id:
-                by_id[std_id] = {"raw_label": label, "value": value, "row": row_number,
-                                 "record": record, "source_unit": "TEUR" if multiplier == 1_000 else "EUR",
-                                 "year_priority": year_priority,
-                                 "doc_label": table.get("doc_label", ""),
-                                 "heading": table.get("heading", ""),
-                                 "page_start": table.get("page_start")}
+        std_id = record["std_id"]
+        accumulator.append((std_id, values))
+        _store(std_id, label, record, row_number, values)
     return result
 
 
@@ -276,6 +370,18 @@ def build_multi_year_tables(tables: list, row_merges: "Optional[dict]" = None,
                     elif actual["year_priority"] > target[std_id]["year_priority"]:
                         continue
                     elif target[std_id]["raw_label"] != actual["raw_label"]:
+                        if (target[std_id].get("table_index") != actual.get("table_index")
+                                and isclose(target[std_id]["value"], actual["value"], abs_tol=0.01)):
+                            # Same std_id, same value, from two distinct source
+                            # tables in this group -- e.g. a GmbH & Co. KG's
+                            # "loss not covered by capital contributions" is
+                            # disclosed on both Aktiva and Passiva with the
+                            # identical figure. That is a confirmed mirror of
+                            # one fact, not an ambiguous collision: two rows
+                            # from the SAME table disagreeing on a std_id would
+                            # still fall through and queue below. Keep the
+                            # first one seen.
+                            continue
                         # Two source rows in the same statement-year may not
                         # compete for one canonical actual. Queue both and
                         # leave the figure blank pending review.
@@ -313,8 +419,9 @@ def build_multi_year_tables(tables: list, row_merges: "Optional[dict]" = None,
                                         "row": actual["row"], "page": actual["page_start"]}
             rows.append(row)
             source_labels.append(labels)
-            metadata.append({"std_id": std_id, "raw_labels": labels,
+            metadata.append({"std_id": first["record"].get("std_id"), "raw_labels": labels,
                              "row_type": first["record"]["row_type"],
+                             "components": first["record"].get("components"),
                              "unit": "EUR", "presentation_basis": "umsatzerloese" if std_id in ("PL_GKV-1", "PL_UKV-1") else None,
                              "provenance": next(iter(provenance.values()), {}),
                              "provenance_by_fy": provenance})
