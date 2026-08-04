@@ -23,7 +23,6 @@ _UNSAFE_AGGREGATE_KEYS = {"materialaufwand", "personalaufwand", "abschreibungen"
 _SUBTOTAL_EXTENSIONS = {
     "gesamtleistung": ("PL_GKV-GESAMTLEISTUNG", "Gesamtleistung"),
     "rohergebnis": ("PL_GKV-ROHERGEBNIS", "Rohergebnis"),
-    "konzernbilanzverlust": ("PL_GKV-BILANZVERLUST", "Konzernbilanzverlust"),
 }
 
 

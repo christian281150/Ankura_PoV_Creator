@@ -531,6 +531,17 @@
       "ukv_allocation_required": false
     },
     {
+      "hgb_code": "BS-P.A.KG-IV",
+      "statement": "BS",
+      "level": 3,
+      "parent_code": "BS-P.A",
+      "name_de": "IV. Konzernbilanzverlust",
+      "name_en": "Group accumulated loss carried forward",
+      "pnl_format": "BS",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
       "hgb_code": "BS-P-NEGEQ",
       "statement": "BS",
       "level": 3,
@@ -3694,6 +3705,11 @@
       "normalized_key": "eigenkapitaldifferenzauswaehrungsumrechnung",
       "original_label": "Eigenkapitaldifferenz aus Währungsumrechnung",
       "hgb_code": "BS-P.A.KG-III"
+    },
+    {
+      "normalized_key": "konzernbilanzverlust",
+      "original_label": "Konzernbilanzverlust",
+      "hgb_code": "BS-P.A.KG-IV"
     },
     {
       "normalized_key": "nichtdurchvermoegenseinlagengedeckteverlustanteilederkommanditisten",

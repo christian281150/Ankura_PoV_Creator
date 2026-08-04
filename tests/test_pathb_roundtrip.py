@@ -6,16 +6,12 @@ EntitySeries -- not a hand-built one. That series is written into the Path B
 input format and read back, proving Path B is the same contract from a
 different entry point, not a parallel path.
 
-One line item, PL_GKV-BILANZVERLUST, is deliberately excluded from the
-round-trip source: it is produced by consolidate.py's inline
-_SUBTOTAL_EXTENSIONS mechanism (an exact-text-match shortcut for
-"Konzernbilanzverlust") but was never added as a real taxonomy entry, so
-lib.hgb_map.by_id() does not recognise it. This is a genuine, pre-existing
-gap -- Path A can legitimately emit a std_id Path B's producer correctly
-refuses, because Path B validates every std_id against the shared taxonomy
-and this one was never added to it. Out of Lane D's scope to fix (it would
-mean editing hgb_mapping.json, which is G1/G2 territory); documented here
-and exercised directly by test_producer_refuses_an_unrecognised_std_id.
+No line items need excluding from the round-trip source: Konzernbilanzverlust
+(the one Path-A-emitted std_id that used to have no formal taxonomy entry --
+consolidate.py produced it via an inline _SUBTOTAL_EXTENSIONS exact-text-match
+shortcut, id "PL_GKV-BILANZVERLUST", which lib.hgb_map.by_id() never
+recognised) is now a real taxonomy entry, "BS-P.A.KG-IV" (Lane A follow-up).
+Path A no longer emits the old shortcut id at all.
 """
 from __future__ import annotations
 
@@ -42,21 +38,12 @@ from acquire.pathb.template import write_blank_template, write_filled_template
 FY2024_FIXTURE = Path(__file__).parent / "fixtures" / "seidensticker_extracted_tables.json"
 ENTITY_ID = "HRA-8217-AG-Bielefeld"
 
-# See module docstring.
-NOT_IN_FORMAL_TAXONOMY = {"PL_GKV-BILANZVERLUST"}
-
 _COMPARED_FIELDS = ("framework", "pnl_method", "unit", "currency", "presentation_basis", "scope_flag", "method_flag")
 
 
 def _path_a_series() -> EntitySeries:
     tables = build_multi_year_tables(json.loads(FY2024_FIXTURE.read_text(encoding="utf-8-sig")))
-    full = build_entity_series(ENTITY_ID, FiscalYearEnd(month=4, day=30), [tables])
-    kept = [li for li in full.line_items if li.std_id not in NOT_IN_FORMAL_TAXONOMY]
-    return EntitySeries(
-        entity_id=full.entity_id, source_kind=full.source_kind,
-        fiscal_year_end=full.fiscal_year_end, fiscal_years=full.fiscal_years,
-        line_items=kept,
-    )
+    return build_entity_series(ENTITY_ID, FiscalYearEnd(month=4, day=30), [tables])
 
 
 def test_path_a_proving_fixture_has_a_realistic_number_of_line_items() -> None:
@@ -138,9 +125,6 @@ def test_producer_refuses_a_workbook_missing_a_required_declaration() -> None:
 
 
 def test_producer_refuses_an_unrecognised_std_id() -> None:
-    """Also documents the NOT_IN_FORMAL_TAXONOMY gap: a std_id Path A can
-    legitimately emit (PL_GKV-BILANZVERLUST) is, correctly, one Path B's
-    producer refuses, because it is not in the shared taxonomy."""
     with TemporaryDirectory() as tmp_dir:
         xlsx_path = Path(tmp_dir) / "bad_std_id.xlsx"
         _write_minimal_workbook(
@@ -148,7 +132,7 @@ def test_producer_refuses_an_unrecognised_std_id() -> None:
             company={FIELD_ENTITY_ID: "test-co", FIELD_FY_END_MONTH: 12, FIELD_FY_END_DAY: 31},
             rows=[
                 {
-                    COL_CLIENT_LABEL: "Konzernbilanzverlust", COL_STD_ID: "PL_GKV-BILANZVERLUST",
+                    COL_CLIENT_LABEL: "Not a real concept", COL_STD_ID: "PL_GKV-DOES-NOT-EXIST",
                     COL_FRAMEWORK: "hgb", COL_PNL_METHOD: "gkv", COL_UNIT: "EUR", COL_CURRENCY: "EUR",
                     COL_PRESENTATION_BASIS: "n/a", "2024": -54_181_477.90,
                 },

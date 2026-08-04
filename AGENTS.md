@@ -141,7 +141,7 @@ Derived assertions for tests:
 | ~~P0.4~~ | Unit normalisation | DONE — `_unit_multiplier`. Note: a **mid-series** T€→€ break still cannot be expressed per-year in Path B |
 | ~~P0.5~~ | Merge on `std_id` not raw label | DONE, plus `_is_davon_note` exclusion and std_id collision detection that queues **both** sides |
 | **P0.6** | ~~Longest-match mapper~~ | **SUPERSEDED — THIS INSTRUCTION IS WRONG. DO NOT FOLLOW IT.** See below |
-| ~~P0.7~~ | Add missing taxonomy rows | DONE, but **not** as taxonomy rows — as `_SUBTOTAL_EXTENSIONS` (`PL_GKV-GESAMTLEISTUNG`, `-ROHERGEBNIS`, `-BILANZVERLUST`) and a client alias for `Veränderung des Bestands…` |
+| ~~P0.7~~ | Add missing taxonomy rows | DONE. `Konzernbilanzverlust` is now a real taxonomy entry (`BS-P.A.KG-IV`, Lane A follow-up) — Path A no longer emits it via a shortcut, and Path B no longer refuses it. `Gesamtleistung`/`Rohergebnis` remain `_SUBTOTAL_EXTENSIONS` shortcuts (`PL_GKV-GESAMTLEISTUNG`, `-ROHERGEBNIS`), plus a client alias for `Veränderung des Bestands…` |
 
 #### P0.6 is inverted — read this before touching the mapper
 
