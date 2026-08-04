@@ -564,6 +564,17 @@
       "ukv_allocation_required": false
     },
     {
+      "hgb_code": "BS-P-TREASURY",
+      "statement": "BS",
+      "level": 2,
+      "parent_code": "BS-P",
+      "name_de": "Ausgleichsposten für aktivierte eigene Anteile",
+      "name_en": "Offsetting item for capitalised own-group interests",
+      "pnl_format": "BS",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
       "hgb_code": "BS-P.B",
       "statement": "BS",
       "level": 2,
@@ -713,6 +724,17 @@
       "parent_code": "BS-P.C",
       "name_de": "Genussrechtskapital (Fremdkapital)",
       "name_en": "Profit participation capital (classified as debt)",
+      "pnl_format": "BS",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
+      "hgb_code": "BS-P.C-GESELLSCHAFTER",
+      "statement": "BS",
+      "level": 3,
+      "parent_code": "BS-P.C",
+      "name_de": "Verbindlichkeiten gegenüber Gesellschaftern",
+      "name_en": "Liabilities to shareholders",
       "pnl_format": "BS",
       "is_subtotal": false,
       "ukv_allocation_required": false
@@ -3383,6 +3405,11 @@
       "hgb_code": "BS-A.A.II.1"
     },
     {
+      "normalized_key": "grundstueckeundbauteneinschliesslichderbautenauffremdengrundstuecken",
+      "original_label": "Grundstücke und Bauten einschließlich der Bauten auf fremden Grundstücken",
+      "hgb_code": "BS-A.A.II.1"
+    },
+    {
       "normalized_key": "technischeanlagenundmaschinen",
       "original_label": "Technische Anlagen und Maschinen",
       "hgb_code": "BS-A.A.II.2"
@@ -3435,6 +3462,11 @@
     {
       "normalized_key": "beteiligungen",
       "original_label": "Beteiligungen",
+      "hgb_code": "BS-A.A.III.3"
+    },
+    {
+      "normalized_key": "beteiligungenanassoziiertenunternehmen",
+      "original_label": "Beteiligungen an assoziierten Unternehmen",
       "hgb_code": "BS-A.A.III.3"
     },
     {
@@ -3733,6 +3765,11 @@
       "hgb_code": "BS-P.A.KG-VI"
     },
     {
+      "normalized_key": "ausgleichspostenfueraktivierteeigeneanteile",
+      "original_label": "Ausgleichsposten für aktivierte eigene Anteile",
+      "hgb_code": "BS-P-TREASURY"
+    },
+    {
       "normalized_key": "rueckstellungen",
       "original_label": "Rückstellungen",
       "hgb_code": "BS-P.B"
@@ -3836,6 +3873,11 @@
       "normalized_key": "tradepayables",
       "original_label": "Trade payables",
       "hgb_code": "BS-P.C.4"
+    },
+    {
+      "normalized_key": "verbindlichkeitengegenuebergesellschaftern",
+      "original_label": "Verbindlichkeiten gegenüber Gesellschaftern",
+      "hgb_code": "BS-P.C-GESELLSCHAFTER"
     },
     {
       "normalized_key": "verbindlichkeitenauswechseln",
