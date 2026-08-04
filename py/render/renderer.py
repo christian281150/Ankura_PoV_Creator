@@ -21,6 +21,7 @@ from pptx.enum.shapes import MSO_SHAPE_TYPE
 from pptx.enum.text import MSO_ANCHOR, PP_ALIGN
 from pptx.util import Inches, Pt
 
+from render.assemble_profile import flagged_items
 from validate.validator import validate_normalised, validate_v11
 
 MASTER_FILENAME = "ankura_master_reference.pptx"
@@ -98,8 +99,25 @@ def render_profile(
         sources.extend(_source_lines(block))
 
     rendered_footnotes.extend(_human_notes_for(human_notes or profile.get("human_notes"), selected))
-    _set_footer(slide, _unique(rendered_footnotes), _unique(sources))
-    _set_notes(slide, audit_entries)
+
+    # V9 ("flag, never suppress") is recomputed here directly from profile
+    # rows rather than trusted from whatever assemble_profile attached to the
+    # selected blocks: a negative-equity disclosure must stay visible even if
+    # its block never gets a slot, so it cannot depend on slot assignment at
+    # all. This mirrors validate_v11/validate_v12's existing render-time
+    # recomputation pattern above, and is deliberately a separate line from
+    # Note(s)/Source(s) -- see assemble_profile.flagged_items's docstring for
+    # why V9 must not be folded into the V3-V6 footnote mechanism.
+    advisory_items = flagged_items({"rows": profile.get("rows", ())}, profile.get("segments"))
+    advisory_lines = _unique(str(item["message"]) for item in advisory_items)
+    advisory_audit_entries = [
+        {"slot": "advisory", "block_id": "adv.flagged_items", "std_id": entry.get("std_id"), "doc": entry["doc"], "page": entry.get("page")}
+        for item in advisory_items
+        for entry in item["provenance"]
+    ]
+
+    _set_footer(slide, _unique(rendered_footnotes), _unique(sources), advisory_lines)
+    _set_notes(slide, audit_entries + advisory_audit_entries)
     presentation.save(output)
 
     companion = output.with_suffix(".json")
@@ -115,6 +133,7 @@ def render_profile(
                     "figures": audit_entries,
                     "footnotes": _unique(rendered_footnotes),
                     "sources": _unique(sources),
+                    "advisory": advisory_lines,
                 },
             },
             ensure_ascii=False,
@@ -333,14 +352,20 @@ def _add_label(slide: Any, text: str, x: float, y: float, width: float, height: 
     paragraph.font.color.rgb = _rgb("000000")
 
 
-def _set_footer(slide: Any, notes: Sequence[str], sources: Sequence[str]) -> None:
+def _set_footer(slide: Any, notes: Sequence[str], sources: Sequence[str], advisory: Sequence[str] = ()) -> None:
     footer = next((shape for shape in slide.shapes if shape.has_text_frame and shape.top / 914400 > 6.9), None)
     if footer is None:
         footer = slide.shapes.add_textbox(Inches(0.3), Inches(7.05), Inches(12.7), Inches(0.32))
     note_text = " | ".join(notes) if notes else "None"
     source_text = " | ".join(sources) if sources else "Not supplied"
-    footer.text = f"Note(s): {note_text}\nSource(s): {source_text}"
-    footer.text_frame.paragraphs[0].font.size = Pt(6.5)
+    text = f"Note(s): {note_text}\nSource(s): {source_text}"
+    # Deliberately its own line, never merged into Note(s): V9 is advisory and
+    # unconditional, not an analyst-authored note against a specific series.
+    if advisory:
+        text += "\n⚠ Advisory: " + " | ".join(advisory)
+    footer.text = text
+    for paragraph in footer.text_frame.paragraphs:
+        paragraph.font.size = Pt(6.5)
 
 
 def _set_notes(slide: Any, audit_entries: Sequence[Mapping[str, Any]]) -> None:

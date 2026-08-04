@@ -13,6 +13,7 @@ from collections.abc import Iterable, Mapping
 from pathlib import Path
 from typing import Any
 
+from coverage.probe import compute_coverage_dimensions
 from validate.validator import validate_normalised
 
 
@@ -59,10 +60,11 @@ def assemble_profile(
         _gap("prod.product_grid_gap", "Selected Products and Services", "bottom_left", "Product evidence was not supplied."),
         _geography_block(segments),
     ]
+    coverage = [dimension.model_dump() for dimension in compute_coverage_dimensions(blocks)]
     return {"entity": entity, "blocks": blocks, "canonical_layout": {
         "top_left": blocks[0]["id"], "top_right": revenue_block["id"],
         "bottom_left": blocks[2]["id"], "bottom_right": blocks[3]["id"],
-    }, "coverage": [], "rows": list(normalised.get("rows", []))}
+    }, "coverage": coverage, "rows": list(normalised.get("rows", []))}
 
 
 def _merged_row(rows: Iterable[Mapping[str, Any]], std_id: str) -> dict[str, Any] | None:
@@ -109,10 +111,62 @@ def _gap(block_id: str, title: str, slot: str, message: str) -> dict[str, Any]:
 
 
 def _geography_block(segments: Mapping[str, Any] | None) -> dict[str, Any]:
-    figures = (segments or {}).get("figures", [])
-    if not any(item.get("segment_type") == "geography" for item in figures):
+    """Real Anhang §285 Nr. 4 revenue-split content, from normalise.segments.
+
+    The renderer's native chart only draws one flat fy->value series (see
+    renderer._render_native_column_chart), so a multi-segment split cannot be
+    a "chart.stacked_column" without either crashing or silently mis-drawing
+    segments as fiscal years -- both worse than a plain bullet list. This
+    renders as ``bullets`` for exactly that reason, using the most recent
+    fiscal year the filing actually discloses a geographic split for.
+    """
+    figures = [item for item in (segments or {}).get("figures", []) if item.get("segment_type") == "geography"]
+    if not figures:
         return _gap("geo.revenue_split_gap", "Revenue Split by Geography", "bottom_right", "Geographic revenue split not supplied; no proxy chart is rendered.")
-    return _gap("geo.revenue_split_unimplemented", "Revenue Split by Geography", "bottom_right", "Geographic evidence is present but the chart payload is not yet modelled.")
+    latest_year = max(int(item["fiscal_year"]) for item in figures)
+    latest = [item for item in figures if int(item["fiscal_year"]) == latest_year]
+    revenue_figures = [item for item in latest if item.get("metric") == "revenue"]
+    if revenue_figures:
+        latest = revenue_figures
+
+    provenance: list[dict[str, Any]] = []
+    content: list[str] = []
+    for figure in sorted(latest, key=lambda item: str(item["segment_name"]).casefold()):
+        figure_provenance = figure.get("provenance") or {}
+        sheet = figure_provenance.get("sheet")
+        row = figure_provenance.get("row")
+        if not sheet or row is None:
+            raise AssemblyError(f"Geography segment {figure.get('segment_name')!r} lacks sheet/row provenance.")
+        # Classifier-tagged sheet titles are "FY2025_..."; the same doc-from-
+        # sheet-prefix convention normalise.lagebericht already uses for
+        # Anhang/Lagebericht evidence without a filing name of its own.
+        doc = str(sheet).split("_", 1)[0]
+        provenance.append(_provenance({"doc": doc, "sheet": sheet, "row": row, "page": None}, "SEGMENT-GEO"))
+        basis = figure.get("presentation_basis")
+        basis_note = f" ({basis})" if basis else " (basis not stated)"
+        value = float(figure["value"])
+        formatted = f"{value:.1f}%" if figure.get("unit") == "PCT" else f"€{value / 1_000_000:.1f}m"
+        content.append(f"{figure['segment_name']}: {formatted}{basis_note} — FY{latest_year}")
+
+    has_eur = any(item.get("unit") == "EUR" for item in latest)
+    all_basis_stated = all(item.get("presentation_basis") for item in latest)
+    return {
+        "id": "geo.revenue_split",
+        "title": "Revenue Split by Geography",
+        "kind": "bullets",
+        "eligible_slots": ["bottom_right"],
+        "coverage": 1.0,
+        "confidence": "high" if all_basis_stated else "medium",
+        "source": "filing",
+        "framework": None,
+        "pnl_method": None,
+        "presentation_basis": latest[0].get("presentation_basis") or "n/a",
+        "unit": "EUR" if has_eur else "n/a",
+        "flags": [],
+        "footnotes_auto": [],
+        "provenance": _unique_provenance(provenance),
+        "content": content,
+    }
 
 
 def _coverage(values: Mapping[int, float]) -> float:
@@ -143,6 +197,52 @@ def auto_footnote_flags(normalised: Mapping[str, Any], segments: Mapping[str, An
     """
     result = validate_normalised({"rows": normalised.get("rows", [])}, segments)
     return [flag.model_dump() for flag in result.flags if flag.rule in {"V3", "V4", "V5", "V6"}]
+
+
+def flagged_items(normalised: Mapping[str, Any], segments: Mapping[str, Any] | None = None) -> list[dict[str, Any]]:
+    """V9-class advisory findings ("flag, never suppress" -- AGENTS.md's rule
+    table), kept deliberately separate from ``auto_footnote_flags``.
+
+    V3-V6 need an analyst-authored note before they can appear anywhere (see
+    the V3-V6 ``note_required`` severity and the auto-footnote mechanism
+    above); V9 has no note field and must stay visible regardless of whether
+    one is ever written, and regardless of which blocks end up in which slot
+    -- a KG negative-equity position does not stop being true because nobody
+    assigned a chart to bottom_right. Callers must not fold this into
+    ``auto_footnote_flags``'s output: a committed regression test
+    (test_auto_footnote_flags_excludes_rules_outside_v3_to_v6) asserts V9
+    never reaches the revenue block's footnotes via that path, precisely so
+    the two surfacing mechanisms cannot be silently conflated.
+
+    Each returned item carries real row-level provenance rather than being a
+    bare message, so a renderer can write it to the audit trail the same way
+    it does for any other figure.
+    """
+    rows = list(normalised.get("rows", []))
+    result = validate_normalised({"rows": rows}, segments)
+    v9_flags = [flag for flag in result.flags if flag.rule == "V9"]
+    if not v9_flags:
+        return []
+
+    provenance: list[dict[str, Any]] = []
+    for row in rows:
+        std_id = row.get("std_id")
+        if std_id not in {"BS-P-NEGEQ", "BS-P.A"}:
+            continue
+        by_fy = row.get("provenance_by_fy")
+        if by_fy:
+            for item in by_fy.values():
+                provenance.append(_provenance(item, std_id))
+        elif row.get("provenance"):
+            provenance.append(_provenance(row["provenance"], std_id))
+    if not provenance:
+        raise AssemblyError("V9 fired but no BS-P-NEGEQ/BS-P.A row provenance is available to cite.")
+
+    unique_provenance = _unique_provenance(provenance)
+    return [
+        {"rule": flag.rule, "severity": flag.severity, "message": flag.message, "provenance": unique_provenance}
+        for flag in v9_flags
+    ]
 
 
 def main() -> int:
