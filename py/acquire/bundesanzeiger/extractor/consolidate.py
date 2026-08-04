@@ -25,6 +25,24 @@ _SUBTOTAL_EXTENSIONS = {
     "rohergebnis": ("PL_GKV-ROHERGEBNIS", "Rohergebnis"),
 }
 
+# A §266 Bilanz's top-level Aktiva/Passiva sections are lettered A.-E.; this is
+# distinct from _TOP_LEVEL_HEADER (arabic-numbered sub-items). Matched against
+# every row so the mapper can tell which section currently governs one --
+# needed only for labels whose HGB classification genuinely depends on where
+# they are disclosed, not on their text (see _SECTION_DEPENDENT_LABELS).
+_BS_LETTERED_SECTION = re.compile(r"^[A-E]\.\s*(\S.*)$")
+
+# Some HGB concepts are disclosed under one heading in one fiscal year and a
+# different heading in another -- Genussrechtskapital's equity/debt
+# classification depends on its own instrument terms (IDW RS HFA 45) and can
+# legitimately change. Label text alone can't disambiguate (the raw text is
+# identical either way); this table is the mapper's only source of the
+# structural context a human reader gets for free. Keyed by
+# (normalized label, normalized governing section name).
+_SECTION_DEPENDENT_LABELS: dict[tuple[str, str], tuple[str, str]] = {
+    ("genussrechtskapital", "verbindlichkeiten"): ("BS-P.C-GENUSS", "Genussrechtskapital (Fremdkapital)"),
+}
+
 
 def _display_label_key(label: str) -> str:
     """Remove only statement numbering before the mapper's exact lookup."""
@@ -60,8 +78,16 @@ def _load_exact_aliases(aliases_path: Optional[str | Path] = None) -> dict[str, 
 
 
 def _map_actual(label: str, aliases: dict[str, str], framework: str,
-                pnl_method: str) -> tuple[Optional[dict], str, list[str]]:
-    """Resolve one HGB actual exactly, subject to framework and method guards."""
+                pnl_method: str, current_section: Optional[str] = None) -> tuple[Optional[dict], str, list[str]]:
+    """Resolve one HGB actual exactly, subject to framework and method guards.
+
+    ``current_section`` is the normalised name of the enclosing top-level
+    Bilanz section (see ``_BS_LETTERED_SECTION``), when the caller tracks
+    one. It disambiguates a label the plain text can't -- see
+    ``_SECTION_DEPENDENT_LABELS``. Callers with no such context (e.g. the
+    unmapped-label report in exporters.py) simply omit it and always get the
+    label's ordinary, section-agnostic resolution.
+    """
     if not _HGB_AVAILABLE:
         return None, "none", []
     if _is_davon_note(label):
@@ -79,6 +105,12 @@ def _map_actual(label: str, aliases: dict[str, str], framework: str,
     # is generated upstream.
     if _hgb.normalize(clean) in _UNSAFE_AGGREGATE_KEYS:
         return None, "unsafe_aggregate_heading", []
+    if current_section is not None:
+        section_match = _SECTION_DEPENDENT_LABELS.get((_hgb.normalize(clean), current_section))
+        if section_match:
+            std_id, canonical_de = section_match
+            return {"std_id": std_id, "canonical_de": canonical_de, "canonical_en": "",
+                    "row_type": "line", "statement": "BS"}, "section_dependent_exact", []
     extension = _SUBTOTAL_EXTENSIONS.get(_hgb.normalize(clean))
     if extension:
         std_id, canonical_de = extension
@@ -250,6 +282,9 @@ def _column_actuals(table: dict, aliases: dict[str, str], queued: list[dict[str,
     open_group_label: Optional[str] = None
     group_start: int = 0
     last_row_number = len(rows) - 1
+    # Which lettered Bilanz section (A.-E.) currently governs -- see
+    # _BS_LETTERED_SECTION / _SECTION_DEPENDENT_LABELS.
+    bs_section: Optional[str] = None
 
     def _store(group_key: str, label: str, record: dict, row_number: int,
                values: dict[int, tuple[float, int]]) -> None:
@@ -283,6 +318,9 @@ def _column_actuals(table: dict, aliases: dict[str, str], queued: list[dict[str,
         label = str(row[0] or "").strip() if row else ""
         if _is_davon_note(label):
             continue
+        section_header = _BS_LETTERED_SECTION.match(label)
+        if section_header and _HGB_AVAILABLE:
+            bs_section = _hgb.normalize(section_header.group(1))
         values: dict[int, tuple[float, int]] = {}
         for block_index, (year, start, end) in enumerate(blocks):
             for ci in range(start, min(end + 1, len(row))):
@@ -351,7 +389,7 @@ def _column_actuals(table: dict, aliases: dict[str, str], queued: list[dict[str,
 
         framework = str(table.get("framework") or "unknown").lower()
         pnl_method = str(table.get("pnl_method") or "unknown").lower()
-        record, match_type, candidates = _map_actual(label, aliases, framework, pnl_method)
+        record, match_type, candidates = _map_actual(label, aliases, framework, pnl_method, current_section=bs_section)
         if record is None:
             queued.append({
                 "raw_label": label,

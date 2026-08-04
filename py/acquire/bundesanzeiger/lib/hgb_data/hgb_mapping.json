@@ -707,6 +707,17 @@
       "ukv_allocation_required": false
     },
     {
+      "hgb_code": "BS-P.C-GENUSS",
+      "statement": "BS",
+      "level": 3,
+      "parent_code": "BS-P.C",
+      "name_de": "Genussrechtskapital (Fremdkapital)",
+      "name_en": "Profit participation capital (classified as debt)",
+      "pnl_format": "BS",
+      "is_subtotal": false,
+      "ukv_allocation_required": false
+    },
+    {
       "hgb_code": "BS-P.D",
       "statement": "BS",
       "level": 2,
